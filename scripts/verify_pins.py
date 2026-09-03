@@ -20,7 +20,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -39,7 +38,7 @@ UNVERIFIABLE = "unverifiable"
 def git_blob_sha1(data: bytes) -> str:
     """Git's object id for a blob: sha1 of ``blob <len>\\0`` followed by the content."""
     header = f"blob {len(data)}".encode() + b"\0"
-    return hashlib.sha1(header + data).hexdigest()  # noqa: S324 - object id, not a security digest
+    return hashlib.sha1(header + data).hexdigest()
 
 
 def check_file(entry: dict[str, object], base: Path) -> tuple[str, str]:
@@ -68,11 +67,13 @@ def check_upstream(record: dict[str, object]) -> None:
     repo = str(source["repository"]).removeprefix("https://github.com/")
     url = f"https://api.github.com/repos/{repo}/contents/{source['path_prefix']}?ref={source['commit']}"
     try:
-        with urllib.request.urlopen(url, timeout=20) as response:  # noqa: S310 - fixed https URL
+        with urllib.request.urlopen(url, timeout=20) as response:
             listing = json.load(response)
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
         # DEC-014: a transient failure is not evidence. It produces no verdict.
-        print(f"\nupstream  {UNVERIFIABLE}: not reached ({type(exc).__name__}). No verdict; exit code unaffected.")
+        print(
+            f"\nupstream  {UNVERIFIABLE}: not reached ({type(exc).__name__}). No verdict; exit code unaffected."
+        )
         return
 
     upstream = {item["name"]: item["sha"] for item in listing}
@@ -87,7 +88,9 @@ def check_upstream(record: dict[str, object]) -> None:
         elif actual == entry["blob_sha1"]:
             print(f"  {VERIFIED:13} {name}")
         else:
-            print(f"  {CONTRADICTED:13} {name}: upstream blob {actual[:12]} != pinned {str(entry['blob_sha1'])[:12]}")
+            print(
+                f"  {CONTRADICTED:13} {name}: upstream blob {actual[:12]} != pinned {str(entry['blob_sha1'])[:12]}"
+            )
 
 
 def main() -> int:

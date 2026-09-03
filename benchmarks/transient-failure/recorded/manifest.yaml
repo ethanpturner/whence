@@ -19,3 +19,10 @@ interactions:
   - request: GET /api/models/meta-llama/Llama-3.1-70B-Instruct
     status: 429
     body: model-meta-llama-Llama-3.1-70B-Instruct.429.json
+  # Added 2026-09-03 after the first resolver run. Classified as a fixture defect: the root
+  # declares a dataset as well as a base, and the recording only carried the base. The scenario's
+  # expected-graph.yaml always listed the trained-on edge, so the omission was in the capture, not
+  # in the expectation.
+  - request: GET /api/datasets/nvidia/HelpSteer2
+    status: 200
+    body: dataset-nvidia-HelpSteer2.json

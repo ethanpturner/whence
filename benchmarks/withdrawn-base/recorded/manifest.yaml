@@ -15,3 +15,10 @@ interactions:
   - request: GET /api/organizations/microsoft/overview
     status: 200
     body: org-microsoft.json
+  # Added 2026-09-03 after the first resolver run. Fixture defect: distinguishing a `held`
+  # namespace from a `held-empty` one requires asking whether it still publishes anything, and
+  # the original capture recorded only the organization's existence. That distinction is the
+  # difference between this scenario and transferred-namespace, so the request was always needed.
+  - request: GET /api/models?author=microsoft&limit=5
+    status: 200
+    body: author-microsoft.json

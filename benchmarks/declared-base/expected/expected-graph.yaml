@@ -46,6 +46,18 @@ edges:
   # a 307 to `meta-llama/Llama-3.1-70B`. Following a redirect the registry itself issued is
   # resolution, not inference, so DEC-010 permits it -- but the declared name and the resolved
   # name differ and both must survive into the output. See scenario.md, open question 1.
+  # Corrected 2026-09-03 after the first resolver run. Classified as a truth-set defect under the
+  # evaluation plan's divergence procedure: the edge genuinely exists in the base model's metadata,
+  # and I authored only the root's edges plus the second-hop lineage, forgetting that expanding a
+  # node yields ALL of its declared edges rather than just its ancestry. The tool was right.
+  - source: meta-llama/Llama-3.1-70B-Instruct
+    target: transformers
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    evidence_locator: "cardData.library_name"
+    node_kind: package
+
   - source: meta-llama/Llama-3.1-70B-Instruct
     target: meta-llama/Llama-3.1-70B
     target_revision: 349b2ddb53ce8f2849a6c168a81980ab25258dac

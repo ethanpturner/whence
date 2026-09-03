@@ -1,22 +1,35 @@
 # whence
 
-**Status: design. Nothing is built.** This repository currently holds the scope, the decision
-log, the data model, and the evaluation plan. No code has been written, and every statement
-about behaviour below is a statement of intent.
+**Status: phase one runs.** `whence` resolves a model's dependency graph from recorded or live
+registry metadata and emits a CycloneDX 1.7 ML-BOM. Weight-level lineage verification is phase two
+and is not built (DEC-005), so **no edge is ever `verified` today** — see below, which is the point
+rather than a gap.
 
-## What this is designed to be
+```
+uv run whence resolve nvidia/Llama-3.1-Nemotron-70B-Instruct-HF \
+    --scenario benchmarks/declared-base --bom
+uv run whence evaluate          # every recorded scenario, scored against its truth set, offline
+```
 
-`whence` is designed to resolve the dependency graph of a published machine-learning model and
-record, for every edge in that graph, whether the relationship is **claimed** or **verified**.
+## What it does
+
+`whence` resolves the dependency graph of a published machine-learning model and records, for every
+edge in that graph, whether the relationship is **claimed** or **verified**.
 
 The distinction is the whole point. Model signing attests bytes and says nothing about lineage.
 AI-BOM generators read a model card and transcribe what it asserts. Neither answers the question
 an operator actually has, which is whether the artifact in front of them came from where it says
 it came from.
 
-`whence` is designed to answer that with three verdicts and never two: an edge is `verified`,
-`contradicted`, or `unverifiable`. An edge that cannot be resolved is `unverifiable` — it is never
-reported as absent, because absence of a resolvable link is not evidence that no link exists.
+It answers with three verdicts and never two: an edge is `verified`, `contradicted`, or
+`unverifiable`. An edge that cannot be resolved is `unverifiable` — never reported as absent,
+because absence of a resolvable link is not evidence that no link exists.
+
+**Every edge phase one emits is `unverifiable`, and that is the finding.** Almost nothing on the
+Hugging Face registry pins its base by digest: cards name a base and stop. So the strongest thing
+resolution establishes is that the named artifact exists and can be pinned — not that the
+derivation happened. Tools that report such an edge without qualification are asserting a
+verification they never performed.
 
 ## The specific failure it exists to prevent
 
@@ -26,10 +39,12 @@ Face account frees the `Author/Model` namespace for re-registration, and that or
 were reachable through both Google Vertex AI Model Garden and Azure AI Foundry. A name is an
 assertion. A digest is a fact.
 
-`whence` is designed so that every node it emits carries a revision digest, and so that a node it
-could not pin is marked as such rather than silently recorded under its name.
+Every node `whence` emits carries a revision digest, and a node it could not pin is marked as such
+rather than silently recorded under its name. `benchmarks/transferred-namespace/` captures a live
+instance: `runwayml/stable-diffusion-v1-5` redirects into an organization controlled by someone
+else, and file requests under the old path are served from the new namespace with no error.
 
-## Intended scope
+## Scope
 
 Read `docs/architecture/project-scope.md` for the scope and the non-goals, and
 `docs/architecture/decision-log.md` for what has been decided and why. The evaluation plan in

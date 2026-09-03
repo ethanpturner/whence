@@ -480,3 +480,34 @@ moved*, which is true in both, and the note says what it moved to.
 declaration from one created afterwards. In this case the target organization was created
 2024-08-30 and the distinction looks meaningful, but one example is what produced the
 over-generalisation this entry is correcting.
+
+---
+
+## DEC-018 — Provenance records how a claim was found, not whether its target resolved
+
+**Date:** 2026-09-03
+**Status:** Accepted
+
+**Decision.** An edge's `ProvenanceClass` describes the origin of the assertion. A card naming a
+well-formed reference is `asserted-by-card` however unreachable that reference turns out to be; the
+unreachability is recorded on the node, as `reachable: false` with a namespace state.
+`unresolvable` is reserved for a reference that could not be constructed at all — an unqualified
+name with no owner, as in `prose-only-base`.
+
+**Why.** The first resolver run failed `withdrawn-base` on this field, and the disagreement turned
+out to be between two of the scenario's own expected files: `expected-graph.yaml` gave the edge
+`asserted-by-card` and `expected-unresolvable.yaml` restated the same edge as `unresolvable`.
+
+DEC-004 settles it: the class exists so "a consumer must be able to see, per edge, whether a human
+wrote it down or the tool established it." That is a question about the claim. Microsoft's card
+plainly asserts the base; the repository was later withdrawn. Folding the target's fate into the
+claim's origin loses the distinction the field exists for, and would make a withdrawn base
+indistinguishable from a reference nobody could parse.
+
+It also keeps the two conditions separable in the output, which matters because they have different
+remedies: an unreachable target may resolve for a caller with credentials, while an unconstructable
+reference will not resolve for anyone.
+
+**Tradeoffs.** `unresolvable` becomes rarer than the name suggests — it means "no reference could
+be formed", not "the reference did not work". The class list is inherited from DEC-004 and renaming
+it now would churn the CycloneDX mapping for a wording improvement.

@@ -29,7 +29,9 @@ def main() -> int:
 
     failed = 0
     for path in examples:
-        errors = sorted(validator.iter_errors(json.loads(path.read_text())), key=lambda e: list(e.path))
+        errors = sorted(
+            validator.iter_errors(json.loads(path.read_text())), key=lambda e: list(e.path)
+        )
         if errors:
             failed += 1
             print(f"FAIL {path.relative_to(ROOT)} ({len(errors)} error(s))")

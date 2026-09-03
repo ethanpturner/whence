@@ -4,13 +4,16 @@ Guidance for Claude Code when working in this repository.
 
 ## What this is
 
-`whence` is designed to resolve the dependency graph of a published machine-learning model and
-record, per edge, whether the relationship is claimed or verified. **Nothing is built.** This
-repository holds design documents only: scope, decision log, data model, and evaluation plan.
+`whence` resolves the dependency graph of a published machine-learning model and records, per edge,
+whether the relationship is claimed or verified.
 
-Do not describe the tool as if it exists. Present indicative is for what runs today, which is
-nothing; use "is designed to" for everything specified but unbuilt. This is the single easiest
-mistake to make here and the hardest to notice afterwards.
+**Phase one runs**: resolution, redirect handling, response classification, CycloneDX emission, and
+an evaluation harness scoring five recorded scenarios offline. **Phase two — weight-level lineage
+verification — is not built** (DEC-005), so no edge is ever `verified` today.
+
+Keep tense discipline. Present indicative for what runs; "is designed to" for phase two and
+anything else specified but unbuilt. Mixing them is the easiest mistake here and the hardest to
+notice afterwards.
 
 ## Read before changing anything
 
@@ -42,6 +45,9 @@ an implementation detail.
 
 ## Working norms
 
+- **The quality gate is `uv run ruff check . && uv run mypy && uv run pytest`**, plus
+  `uv run whence evaluate`, `scripts/verify_pins.py`, and `scripts/validate_examples.py`. All six
+  are expected green.
 - **mypy is strict and covers `scripts/` too.**
 - **Every domain object is immutable and forbids unknown fields.** That is the mechanism by which
   a registry response carrying an unexpected field fails validation rather than passing downstream

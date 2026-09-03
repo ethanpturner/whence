@@ -1,14 +1,23 @@
+# Corrected 2026-09-03 after the first resolver run. This file previously restated the base edge
+# with `provenance: unresolvable`, contradicting expected-graph.yaml, which gives the same edge
+# `asserted-by-card`. Classified as a truth-set defect and resolved by DEC-018: provenance records
+# how the CLAIM was found, and the card plainly asserts this base. The target's unreachability is a
+# property of the node, not of how the claim was made.
+#
+# `unresolvable` is reserved for a reference that could not be constructed at all -- see
+# prose-only-base, where the declared name carries no namespace.
+
 unresolvable:
-  - source: MaziyarPanahi/WizardLM-2-7B-GGUF
-    target: microsoft/WizardLM-2-7B
-    relation: quantized-from
-    provenance: unresolvable
-    verdict: unverifiable
+  - subject: "the derivation MaziyarPanahi/WizardLM-2-7B-GGUF quantized-from microsoft/WizardLM-2-7B"
     why: >-
-      Access is denied, so the target cannot be pinned or compared. Unlike `deleted-namespace`,
-      this could resolve for a caller holding suitable credentials -- the repository may still
-      exist behind the gate. The tool records what it could establish unauthenticated and does not
-      speculate about what a different caller would see.
+      Access to the target is denied, so it cannot be pinned or compared and no stronger verdict
+      than `unverifiable` is reachable. Unlike deleted-namespace this could resolve for a caller
+      holding suitable credentials; the tool records what it could establish unauthenticated and
+      does not speculate about what a different caller would see.
+    still_established: >-
+      That the card asserts the derivation, that the reference is well-formed, and that the owning
+      namespace is held rather than free -- so the reference is a dead end and not a hijack
+      opportunity.
 
 compositions:
   - aggregate: unknown
