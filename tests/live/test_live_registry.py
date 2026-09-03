@@ -101,7 +101,7 @@ def test_a_signed_and_an_unsigned_model_are_distinguished(registry: LiveRegistry
     assert unsigned is SignatureState.UNSIGNED
 
 
-def _ref(slug: str):
+def _ref(slug: str) -> ArtifactRef:
 
     namespace, name = slug.split("/")
     return ArtifactRef(host="huggingface.co", namespace=namespace, name=name, pinned=False)
