@@ -1,0 +1,15 @@
+# Accepted findings, by fingerprint. This is gitleaks' own mechanism for a specific false
+# positive: it suppresses exactly this match and changes no rule, so every rule stays active
+# everywhere, including in the file named below.
+#
+# Two broader approaches were tried and rejected, both verified by planting real credentials:
+#   - A path allowlist exempts the file from EVERY rule. An AWS key planted in a recorded
+#     fixture went undetected.
+#   - A shape allowlist matching `owner/name` suppressed a real AWS *secret* key, because those
+#     contain a slash. It silently reduced coverage repository-wide.
+#
+# The finding: `riteshkokam/ResAI`, a Hugging Face Space name, inside a verbatim capture of a
+# public registry response. The captures are unauthenticated GET responses -- no request that
+# produced them carried a credential, so nothing in them can be a token of ours. A capture made
+# WITH credentials would invalidate that reasoning and must be re-examined rather than ignored.
+e44c2b33a00c642eb9df8898e471227ea6b1038c:benchmarks/structural-compatible/recorded/model-Qwen-Qwen2.5-0.5B.json:generic-api-key:1

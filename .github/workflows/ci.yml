@@ -1,0 +1,110 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# Every uv invocation asserts the lockfile is current instead of silently updating it.
+env:
+  UV_LOCKED: "1"
+
+jobs:
+  ci:
+    name: lint / typecheck / test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # gitleaks scans full history.
+          fetch-depth: 0
+          # Nothing here pushes; dropping the token keeps a compromised step from writing.
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v9.0.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      # --locked fails if uv.lock is stale, so a dependency edit cannot land without it.
+      - name: Install dependencies
+        id: install
+        run: uv sync --locked --all-groups
+
+      # Each check runs even when an earlier one failed, so one run reports every problem. They
+      # are gated on the install rather than on `!cancelled()` alone, because `uv run` would
+      # otherwise build its own environment and report green on top of a broken install.
+      - name: ruff check
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: uv run ruff check --output-format=github .
+
+      - name: ruff format
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: uv run ruff format --check --diff .
+
+      - name: mypy
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: uv run mypy
+
+      # The `live` marker is deselected by addopts, so this reaches no network and needs no
+      # credential. The next step proves that rather than trusting it.
+      - name: pytest
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: uv run pytest -q
+
+      # DEC-009 says the default run makes no network call. That claim is worth enforcing rather
+      # than restating: the live tests are deselected by a marker in addopts, and a future edit
+      # could remove the filter without any test failing. Collecting with `-m live` and asserting
+      # the count is non-zero proves the tests exist; the run above proves they did not execute.
+      - name: the default run reaches no network
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          uv run pytest -q --collect-only 2>&1 | grep -q 'deselected' \
+            || { echo "::error::no tests were deselected; the live marker filter may be gone"; exit 1; }
+          uv run pytest -m live -q --collect-only >/dev/null \
+            || { echo "::error::the live suite does not collect"; exit 1; }
+
+      # The vendored CycloneDX schemas are pinned by content digest (DEC-016). A tool that argues
+      # other people's dependency records are unpinned has to check its own.
+      - name: vendored schemas match their pins
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: uv run python scripts/verify_pins.py
+
+      # cyclonedx-mapping.md claims its worked example is conformant. This checks it.
+      - name: the worked example is conformant CycloneDX
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: uv run python scripts/validate_examples.py
+
+      # Every recorded scenario, scored against its authored truth set, replayed offline.
+      - name: benchmark scenarios agree with their truth sets
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: uv run whence evaluate
+
+      # gitleaks is the enforcement point a local hook cannot provide: `--no-verify` or a clone
+      # without `pre-commit install` bypasses the hook. `--redact` keeps any hit out of the log,
+      # which would otherwise republish what it caught.
+      - name: gitleaks
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz | tar -xz gitleaks
+          ./gitleaks detect --source . --no-banner --redact
+
+      # `[project.scripts]` claims an entry point; this proves a built wheel exposes it, guarding
+      # against a packaging change that leaves the console script importing a module the wheel omits.
+      - name: the built wheel exposes the CLI
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          uv build
+          uv run --isolated --with dist/*.whl whence --help
