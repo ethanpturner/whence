@@ -24,6 +24,35 @@ lineage, and **alarm** about the reference. A tool that reports `contradicted` h
 tool that drops the unreachable node has erased the exposure. Both are graded, and the second is
 the more likely failure because dropping unresolvable nodes is the natural implementation.
 
+## The premise was not observed on this registry
+
+**Read this before capturing.** A second, larger search found no instance of the case this scenario
+describes, and found six of a related one.
+
+Sampling 22,000 models by download rank gave 3,642 distinct base references across 1,182 namespaces.
+423 of those namespaces never appeared as a live author; checking every one left 9 with no public
+models. Of those 9:
+
+| Outcome | Count |
+|---|---|
+| 307 redirect to a **different** namespace | 6 |
+| 401 | 2 |
+| 200 | 1 |
+| **plain 404, name free — this scenario** | **0** |
+
+This registry appears not to leave abandoned namespaces as 404s; it redirects them, usually across
+ownership. See `../transferred-namespace/`, which is the shape that actually occurs, and DEC-017.
+
+The scenario is **retained rather than deleted**, for three reasons. The behaviour it grades —
+restraint about the lineage, alarm about the reference, and never dropping an unreachable node —
+is correct regardless of which response produces it. Other registries have other deletion
+semantics. And a redirect is a policy, not a guarantee: a name that redirects today can 404
+tomorrow, and the sample above is the download-ranked head with a denominator of 9.
+
+What changes is its status. It is no longer "waiting for a capture I expect to find" but "a case
+this registry may not exhibit," and that should be stated rather than left as a stale `planned`
+marker.
+
 ## Why this is not recorded yet
 
 A sweep was run to find a real instance. `base_model:` tags were harvested from the top 4,000

@@ -1,0 +1,16 @@
+unresolvable:
+  - subject: "whether the declared artifact and the redirect target are the same bytes"
+    why: >-
+      The card names `runwayml/stable-diffusion-v1-5`; the registry serves
+      `stable-diffusion-v1-5/stable-diffusion-v1-5` at revision 451f4fe. Whether that revision is
+      the artifact the referring model was actually built from cannot be established from metadata.
+      It is plausible -- a transfer usually preserves content -- and plausible is not established
+      (DEC-010). Weight-level comparison could not settle it either, since the original is no
+      longer retrievable for comparison.
+
+compositions:
+  - aggregate: unknown
+    scope: runwayml/stable-diffusion-v1-5
+    why: >-
+      The declared reference was resolved to a different namespace. Resolution succeeded; what it
+      established is not what the caller asked about.

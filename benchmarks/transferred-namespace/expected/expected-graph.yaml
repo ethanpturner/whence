@@ -1,0 +1,44 @@
+# Edges that genuinely exist and should be recovered.
+
+root:
+  ref: { host: huggingface.co, namespace: Comfy-Org, name: stable-diffusion-v1-5-archive }
+  revision: 9cfd069101959ca3828bf9c04a4419870832b74f
+  pinned: true
+
+edges:
+  - source: Comfy-Org/stable-diffusion-v1-5-archive
+    declared_as: runwayml/stable-diffusion-v1-5
+    target: stable-diffusion-v1-5/stable-diffusion-v1-5
+    target_revision: 451f4fe16113bff5a5d2269ed5ad43b0592e9a14
+    relation: derives-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "cardData.base_model"
+    properties:
+      # The finding. A redirect that stays inside a namespace is a rename; this one crosses into
+      # a namespace controlled by a different party, so the trust anchor moved (DEC-017).
+      whence:redirect: cross-namespace
+      whence:risk: ownership-boundary-crossed
+    notes: >-
+      `declared_as` is required here, not optional. Recording only the resolved target would state
+      that this model derives from an artifact its author never named.
+
+nodes:
+  - ref: stable-diffusion-v1-5/stable-diffusion-v1-5
+    pinned: true
+    reachable: true
+    properties:
+      whence:namespace-state: held
+    notes: >-
+      A different organization from the one the card names, created 2024-08-30, after the
+      referring model's base was declared.
+
+  - ref: runwayml/stable-diffusion-v1-5
+    pinned: false
+    reachable: false
+    properties:
+      whence:namespace-state: held-empty
+      whence:redirect-target: stable-diffusion-v1-5/stable-diffusion-v1-5
+    notes: >-
+      The `runwayml` organization still resolves and publishes zero public models. The name is not
+      free, so this is not `deleted-namespace`; it is a live reference pointing elsewhere.

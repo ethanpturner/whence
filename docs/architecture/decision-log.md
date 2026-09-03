@@ -219,6 +219,11 @@ that will not be read.
 **Tradeoffs.** Consumers that ignore `declared_as` see the resolved name and are no worse off than
 before. Consumers that read it can detect renames.
 
+**Amended 2026-09-03 by DEC-017.** This entry was reasoned from one example, a rename *within* a
+namespace, and treated all redirects as equivalent. Six of nine observed redirects cross ownership,
+which is a change of trust anchor rather than bookkeeping. `declared_as` is now **required** rather
+than merely recorded, and cross-namespace redirects carry a flag.
+
 ---
 
 ## DEC-012 — Evidence excerpts are untrusted data, bounded, and never enter a log record
@@ -427,3 +432,51 @@ precisely what the pin exists to catch.
 **Open questions.** Whether the same treatment should extend to `uv.lock` once there are runtime
 dependencies to lock. The lock file already pins; what it lacks is a verdict-emitting check in the
 same shape as this one.
+
+---
+
+## DEC-017 — A redirect that crosses a namespace is not a rename
+
+**Date:** 2026-09-03
+**Status:** Accepted
+
+**Decision.** Following a registry-issued redirect remains resolution rather than inference
+(DEC-011), but the two kinds are now distinguished:
+
+| Redirect | Treatment |
+|---|---|
+| Within the same namespace | a rename. Resolved, `declared_as` recorded, no flag. |
+| **Across namespaces** | resolved, `declared_as` recorded, and the edge carries `whence:redirect: cross-namespace` and `whence:risk: ownership-boundary-crossed`. |
+
+In both cases `declared_as` is **required**, not optional. An edge that records only the resolved
+target asserts a derivation from an artifact the author never named.
+
+**Why.** DEC-011 was reasoned from a single example —
+`meta-llama/Meta-Llama-3.1-70B` → `meta-llama/Llama-3.1-70B` — where the owner is unchanged and the
+redirect is genuine bookkeeping. Generalising from it treated every redirect as equivalent.
+
+Sampling 22,000 models produced 9 base-reference namespaces with no public models, of which **6
+redirect to a namespace controlled by a different party** and **none was a free 404**. The
+`runwayml/stable-diffusion-v1-5` case is verified down to the file level: a content request under
+the old path is served from the new namespace at the new revision, with no error and no warning.
+
+A redirect across ownership does not relocate an artifact; it **changes who controls what the name
+returns**. That is the DEC-002 hazard arriving through a mechanism DEC-002 did not anticipate —
+worse than a freed name, because it never fails. A freed name that nobody has claimed yields a 404
+and a broken build; a transferred name yields bytes.
+
+**Alternatives considered.** Refusing to follow cross-namespace redirects and reporting the edge
+unresolved. Rejected: the redirect is factual and often benign — an organization renaming itself is
+common — and refusing to resolve would make the tool useless against six of nine observed cases
+while telling the user less than flagging does. Also considered lowering the verdict to
+`contradicted`; rejected for the usual reason, since a transfer says nothing about whether the
+derivation occurred.
+
+**Tradeoffs.** A legitimate organizational rename is flagged the same as a transfer to an unrelated
+party, because the registry exposes no way to tell them apart. The flag says *the trust anchor
+moved*, which is true in both, and the note says what it moved to.
+
+**Open questions.** Whether the flag should distinguish a target namespace that predates the
+declaration from one created afterwards. In this case the target organization was created
+2024-08-30 and the distinction looks meaningful, but one example is what produced the
+over-generalisation this entry is correcting.

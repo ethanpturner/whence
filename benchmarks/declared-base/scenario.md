@@ -40,9 +40,13 @@ quietly discarded what the author actually wrote.
    the declared name was silently discarded. Authoring this truth set is what surfaced it.
    `declared_as` is now a field on `Edge` and is populated only when it differs from `target`.
 
-2. **Whether a redirect should lower a verdict.** A 307 is registry-authoritative, but a renamed
-   namespace is also how a name stops meaning what it meant. There is an argument that a redirected
-   reference deserves a weaker verdict than a direct hit. Not decided.
+2. **Whether a redirect should lower a verdict.** — *partly settled by DEC-017.* The redirect here
+   is `meta-llama/Meta-Llama-3.1-70B` → `meta-llama/Llama-3.1-70B`, which stays **inside one
+   namespace**: the owner is unchanged and the redirect is bookkeeping. That benign case is what
+   DEC-011 was reasoned from, and generalising from it was the error DEC-017 corrects. A redirect
+   that crosses ownership is flagged; see `transferred-namespace`. Whether even a within-namespace
+   redirect deserves a weaker verdict than a direct hit is still open, and is now a narrower
+   question than it was.
 
 ## Pass condition
 

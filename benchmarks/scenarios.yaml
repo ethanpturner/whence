@@ -2,10 +2,14 @@
 # discovers them by scanning directories. A registry makes the benchmark set a stated fact
 # rather than a fact about the filesystem.
 #
-# status: planned | recorded | live
-#   planned  - authored, no recording captured yet
-#   recorded - capture exists and replays offline
-#   live     - requires network; excluded from the default run
+# status: planned | recorded | unobserved | live
+#   planned    - authored, no recording captured yet
+#   recorded   - capture exists and replays offline
+#   unobserved - authored, and the case was searched for and not found on this registry. Retained
+#                deliberately: the behaviour it grades is correct wherever the case occurs, and a
+#                registry's present behaviour is a policy rather than a guarantee. The scenario's
+#                own document must state the search and its result.
+#   live       - requires network; excluded from the default run
 
 version: 0.1
 scenarios:
@@ -21,12 +25,22 @@ scenarios:
   - slug: deleted-namespace
     name: Declared base whose namespace is gone
     path: benchmarks/deleted-namespace
-    status: planned
+    status: unobserved
     category: dangling-reference
-    # Authored, not captured. Needs a real instance where both the base repository and its owning
-    # namespace return 404; a sweep of 490 checkable base references from the top 4,000 models by
-    # download found none, which is itself the finding -- the case lives in the tail, not the head.
-    # The recording will not be fabricated. See scenario.md.
+    # Authored; premise not observed on this registry. A search over 22,000 models found 9
+    # base-reference namespaces with no public models, of which 6 redirect across ownership, 2
+    # return 401, 1 returns 200, and NONE is a free 404. Retained because the behaviour it grades
+    # is correct wherever the case occurs, and because a redirect is a policy rather than a
+    # guarantee. See transferred-namespace for the shape that does occur.
+
+  - slug: transferred-namespace
+    name: Declared base redirects across an ownership boundary
+    path: benchmarks/transferred-namespace
+    status: recorded
+    category: dangling-reference
+    # runwayml/stable-diffusion-v1-5 -> stable-diffusion-v1-5/stable-diffusion-v1-5. The reference
+    # does not break; it resolves into a namespace controlled by a different party, and content
+    # fetches follow it silently. The referring model has 13.7M downloads. Source of DEC-017.
 
   - slug: transient-failure
     name: Throttled resolution produces no verdict

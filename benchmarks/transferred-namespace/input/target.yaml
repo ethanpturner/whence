@@ -1,0 +1,3 @@
+target: Comfy-Org/stable-diffusion-v1-5-archive
+host: huggingface.co
+max_depth: 2

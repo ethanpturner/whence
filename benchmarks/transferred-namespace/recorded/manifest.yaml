@@ -1,0 +1,31 @@
+# Captured registry interactions, replayed offline (DEC-009).
+captured_at: 2026-09-03
+host: huggingface.co
+interactions:
+  - request: GET /api/models/Comfy-Org/stable-diffusion-v1-5-archive
+    status: 200
+    body: model-Comfy-Org-stable-diffusion-v1-5-archive.json
+  # The declared base. The registry redirects it into a namespace owned by someone else.
+  - request: GET /api/models/runwayml/stable-diffusion-v1-5
+    status: 307
+    location: /api/models/stable-diffusion-v1-5/stable-diffusion-v1-5
+    body: null
+  - request: GET /api/models/stable-diffusion-v1-5/stable-diffusion-v1-5
+    status: 200
+    body: model-stable-diffusion-v1-5-stable-diffusion-v1-5.json
+  # The original namespace still exists as a shell and publishes nothing.
+  - request: GET /api/organizations/runwayml/overview
+    status: 200
+    body: org-runwayml.json
+  - request: GET /api/models?author=runwayml&limit=5
+    status: 200
+    body: author-runwayml.json
+  - request: GET /api/organizations/stable-diffusion-v1-5/overview
+    status: 200
+    body: org-stable-diffusion-v1-5.json
+  # Recorded to document that content fetches follow the same redirect: a file requested under the
+  # old path is served from the new namespace at the new revision, with no error and no warning.
+  - request: GET /runwayml/stable-diffusion-v1-5/resolve/main/model_index.json
+    status: 200
+    served_from: /stable-diffusion-v1-5/stable-diffusion-v1-5/ at 451f4fe16113bff5a5d2269ed5ad43b0592e9a14
+    body: null
