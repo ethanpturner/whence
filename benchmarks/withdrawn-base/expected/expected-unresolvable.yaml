@@ -1,0 +1,16 @@
+unresolvable:
+  - source: MaziyarPanahi/WizardLM-2-7B-GGUF
+    target: microsoft/WizardLM-2-7B
+    relation: quantized-from
+    provenance: unresolvable
+    verdict: unverifiable
+    why: >-
+      Access is denied, so the target cannot be pinned or compared. Unlike `deleted-namespace`,
+      this could resolve for a caller holding suitable credentials -- the repository may still
+      exist behind the gate. The tool records what it could establish unauthenticated and does not
+      speculate about what a different caller would see.
+
+compositions:
+  - aggregate: unknown
+    scope: microsoft/WizardLM-2-7B
+    why: "Resolution attempted, inconclusive (DEC-014 inconclusive class)."

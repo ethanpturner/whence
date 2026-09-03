@@ -1,0 +1,20 @@
+# Edges that exist but cannot be established from available metadata. The correct output is
+# `unverifiable` with the prose retained as evidence. This file is the point of the scenario.
+
+unresolvable:
+  - source: mistralai/Mistral-7B-Instruct-v0.2
+    declared_as: "Mistral-7B-v0.2"
+    relation: derives-from
+    provenance: unresolvable
+    verdict: unverifiable
+    evidence_locator: "README.md:71"
+    evidence_excerpt: >-
+      The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version
+      of the Mistral-7B-v0.2.
+    why: >-
+      The card frontmatter declares no `base_model`. The derivation appears only in prose, and
+      the name it gives is unqualified -- "Mistral-7B-v0.2", with no namespace. Qualifying it
+      with the obvious owner yields `mistralai/Mistral-7B-v0.2`, which the registry answers 401.
+      Without credentials, 401 does not distinguish "no such repository" from "exists and you may
+      not see it". The edge is real -- the model is a fine-tune of something -- and it is not
+      establishable. Both halves of that sentence have to survive into the output.

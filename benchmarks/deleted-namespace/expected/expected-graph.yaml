@@ -1,0 +1,32 @@
+# Edges that genuinely exist and should be recovered.
+#
+# The central point of this scenario is in the verdict below, and it is easy to get wrong in the
+# direction of confidence: the declared base is gone, and that does NOT contradict the lineage
+# claim. The derivation may well have happened; the base was deleted afterwards. Deletion is
+# evidence about the reference, not about the relationship.
+
+edges:
+  - source: "<referring model>"
+    target: "<declared base>"
+    relation: derives-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "cardData.base_model"
+    notes: >-
+      Verdict is `unverifiable`, not `contradicted`. Nothing about the base's absence bears on
+      whether the derivation occurred.
+
+nodes:
+  - ref: "<declared base>"
+    pinned: false
+    unpinned_reason: "no revision obtainable; repository reported absent"
+    reachable: false
+    signature_state: unsigned
+    properties:
+      # The actual finding. Not a verdict on the edge -- a property of the reference.
+      whence:namespace-state: free
+      whence:risk: reregistrable-reference
+    notes: >-
+      Both the repository and its owning namespace are reported absent, so the name is available
+      for re-registration by anyone. A pipeline resolving this dependency by name would fetch
+      whatever later occupies it (DEC-002).

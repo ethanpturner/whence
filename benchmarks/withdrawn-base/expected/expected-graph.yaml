@@ -1,0 +1,38 @@
+# Edges that genuinely exist and should be recovered.
+
+root:
+  ref: { host: huggingface.co, namespace: MaziyarPanahi, name: WizardLM-2-7B-GGUF }
+  revision: 491e4644eb4874621cb7d00153a20e0bf7358fb8
+  pinned: true
+
+edges:
+  # The relation is `quantized-from`, not `derives-from`. The registry declares the qualifier
+  # (`base_model:quantized:microsoft/WizardLM-2-7B`) and flattening it loses information that
+  # phase two needs: quantized lineage is the case weight-level comparison is expected to handle
+  # worst (DEC-005, DEC-015).
+  - source: MaziyarPanahi/WizardLM-2-7B-GGUF
+    target: microsoft/WizardLM-2-7B
+    relation: quantized-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "tags[base_model:quantized:...]"
+
+  - source: MaziyarPanahi/WizardLM-2-7B-GGUF
+    target: transformers
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    evidence_locator: "cardData.library_name"
+    node_kind: package
+
+nodes:
+  - ref: microsoft/WizardLM-2-7B
+    pinned: false
+    unpinned_reason: "no revision obtainable; repository access denied"
+    reachable: false
+    properties:
+      # Alive. The account holder still controls the name, so nobody else can register it.
+      whence:namespace-state: held
+    notes: >-
+      Withdrawn, not deleted. The distinction is the point of the scenario: the reference is a
+      dead end but it is not a hijack opportunity.

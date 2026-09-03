@@ -1,0 +1,5 @@
+# Deliberately identical to benchmarks/declared-base/input/target.yaml. The subject is the same
+# and only the network conditions differ, so the two scenarios isolate exactly one variable.
+target: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+host: huggingface.co
+max_depth: 2

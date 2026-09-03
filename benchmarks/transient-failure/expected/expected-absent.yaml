@@ -1,0 +1,52 @@
+# Everything the tool must not do when a resolution fails transiently (DEC-014).
+
+absent:
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: meta-llama/Llama-3.1-70B-Instruct
+    relation: derives-from
+    why: >-
+      **The core requirement.** A transient failure produces no edge at all -- not an edge with a
+      weaker verdict. The base was declared in the root's metadata, so the tool knows the claim
+      exists; it did not reach the target and therefore has nothing to say about it.
+
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: meta-llama/Llama-3.1-70B-Instruct
+    relation: derives-from
+    verdict_if_emitted: unverifiable
+    why: >-
+      The tempting near-miss, and the one DEC-014 exists to forbid. `unverifiable` is a claim about
+      what the evidence supports. The tool did not look. Recording "I did not get to look" as "the
+      evidence does not settle this" is indistinguishable, to every downstream consumer, from the
+      `prose-only-base` case where the tool looked and genuinely could not tell.
+
+compositions_absent:
+  - aggregate: unknown
+    scope: meta-llama/Llama-3.1-70B-Instruct
+    why: >-
+      `unknown` means resolution was attempted and was inconclusive. A throttled request was
+      refused, not answered. Borrowing the marker makes an unattempted reference and an
+      inconclusive one indistinguishable in the BOM.
+  - aggregate: incomplete
+    scope: meta-llama/Llama-3.1-70B-Instruct
+    why: >-
+      `incomplete` is for a ceiling the tool chose to stop at (DEC-007). This stop was not chosen.
+
+negative_assertions:
+  - claim: "meta-llama/Llama-3.1-70B-Instruct is unreachable"
+    why: >-
+      It is reachable; the client was throttled. The `declared-base` scenario resolves this exact
+      reference from the same registry.
+
+  - claim: "the graph is complete"
+    why: >-
+      A partial run's BOM must carry the partial marker. Emitting an unmarked BOM presents a
+      truncated graph as a whole one, which is the failure the project exists to avoid.
+
+behaviour_absent:
+  - behaviour: "silent retry until the class resolves"
+    why: >-
+      Hides a condition the caller needs to know about and makes run duration unbounded (DEC-014,
+      alternatives considered). A bounded retry that then reports the failure is permitted; a retry
+      loop that eventually succeeds and reports nothing is not.
+  - behaviour: "exit zero"
+    why: "A partial run exits non-zero so that a pipeline consuming the BOM notices."

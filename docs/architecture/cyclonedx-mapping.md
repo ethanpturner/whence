@@ -1,0 +1,166 @@
+# CycloneDX mapping
+
+**Document version:** 0.1
+**Status:** Proposed
+**Last updated:** 2026-09-02
+
+Specified by DEC-013. `docs/architecture/examples/declared-base.cdx.json` is the worked example
+and validates against the vendored 1.7 schema; `scripts/validate_examples.py` checks it offline.
+
+## 1. The constraint that shapes everything
+
+**CycloneDX `dependencies` entries have exactly three fields: `ref`, `dependsOn`, and `provides`.
+There is no `bom-ref`, and there is no `properties` array.** A dependency edge cannot be addressed
+and cannot be annotated.
+
+This is the whole difficulty. `whence` needs to say, per edge, how a relationship was established
+and what verdict it carries — and the part of the format that models relationships has nowhere to
+put it.
+
+The resolution is to split the edge across two structures: `dependencies` carries topology,
+`declarations` carries meaning, and the two are joined by predicate rather than by reference. The
+cost of that join is stated in §5.
+
+## 2. Nodes → `components[]`
+
+| Concept | Mapping |
+|---|---|
+| Identity | `purl`, and `bom-ref` set to the same string |
+| Revision digest (DEC-002) | the purl version: `pkg:huggingface/<ns>/<name>@<commit-sha>` |
+| Kind: model | `type: machine-learning-model` |
+| Kind: dataset | `type: data` |
+| Kind: package | `type: library` |
+| Pinned | property `whence:pinned` |
+| Signature state | property `whence:signature-state` |
+| Gating | property `whence:access` |
+
+The purl `huggingface` type takes a full commit SHA as its version, so DEC-002's digest
+requirement maps onto an existing standard rather than a local convention.
+
+**An unpinned node carries a purl with no `@version` and `whence:pinned=false`.** A version is
+never fabricated to make the purl well-formed, and `whence:unpinned-reason` records why.
+
+## 3. Edge topology → `dependencies[]`
+
+Plain `ref` → `dependsOn`. Structure only; no semantics live here.
+
+Note that CycloneDX `dependsOn` is undirected as to *kind* — a base model, a training dataset, and
+a loader library all appear in the same array. A consumer reading only `dependencies` sees the
+transitive closure and cannot tell derivation from training data. That is a real loss of fidelity
+and it is why §4 exists.
+
+## 4. Edge semantics → `declarations`
+
+One `claims[]` entry per edge:
+
+| Field | Carries |
+|---|---|
+| `bom-ref` | stable claim identifier |
+| `target` | bom-ref of the **subject** — the artifact whose provenance is being claimed |
+| `predicate` | `<relation> <target-purl>` |
+| `reasoning` | prose: what was established, what was not, and why |
+| `evidence[]` | refs into `declarations.evidence[]` |
+
+Typed fields live in `declarations.evidence[].data[]`, where `name` is a namespaced key and
+`contents.attachment.content` is the value:
+
+| Key | Value |
+|---|---|
+| `whence:provenance` | the `ProvenanceClass` token (DEC-004) |
+| `whence:verdict` | the `Verdict` token (DEC-001) |
+| `whence:declared-as` | the pre-redirect reference, present only when it differs (DEC-011) |
+| `whence:locator` | where in the source material the assertion was found |
+
+Excerpts of registry-hosted text are carried the same way and remain untrusted data under DEC-012:
+never in a log record, never parsed for meaning.
+
+## 5. What `conformance.score` is not for
+
+`declarations.attestations[].map[].conformance` offers a `score` between 0 and 1 with a `rationale`,
+and it is the obvious-looking home for a verdict. **It is refused.**
+
+A verdict is three-valued (DEC-001) and a score is a number. Mapping onto it forces `unverifiable`
+to become some value on the same axis as `verified` and `contradicted`, and a consumer reading
+`0.0` reads "not derived" where the truth is "not determined." That is precisely the
+boolean-plus-confidence design DEC-001 rejected, arriving through the serialization layer instead
+of the domain model. It is refused in both places.
+
+The verdict stays a discrete token in evidence data.
+
+## 6. Incompleteness → `compositions[]`
+
+`compositions[].aggregate` is the native home for DEC-007's ceilings and for inconclusive
+resolution.
+
+| Situation | `aggregate` |
+|---|---|
+| Traversal stopped at a depth or node ceiling | `incomplete` |
+| Resolution attempted and inconclusive — for example a 401, which does not distinguish absence from denial | `unknown` |
+| Branch fully resolved | `complete` |
+
+`compositions[].dependencies` scopes each aggregate to the affected refs, so incompleteness is
+attached to the part of the graph it applies to rather than declared over the whole document.
+
+This matters most for `prose-only-base`, where the correct output includes an explicit `unknown`
+rather than an absent edge.
+
+## 7. Known costs, and what gets reported upstream
+
+**The claim-to-edge join is by string, not by reference.** Because `dependency` has no `bom-ref`, a
+claim is matched to its edge by `(claim.target, predicate contains target purl)`. The join is
+deterministic but it is a convention, not something the format enforces, and a consumer that does
+not know the convention sees claims and dependencies as unrelated.
+
+**Relation kind is not visible in `dependencies`.** See §3.
+
+DEC-003 commits to the format and says that where CycloneDX cannot carry something, that is a
+finding to report upstream rather than a reason to fork. These two are that finding: a
+`bom-ref`, or a `properties` array, on `dependency` would remove both costs at once.
+
+**This is already an open upstream issue**, not a new one — [CycloneDX/specification#135, "Support
+more relationship types"](https://github.com/CycloneDX/specification/issues/135), open since
+2022-03-04, whose own suggestion 1 is the `properties` array. Its most recent comment raises the ML
+case independently. A draft contribution is held at `docs/upstream/cyclonedx-135-comment.md`; what
+it adds to the thread is measurement rather than another example.
+
+## 8. Open
+
+- Whether `whence:` is the right property namespace, or whether these should be proposed as
+  registered CycloneDX taxonomy entries.
+- Whether a redirected reference deserves a weaker verdict than a direct hit (carried over from
+  `declared-base/scenario.md`).
+
+## 9. Response classes and partial runs
+
+DEC-014 splits registry responses three ways, and only two of them reach the BOM.
+
+| Class | In the BOM |
+|---|---|
+| Conclusive | node with `whence:pinned` and reachability; claim with a verdict |
+| Inconclusive | claim with `whence:verdict = unverifiable`, plus `compositions.aggregate: unknown` |
+| Transient | **nothing** — no component claim, no composition |
+
+A run with any transient failure is partial. A partial run's BOM carries
+`metadata.properties[whence:partial] = true` and a `whence:unreached` property per reference that
+was not resolved. Consumers must treat an absent claim in a partial BOM as "not attempted", never
+as "no relationship".
+
+The distinction matters because `compositions.aggregate: unknown` reads as *we looked and could not
+determine*. A throttled request did not look, and borrowing the same marker for it would make an
+inconclusive answer and an unattempted one indistinguishable.
+
+## 10. Dangling references
+
+A node whose target is reported absent stays in `components[]` with:
+
+| Property | Meaning |
+|---|---|
+| `whence:pinned` = `false` | no revision obtainable |
+| `whence:reachable` = `false` | the repository was reported absent |
+| `whence:namespace-state` = `free` \| `held` \| `unknown` | whether the owning namespace also resolves |
+| `whence:risk` = `reregistrable-reference` | set only when `namespace-state` is `free` |
+
+`whence:risk` is deliberately not a verdict and is not carried in `declarations`. The lineage claim
+stays `unverifiable`; the risk attaches to the component, because that is what a consumer needs to
+act on. Conflating the two would put an alarm in a field that reads as a judgment about the
+relationship.

@@ -1,0 +1,34 @@
+# Relationships and conclusions that must not appear. Scores invention.
+
+absent:
+  - source: "<referring model>"
+    target: "<declared base>"
+    relation: derives-from
+    verdict_if_emitted: contradicted
+    why: >-
+      The most likely failure in this scenario. An absent base is not a refuted derivation. A tool
+      that reports `contradicted` has asserted that the lineage claim is false on the strength of
+      evidence that says nothing about it.
+
+negative_assertions:
+  - claim: "<referring model> does not derive from <declared base>"
+    why: >-
+      Same error stated as prose. The derivation is unestablished, not disproved.
+
+  - claim: "<declared base> has no relationship to <referring model>"
+    why: >-
+      The card asserts one. The tool's inability to resolve the target does not retract the
+      author's claim.
+
+omissions:
+  # Failures of omission, which score as invention's mirror image: the tool loses the finding
+  # rather than fabricating one.
+  - omitted: "the edge to <declared base>"
+    why: >-
+      Dropping unreachable nodes is the natural implementation and it erases the entire point of
+      the scenario. The hijack exposure is visible only if the dangling reference survives into
+      the output.
+  - omitted: "whence:namespace-state and whence:risk on the base node"
+    why: >-
+      Without these the BOM records a missing dependency and not a re-registrable one, which is
+      the difference between an inconvenience and a supply-chain exposure.

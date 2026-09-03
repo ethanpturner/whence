@@ -1,0 +1,40 @@
+# Conclusions and edges that must not appear.
+
+absent:
+  - source: MaziyarPanahi/WizardLM-2-7B-GGUF
+    target: microsoft/WizardLM-2-7B
+    relation: derives-from
+    why: >-
+      Flattening. The registry declares `quantized`, and recording the generic relation discards a
+      qualifier the source material supplied (DEC-015).
+
+  - source: MaziyarPanahi/WizardLM-2-7B-GGUF
+    target: microsoft/WizardLM-2-7B
+    relation: quantized-from
+    verdict_if_emitted: contradicted
+    why: >-
+      An inaccessible base is not a refuted derivation. Same error as `deleted-namespace`, reached
+      through a 401 rather than a 404.
+
+properties_absent:
+  - node: microsoft/WizardLM-2-7B
+    property: "whence:risk = reregistrable-reference"
+    why: >-
+      **The contrast this scenario exists for.** The `microsoft` namespace resolves, so the name is
+      not available to anyone else. A tool that flags every unreachable node as re-registrable
+      turns a real supply-chain signal into noise, and the signal in `deleted-namespace` stops
+      meaning anything.
+
+negative_assertions:
+  - claim: "the run failed because credentials are invalid"
+    why: >-
+      The trap. The 401 body reads `{"error":"Invalid username or password."}`, which describes a
+      client credential problem. The situation is a withdrawn repository. A tool that believes the
+      message aborts the run, or retries with backoff, or marks the whole traversal partial under
+      DEC-014's transient class. All three are wrong: the response is inconclusive about *this
+      resource*, and the response class is determined by the status code, not by the prose in the
+      body.
+
+  - claim: "microsoft/WizardLM-2-7B does not exist"
+    why: >-
+      401 is not 404. Nothing here establishes absence.

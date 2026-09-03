@@ -1,0 +1,26 @@
+# What must be recovered. The root resolves; the base does not, transiently.
+
+root:
+  ref: { host: huggingface.co, namespace: nvidia, name: Llama-3.1-Nemotron-70B-Instruct-HF }
+  revision: 031d4042f36adc1a52cca51b331d25cbe3cf1022
+  pinned: true
+
+edges:
+  # Edges whose targets were never contacted are unaffected: the dataset and package references
+  # come from the root's own metadata, which resolved.
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: nvidia/HelpSteer2
+    relation: trained-on
+    provenance: asserted-by-card
+    verdict: unverifiable
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: transformers
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+
+report:
+  partial: true
+  transient_failures:
+    - "meta-llama/Llama-3.1-70B-Instruct"
+  exit_nonzero: true

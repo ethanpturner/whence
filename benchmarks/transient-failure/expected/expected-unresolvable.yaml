@@ -1,0 +1,8 @@
+# Deliberately empty.
+#
+# `unresolvable` is a provenance class for edges the tool examined and could not establish. Nothing
+# in this scenario was examined. The distinction between an empty file here and entries in
+# `expected-absent.yaml` is the whole scenario: a transient failure is not a weaker resolution, it
+# is the absence of one.
+
+unresolvable: []

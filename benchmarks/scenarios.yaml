@@ -1,0 +1,79 @@
+# The scenario registry. The evaluation harness reads scenarios from this file and never
+# discovers them by scanning directories. A registry makes the benchmark set a stated fact
+# rather than a fact about the filesystem.
+#
+# status: planned | recorded | live
+#   planned  - authored, no recording captured yet
+#   recorded - capture exists and replays offline
+#   live     - requires network; excluded from the default run
+
+version: 0.1
+scenarios:
+  - slug: declared-base
+    name: Declared base, two hops
+    path: benchmarks/declared-base
+    status: recorded
+    category: lineage-resolution
+    # The simplest true positive, and it still yields no `verified` edge: every claim is a bare
+    # name in card metadata with no revision. Also covers a gated first hop and a registry
+    # redirect on the second.
+
+  - slug: deleted-namespace
+    name: Declared base whose namespace is gone
+    path: benchmarks/deleted-namespace
+    status: planned
+    category: dangling-reference
+    # Authored, not captured. Needs a real instance where both the base repository and its owning
+    # namespace return 404; a sweep of 490 checkable base references from the top 4,000 models by
+    # download found none, which is itself the finding -- the case lives in the tail, not the head.
+    # The recording will not be fabricated. See scenario.md.
+
+  - slug: transient-failure
+    name: Throttled resolution produces no verdict
+    path: benchmarks/transient-failure
+    status: recorded
+    category: response-classification
+    # Same target as declared-base; only the network conditions differ. Composed from authentic
+    # captures -- see its scenario.md. The near-miss it forbids is emitting the edge with
+    # verdict `unverifiable`, which is invisible downstream against a genuine abstention.
+
+  - slug: withdrawn-base
+    name: Base withdrawn, namespace still held
+    path: benchmarks/withdrawn-base
+    status: recorded
+    category: dangling-reference
+    # The counterpart to deleted-namespace: unreachable base, but the owning namespace resolves,
+    # so the reference is a dead end and NOT re-registrable. Also carries the misleading-401-body
+    # trap and the quantized-from relation.
+
+  - slug: prose-only-base
+    name: Base named only in prose, unresolvable
+    path: benchmarks/prose-only-base
+    status: recorded
+    category: abstention
+    # The resolution boundary. The declared base is unqualified prose, the obvious qualification
+    # answers 401, and three plausible shortcuts to a confident answer are all wrong. The
+    # negative set carries more weight here than the positive one.
+
+# Intended first scenarios, not yet authored:
+#
+# - slug: declared-base
+#   measures: a single-hop derivation whose base is declared in config. The simplest true positive.
+#
+# - slug: prose-only-base
+#   measures: a base named in card prose but not resolvable to a repository. Correct output is
+#             unverifiable, not a guessed edge (DEC-010).
+#
+# - slug: deleted-namespace
+#   measures: a declared base whose owning account no longer exists. Correct output is an
+#             unpinned, unreachable node - the Unit 42 scenario, and the direct test of DEC-002.
+#
+# - slug: merge-lineage
+#   measures: multi-parent merge provenance, including depth-ceiling reporting (DEC-007).
+#
+# - slug: quantized-republication
+#   measures: a requantized copy republished under a new namespace. Expected to be the hardest
+#             case for any later weight-level method (DEC-005).
+#
+# - slug: no-lineage
+#   measures: a model with no upstream. The negative set - correct output asserts nothing.

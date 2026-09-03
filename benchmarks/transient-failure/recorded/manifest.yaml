@@ -1,0 +1,21 @@
+# Captured registry interactions, replayed offline (DEC-009).
+#
+# COMPOSED RECORDING. Every response body here is an authentic capture from this registry, but
+# their pairing did not occur in a single session: the 429 was captured while sweeping for a
+# `deleted-namespace` candidate, and the 200 comes from the `declared-base` capture. Composing
+# authentic responses is permitted; hand-writing a body is not (see
+# ../../deleted-namespace/recorded/README.md). The distinction is that the response shapes -- the
+# part most likely to be got wrong -- remain the registry's own.
+#
+# The 429 body is reproduced verbatim except that the source IP address it echoes back has been
+# replaced with REDACTED. Nothing in the tool's behaviour depends on that value.
+captured_at: 2026-09-03
+composed: true
+host: huggingface.co
+interactions:
+  - request: GET /api/models/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    status: 200
+    body: model-nvidia-Llama-3.1-Nemotron-70B-Instruct-HF.json
+  - request: GET /api/models/meta-llama/Llama-3.1-70B-Instruct
+    status: 429
+    body: model-meta-llama-Llama-3.1-70B-Instruct.429.json

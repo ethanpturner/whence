@@ -1,0 +1,19 @@
+# Edges that exist but cannot be established from available metadata. Scores honesty: the
+# correct output is `unverifiable`, and a tool that confidently resolves one of these is wrong
+# even though the edge is real.
+
+unresolvable:
+  - subject: "derives-from edges, weight-level"
+    why: >-
+      No lineage claim in this scenario is verifiable at the weight level in phase one, and the
+      first-hop base is gated, so its weights are not retrievable without credentials the tool
+      does not hold. Any edge reported as `verified-by-weights` is wrong here.
+
+ceilings:
+  - kind: depth
+    value: 2
+    expect_reported: true
+    why: >-
+      `meta-llama/Llama-3.1-70B` is at depth two and is where traversal stops. Whatever lies
+      beyond it must be reported as a named ceiling rather than silently omitted (DEC-007). A
+      run whose `ceilings_hit` is empty has failed this scenario regardless of its edge recall.

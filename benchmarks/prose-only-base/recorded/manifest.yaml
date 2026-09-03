@@ -1,0 +1,25 @@
+# Captured registry interactions, replayed offline (DEC-009). Status codes are part of the
+# recording. The 401 below is the whole point of this scenario and is recorded as a response,
+# not treated as a capture failure.
+captured_at: 2026-09-02
+host: huggingface.co
+interactions:
+  - request: GET /api/models/mistralai/Mistral-7B-Instruct-v0.2
+    status: 200
+    body: model-mistralai-Mistral-7B-Instruct-v0.2.json
+  - request: GET /mistralai/Mistral-7B-Instruct-v0.2/raw/main/README.md
+    status: 200
+    body: readme-mistralai-Mistral-7B-Instruct-v0.2.md
+  # The name the prose points at, qualified with the obvious namespace. The registry answers
+  # 401, which is indistinguishable from absence without credentials.
+  - request: GET /api/models/mistralai/Mistral-7B-v0.2
+    status: 401
+    body: model-mistralai-Mistral-7B-v0.2.json
+  # Both recorded only so that the invention traps in expected-absent.yaml are replayable.
+  # Neither is a legitimate destination for an edge in this scenario.
+  - request: GET /api/models/mistralai/Mistral-7B-v0.1
+    status: 200
+    body: model-mistralai-Mistral-7B-v0.1.json
+  - request: GET /api/models/mistralai/Mistral-7B-Instruct-v0.3
+    status: 200
+    body: model-mistralai-Mistral-7B-Instruct-v0.3.json

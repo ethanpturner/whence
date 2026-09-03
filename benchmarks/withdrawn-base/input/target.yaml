@@ -1,0 +1,3 @@
+target: MaziyarPanahi/WizardLM-2-7B-GGUF
+host: huggingface.co
+max_depth: 2

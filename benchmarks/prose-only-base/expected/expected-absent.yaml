@@ -1,0 +1,43 @@
+# Relationships that do not exist. Every entry here is a specific, plausible mistake a resolver
+# makes when it tries to be helpful. Scores invention.
+
+absent:
+  - source: mistralai/Mistral-7B-Instruct-v0.2
+    target: mistralai/Mistral-7B-v0.1
+    relation: derives-from
+    why: >-
+      The nearest-version guess. The prose names v0.2; no `mistralai/Mistral-7B-v0.2` is readable;
+      v0.1 exists and is one character away. Resolving to it is invention, and it is the single
+      most likely failure in this scenario. DEC-010 forbids it: the prose is evidence of a claim,
+      not resolution of one.
+
+  - source: mistralai/Mistral-7B-Instruct-v0.2
+    target: mistralai/Mistral-7B-Instruct-v0.3
+    relation: derives-from
+    why: >-
+      The frontmatter carries `new_version: mistralai/Mistral-7B-Instruct-v0.3`. That is a
+      successor pointer -- the arrow runs the other way, and it is not a lineage relation at all.
+      A resolver that treats every model reference in frontmatter as ancestry emits this edge with
+      the direction reversed.
+
+  - source: mistralai/Mistral-7B-Instruct-v0.2
+    target: mistralai/Mistral-7B-v0.2
+    relation: derives-from
+    verdict_if_emitted: verified
+    why: >-
+      Qualifying the prose name with the owning namespace is a guess, however obvious. It may well
+      be the right guess; it is still not resolution, and the 401 does not confirm it.
+
+negative_assertions:
+  # Not edges, but conclusions the tool must not reach. A run that states either of these has
+  # failed the scenario even if its edge list is perfect.
+  - claim: "mistralai/Mistral-7B-v0.2 does not exist"
+    why: >-
+      The registry returned 401, not 404. Reporting absence from an authorization failure
+      converts a limit of the instrument into a fact about the world -- precisely what DEC-001
+      exists to prevent.
+
+  - claim: "mistralai/Mistral-7B-Instruct-v0.2 has no base model"
+    why: >-
+      The absence of a `base_model` field is not the absence of a base. The card says in prose
+      that one exists.

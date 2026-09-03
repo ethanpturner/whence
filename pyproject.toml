@@ -1,0 +1,65 @@
+[project]
+name = "whence"
+version = "0.1.0"
+description = "Resolve a model's dependency graph and record which edges are claimed and which are verified"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Ethan Turner", email = "ethanpturner@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "pydantic>=2.13.4",
+    # Registry metadata and authored truth sets are YAML. Used through `safe_load` only: the
+    # default loader constructs arbitrary Python objects from document content, which is code
+    # execution chosen by an untrusted input file.
+    "pyyaml>=6.0.3",
+    "httpx>=0.28.0",
+]
+
+[project.scripts]
+whence = "whence:main"
+
+[build-system]
+requires = ["uv_build>=0.12.2,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.18.0",
+    "pytest>=8.4.0",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.14.0",
+    "types-pyyaml>=6.0.12",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    # Deselected by default so a bare `pytest` cannot reach the network or spend anything.
+    "-m", "not live",
+]
+markers = [
+    "live: performs real registry resolution over the network (slow, rate-limited)",
+]
+
+[tool.mypy]
+python_version = "3.14"
+files = ["src", "tests", "scripts"]
+strict = true
+warn_unreachable = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+
+[tool.pydantic-mypy]
+init_typed = true
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100

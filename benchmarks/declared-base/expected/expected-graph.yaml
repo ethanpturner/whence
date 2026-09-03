@@ -1,0 +1,56 @@
+# Edges that genuinely exist and should be recovered. Scores recall.
+#
+# Note what is NOT here: no edge carries verdict `verified`. Every lineage claim in this
+# scenario is a name-level assertion in a model card with no revision attached, so the most
+# the tool can establish is that the named artifact exists and can be pinned. That is
+# resolution, not verification of the derivation (DEC-005). Phase one is expected to produce
+# `unverifiable` for every derives-from edge on this registry, and that is the correct result
+# rather than a deficiency.
+
+root:
+  ref: { host: huggingface.co, namespace: nvidia, name: Llama-3.1-Nemotron-70B-Instruct-HF }
+  revision: 031d4042f36adc1a52cca51b331d25cbe3cf1022
+  pinned: true
+
+edges:
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: meta-llama/Llama-3.1-70B-Instruct
+    target_revision: 1605565b47bb9346c5515c34102e054115b4f98b
+    relation: derives-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "cardData.base_model"
+    notes: >-
+      Declared by name with no revision. The target resolves and pins, so the reference is to a
+      real artifact; the derivation itself is unproven. The target is gated (`gated: manual`),
+      so weight-level verification is unavailable here even once phase two exists.
+
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: nvidia/HelpSteer2
+    target_revision: 990b2711a36180dd19d9c94b8627844866f8982a
+    relation: trained-on
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "cardData.datasets[0]"
+    node_kind: dataset
+
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: transformers
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    evidence_locator: "cardData.library_name"
+    node_kind: package
+
+  # Second hop. The declared name is `meta-llama/Meta-Llama-3.1-70B`; the registry answers with
+  # a 307 to `meta-llama/Llama-3.1-70B`. Following a redirect the registry itself issued is
+  # resolution, not inference, so DEC-010 permits it -- but the declared name and the resolved
+  # name differ and both must survive into the output. See scenario.md, open question 1.
+  - source: meta-llama/Llama-3.1-70B-Instruct
+    target: meta-llama/Llama-3.1-70B
+    target_revision: 349b2ddb53ce8f2849a6c168a81980ab25258dac
+    declared_as: meta-llama/Meta-Llama-3.1-70B
+    relation: derives-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "cardData.base_model"

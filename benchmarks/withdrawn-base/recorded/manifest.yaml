@@ -1,0 +1,17 @@
+# Captured registry interactions, replayed offline (DEC-009).
+captured_at: 2026-09-03
+host: huggingface.co
+interactions:
+  - request: GET /api/models/MaziyarPanahi/WizardLM-2-7B-GGUF
+    status: 200
+    body: model-MaziyarPanahi-WizardLM-2-7B-GGUF.json
+  # The withdrawn base. Note the body: `{"error":"Invalid username or password."}` on an
+  # unauthenticated request. The message describes a credential problem; the situation is a
+  # withdrawn repository. The body text must not override the response class (DEC-014).
+  - request: GET /api/models/microsoft/WizardLM-2-7B
+    status: 401
+    body: model-microsoft-WizardLM-2-7B.json
+  # The owning namespace is alive. This is the whole contrast with `deleted-namespace`.
+  - request: GET /api/organizations/microsoft/overview
+    status: 200
+    body: org-microsoft.json

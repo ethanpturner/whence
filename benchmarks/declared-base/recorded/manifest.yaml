@@ -1,0 +1,24 @@
+# Captured registry interactions, replayed offline (DEC-009). Status codes are part of the
+# recording: a 401 is a response, not a failure to record.
+captured_at: 2026-09-02
+host: huggingface.co
+interactions:
+  - request: GET /api/models/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    status: 200
+    body: model-nvidia-Llama-3.1-Nemotron-70B-Instruct-HF.json
+  - request: GET /api/models/meta-llama/Llama-3.1-70B-Instruct
+    status: 200
+    body: model-meta-llama-Llama-3.1-70B-Instruct.json
+  # The second-hop base is declared as `meta-llama/Meta-Llama-3.1-70B`, which the registry
+  # answers with a 307 to `meta-llama/Llama-3.1-70B`. The redirect is recorded because the
+  # declared name and the resolved name differ, and that difference is the finding.
+  - request: GET /api/models/meta-llama/Meta-Llama-3.1-70B
+    status: 307
+    location: /api/models/meta-llama/Llama-3.1-70B
+    body: null
+  - request: GET /api/models/meta-llama/Llama-3.1-70B
+    status: 200
+    body: model-meta-llama-Llama-3.1-70B.json
+  - request: GET /api/datasets/nvidia/HelpSteer2
+    status: 200
+    body: dataset-nvidia-HelpSteer2.json

@@ -1,0 +1,23 @@
+# Relationships that do not exist. Scores invention -- an edge asserted here is a fabrication,
+# and the invention rate is a headline metric, not a footnote.
+
+absent:
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: nvidia/HelpSteer2
+    relation: derives-from
+    why: >-
+      HelpSteer2 is a dataset. The relation is trained-on. A resolver that treats every
+      cardData model-or-dataset reference as lineage produces this edge.
+
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: meta-llama/Llama-3.1-70B
+    relation: derives-from
+    why: >-
+      The second-hop base is reached through Llama-3.1-70B-Instruct, not directly. Flattening a
+      transitive chain into a direct edge loses the hop that the assertion actually covers.
+
+  - source: nvidia/Llama-3.1-Nemotron-70B-Instruct-HF
+    target: meta-llama/Meta-Llama-3.1-70B
+    relation: derives-from
+    why: >-
+      Same flattening error, expressed with the pre-redirect name.
