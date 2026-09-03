@@ -64,5 +64,42 @@ def test_a_user_owned_namespace_is_not_reported_free() -> None:
                 return Response(status=200, body={"user": "someone real"})
             raise AssertionError(f"unexpected request: {path}")
 
-    state = Resolver(_Registry())._namespace_state("someone")
+    from whence.resolve import _State
+
+    state = Resolver(_Registry())._namespace_state("someone", _State())
     assert state == "held", "a namespace held by a user must never be reported free"
+
+
+def test_signature_state_is_unverifiable_when_not_checked() -> None:
+    """`unsigned` is a statement about the publisher. The default path never looks, so asserting it
+    would be an unmeasured negative -- the one thing this project forbids everywhere else."""
+    scenario = ROOT / "benchmarks" / "declared-base"
+    target = yaml.safe_load((scenario / "input" / "target.yaml").read_text())
+    report = Resolver(RecordedRegistry(scenario / "recorded"), max_depth=1).resolve(
+        str(target["target"])
+    )
+    models = [n for n in report.nodes if n.kind == "model"]
+    assert models
+    assert all(n.signature.value == "unverifiable" for n in models)
+
+
+def test_a_transient_while_expanding_marks_the_run_partial() -> None:
+    """The branch was previously dropped with no record, so a silently truncated graph was
+    presented as whole (DEC-014)."""
+    from whence.registry import Response
+
+    class _Flaky:
+        def __init__(self) -> None:
+            self.seen = 0
+
+        def get(self, path: str) -> Response:
+            if path.endswith("/api/models/a/root"):
+                self.seen += 1
+                if self.seen == 1:
+                    return Response(status=200, body={"sha": "abc", "cardData": {}})
+                return Response(status=429, body=None)
+            return Response(status=429, body=None)
+
+    report = Resolver(_Flaky(), max_depth=2).resolve("a/root")
+    assert report.partial
+    assert "a/root" in report.transient_failures

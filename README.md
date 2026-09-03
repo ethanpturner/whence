@@ -1,14 +1,19 @@
 # whence
 
-**Status: phase one runs.** `whence` resolves a model's dependency graph from recorded or live
-registry metadata and emits a CycloneDX 1.7 ML-BOM. Weight-level lineage verification is phase two
-and is not built (DEC-005), so **no edge is ever `verified` today** — see below, which is the point
-rather than a gap.
+**Status: runs.** `whence` resolves a model's dependency graph from recorded or live registry
+metadata and emits a CycloneDX 1.7 ML-BOM. It also detects OMS signatures and, opt-in, compares a
+declared base's transformer body.
+
+**No edge is ever `verified`** — see below, which is the point rather than a gap. Phase two *began*
+with the structural check (DEC-020), the only mechanism that can emit `contradicted`; weight-level
+comparison of tensor values is not built (DEC-005), and a structural match is a necessary condition,
+not a sufficient one.
 
 ```
 uv run whence resolve nvidia/Llama-3.1-Nemotron-70B-Instruct-HF \
     --scenario benchmarks/declared-base --bom
 uv run whence evaluate          # every recorded scenario, scored against its truth set, offline
+uv run whence resolve <model> --check-structure --check-signatures   # phase two, opt-in
 ```
 
 ## What it does
@@ -25,7 +30,8 @@ It answers with three verdicts and never two: an edge is `verified`, `contradict
 `unverifiable`. An edge that cannot be resolved is `unverifiable` — never reported as absent,
 because absence of a resolvable link is not evidence that no link exists.
 
-**Every edge phase one emits is `unverifiable`, and that is the finding.** Almost nothing on the
+**Every edge is `unverifiable` unless the structural check contradicts it, and that is the
+finding.** Almost nothing on the
 Hugging Face registry pins its base by digest: cards name a base and stop. So the strongest thing
 resolution establishes is that the named artifact exists and can be pinned — not that the
 derivation happened. Tools that report such an edge without qualification are asserting a

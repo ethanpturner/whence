@@ -3,14 +3,28 @@
   "specVersion": "1.7",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-02T00:00:00Z",
+    "timestamp": "2026-09-03T00:00:00Z",
     "component": {
       "bom-ref": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
       "type": "machine-learning-model",
       "name": "Llama-3.1-Nemotron-70B-Instruct-HF",
+      "purl": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
+      "properties": [
+        {
+          "name": "whence:pinned",
+          "value": "true"
+        },
+        {
+          "name": "whence:signature-state",
+          "value": "unverifiable"
+        },
+        {
+          "name": "whence:reachable",
+          "value": "true"
+        }
+      ],
       "group": "nvidia",
-      "version": "031d4042f36adc1a52cca51b331d25cbe3cf1022",
-      "purl": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022"
+      "version": "031d4042f36adc1a52cca51b331d25cbe3cf1022"
     }
   },
   "components": [
@@ -18,35 +32,49 @@
       "bom-ref": "pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
       "type": "machine-learning-model",
       "name": "Llama-3.1-70B-Instruct",
-      "group": "meta-llama",
-      "version": "1605565b47bb9346c5515c34102e054115b4f98b",
       "purl": "pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
       "properties": [
-        { "name": "whence:pinned", "value": "true" },
-        { "name": "whence:signature-state", "value": "unsigned" },
-        { "name": "whence:access", "value": "gated" }
-      ]
-    },
-    {
-      "bom-ref": "pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac",
-      "type": "machine-learning-model",
-      "name": "Llama-3.1-70B",
+        {
+          "name": "whence:pinned",
+          "value": "true"
+        },
+        {
+          "name": "whence:signature-state",
+          "value": "unverifiable"
+        },
+        {
+          "name": "whence:reachable",
+          "value": "true"
+        },
+        {
+          "name": "whence:access",
+          "value": "gated"
+        }
+      ],
       "group": "meta-llama",
-      "version": "349b2ddb53ce8f2849a6c168a81980ab25258dac",
-      "purl": "pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac",
-      "properties": [
-        { "name": "whence:pinned", "value": "true" },
-        { "name": "whence:signature-state", "value": "unsigned" }
-      ]
+      "version": "1605565b47bb9346c5515c34102e054115b4f98b"
     },
     {
       "bom-ref": "pkg:huggingface/nvidia/HelpSteer2@990b2711a36180dd19d9c94b8627844866f8982a",
       "type": "data",
       "name": "HelpSteer2",
-      "group": "nvidia",
-      "version": "990b2711a36180dd19d9c94b8627844866f8982a",
       "purl": "pkg:huggingface/nvidia/HelpSteer2@990b2711a36180dd19d9c94b8627844866f8982a",
-      "properties": [{ "name": "whence:pinned", "value": "true" }]
+      "properties": [
+        {
+          "name": "whence:pinned",
+          "value": "true"
+        },
+        {
+          "name": "whence:signature-state",
+          "value": "unverifiable"
+        },
+        {
+          "name": "whence:reachable",
+          "value": "true"
+        }
+      ],
+      "group": "nvidia",
+      "version": "990b2711a36180dd19d9c94b8627844866f8982a"
     },
     {
       "bom-ref": "pkg:pypi/transformers",
@@ -54,12 +82,65 @@
       "name": "transformers",
       "purl": "pkg:pypi/transformers",
       "properties": [
-        { "name": "whence:pinned", "value": "false" },
-        { "name": "whence:unpinned-reason", "value": "no version declared in source metadata" }
+        {
+          "name": "whence:pinned",
+          "value": "false"
+        },
+        {
+          "name": "whence:signature-state",
+          "value": "unverifiable"
+        },
+        {
+          "name": "whence:reachable",
+          "value": "true"
+        },
+        {
+          "name": "whence:unpinned-reason",
+          "value": "no version declared in source metadata"
+        }
       ]
+    },
+    {
+      "bom-ref": "pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac",
+      "type": "machine-learning-model",
+      "name": "Llama-3.1-70B",
+      "purl": "pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac",
+      "properties": [
+        {
+          "name": "whence:pinned",
+          "value": "true"
+        },
+        {
+          "name": "whence:signature-state",
+          "value": "unverifiable"
+        },
+        {
+          "name": "whence:reachable",
+          "value": "true"
+        },
+        {
+          "name": "whence:access",
+          "value": "gated"
+        }
+      ],
+      "group": "meta-llama",
+      "version": "349b2ddb53ce8f2849a6c168a81980ab25258dac"
     }
   ],
   "dependencies": [
+    {
+      "ref": "pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
+      "dependsOn": [
+        "pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac",
+        "pkg:pypi/transformers"
+      ]
+    },
+    {
+      "ref": "pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac"
+    },
+    {
+      "ref": "pkg:huggingface/nvidia/HelpSteer2@990b2711a36180dd19d9c94b8627844866f8982a"
+    },
     {
       "ref": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
       "dependsOn": [
@@ -69,16 +150,7 @@
       ]
     },
     {
-      "ref": "pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
-      "dependsOn": ["pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac"]
-    },
-    { "ref": "pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac" }
-  ],
-  "compositions": [
-    {
-      "bom-ref": "composition-depth-ceiling",
-      "aggregate": "incomplete",
-      "dependencies": ["pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac"]
+      "ref": "pkg:pypi/transformers"
     }
   ],
   "declarations": {
@@ -87,29 +159,46 @@
         "bom-ref": "claim-derives-from-1",
         "target": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
         "predicate": "derives-from pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
-        "reasoning": "Declared by name in card metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established. The target is gated, so weight-level verification is unavailable.",
-        "evidence": ["evidence-derives-from-1"]
+        "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
+        "evidence": [
+          "evidence-derives-from-1"
+        ]
       },
       {
-        "bom-ref": "claim-derives-from-2",
-        "target": "pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
-        "predicate": "derives-from pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac",
-        "reasoning": "Declared as meta-llama/Meta-Llama-3.1-70B, which the registry answered with a 307 redirect to meta-llama/Llama-3.1-70B. Following a registry-issued redirect is resolution rather than inference; the declared name is retained because a rename is one of the ways a name stops meaning what it meant.",
-        "evidence": ["evidence-derives-from-2"]
-      },
-      {
-        "bom-ref": "claim-trained-on-1",
+        "bom-ref": "claim-trained-on-2",
         "target": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
         "predicate": "trained-on pkg:huggingface/nvidia/HelpSteer2@990b2711a36180dd19d9c94b8627844866f8982a",
-        "reasoning": "Declared in card metadata. Dataset membership is not verifiable from artifact metadata.",
-        "evidence": ["evidence-trained-on-1"]
+        "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
+        "evidence": [
+          "evidence-trained-on-2"
+        ]
       },
       {
-        "bom-ref": "claim-requires-package-1",
+        "bom-ref": "claim-requires-package-3",
         "target": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
         "predicate": "requires-package pkg:pypi/transformers",
-        "reasoning": "Declared as the loader library in card metadata. No version constraint is stated, so the package reference is unpinned.",
-        "evidence": ["evidence-requires-package-1"]
+        "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
+        "evidence": [
+          "evidence-requires-package-3"
+        ]
+      },
+      {
+        "bom-ref": "claim-derives-from-4",
+        "target": "pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
+        "predicate": "derives-from pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac",
+        "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
+        "evidence": [
+          "evidence-derives-from-4"
+        ]
+      },
+      {
+        "bom-ref": "claim-requires-package-5",
+        "target": "pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
+        "predicate": "requires-package pkg:pypi/transformers",
+        "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
+        "evidence": [
+          "evidence-requires-package-5"
+        ]
       }
     ],
     "evidence": [
@@ -118,42 +207,189 @@
         "propertyName": "whence:edge",
         "description": "Provenance and verdict for claim-derives-from-1.",
         "data": [
-          { "name": "whence:provenance", "contents": { "attachment": { "contentType": "text/plain", "content": "asserted-by-card" } } },
-          { "name": "whence:verdict", "contents": { "attachment": { "contentType": "text/plain", "content": "unverifiable" } } },
-          { "name": "whence:locator", "contents": { "attachment": { "contentType": "text/plain", "content": "cardData.base_model" } } }
+          {
+            "name": "whence:provenance",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "asserted-by-card"
+              }
+            }
+          },
+          {
+            "name": "whence:verdict",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "unverifiable"
+              }
+            }
+          },
+          {
+            "name": "whence:locator",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "cardData.base_model"
+              }
+            }
+          }
         ]
       },
       {
-        "bom-ref": "evidence-derives-from-2",
+        "bom-ref": "evidence-trained-on-2",
         "propertyName": "whence:edge",
-        "description": "Provenance and verdict for claim-derives-from-2, including the pre-redirect reference.",
+        "description": "Provenance and verdict for claim-trained-on-2.",
         "data": [
-          { "name": "whence:provenance", "contents": { "attachment": { "contentType": "text/plain", "content": "asserted-by-card" } } },
-          { "name": "whence:verdict", "contents": { "attachment": { "contentType": "text/plain", "content": "unverifiable" } } },
-          { "name": "whence:declared-as", "contents": { "attachment": { "contentType": "text/plain", "content": "pkg:huggingface/meta-llama/Meta-Llama-3.1-70B" } } },
-          { "name": "whence:locator", "contents": { "attachment": { "contentType": "text/plain", "content": "cardData.base_model" } } }
+          {
+            "name": "whence:provenance",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "asserted-by-card"
+              }
+            }
+          },
+          {
+            "name": "whence:verdict",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "unverifiable"
+              }
+            }
+          },
+          {
+            "name": "whence:locator",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "cardData.datasets[0]"
+              }
+            }
+          }
         ]
       },
       {
-        "bom-ref": "evidence-trained-on-1",
+        "bom-ref": "evidence-requires-package-3",
         "propertyName": "whence:edge",
-        "description": "Provenance and verdict for claim-trained-on-1.",
+        "description": "Provenance and verdict for claim-requires-package-3.",
         "data": [
-          { "name": "whence:provenance", "contents": { "attachment": { "contentType": "text/plain", "content": "asserted-by-card" } } },
-          { "name": "whence:verdict", "contents": { "attachment": { "contentType": "text/plain", "content": "unverifiable" } } },
-          { "name": "whence:locator", "contents": { "attachment": { "contentType": "text/plain", "content": "cardData.datasets[0]" } } }
+          {
+            "name": "whence:provenance",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "asserted-by-config"
+              }
+            }
+          },
+          {
+            "name": "whence:verdict",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "unverifiable"
+              }
+            }
+          },
+          {
+            "name": "whence:locator",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "cardData.library_name"
+              }
+            }
+          }
         ]
       },
       {
-        "bom-ref": "evidence-requires-package-1",
+        "bom-ref": "evidence-derives-from-4",
         "propertyName": "whence:edge",
-        "description": "Provenance and verdict for claim-requires-package-1.",
+        "description": "Provenance and verdict for claim-derives-from-4.",
         "data": [
-          { "name": "whence:provenance", "contents": { "attachment": { "contentType": "text/plain", "content": "asserted-by-config" } } },
-          { "name": "whence:verdict", "contents": { "attachment": { "contentType": "text/plain", "content": "unverifiable" } } },
-          { "name": "whence:locator", "contents": { "attachment": { "contentType": "text/plain", "content": "cardData.library_name" } } }
+          {
+            "name": "whence:provenance",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "asserted-by-card"
+              }
+            }
+          },
+          {
+            "name": "whence:verdict",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "unverifiable"
+              }
+            }
+          },
+          {
+            "name": "whence:declared-as",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "pkg:huggingface/meta-llama/Meta-Llama-3.1-70B"
+              }
+            }
+          },
+          {
+            "name": "whence:locator",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "cardData.base_model"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "bom-ref": "evidence-requires-package-5",
+        "propertyName": "whence:edge",
+        "description": "Provenance and verdict for claim-requires-package-5.",
+        "data": [
+          {
+            "name": "whence:provenance",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "asserted-by-config"
+              }
+            }
+          },
+          {
+            "name": "whence:verdict",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "unverifiable"
+              }
+            }
+          },
+          {
+            "name": "whence:locator",
+            "contents": {
+              "attachment": {
+                "contentType": "text/plain",
+                "content": "cardData.library_name"
+              }
+            }
+          }
         ]
       }
     ]
-  }
+  },
+  "compositions": [
+    {
+      "bom-ref": "composition-depth-ceiling",
+      "aggregate": "incomplete",
+      "dependencies": [
+        "pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac"
+      ]
+    }
+  ]
 }

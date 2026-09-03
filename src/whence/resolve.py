@@ -90,6 +90,7 @@ class _State:
     edges: list[Edge] = field(default_factory=list)
     ceilings: list[str] = field(default_factory=list)
     transient: list[str] = field(default_factory=list)
+    inconclusive: list[str] = field(default_factory=list)
 
 
 class Resolver:
@@ -106,13 +107,16 @@ class Resolver:
         # Opt-in: one extra request per resolved model. Detection only -- a present bundle reports
         # `unverifiable`, never `valid` (DEC-021).
         self._check_signatures = check_signatures
+        # Structured properties keyed by slug, filled during resolution and consumed by
+        # _record_node. Keeps the BOM's facts out of prose notes.
+        self._pending_properties: dict[str, tuple[tuple[str, str], ...]] = {}
         # Opt-in: two extra requests per derives-from edge, and the only path that can move an
         # edge's verdict off `unverifiable` -- downward, to `contradicted`, never up (DEC-020).
         self._check_structure = check_structure
 
     # -- node resolution -------------------------------------------------------------------
 
-    def _namespace_state(self, namespace: str) -> str:
+    def _namespace_state(self, namespace: str, state: _State) -> str:
         """`free`, `held-empty`, `held`, or `unknown`. Only a free namespace is re-registrable.
 
         A namespace on this registry may be owned by an organization **or** by a user, and the two
@@ -124,16 +128,20 @@ class Resolver:
         """
         org = self._registry.get(f"/api/organizations/{namespace}/overview")
         if org.resolution is ResolutionClass.TRANSIENT:
+            # `unknown` reads as "we looked and could not tell". We did not look (DEC-014).
+            state.transient.append(f"namespace {namespace}")
             return "unknown"
         if org.status == 404:
             user = self._registry.get(f"/api/users/{namespace}/overview")
             if user.resolution is ResolutionClass.TRANSIENT:
+                state.transient.append(f"namespace {namespace}")
                 return "unknown"
             if user.status != 404:
                 return "held"
             return "free"
         listing = self._registry.get(f"/api/models?author={namespace}&limit=5")
         if listing.resolution is ResolutionClass.TRANSIENT:
+            state.transient.append(f"namespace {namespace}")
             return "unknown"
         return "held-empty" if isinstance(listing.body, list) and not listing.body else "held"
 
@@ -145,6 +153,7 @@ class Resolver:
         if declared is None:
             return None, None, ResolutionClass.CONCLUSIVE, ["reference is not owner/name"]
 
+        properties: list[tuple[str, str]] = []
         endpoint = "datasets" if kind == "dataset" else "models"
         response = self._registry.get(f"/api/{endpoint}/{slug}")
 
@@ -169,13 +178,25 @@ class Resolver:
             notes = []
             if response.body.get("gated") not in (False, None):
                 notes.append("gated: weight-level verification unavailable without credentials")
+                properties.append(("whence:access", "gated"))
+            # Stashed after every property is collected, not before.
+            if ref is not None:
+                self._pending_properties[ref.slug] = tuple(properties)
             return ref, None, ResolutionClass.CONCLUSIVE, notes
 
         # 404, 401, 403: the artifact did not resolve. Absence is reported, never inferred.
-        ns = self._namespace_state(declared.namespace)
+        # DEC-014's inconclusive class: attempted and not settled. Recorded so the BOM can carry
+        # `compositions.aggregate: unknown`, which mapping section 6 requires and which was never
+        # emitted -- every 401 produced no composition at all.
+        if response.resolution is ResolutionClass.INCONCLUSIVE:
+            state.inconclusive.append(declared.slug)
+        ns = self._namespace_state(declared.namespace, state)
         notes = [f"namespace-state: {ns}"]
+        properties.append(("whence:namespace-state", ns))
         if ns == "free":
             notes.append("risk: reregistrable-reference")
+            properties.append(("whence:risk", "reregistrable-reference"))
+        self._pending_properties[declared.slug] = tuple(properties)
         return None, declared, response.resolution, notes
 
     # -- traversal -------------------------------------------------------------------------
@@ -216,9 +237,13 @@ class Resolver:
                 state.ceilings.append(f"depth {self._max_depth} reached at {ref.slug}")
                 continue
             response = self._registry.get(f"/api/models/{ref.slug}")
-            if response.resolution is ResolutionClass.TRANSIENT or not isinstance(
-                response.body, dict
-            ):
+            if response.resolution is ResolutionClass.TRANSIENT:
+                # Previously folded into the check below and `continue`d without recording, so the
+                # branch was dropped and the run was NOT marked partial -- a silently truncated
+                # graph presented as whole, which is what DEC-014's partial marker prevents.
+                state.transient.append(ref.slug)
+                continue
+            if not isinstance(response.body, dict):
                 continue
             for slug, relation, kind, locator in self._declared_edges(response.body):
                 self._add_edge(ref, slug, relation, kind, locator, state, frontier, depth)
@@ -229,6 +254,7 @@ class Resolver:
             edges=tuple(state.edges),
             ceilings_hit=tuple(state.ceilings),
             transient_failures=tuple(dict.fromkeys(state.transient)),
+            inconclusive=tuple(dict.fromkeys(state.inconclusive)),
             partial=bool(state.transient),
             captured_at=now(),
         )
@@ -345,10 +371,18 @@ class Resolver:
     ) -> None:
         if ref.slug in state.nodes:
             return
-        signature = SignatureState.UNSIGNED
+        # Not checked is `unverifiable`, not `unsigned`. `unsigned` is a statement about the
+        # publisher, and the default path never looked -- so every BOM asserted an unmeasured
+        # negative as fact, the one thing this project forbids everywhere else.
+        signature = SignatureState.UNVERIFIABLE
+        signature_note = "signatures were not checked; pass --check-signatures to look"
         if self._check_signatures and kind == "model" and reachable:
-            signature, note = detect_signature(self._registry, ref)
-            notes = (*notes, f"signature: {note}")
+            signature, signature_note = detect_signature(self._registry, ref)
+        if kind == "model":
+            notes = (*notes, f"signature: {signature_note}")
+        properties = list(self._pending_properties.pop(ref.slug, ()))
+        if not ref.pinned and kind == "package":
+            properties.append(("whence:unpinned-reason", "no version declared in source metadata"))
         state.nodes[ref.slug] = Node(
             ref=ref,
             kind=normalize_node_kind(kind),
@@ -356,4 +390,5 @@ class Resolver:
             signature=signature,
             reachable=reachable,
             notes=notes,
+            properties=tuple(properties),
         )

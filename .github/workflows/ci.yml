@@ -87,6 +87,24 @@ jobs:
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: uv run python scripts/validate_examples.py
 
+      # The emitter's own output must be conformant, not only the committed example. Validating
+      # the file alone let the two drift: the example was hand-authored and disagreed with the
+      # emitter on property names, claim numbering and edge count.
+      - name: the emitter's output is conformant CycloneDX
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: |
+          uv run whence resolve nvidia/Llama-3.1-Nemotron-70B-Instruct-HF \
+            --scenario benchmarks/declared-base --bom > /tmp/live.cdx.json
+          uv run python - <<'PY'
+          import json, pathlib, jsonschema
+          schema = json.loads(pathlib.Path("schema/bom-1.7.schema.json").read_text())
+          bom = json.loads(pathlib.Path("/tmp/live.cdx.json").read_text())
+          errors = sorted(jsonschema.Draft7Validator(schema).iter_errors(bom), key=lambda e: list(e.path))
+          for error in errors[:5]:
+              print(f"::error::{list(error.path)}: {error.message}")
+          raise SystemExit(1 if errors else 0)
+          PY
+
       # Every recorded scenario, scored against its authored truth set, replayed offline.
       - name: benchmark scenarios agree with their truth sets
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}

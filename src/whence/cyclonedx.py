@@ -25,9 +25,10 @@ def _component(node: Node) -> dict[str, Any]:
         {"name": "whence:signature-state", "value": node.signature.value},
         {"name": "whence:reachable", "value": "true" if node.reachable else "false"},
     ]
-    for note in node.notes:
-        key, _, value = note.partition(": ")
-        properties.append({"name": f"whence:{key.strip()}", "value": (value or note).strip()})
+    # Structured properties, not prose split on a colon. The old mechanism emitted a property
+    # literally named `whence:no version declared` for any note without a colon, and invented a
+    # namespaced key for any note that happened to contain one.
+    properties.extend({"name": name, "value": value} for name, value in node.properties)
     component: dict[str, Any] = {
         "bom-ref": ref.purl(),
         "type": _TYPES.get(node.kind, "library"),
@@ -147,6 +148,19 @@ def to_cyclonedx(report: ResolutionReport) -> dict[str, Any]:
                 "dependencies": scoped,
             }
         )
+    if report.inconclusive:
+        # Attempted and not settled -- a 401 or 403. Distinct from `incomplete`, which is a stop the
+        # tool chose. Mapping section 6 and DEC-014's table both require this, and it was never
+        # emitted: every scenario resolving a 401 produced `"compositions": null`.
+        unresolved = [by_slug[s].ref.purl() for s in report.inconclusive if s in by_slug]
+        if unresolved:
+            compositions.append(
+                {
+                    "bom-ref": "composition-inconclusive",
+                    "aggregate": "unknown",
+                    "dependencies": unresolved,
+                }
+            )
     if compositions:
         bom["compositions"] = compositions
     if report.partial:

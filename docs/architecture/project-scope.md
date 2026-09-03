@@ -65,8 +65,14 @@ it into a pipeline: what does this actually depend on, and how much of that am I
 
 The tool is successful if, on a corpus of published models, it recovers substantially more of the
 true dependency graph than a model-card transcription does, and if the BOM it emits is sufficient
-to answer "am I affected?" for a supply-chain advisory without going back to the network. Both are
-measured; see `evaluation-plan.md`.
+to answer "am I affected?" for a supply-chain advisory without going back to the network. Neither is measured yet;
+`evaluation-plan.md` describes how they would be.
 
 A run that resolves nothing and says so is a correct run. Coverage is not the objective; honest
 coverage is.
+
+**Neither criterion is measured yet.** The evaluation plan describes a gold graph, a head-to-head
+against a transcription baseline, and an actionability replay; none is built. What runs is
+per-scenario scoring against authored truth sets. An earlier version of this section said "Both are
+measured", in the present indicative, which was the tense error this project's own working norms
+warn about.

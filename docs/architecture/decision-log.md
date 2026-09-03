@@ -1,8 +1,14 @@
 # Decision log
 
 **Document version:** 0.1
-**Status:** Proposed
-**Last updated:** 2026-09-02
+**Last updated:** 2026-09-03
+
+This document carries no status line of its own. It had one reading `Status: Proposed`, three lines
+above the rule below — exactly the contradiction the rule exists to prevent.
+
+**Numbering note.** There is no DEC-019. The number was skipped during a session that added several
+entries at once; nothing was withdrawn. Recorded rather than renumbered, because a decision log
+whose numbers move is worse than one with a gap.
 
 Every entry is Accepted or Rejected. Nothing is Proposed: an undecided question belongs in the
 scope document or an issue, not here. Violating an accepted decision is a design change requiring

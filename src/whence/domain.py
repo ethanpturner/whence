@@ -123,6 +123,11 @@ class Node(DomainModel):
     signature: SignatureState
     reachable: bool
     notes: tuple[str, ...] = ()
+    #: Structured facts for the BOM, as (key, value) pairs. Separate from `notes`, which is prose
+    #: for a human. They were previously derived by splitting a note on ": ", which produced a
+    #: property literally named `whence:no version declared` whenever a note had no colon, and
+    #: silently invented a namespaced key whenever one did.
+    properties: tuple[tuple[str, str], ...] = ()
 
 
 class Edge(DomainModel):
@@ -162,6 +167,10 @@ class ResolutionReport(DomainModel):
     edges: tuple[Edge, ...]
     ceilings_hit: tuple[str, ...]
     transient_failures: tuple[str, ...]
+    #: References whose resolution was attempted and inconclusive -- a 401 or 403. Distinct from a
+    #: ceiling, which is a stop the tool chose, and from a transient failure, which produced no
+    #: verdict at all. Maps to `compositions.aggregate: unknown` (DEC-014, mapping section 6).
+    inconclusive: tuple[str, ...] = ()
     partial: bool
     captured_at: datetime
 

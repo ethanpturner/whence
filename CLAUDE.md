@@ -7,9 +7,13 @@ Guidance for Claude Code when working in this repository.
 `whence` resolves the dependency graph of a published machine-learning model and records, per edge,
 whether the relationship is claimed or verified.
 
-**Phase one runs**: resolution, redirect handling, response classification, CycloneDX emission, and
-an evaluation harness scoring five recorded scenarios offline. **Phase two — weight-level lineage
-verification — is not built** (DEC-005), so no edge is ever `verified` today.
+**What runs**: resolution, redirect handling, response classification, CycloneDX emission, OMS
+signature detection, a structural lineage check, and an evaluation harness scoring **seven**
+recorded scenarios offline.
+
+Phase two **began** with the structural check (DEC-020), which is the only mechanism that can emit
+`contradicted`. **Weight-level comparison of tensor values is not built** (DEC-005), and no edge is
+ever `verified` — a structural match is a necessary condition, not a sufficient one.
 
 Keep tense discipline. Present indicative for what runs; "is designed to" for phase two and
 anything else specified but unbuilt. Mixing them is the easiest mistake here and the hardest to
@@ -45,7 +49,8 @@ an implementation detail.
 
 ## Working norms
 
-- **The quality gate is `uv run ruff check . && uv run mypy && uv run pytest`**, plus
+- **The quality gate is `uv run ruff check . && uv run ruff format --check . && uv run mypy &&
+  uv run pytest`**, plus
   `uv run whence evaluate`, `scripts/verify_pins.py`, and `scripts/validate_examples.py`. All six
   are expected green.
 - **mypy is strict and covers `scripts/` too.**

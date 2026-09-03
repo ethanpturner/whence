@@ -16,14 +16,15 @@ fails validation rather than passing downstream stripped and looking valid.
 
 | Object | Section | Status |
 |---|---|---|
-| `ArtifactRef` | 2 | NOT IMPLEMENTED |
-| `Node` | 3 | NOT IMPLEMENTED |
-| `Edge` | 4 | NOT IMPLEMENTED |
-| `Evidence` | 5 | NOT IMPLEMENTED |
-| `ResolutionReport` | 6 | NOT IMPLEMENTED |
+| `ArtifactRef` | 2 | IMPLEMENTED — `domain.py` |
+| `Node` | 3 | IMPLEMENTED — `domain.py` |
+| `Edge` | 4 | IMPLEMENTED — `domain.py` |
+| `Evidence` | 5 | IMPLEMENTED — `domain.py` |
+| `ResolutionReport` | 6 | IMPLEMENTED — `domain.py` |
 
 When an object is implemented, its row is flipped and the implementing model named in the same
-change, or it ships unguarded.
+change, or it ships unguarded. **This table was stale for every object at once**, which is what
+happens when the rule has no test behind it — see the conformance-test note above.
 
 ## 2. `ArtifactRef`
 
@@ -49,7 +50,8 @@ A resolved artifact in the graph.
 | `verdict` | `Verdict` | yes | See section 7. |
 | `signature` | `SignatureState` | yes | See section 7. Absent signature is `unsigned`, never `invalid`. |
 | `reachable` | bool | yes | Whether the artifact resolved at capture time. |
-| `notes` | tuple[str, ...] | yes | May be empty. Never carries excerpt content from an untrusted card. |
+| `notes` | tuple[str, ...] | yes | Prose for a human. May be empty. Never carries excerpt content from an untrusted card. |
+| `properties` | tuple[tuple[str, str], ...] | yes | Structured facts for the BOM. Separate from `notes` on purpose: these were once derived by splitting a note on `": "`, which emitted a property literally named `whence:no version declared`. |
 
 ## 4. `Edge`
 
@@ -89,6 +91,7 @@ The result of one run.
 | `edges` | tuple[`Edge`, ...] | yes | |
 | `ceilings_hit` | tuple[str, ...] | yes | Named per DEC-007. Empty when traversal completed. |
 | `transient_failures` | tuple[str, ...] | yes | References not reached because resolution failed transiently (DEC-014). Empty on a complete run. |
+| `inconclusive` | tuple[str, ...] | yes | References resolved and not settled — a 401 or 403. Maps to `compositions.aggregate: unknown`. Distinct from a ceiling (a stop the tool chose) and from a transient failure (no verdict at all). |
 | `partial` | bool | yes | `True` when `transient_failures` is non-empty. A partial run's output is never a resolution of the references it could not reach. |
 | `captured_at` | datetime | yes | |
 
