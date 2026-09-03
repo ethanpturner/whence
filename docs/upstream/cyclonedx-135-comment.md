@@ -1,7 +1,9 @@
 # Draft comment on CycloneDX/specification#135
 
-**Status: draft, not posted.** Posting is an outward-facing action on a third-party project and
-needs a decision from the repository owner first.
+**Status: posted 2026-09-03.**
+[CycloneDX/specification#135, comment 5530124043](https://github.com/CycloneDX/specification/issues/135#issuecomment-5530124043).
+The text below is what was posted, verbatim. If the thread moves, follow up there rather than
+editing this file — this is the record of what was said, not a living draft.
 
 **Target:** [CycloneDX/specification#135 — "Support more relationship types"](https://github.com/CycloneDX/specification/issues/135)
 (open since 2022-03-04, last activity 2025-08-12).
@@ -100,9 +102,9 @@ the security consequence and the cost of the workaround.
 - [x] Unit 42 reference carries a link.
 - [x] Does not overstate: "I'm building" is accurate for a design-stage project and implies no
       shipped tool.
-- [ ] **Sampling limitation to disclose if asked.** Both samples are registry listings, not a
+- [x] **Sampling limitation, to disclose if asked.** Both samples are registry listings, not a
       random sample of the corpus. The `skip` parameter is deprecated and capped, so deeper
       sampling needs link-header pagination; neither sample reaches the long tail. The comment
       states each sample's basis rather than generalising to "the ecosystem" — keep it that way in
       any follow-up.
-- [ ] Owner decision to post.
+- [x] Owner decision to post. Approved and posted 2026-09-03.
