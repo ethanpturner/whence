@@ -566,6 +566,21 @@ Of the 45 pairs, 10 had no fetchable configuration and 13 shared too few compara
 this sample the check reaches a usable comparison for roughly half of declared fine-tunes, and
 returns `unverifiable` for the rest. That is a modest instrument, honestly bounded.
 
-**Open questions.** Whether a nested-config reader would recover the 13 `too-few-fields` cases.
-Probably, and it needs its own measurement before it is trusted, since the same three attempts
-above suggest the intuitive version will be wrong.
+**Resolved 2026-09-03 — the nested-config reader.** Measured on the same 45 pairs before
+implementing, because the three attempts above are good evidence that the intuitive version would
+be wrong.
+
+| | Comparable | Too few | Contradictions |
+|---|---:|---:|---:|
+| Top level only | 22 | 13 | 0 |
+| Plus known nesting keys | **33** | **2** | **0** |
+
+Eleven of the thirteen are recovered and **no new contradictions appear**, so coverage rises from
+roughly two thirds of checkable declared fine-tunes to nearly all of them without buying a single
+false positive. Every recovered case used `text_config`; the two that remain (`whisper-large-v3-turbo`,
+`nomic-embed-text-v2-moe`) expose their dimensions under neither the top level nor any known key.
+
+**Levels are not merged.** The reader takes the first level carrying at least two comparable fields
+and stops. A composite model's top-level `hidden_size` may describe a vision tower rather than the
+text model, and mixing the two would compare different components while looking like a clean match —
+the same class of error as the first two field sets, reached from a third direction.

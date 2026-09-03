@@ -56,6 +56,32 @@ def config_path(ref: ArtifactRef) -> str:
     return f"/{ref.slug}/resolve/main/config.json"
 
 
+# Sub-keys under which composite and multimodal configurations nest the text model's dimensions.
+# A top-level lookup finds nothing on these, which is why the first version of this check reported
+# 13 of 45 sampled pairs as having too few comparable fields.
+NESTED_KEYS = ("text_config", "llm_config", "language_model", "decoder", "text_decoder")
+
+
+def body_fields(config: dict[str, Any]) -> tuple[dict[str, Any], str]:
+    """The transformer-body fields, and where they were found.
+
+    Looks at the top level first, then the known nesting keys, and takes the first place carrying at
+    least two comparable fields. It does not merge across levels: a composite model's top-level
+    `hidden_size` may describe a vision tower rather than the text model, and silently mixing the
+    two would compare different components while looking like a clean match.
+    """
+    top = {k: config[k] for k in SHAPE_FIELDS if k in config}
+    if len(top) >= 2:
+        return top, "top"
+    for key in NESTED_KEYS:
+        nested = config.get(key)
+        if isinstance(nested, dict):
+            found = {k: nested[k] for k in SHAPE_FIELDS if k in nested}
+            if len(found) >= 2:
+                return found, key
+    return top, "none"
+
+
 def _config(registry: Registry, ref: ArtifactRef) -> tuple[dict[str, Any] | None, ResolutionClass]:
     """Fetch and parse a config, following the registry's content redirect.
 
@@ -101,20 +127,30 @@ def check(
     # sub-key, so a top-level lookup finds nothing. Treating that absence as a difference would
     # report `contradicted` because two publishers structure a file differently -- absence read as
     # a negative answer, which is the error this project exists to prevent (DEC-020).
-    comparable = tuple(f for f in SHAPE_FIELDS if f in source_config and f in target_config)
+    source_body, source_site = body_fields(source_config)
+    target_body, target_site = body_fields(target_config)
+    comparable = tuple(f for f in SHAPE_FIELDS if f in source_body and f in target_body)
     if len(comparable) < 2:
         return StructuralCheck(
             Verdict.UNVERIFIABLE,
             (
                 f"the two configurations share too few comparable body fields "
-                f"({len(comparable)}); one of them likely nests its dimensions under a sub-key, "
-                f"and a top-level comparison would be measuring file layout rather than shape"
+                f"({len(comparable)}); the dimensions were not found at the top level or under any "
+                f"known nesting key, so a comparison would be measuring file layout rather than shape"
             ),
         )
 
-    differing = tuple(f for f in comparable if source_config.get(f) != target_config.get(f))
+    differing = tuple(f for f in comparable if source_body.get(f) != target_body.get(f))
     if differing:
         context = tuple(f for f in EXCLUDED_FIELDS if source_config.get(f) != target_config.get(f))
+        # Where the dimensions were read from. Reported on a contradiction because a comparison
+        # drawn from different levels of the two files is worth a reader's scrutiny.
+        where = (
+            ""
+            if source_site == target_site == "top"
+            else f" [read from {source_site}/{target_site}]"
+        )
+
         note = (
             f" (also differs on {', '.join(context)}, which fine-tuning may change)"
             if context
@@ -126,7 +162,7 @@ def check(
                 f"the declared base has a different transformer body ({', '.join(differing)}). A "
                 f"fine-tune cannot change these, so this relationship is not the one declared"
                 f"{note}. It does not follow that no relationship exists -- distillation and "
-                f"re-architecting are real and are sometimes tagged as fine-tuning."
+                f"re-architecting are real and are sometimes tagged as fine-tuning.{where}"
             ),
             differing,
         )

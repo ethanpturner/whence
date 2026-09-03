@@ -83,3 +83,36 @@ def test_quantization_is_out_of_scope() -> None:
         check(registry, ref("a/child"), ref("b/base"), Relation.QUANTIZED_FROM).verdict
         is Verdict.UNVERIFIABLE
     )
+
+
+def test_nested_dimensions_are_found(tmp_path_factory: pytest.TempPathFactory) -> None:
+    """Composite and multimodal configurations nest the text model's dimensions. Reading only the
+    top level left 13 of 45 sampled real pairs uncomparable; reading `text_config` leaves 2."""
+    registry = _Configs(
+        a__child={"architectures": ["Composite"], "text_config": dict(BODY)},
+        b__base=dict(BODY),
+    )
+    assert (
+        check(registry, ref("a/child"), ref("b/base"), Relation.DERIVES_FROM).verdict
+        is Verdict.UNVERIFIABLE
+    )
+
+    mismatched = _Configs(
+        a__child={"architectures": ["Composite"], "text_config": {**BODY, "hidden_size": 896}},
+        b__base=dict(BODY),
+    )
+    result = check(mismatched, ref("a/child"), ref("b/base"), Relation.DERIVES_FROM)
+    assert result.verdict is Verdict.CONTRADICTED
+    assert "read from text_config/top" in result.detail
+
+
+def test_levels_are_not_merged(tmp_path_factory: pytest.TempPathFactory) -> None:
+    """A composite model's top-level dimensions may describe a vision tower rather than the text
+    model. Merging across levels would compare different components while looking like a match."""
+    registry = _Configs(
+        # Two top-level fields, so the top level wins and `text_config` is never consulted.
+        a__child={"hidden_size": 1152, "num_hidden_layers": 27, "text_config": dict(BODY)},
+        b__base=dict(BODY),
+    )
+    result = check(registry, ref("a/child"), ref("b/base"), Relation.DERIVES_FROM)
+    assert result.verdict is Verdict.CONTRADICTED
