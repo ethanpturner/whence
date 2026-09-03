@@ -1,0 +1,33 @@
+# Captured registry interactions, replayed offline (DEC-009).
+#
+# Captured 2026-09-03 after a 45,000-model sweep found a genuine instance. Note the base's status:
+# 401, not 404. The premise this scenario was originally authored on -- that a deleted repository
+# 404s -- was wrong, and only the namespace lookups distinguish this from `withdrawn-base`.
+captured_at: 2026-09-03
+host: huggingface.co
+interactions:
+  - request: GET /api/models/bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF
+    status: 200
+    body: model-bartowski-AvelonLabs_OpenClaude-1.7B-Merged-GGUF.json
+  # Identical in status AND body to withdrawn-base's declared base.
+  - request: GET /api/models/AvelonLabs/OpenClaude-1.7B-Merged
+    status: 401
+    body: model-AvelonLabs-OpenClaude-1.7B-Merged.json
+  - request: GET /api/organizations/AvelonLabs/overview
+    status: 404
+    body: org-AvelonLabs.json
+  # A namespace may be owned by an organization or a user. Both must be absent for the name to be
+  # free; checking only organizations reports every personal account as abandoned.
+  - request: GET /api/users/AvelonLabs/overview
+    status: 404
+    body: user-AvelonLabs.json
+  - request: GET /api/models?author=AvelonLabs&limit=5
+    status: 200
+    body: author-AvelonLabs.json
+  # The referring model also declares a training dataset.
+  - request: GET /api/datasets/angrygiraffe/claude-opus-4.6-4.7-reasoning-8.7k
+    status: 200
+    body: dataset-angrygiraffe.json
+  - request: GET /api/datasets/lordx64/reasoning-distill-claude-opus-4-7-max
+    status: 200
+    body: dataset-lordx64.json

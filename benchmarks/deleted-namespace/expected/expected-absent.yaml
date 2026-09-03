@@ -1,34 +1,42 @@
-# Relationships and conclusions that must not appear. Scores invention.
+# Conclusions and edges that must not appear.
 
 absent:
-  - source: "<referring model>"
-    target: "<declared base>"
-    relation: derives-from
+  - source: bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF
+    target: AvelonLabs/OpenClaude-1.7B-Merged
+    relation: quantized-from
     verdict_if_emitted: contradicted
     why: >-
-      The most likely failure in this scenario. An absent base is not a refuted derivation. A tool
-      that reports `contradicted` has asserted that the lineage claim is false on the strength of
-      evidence that says nothing about it.
+      The likeliest failure. An absent base is not a refuted derivation: the quantization may well
+      have happened and the source was removed afterwards. Nothing about the namespace's present
+      state bears on whether the derivation occurred.
+
+  - source: bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF
+    target: AvelonLabs/OpenClaude-1.7B-Merged
+    relation: derives-from
+    why: >-
+      Flattening. The registry declares `quantized` (DEC-015), and quantized lineage is where
+      weight-level comparison performs worst -- the qualifier tells phase two where to distrust
+      itself.
 
 negative_assertions:
-  - claim: "<referring model> does not derive from <declared base>"
+  - claim: "AvelonLabs/OpenClaude-1.7B-Merged does not exist"
     why: >-
-      Same error stated as prose. The derivation is unestablished, not disproved.
+      The registry answered 401, not 404. Unauthenticated, that does not distinguish absence from
+      denial. What IS established is that no owner holds the namespace -- a different and more
+      actionable fact.
 
-  - claim: "<declared base> has no relationship to <referring model>"
+  - claim: "the reference is merely a dead end"
     why: >-
-      The card asserts one. The tool's inability to resolve the target does not retract the
-      author's claim.
+      That is `withdrawn-base`, whose declared base returns the identical status AND the identical
+      body. The difference is entirely in the namespace lookups, and treating the two alike loses
+      the hijack exposure.
 
 omissions:
-  # Failures of omission, which score as invention's mirror image: the tool loses the finding
-  # rather than fabricating one.
-  - omitted: "the edge to <declared base>"
+  - omitted: "the edge to AvelonLabs/OpenClaude-1.7B-Merged"
     why: >-
-      Dropping unreachable nodes is the natural implementation and it erases the entire point of
-      the scenario. The hijack exposure is visible only if the dangling reference survives into
-      the output.
-  - omitted: "whence:namespace-state and whence:risk on the base node"
+      Dropping unreachable nodes is the natural implementation and erases the finding. The exposure
+      is visible only if the dangling reference survives into the output.
+  - omitted: "whence:namespace-state and whence:risk"
     why: >-
-      Without these the BOM records a missing dependency and not a re-registrable one, which is
+      Without them the BOM records a missing dependency rather than a re-registrable one, which is
       the difference between an inconvenience and a supply-chain exposure.

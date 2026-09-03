@@ -99,11 +99,24 @@ class Resolver:
     # -- node resolution -------------------------------------------------------------------
 
     def _namespace_state(self, namespace: str) -> str:
-        """`free`, `held-empty`, `held`, or `unknown`. Only a free namespace is re-registrable."""
+        """`free`, `held-empty`, `held`, or `unknown`. Only a free namespace is re-registrable.
+
+        A namespace on this registry may be owned by an organization **or** by a user, and the two
+        have separate endpoints. Checking only organizations reports every user-owned namespace as
+        free, which would turn an ordinary personal account into a fabricated hijack finding -- the
+        most damaging false positive this tool can produce, since it accuses a live owner of having
+        abandoned a name. The user endpoint is consulted only when the organization lookup is
+        negative, so a held organization costs no extra request.
+        """
         org = self._registry.get(f"/api/organizations/{namespace}/overview")
         if org.resolution is ResolutionClass.TRANSIENT:
             return "unknown"
         if org.status == 404:
+            user = self._registry.get(f"/api/users/{namespace}/overview")
+            if user.resolution is ResolutionClass.TRANSIENT:
+                return "unknown"
+            if user.status != 404:
+                return "held"
             return "free"
         listing = self._registry.get(f"/api/models?author={namespace}&limit=5")
         if listing.resolution is ResolutionClass.TRANSIENT:

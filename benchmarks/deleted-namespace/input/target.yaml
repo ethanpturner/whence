@@ -1,6 +1,3 @@
-# PLACEHOLDER. This scenario is authored but not captured; see scenario.md §"Why this is not
-# recorded yet" and the selection criteria there. The harness must skip scenarios registered
-# `planned`, and this input is not a resolvable reference.
-target: null
+target: bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF
 host: huggingface.co
 max_depth: 2

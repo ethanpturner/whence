@@ -1,21 +1,14 @@
-# Edges that exist but cannot be established. The correct output is `unverifiable`.
-
 unresolvable:
-  - source: "<referring model>"
-    target: "<declared base>"
-    relation: derives-from
-    provenance: unresolvable
-    verdict: unverifiable
+  - subject: "the derivation bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF quantized-from AvelonLabs/OpenClaude-1.7B-Merged"
     why: >-
-      The target cannot be pinned, fetched, or compared, so no stronger provenance class is
-      reachable. This remains true permanently rather than pending better credentials: unlike the
-      401 in `prose-only-base`, a deleted repository does not become resolvable to an
-      authenticated caller.
+      The target cannot be pinned, fetched, or compared, so no verdict stronger than `unverifiable`
+      is reachable. Unlike `withdrawn-base`, credentials would not help: no owner holds the
+      namespace, so there is nobody to be granted access by.
+    still_established: >-
+      That the card asserts the derivation, that the reference is well-formed, and that the
+      namespace is free -- which is the finding.
 
 compositions:
   - aggregate: unknown
-    scope: "<declared base>"
-    why: >-
-      Resolution was attempted and was inconclusive. Distinct from the depth-ceiling `incomplete`
-      in `declared-base`, and distinct again from a transient failure, which produces no
-      composition and no verdict at all (DEC-014).
+    scope: AvelonLabs/OpenClaude-1.7B-Merged
+    why: "Resolution attempted, inconclusive (DEC-014 inconclusive class)."

@@ -47,6 +47,8 @@ addopts = [
 markers = [
     "live: performs real registry resolution over the network (slow, rate-limited)",
 ]
+# tests/live is collected but deselected by the marker filter above; a bare `pytest` never
+# reaches the network. Run it deliberately with `uv run pytest -m live`.
 
 [tool.mypy]
 python_version = "3.14"

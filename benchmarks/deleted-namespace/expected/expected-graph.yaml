@@ -1,32 +1,47 @@
-# Edges that genuinely exist and should be recovered.
-#
-# The central point of this scenario is in the verdict below, and it is easy to get wrong in the
-# direction of confidence: the declared base is gone, and that does NOT contradict the lineage
-# claim. The derivation may well have happened; the base was deleted afterwards. Deletion is
-# evidence about the reference, not about the relationship.
+# The declared base is unreachable and its namespace is free. Deletion does not contradict the
+# lineage -- the derivation may well have happened and the base was removed afterwards -- so the
+# verdict is `unverifiable` and the finding lives on the node.
+
+root:
+  ref: { host: huggingface.co, namespace: bartowski, name: AvelonLabs_OpenClaude-1.7B-Merged-GGUF }
+  revision: 04a6e75d9df2f9e426b267cae641c0f58d7c6d6d
+  pinned: true
 
 edges:
-  - source: "<referring model>"
-    target: "<declared base>"
-    relation: derives-from
+  - source: bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF
+    target: AvelonLabs/OpenClaude-1.7B-Merged
+    relation: quantized-from
     provenance: asserted-by-card
     verdict: unverifiable
     evidence_locator: "cardData.base_model"
     notes: >-
-      Verdict is `unverifiable`, not `contradicted`. Nothing about the base's absence bears on
-      whether the derivation occurred.
+      `asserted-by-card`, not `unresolvable`: the card plainly declares this base and the reference
+      is well-formed. The target's unreachability is a property of the node (DEC-018).
+
+  - source: bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF
+    target: angrygiraffe/claude-opus-4.6-4.7-reasoning-8.7k
+    relation: trained-on
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "cardData.datasets[0]"
+    node_kind: dataset
+
+  - source: bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF
+    target: lordx64/reasoning-distill-claude-opus-4-7-max
+    relation: trained-on
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "cardData.datasets[1]"
+    node_kind: dataset
 
 nodes:
-  - ref: "<declared base>"
+  - ref: AvelonLabs/OpenClaude-1.7B-Merged
     pinned: false
-    unpinned_reason: "no revision obtainable; repository reported absent"
     reachable: false
-    signature_state: unsigned
     properties:
-      # The actual finding. Not a verdict on the edge -- a property of the reference.
       whence:namespace-state: free
       whence:risk: reregistrable-reference
     notes: >-
-      Both the repository and its owning namespace are reported absent, so the name is available
-      for re-registration by anyone. A pipeline resolving this dependency by name would fetch
-      whatever later occupies it (DEC-002).
+      Neither an organization nor a user holds `AvelonLabs`. The name is available for anyone to
+      register, and a pipeline resolving this dependency by name would fetch whatever later
+      occupies it (DEC-002).

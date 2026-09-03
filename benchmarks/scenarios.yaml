@@ -25,13 +25,12 @@ scenarios:
   - slug: deleted-namespace
     name: Declared base whose namespace is gone
     path: benchmarks/deleted-namespace
-    status: unobserved
+    status: recorded
     category: dangling-reference
-    # Authored; premise not observed on this registry. A search over 22,000 models found 9
-    # base-reference namespaces with no public models, of which 6 redirect across ownership, 2
-    # return 401, 1 returns 200, and NONE is a free 404. Retained because the behaviour it grades
-    # is correct wherever the case occurs, and because a redirect is a policy rather than a
-    # guarantee. See transferred-namespace for the shape that does occur.
+    # Found 2026-09-03 by a 45,000-model sweep: AvelonLabs holds no organization and no user, so
+    # the name is free. The premise it was authored on was wrong -- the base returns 401, not 404,
+    # with a body identical to withdrawn-base's. Only the namespace lookups separate a dead end
+    # from a hijack opportunity, which makes the extra request load-bearing rather than tidy.
 
   - slug: transferred-namespace
     name: Declared base redirects across an ownership boundary
