@@ -28,7 +28,10 @@ def _registry_for(scenario: Path | None) -> Registry:
 def _cmd_resolve(args: argparse.Namespace) -> int:
     scenario = Path(args.scenario) if args.scenario else None
     resolver = Resolver(
-        _registry_for(scenario), max_depth=args.max_depth, check_structure=args.check_structure
+        _registry_for(scenario),
+        max_depth=args.max_depth,
+        check_structure=args.check_structure,
+        check_signatures=args.check_signatures,
     )
     report = resolver.resolve(args.target)
     if args.bom:
@@ -63,6 +66,7 @@ def _cmd_evaluate(args: argparse.Namespace) -> int:
             RecordedRegistry(scenario / "recorded"),
             max_depth=int(target.get("max_depth", 2)),
             check_structure=bool(target.get("check_structure", False)),
+            check_signatures=bool(target.get("check_signatures", False)),
         )
         report = resolver.resolve(str(target["target"]))
         result = score(report, scenario / "expected", entry["slug"])
@@ -92,6 +96,11 @@ def main() -> int:
         "--scenario", help="replay a benchmark scenario's recording instead of the network"
     )
     resolve.add_argument("--max-depth", type=int, default=2)
+    resolve.add_argument(
+        "--check-signatures",
+        action="store_true",
+        help="read OMS bundles (detection only; a present signature is unverifiable, never valid)",
+    )
     resolve.add_argument(
         "--check-structure",
         action="store_true",

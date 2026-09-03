@@ -34,6 +34,7 @@ from whence.domain import (
     now,
 )
 from whence.registry import Registry
+from whence.signing import detect as detect_signature
 from whence.structure import check as structural_check
 
 # The registry states the derivation kind; a bare declaration leaves it unspecified and is never
@@ -99,8 +100,12 @@ class Resolver:
         max_depth: int = 2,
         *,
         check_structure: bool = False,
+        check_signatures: bool = False,
     ) -> None:
         self._registry, self._host, self._max_depth = registry, host, max_depth
+        # Opt-in: one extra request per resolved model. Detection only -- a present bundle reports
+        # `unverifiable`, never `valid` (DEC-021).
+        self._check_signatures = check_signatures
         # Opt-in: two extra requests per derives-from edge, and the only path that can move an
         # edge's verdict off `unverifiable` -- downward, to `contradicted`, never up (DEC-020).
         self._check_structure = check_structure
@@ -194,6 +199,11 @@ class Resolver:
         root_ref, _, cls, _ = self._resolve_artifact(root_slug, state, kind="model")
         if root_ref is None:
             raise ValueError(f"root {root_slug} did not resolve ({cls.value})")
+
+        # The root is a node like any other. It was previously recorded only as `report.root`, so
+        # anything computed per node -- signature state above all -- never applied to the artifact
+        # the caller actually asked about.
+        self._record_node(root_ref, "model", Verdict.UNVERIFIABLE, True, (), state)
 
         frontier = [(root_ref, 0)]
         expanded: set[str] = set()
@@ -333,14 +343,17 @@ class Resolver:
         notes: tuple[str, ...],
         state: _State,
     ) -> None:
-        state.nodes.setdefault(
-            ref.slug,
-            Node(
-                ref=ref,
-                kind=normalize_node_kind(kind),
-                verdict=verdict,
-                signature=SignatureState.UNSIGNED,
-                reachable=reachable,
-                notes=notes,
-            ),
+        if ref.slug in state.nodes:
+            return
+        signature = SignatureState.UNSIGNED
+        if self._check_signatures and kind == "model" and reachable:
+            signature, note = detect_signature(self._registry, ref)
+            notes = (*notes, f"signature: {note}")
+        state.nodes[ref.slug] = Node(
+            ref=ref,
+            kind=normalize_node_kind(kind),
+            verdict=verdict,
+            signature=signature,
+            reachable=reachable,
+            notes=notes,
         )

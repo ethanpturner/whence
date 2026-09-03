@@ -24,6 +24,7 @@ def test_scenario(entry: dict[str, object]) -> None:
         RecordedRegistry(scenario / "recorded"),
         max_depth=int(target.get("max_depth", 2)),
         check_structure=bool(target.get("check_structure", False)),
+        check_signatures=bool(target.get("check_signatures", False)),
     )
     report = resolver.resolve(str(target["target"]))
     result = score(report, scenario / "expected", str(entry["slug"]))

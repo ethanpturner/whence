@@ -82,3 +82,28 @@ def test_a_withdrawn_repository_is_inconclusive_not_absent(registry: LiveRegistr
     response = registry.get("/api/models/microsoft/WizardLM-2-7B")
     _skip_if_throttled(response.resolution)
     assert response.resolution is ResolutionClass.INCONCLUSIVE
+
+
+def test_a_signed_and_an_unsigned_model_are_distinguished(registry: LiveRegistry) -> None:
+    """DEC-021, against the registry. IBM Granite publishes OMS bundles; most publishers do not.
+
+    Asserts the distinction rather than a particular state for a particular model: if IBM stops
+    signing, this should fail loudly rather than silently testing nothing.
+    """
+    from whence.domain import SignatureState
+    from whence.signing import detect
+
+    signed, note = detect(registry, _ref("ibm-granite/granite-swash-2b"))
+    _skip_if_throttled(ResolutionClass.CONCLUSIVE)
+    assert signed is SignatureState.UNVERIFIABLE, "a present bundle must never report valid"
+    assert "has not been verified" in note
+
+    unsigned, _ = detect(registry, _ref("Qwen/Qwen2.5-7B"))
+    assert unsigned is SignatureState.UNSIGNED
+
+
+def _ref(slug: str):
+    from whence.domain import ArtifactRef
+
+    namespace, name = slug.split("/")
+    return ArtifactRef(host="huggingface.co", namespace=namespace, name=name, pinned=False)
