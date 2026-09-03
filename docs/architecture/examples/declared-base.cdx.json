@@ -3,7 +3,7 @@
   "specVersion": "1.7",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-03T00:00:00Z",
+    "timestamp": "2026-09-02T00:00:00Z",
     "component": {
       "bom-ref": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
       "type": "machine-learning-model",
@@ -156,7 +156,7 @@
   "declarations": {
     "claims": [
       {
-        "bom-ref": "claim-derives-from-1",
+        "bom-ref": "claim-derives-from-c6e8c676ce11",
         "target": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
         "predicate": "derives-from pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
         "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
@@ -165,7 +165,7 @@
         ]
       },
       {
-        "bom-ref": "claim-trained-on-2",
+        "bom-ref": "claim-trained-on-d1c135411419",
         "target": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
         "predicate": "trained-on pkg:huggingface/nvidia/HelpSteer2@990b2711a36180dd19d9c94b8627844866f8982a",
         "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
@@ -174,7 +174,7 @@
         ]
       },
       {
-        "bom-ref": "claim-requires-package-3",
+        "bom-ref": "claim-requires-package-b36e7e6fd78a",
         "target": "pkg:huggingface/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF@031d4042f36adc1a52cca51b331d25cbe3cf1022",
         "predicate": "requires-package pkg:pypi/transformers",
         "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
@@ -183,7 +183,7 @@
         ]
       },
       {
-        "bom-ref": "claim-derives-from-4",
+        "bom-ref": "claim-derives-from-f2ac84230de3",
         "target": "pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
         "predicate": "derives-from pkg:huggingface/meta-llama/Llama-3.1-70B@349b2ddb53ce8f2849a6c168a81980ab25258dac",
         "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
@@ -192,7 +192,7 @@
         ]
       },
       {
-        "bom-ref": "claim-requires-package-5",
+        "bom-ref": "claim-requires-package-3b62c6aafe9a",
         "target": "pkg:huggingface/meta-llama/Llama-3.1-70B-Instruct@1605565b47bb9346c5515c34102e054115b4f98b",
         "predicate": "requires-package pkg:pypi/transformers",
         "reasoning": "Declared in source metadata with no revision attached. The named artifact resolves and pins, so the reference is to a real artifact; the derivation itself is not established.",
@@ -205,7 +205,7 @@
       {
         "bom-ref": "evidence-derives-from-1",
         "propertyName": "whence:edge",
-        "description": "Provenance and verdict for claim-derives-from-1.",
+        "description": "Provenance and verdict for claim-derives-from-c6e8c676ce11.",
         "data": [
           {
             "name": "whence:provenance",
@@ -239,7 +239,7 @@
       {
         "bom-ref": "evidence-trained-on-2",
         "propertyName": "whence:edge",
-        "description": "Provenance and verdict for claim-trained-on-2.",
+        "description": "Provenance and verdict for claim-trained-on-d1c135411419.",
         "data": [
           {
             "name": "whence:provenance",
@@ -273,7 +273,7 @@
       {
         "bom-ref": "evidence-requires-package-3",
         "propertyName": "whence:edge",
-        "description": "Provenance and verdict for claim-requires-package-3.",
+        "description": "Provenance and verdict for claim-requires-package-b36e7e6fd78a.",
         "data": [
           {
             "name": "whence:provenance",
@@ -307,7 +307,7 @@
       {
         "bom-ref": "evidence-derives-from-4",
         "propertyName": "whence:edge",
-        "description": "Provenance and verdict for claim-derives-from-4.",
+        "description": "Provenance and verdict for claim-derives-from-f2ac84230de3.",
         "data": [
           {
             "name": "whence:provenance",
@@ -350,7 +350,7 @@
       {
         "bom-ref": "evidence-requires-package-5",
         "propertyName": "whence:edge",
-        "description": "Provenance and verdict for claim-requires-package-5.",
+        "description": "Provenance and verdict for claim-requires-package-3b62c6aafe9a.",
         "data": [
           {
             "name": "whence:provenance",

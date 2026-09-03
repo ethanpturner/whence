@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -210,3 +211,35 @@ def test_a_card_declaring_a_base_is_not_also_read_for_prose() -> None:
 
     Resolver(_Declared(), max_depth=1).resolve("a/root")
     assert not [p for p in asked if p.endswith("/raw/main/README.md")]
+
+
+def test_replaying_a_recording_twice_produces_the_same_bytes() -> None:
+    """A recorded scenario exists so a result can be re-derived and compared (DEC-009), and two
+    runs that differ make that impossible.
+
+    Two things defeated it. The report was dated with the wall clock, so every replay carried a
+    different timestamp for facts observed on the recording's capture date; and a claim's `bom-ref`
+    was its index in the edge list, so any upstream change shifted every later ref -- a diff of two
+    BOMs showing every claim after the first as modified, and a reference held elsewhere silently
+    pointing at a different claim.
+    """
+    from whence.cyclonedx import to_cyclonedx
+
+    scenario = ROOT / "benchmarks" / "declared-base"
+    target = yaml.safe_load((scenario / "input" / "target.yaml").read_text())
+
+    def once() -> dict[str, object]:
+        report = Resolver(RecordedRegistry(scenario / "recorded"), max_depth=2).resolve(
+            str(target["target"])
+        )
+        return to_cyclonedx(report)
+
+    first, second = once(), once()
+    assert json.dumps(first, sort_keys=True) == json.dumps(second, sort_keys=True)
+    # Dated from the recording, not from today.
+    manifest = yaml.safe_load((scenario / "recorded" / "manifest.yaml").read_text())
+    assert str(first["metadata"]["timestamp"]).startswith(str(manifest["captured_at"]))  # type: ignore[index]
+
+    refs = [c["bom-ref"] for c in first["declarations"]["claims"]]  # type: ignore[index]
+    assert len(refs) == len(set(refs))
+    assert not any(ref.rsplit("-", 1)[-1].isdigit() for ref in refs), "a ref is positional again"

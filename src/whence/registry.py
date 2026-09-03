@@ -54,6 +54,12 @@ class RecordedRegistry:
     def __init__(self, recorded_dir: Path) -> None:
         self._dir = recorded_dir
         manifest = yaml.safe_load((recorded_dir / "manifest.yaml").read_text())
+        # When the recording was captured. A replay dated with the wall clock produces a different
+        # BOM every run for identical inputs, so nothing about a replay can be byte-compared --
+        # which is most of what a recorded scenario is for (DEC-009).
+        self.captured_at: str | None = (
+            str(manifest["captured_at"]) if manifest.get("captured_at") else None
+        )
         self._by_path: dict[str, Response] = {}
         for entry in manifest.get("interactions") or []:
             request = str(entry["request"])

@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import hashlib
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from typing import Any
 
 from whence.domain import (
@@ -356,8 +357,24 @@ class Resolver:
             transient_failures=tuple(dict.fromkeys(state.transient)),
             inconclusive=tuple(dict.fromkeys(state.inconclusive)),
             partial=bool(state.transient),
-            captured_at=now(),
+            captured_at=self._captured_at(),
         )
+
+    def _captured_at(self) -> datetime:
+        """When the facts in this report were observed.
+
+        For a live run that is now. For a replay it is the recording's own capture date: the report
+        describes the registry as it was when captured, and dating it with today's clock both
+        misstates that and makes two replays of one recording differ, which is exactly what a
+        recorded scenario exists to prevent.
+        """
+        recorded = getattr(self._registry, "captured_at", None)
+        if isinstance(recorded, str):
+            try:
+                return datetime.fromisoformat(recorded).replace(tzinfo=UTC)
+            except ValueError:
+                pass
+        return now()
 
     def _add_edge(
         self,

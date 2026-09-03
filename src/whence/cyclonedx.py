@@ -11,6 +11,7 @@ verdict onto it would put "not determined" on the same axis as "not derived".
 
 from __future__ import annotations
 
+import hashlib
 from typing import Any
 
 from whence.domain import Edge, Node, ResolutionReport
@@ -43,6 +44,12 @@ def _component(node: Node) -> dict[str, Any]:
     return component
 
 
+def _claim_digest(edge: Edge) -> str:
+    """A short, stable identifier for one claim: source, relation, and target as emitted."""
+    material = f"{edge.source.purl()}|{edge.relation.value}|{edge.target.purl()}"
+    return hashlib.sha256(material.encode()).hexdigest()[:12]
+
+
 def _evidence_data(name: str, value: str) -> dict[str, Any]:
     return {
         "name": name,
@@ -64,7 +71,11 @@ def _claim(edge: Edge, index: int) -> tuple[dict[str, Any], dict[str, Any]]:
     for item in edge.evidence:
         data.append(_evidence_data("whence:locator", item.locator))
     claim = {
-        "bom-ref": f"claim-{edge.relation.value}-{index}",
+        # Derived from what the claim is about, not from its position in the list. An index-based
+        # ref moves for every claim after any upstream change, so a diff of two BOMs shows every
+        # later claim as modified and a reference held elsewhere silently points at a different
+        # claim. The digest keeps the ref stable and the relation keeps it readable.
+        "bom-ref": f"claim-{edge.relation.value}-{_claim_digest(edge)}",
         "target": edge.source.purl(),
         "predicate": f"{edge.relation.value} {edge.target.purl()}",
         "reasoning": _reasoning(edge),
