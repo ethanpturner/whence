@@ -40,8 +40,10 @@ were reachable through both Google Vertex AI Model Garden and Azure AI Foundry. 
 assertion. A digest is a fact.
 
 Every node `whence` emits carries a revision digest, and a node it could not pin is marked as such
-rather than silently recorded under its name. `benchmarks/transferred-namespace/` captures a live
-instance: `runwayml/stable-diffusion-v1-5` redirects into an organization controlled by someone
+rather than silently recorded under its name. `benchmarks/deleted-namespace/` captures a live instance of an unclaimed one — of 1,573
+base-reference namespaces checked in the download-ranked head, **7 are held by neither an
+organization nor a user**, roughly 1 in 220. `benchmarks/transferred-namespace/` captures the other
+shape: `runwayml/stable-diffusion-v1-5` redirects into an organization controlled by someone
 else, and file requests under the old path are served from the new namespace with no error.
 
 ## Signatures
