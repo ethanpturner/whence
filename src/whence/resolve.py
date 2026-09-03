@@ -34,6 +34,7 @@ from whence.domain import (
     now,
 )
 from whence.registry import Registry
+from whence.structure import check as structural_check
 
 # The registry states the derivation kind; a bare declaration leaves it unspecified and is never
 # assumed to be fine-tuning (DEC-015).
@@ -92,9 +93,17 @@ class _State:
 
 class Resolver:
     def __init__(
-        self, registry: Registry, host: str = "huggingface.co", max_depth: int = 2
+        self,
+        registry: Registry,
+        host: str = "huggingface.co",
+        max_depth: int = 2,
+        *,
+        check_structure: bool = False,
     ) -> None:
         self._registry, self._host, self._max_depth = registry, host, max_depth
+        # Opt-in: two extra requests per derives-from edge, and the only path that can move an
+        # edge's verdict off `unverifiable` -- downward, to `contradicted`, never up (DEC-020).
+        self._check_structure = check_structure
 
     # -- node resolution -------------------------------------------------------------------
 
@@ -290,6 +299,13 @@ class Resolver:
             )
             return
 
+        verdict = Verdict.UNVERIFIABLE
+        if self._check_structure and kind == "model":
+            outcome = structural_check(self._registry, source, resolved, relation)
+            verdict = outcome.verdict
+            if outcome.detail:
+                notes = [*notes, f"structure: {outcome.detail}"]
+
         self._record_node(resolved, kind, Verdict.UNVERIFIABLE, True, tuple(notes), state)
         state.edges.append(
             Edge(
@@ -299,8 +315,9 @@ class Resolver:
                 relation=relation,
                 provenance=asserted,
                 # Resolution establishes that the named artifact exists and pins. It does not
-                # establish that the derivation happened (DEC-005).
-                verdict=Verdict.UNVERIFIABLE,
+                # establish that the derivation happened (DEC-005). Only the structural check can
+                # move this, and only downward, to `contradicted` (DEC-020).
+                verdict=verdict,
                 evidence=evidence,
             )
         )

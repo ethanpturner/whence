@@ -1,0 +1,15 @@
+# A true declared derivation whose base is structurally compatible. The verdict stays
+# `unverifiable`, and that is the point: every fine-tune of this base has an identical transformer
+# body, so agreement is a necessary condition and not a sufficient one.
+
+root:
+  ref: { host: huggingface.co, namespace: Qwen, name: Qwen2.5-7B-Instruct }
+  pinned: true
+
+edges:
+  - source: Qwen/Qwen2.5-7B-Instruct
+    target: Qwen/Qwen2.5-7B
+    relation: derives-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "cardData.base_model"

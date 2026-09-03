@@ -1,0 +1,9 @@
+unresolvable:
+  - subject: "whether Qwen/Qwen2.5-7B-Instruct is in fact derived from Qwen/Qwen2.5-7B"
+    why: >-
+      Structural compatibility is necessary and not sufficient. Establishing the derivation itself
+      needs weight-level comparison, which is unbuilt (DEC-005).
+    still_established: >-
+      That the declared base exists, pins, and has a transformer body the declaration is consistent
+      with -- so the claim is not refuted, which is a weaker and more honest statement than
+      confirming it.

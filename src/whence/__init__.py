@@ -27,7 +27,9 @@ def _registry_for(scenario: Path | None) -> Registry:
 
 def _cmd_resolve(args: argparse.Namespace) -> int:
     scenario = Path(args.scenario) if args.scenario else None
-    resolver = Resolver(_registry_for(scenario), max_depth=args.max_depth)
+    resolver = Resolver(
+        _registry_for(scenario), max_depth=args.max_depth, check_structure=args.check_structure
+    )
     report = resolver.resolve(args.target)
     if args.bom:
         print(json.dumps(to_cyclonedx(report), indent=2))
@@ -58,7 +60,9 @@ def _cmd_evaluate(args: argparse.Namespace) -> int:
         scenario = ROOT / entry["path"]
         target = yaml.safe_load((scenario / "input" / "target.yaml").read_text())
         resolver = Resolver(
-            RecordedRegistry(scenario / "recorded"), max_depth=int(target.get("max_depth", 2))
+            RecordedRegistry(scenario / "recorded"),
+            max_depth=int(target.get("max_depth", 2)),
+            check_structure=bool(target.get("check_structure", False)),
         )
         report = resolver.resolve(str(target["target"]))
         result = score(report, scenario / "expected", entry["slug"])
@@ -88,6 +92,11 @@ def main() -> int:
         "--scenario", help="replay a benchmark scenario's recording instead of the network"
     )
     resolve.add_argument("--max-depth", type=int, default=2)
+    resolve.add_argument(
+        "--check-structure",
+        action="store_true",
+        help="compare declared bases' transformer bodies (phase two; can contradict, never verify)",
+    )
     resolve.add_argument("--bom", action="store_true", help="emit CycloneDX instead of a summary")
     resolve.set_defaults(func=_cmd_resolve)
 

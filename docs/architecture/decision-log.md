@@ -511,3 +511,61 @@ reference will not resolve for anyone.
 **Tradeoffs.** `unresolvable` becomes rarer than the name suggests — it means "no reference could
 be formed", not "the reference did not work". The class list is inherited from DEC-004 and renaming
 it now would churn the CycloneDX mapping for a wording improvement.
+
+---
+
+## DEC-020 — Phase two begins with a structural check, scoped by measurement
+
+**Date:** 2026-09-03
+**Status:** Accepted
+
+**Decision.** Phase two's first increment compares the **transformer body** of a model against its
+declared base: `hidden_size`, `num_hidden_layers`, `num_attention_heads`, `num_key_value_heads`,
+`intermediate_size`. A difference **contradicts** a `derives-from` declaration. Agreement leaves the
+verdict `unverifiable`. The check is opt-in (`--check-structure`), applies only to `derives-from`,
+and compares only fields present in both configurations.
+
+**Why this and not weights.** It settles a real question from a few hundred bytes rather than
+gigabytes, and it is the first mechanism in the tool that can produce `contradicted` at all.
+DEC-006 is not weakened: `config.json` is parsed as inert JSON and never handed to a framework. The
+documented remote-code paths on this registry run through a framework's *deserialization* of that
+file, not through reading it.
+
+**Why agreement is not verification.** Every fine-tune of a base carries that base's body, so
+compatibility narrows the field to "one of many" rather than "this one". `structural-compatible`'s
+`expected-absent.yaml` forbids `verified` for exactly this, because the temptation is strongest
+where the check has just succeeded.
+
+**The scope was set by measurement, not by intuition, and the first two attempts were wrong.**
+Tested against 45 real declared fine-tunes harvested from the registry:
+
+| Field set | Result |
+|---|---|
+| Including `architectures` and `vocab_size` | **9 of 35 flagged** — all false |
+| Body fields, absent treated as differing | **1 flagged** — also false |
+| Body fields, comparing only fields present in both | **0 flagged, 0 false positives** |
+
+The first set was wrong because a task head legitimately changes `architectures` — a reranker built
+on a masked-LM base reports a different class — and added tokens change `vocab_size`. Both are
+ordinary fine-tuning outcomes, and flagging them would have produced confident wrong findings at a
+26% rate.
+
+The second was wrong because composite and multimodal configurations nest their dimensions under a
+sub-key, so a top-level lookup finds nothing. Comparing a present value against an absent one
+reported `contradicted` because two publishers structure a file differently — absence read as a
+negative answer, which is the error this project exists to prevent, committed by the mechanism
+built to detect it.
+
+**What the final measurement does and does not say.** Zero false positives over 22 comparable pairs.
+The detection rate is **unmeasured**: the sample contained no mistaken declaration, so nothing
+exercised the contradiction path in the wild. The path is covered by unit tests with synthetic
+configurations, and that substitution is stated rather than hidden — benchmark scenarios use real
+captures, and no real instance was found.
+
+Of the 45 pairs, 10 had no fetchable configuration and 13 shared too few comparable fields. So on
+this sample the check reaches a usable comparison for roughly half of declared fine-tunes, and
+returns `unverifiable` for the rest. That is a modest instrument, honestly bounded.
+
+**Open questions.** Whether a nested-config reader would recover the 13 `too-few-fields` cases.
+Probably, and it needs its own measurement before it is trusted, since the same three attempts
+above suggest the intuitive version will be wrong.

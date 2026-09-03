@@ -90,3 +90,12 @@ scenarios:
 #
 # - slug: no-lineage
 #   measures: a model with no upstream. The negative set - correct output asserts nothing.
+
+  - slug: structural-compatible
+    name: A declared base whose transformer body is compatible
+    path: benchmarks/structural-compatible
+    status: recorded
+    category: structural
+    # Phase two's first increment. The verdict stays `unverifiable` even though the check passed:
+    # every fine-tune of this base has this exact body, so agreement narrows the field to "one of
+    # many" rather than "this one". expected-absent forbids `verified` for that reason.

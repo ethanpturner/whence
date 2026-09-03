@@ -1,0 +1,17 @@
+absent:
+  - source: Qwen/Qwen2.5-7B-Instruct
+    target: Qwen/Qwen2.5-7B
+    relation: derives-from
+    verdict_if_emitted: verified
+    why: >-
+      **The failure this scenario exists for.** A structural check that passes is the strongest
+      evidence phase two can currently produce, and it still is not enough. Every fine-tune of
+      Qwen2.5-7B carries this exact configuration, so a compatible body narrows the field to
+      "one of many" rather than "this one". Reporting `verified` would be the overclaiming the
+      project was built to correct, emitted by the mechanism built to correct it.
+
+  - source: Qwen/Qwen2.5-7B-Instruct
+    target: Qwen/Qwen2.5-7B
+    relation: derives-from
+    verdict_if_emitted: contradicted
+    why: "The bodies agree. Nothing here is evidence against the declaration."

@@ -1,0 +1,38 @@
+# Captured registry interactions, replayed offline (DEC-009).
+#
+# Includes `config.json` fetches, which the registry serves via a content redirect. Both hops
+# are recorded: the resolver's namespace logic depends on seeing 307s (DEC-017), so the seam
+# does not follow them and the structural check takes the hop itself.
+captured_at: 2026-09-03
+host: huggingface.co
+interactions:
+  - request: GET /api/models/Qwen/Qwen2.5-7B-Instruct
+    status: 200
+    body: model-Qwen-Qwen2.5-7B-Instruct.json
+  - request: GET /Qwen/Qwen2.5-7B-Instruct/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%220178295f88afc3c7f279ed284f961f8c1be00654%22
+    body: null
+  - request: GET /api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%220178295f88afc3c7f279ed284f961f8c1be00654%22
+    status: 200
+    body: config-Qwen-Qwen2.5-7B-Instruct.json
+  - request: GET /api/models/Qwen/Qwen2.5-7B
+    status: 200
+    body: model-Qwen-Qwen2.5-7B.json
+  - request: GET /Qwen/Qwen2.5-7B/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/Qwen/Qwen2.5-7B/d149729398750b98c0af14eb82c78cfe92750796/config.json?%2FQwen%2FQwen2.5-7B%2Fresolve%2Fmain%2Fconfig.json=&etag=%221a90713f0e2cf13b8320cd576175ff9f0b587ea4%22
+    body: null
+  - request: GET /api/resolve-cache/models/Qwen/Qwen2.5-7B/d149729398750b98c0af14eb82c78cfe92750796/config.json?%2FQwen%2FQwen2.5-7B%2Fresolve%2Fmain%2Fconfig.json=&etag=%221a90713f0e2cf13b8320cd576175ff9f0b587ea4%22
+    status: 200
+    body: config-Qwen-Qwen2.5-7B.json
+  - request: GET /api/models/Qwen/Qwen2.5-0.5B
+    status: 200
+    body: model-Qwen-Qwen2.5-0.5B.json
+  - request: GET /Qwen/Qwen2.5-0.5B/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/Qwen/Qwen2.5-0.5B/060db6499f32faf8b98477b0a26969ef7d8b9987/config.json?%2FQwen%2FQwen2.5-0.5B%2Fresolve%2Fmain%2Fconfig.json=&etag=%22141506237b9022c4ab3e01734cfafb9310b57d2d%22
+    body: null
+  - request: GET /api/resolve-cache/models/Qwen/Qwen2.5-0.5B/060db6499f32faf8b98477b0a26969ef7d8b9987/config.json?%2FQwen%2FQwen2.5-0.5B%2Fresolve%2Fmain%2Fconfig.json=&etag=%22141506237b9022c4ab3e01734cfafb9310b57d2d%22
+    status: 200
+    body: config-Qwen-Qwen2.5-0.5B.json

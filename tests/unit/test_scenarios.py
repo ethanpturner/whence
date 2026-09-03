@@ -21,7 +21,9 @@ def test_scenario(entry: dict[str, object]) -> None:
     scenario = ROOT / str(entry["path"])
     target = yaml.safe_load((scenario / "input" / "target.yaml").read_text())
     resolver = Resolver(
-        RecordedRegistry(scenario / "recorded"), max_depth=int(target.get("max_depth", 2))
+        RecordedRegistry(scenario / "recorded"),
+        max_depth=int(target.get("max_depth", 2)),
+        check_structure=bool(target.get("check_structure", False)),
     )
     report = resolver.resolve(str(target["target"]))
     result = score(report, scenario / "expected", str(entry["slug"]))
