@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import pytest
 
-from whence.domain import ResolutionClass, Verdict
+from whence.domain import ArtifactRef, ResolutionClass, SignatureState, Verdict
 from whence.registry import LiveRegistry
 from whence.resolve import Resolver
 
@@ -90,7 +90,6 @@ def test_a_signed_and_an_unsigned_model_are_distinguished(registry: LiveRegistry
     Asserts the distinction rather than a particular state for a particular model: if IBM stops
     signing, this should fail loudly rather than silently testing nothing.
     """
-    from whence.domain import SignatureState
     from whence.signing import detect
 
     signed, note = detect(registry, _ref("ibm-granite/granite-swash-2b"))
@@ -103,7 +102,6 @@ def test_a_signed_and_an_unsigned_model_are_distinguished(registry: LiveRegistry
 
 
 def _ref(slug: str):
-    from whence.domain import ArtifactRef
 
     namespace, name = slug.split("/")
     return ArtifactRef(host="huggingface.co", namespace=namespace, name=name, pinned=False)
