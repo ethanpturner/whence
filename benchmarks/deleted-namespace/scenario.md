@@ -55,12 +55,36 @@ organization costs no extra request.
 ## How it was found
 
 45,000 models by download rank yielded 11,189 base references across 3,323 namespaces. 1,573 never
-appeared as a live author; 444 were checkable before the registry throttled the source address, and
-15 of those had no public models. Of the 15, exactly one — `AvelonLabs` — had neither an
-organization nor a user.
+appeared as a live author. Checking them unauthenticated takes two passes around the rate limiter;
+the first covered 444 and the second is ongoing, and between them **four namespaces are confirmed
+free** — `AvelonLabs`, `TRAC-FLVN`, `UsefulSensors`, `deepreinforce-ai`.
 
 The earlier 22,000-model sweep found none, which is why this scenario carried `status: unobserved`
 for a day. It is rare in the download-ranked head, and it is not absent.
+
+## A correction: free and redirecting are independent
+
+An earlier version of this document said the nine empty namespaces from the first sweep broke down
+as "6 redirect across ownership, 2 return 401, 1 returns 200, and **none is free**". That conflated
+two different properties, and it was wrong.
+
+`UsefulSensors` and `deepreinforce-ai` are both:
+
+| | |
+|---|---|
+| organization | **404** |
+| user | **404** |
+| `UsefulSensors/moonshine-base` | **307** → `moonshine-ai/moonshine-base` |
+| `deepreinforce-ai/Ornith-1.0-35B` | **307** → `ornith-ai/Ornith-1.0-35B` |
+
+So the namespace is unclaimed *and* the old model path actively redirects. Whether registering the
+free name would capture that redirect is **undetermined**, and deliberately so: establishing it
+would mean registering someone's abandoned namespace to see what happens, which is not an experiment
+worth running.
+
+That makes the hazard worse than this scenario originally described, not better. A reference can be
+simultaneously re-registrable and currently serving traffic, and a tool that checks only the model
+path sees a working redirect and reports nothing.
 
 ## Pass condition
 
