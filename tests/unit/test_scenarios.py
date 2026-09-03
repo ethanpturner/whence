@@ -103,3 +103,61 @@ def test_a_transient_while_expanding_marks_the_run_partial() -> None:
     report = Resolver(_Flaky(), max_depth=2).resolve("a/root")
     assert report.partial
     assert "a/root" in report.transient_failures
+
+
+def test_a_cross_namespace_redirect_keeps_the_name_the_card_gave() -> None:
+    """DEC-011 and DEC-017. The declared name survives into the graph as a node of its own.
+
+    Recording only the resolved target states that the model derives from an artifact its author
+    never named, and it erases the finding: the whole exposure is that the name in the card and the
+    artifact the registry serves are controlled by different parties. The BOM previously carried
+    the receiving namespace and nothing else.
+    """
+    scenario = ROOT / "benchmarks" / "transferred-namespace"
+    target = yaml.safe_load((scenario / "input" / "target.yaml").read_text())
+    report = Resolver(RecordedRegistry(scenario / "recorded"), max_depth=1).resolve(
+        str(target["target"])
+    )
+    by_slug = {n.ref.slug: n for n in report.nodes}
+
+    declared = by_slug["runwayml/stable-diffusion-v1-5"]
+    assert not declared.reachable
+    assert dict(declared.properties) == {
+        "whence:namespace-state": "held-empty",
+        "whence:redirect-target": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+    }
+
+    resolved = dict(by_slug["stable-diffusion-v1-5/stable-diffusion-v1-5"].properties)
+    assert resolved["whence:namespace-state"] == "held"
+    assert resolved["whence:risk"] == "ownership-boundary-crossed"
+
+    # Resolution succeeded and established something other than what was asked, so the BOM says
+    # `unknown` for the declared name rather than presenting the answer as complete.
+    assert "runwayml/stable-diffusion-v1-5" in report.inconclusive
+    edge = next(e for e in report.edges if e.relation.value == "derives-from")
+    assert edge.declared_as is not None
+    assert edge.declared_as.slug == "runwayml/stable-diffusion-v1-5"
+    assert edge.verdict.value == "unverifiable"
+
+
+def test_a_same_namespace_redirect_asks_no_ownership_question() -> None:
+    """A rename inside one namespace. The same party controls both names, so a namespace lookup
+    would spend a request per redirect to establish what is not in doubt -- and `declared-base`'s
+    recording contains no such interaction, which is how the cost was noticed."""
+    from whence.registry import Response
+
+    class _Renaming:
+        def __init__(self) -> None:
+            self.asked: list[str] = []
+
+        def get(self, path: str) -> Response:
+            self.asked.append(path)
+            if path == "/api/models/org/old":
+                return Response(status=307, body=None, location="/api/models/org/new")
+            if path == "/api/models/org/new":
+                return Response(status=200, body={"sha": "abc", "cardData": {}})
+            return Response(status=200, body={"sha": "root", "cardData": {"base_model": "org/old"}})
+
+    registry = _Renaming()
+    Resolver(registry, max_depth=1).resolve("org/root")
+    assert not [p for p in registry.asked if "organizations" in p or "author=" in p]

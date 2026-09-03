@@ -23,6 +23,12 @@ interactions:
   - request: GET /api/organizations/stable-diffusion-v1-5/overview
     status: 200
     body: org-stable-diffusion-v1-5.json
+  # The receiving namespace publishes two models, so it is `held` rather than `held-empty`. The
+  # contrast with `runwayml` above is the whole scenario: the name the card gave belongs to a shell
+  # that publishes nothing, and the artifact served under it belongs to somebody else who does.
+  - request: GET /api/models?author=stable-diffusion-v1-5&limit=5
+    status: 200
+    body: author-stable-diffusion-v1-5.json
   # Recorded to document that content fetches follow the same redirect: a file requested under the
   # old path is served from the new namespace at the new revision, with no error and no warning.
   - request: GET /runwayml/stable-diffusion-v1-5/resolve/main/model_index.json

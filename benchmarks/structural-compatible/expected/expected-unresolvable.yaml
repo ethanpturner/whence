@@ -1,5 +1,9 @@
 unresolvable:
   - subject: "whether Qwen/Qwen2.5-7B-Instruct is in fact derived from Qwen/Qwen2.5-7B"
+    # The edge this row is about, named structurally so the scorer checks it rather than
+    # parsing the sentence above. `subject` stays prose because it says what is open far
+    # better than a triple can.
+    edge: { source: Qwen/Qwen2.5-7B-Instruct, relation: derives-from, target: Qwen/Qwen2.5-7B }
     why: >-
       Structural compatibility is necessary and not sufficient. Establishing the derivation itself
       needs weight-level comparison, which is unbuilt (DEC-005).

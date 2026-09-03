@@ -168,8 +168,36 @@ class Resolver:
                 return None, declared, cls, notes
             # DEC-017: following a registry-issued redirect is resolution, but a redirect across
             # namespaces changed who controls what the name returns.
-            if resolved.namespace != declared.namespace:
-                notes = [*notes, f"redirect crosses namespace: {declared.slug} -> {resolved.slug}"]
+            if resolved.namespace == declared.namespace:
+                # A rename inside one namespace. The same party controls both names, so the
+                # ownership question a namespace lookup answers is not open, and asking would
+                # spend a request per redirect to learn what is already known.
+                return resolved, declared, cls, notes
+
+            # DEC-017. The trust anchor moved: the name the card gave and the artifact the registry
+            # serves are controlled by different parties. Both namespaces are looked up, because
+            # which of the two states each is in is the whole finding -- `held-empty` on the
+            # declared side is `transferred-namespace`, `free` would be a live hijack opportunity.
+            notes = [*notes, f"redirect crosses namespace: {declared.slug} -> {resolved.slug}"]
+            self._pending_properties[declared.slug] = (
+                ("whence:namespace-state", self._namespace_state(declared.namespace, state)),
+                ("whence:redirect-target", resolved.slug),
+            )
+            self._pending_properties[resolved.slug] = (
+                *self._pending_properties.get(resolved.slug, ()),
+                ("whence:namespace-state", self._namespace_state(resolved.namespace, state)),
+                ("whence:redirect", "cross-namespace"),
+                ("whence:risk", "ownership-boundary-crossed"),
+            )
+            # The declared name is recorded as a node of its own, unreachable, alongside the one it
+            # redirects to. Keeping only the resolved target would state that the referring model
+            # derives from an artifact its author never named -- and it would erase the finding,
+            # since the whole exposure is that those are two different parties.
+            self._record_node(declared, kind, Verdict.UNVERIFIABLE, False, tuple(notes), state)
+            # Resolution succeeded; what it established is not what the caller asked about, so the
+            # BOM says `unknown` for the declared name rather than presenting the answer as
+            # complete (DEC-014).
+            state.inconclusive.append(declared.slug)
             return resolved, declared, cls, notes
 
         if response.status == 200 and isinstance(response.body, dict):

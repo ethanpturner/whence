@@ -1,5 +1,9 @@
 unresolvable:
   - subject: "whether the declared artifact and the redirect target are the same bytes"
+    # The edge this row is about, named structurally so the scorer checks it rather than
+    # parsing the sentence above. `subject` stays prose because it says what is open far
+    # better than a triple can.
+    edge: { source: Comfy-Org/stable-diffusion-v1-5-archive, relation: derives-from, target: stable-diffusion-v1-5/stable-diffusion-v1-5 }
     why: >-
       The card names `runwayml/stable-diffusion-v1-5`; the registry serves
       `stable-diffusion-v1-5/stable-diffusion-v1-5` at revision 451f4fe. Whether that revision is

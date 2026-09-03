@@ -56,6 +56,7 @@ def _cmd_resolve(args: argparse.Namespace) -> int:
 def _cmd_evaluate(args: argparse.Namespace) -> int:
     registry = yaml.safe_load((ROOT / "benchmarks" / "scenarios.yaml").read_text())
     failed = 0
+    total_prose = 0
     for entry in registry.get("scenarios") or []:
         if entry["status"] != "recorded":
             print(f"skip  {entry['slug']}  ({entry['status']})")
@@ -70,6 +71,7 @@ def _cmd_evaluate(args: argparse.Namespace) -> int:
         )
         report = resolver.resolve(str(target["target"]))
         result = score(report, scenario / "expected", entry["slug"])
+        total_prose += result.unchecked_prose
         if result.passed:
             print(f"ok    {entry['slug']}  ({len(result.recovered)} edges)")
         else:
@@ -83,6 +85,14 @@ def _cmd_evaluate(args: argparse.Namespace) -> int:
             ):
                 for item in items:
                     print(f"        {label}: {item}")
+    # Printed rather than folded into the pass. These entries forbid narrative claims -- "the base
+    # does not exist", "the reference is merely a dead end" -- and this tool emits a graph and a
+    # BOM, so they are vacuously satisfied and not verified. A negative set that silently scores
+    # as passed is the overclaiming the corpus exists to measure.
+    print(
+        f"\n{total_prose} negative-set entries forbid a narrative claim and are not "
+        f"machine-checked; this tool emits no narrative, so they are vacuously satisfied."
+    )
     return 1 if failed else 0
 
 

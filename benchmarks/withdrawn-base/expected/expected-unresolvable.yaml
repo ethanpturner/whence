@@ -9,6 +9,10 @@
 
 unresolvable:
   - subject: "the derivation MaziyarPanahi/WizardLM-2-7B-GGUF quantized-from microsoft/WizardLM-2-7B"
+    # The edge this row is about, named structurally so the scorer checks it rather than
+    # parsing the sentence above. `subject` stays prose because it says what is open far
+    # better than a triple can.
+    edge: { source: MaziyarPanahi/WizardLM-2-7B-GGUF, relation: quantized-from, target: microsoft/WizardLM-2-7B }
     why: >-
       Access to the target is denied, so it cannot be pinned or compared and no stronger verdict
       than `unverifiable` is reachable. Unlike deleted-namespace this could resolve for a caller

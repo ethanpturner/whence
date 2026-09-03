@@ -1,5 +1,9 @@
 unresolvable:
   - subject: "the derivation bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF quantized-from AvelonLabs/OpenClaude-1.7B-Merged"
+    # The edge this row is about, named structurally so the scorer checks it rather than
+    # parsing the sentence above. `subject` stays prose because it says what is open far
+    # better than a triple can.
+    edge: { source: bartowski/AvelonLabs_OpenClaude-1.7B-Merged-GGUF, relation: quantized-from, target: AvelonLabs/OpenClaude-1.7B-Merged }
     why: >-
       The target cannot be pinned, fetched, or compared, so no verdict stronger than `unverifiable`
       is reachable. Unlike `withdrawn-base`, credentials would not help: no owner holds the
