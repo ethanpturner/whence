@@ -48,10 +48,11 @@ Selecting this subject surfaced a gap in the `Relation` enum. The registry decla
 qualifier — `base_model:quantized:microsoft/WizardLM-2-7B` — and the vocabulary had no term for
 quantization, so the relation would have flattened to `derives-from`.
 
-That is not a rare corner. Across 3,206 `base_model:` tags harvested from the top 4,000 models by
-download, **quantization is the most commonly declared derivation at 1,030, roughly twice
-fine-tuning's 507**, with adapters at 39 and merges at 27. The most common real relation in this
-ecosystem had no name in the model. Fixed in DEC-015.
+That is not a rare corner. Counting distinct `base_model:` references, the top 4,000 models by
+download give quantized 1,030 (64.3%), finetune 507, adapter 39, merge 27 — while the 1,000
+most recently modified models invert the top two, at finetune 84 (45.2%) and quantized 63. All four
+kinds are common, **every reference in both samples carries a qualifier**, and which kind leads
+depends on how the registry is sliced. Fixed in DEC-015.
 
 It matters beyond bookkeeping: quantized lineage is the case weight-level comparison is expected to
 handle worst (DEC-005), so an edge that records the qualifier tells phase two in advance where its

@@ -340,10 +340,31 @@ edge records `derives-from` and the kind stays unspecified — it is never assum
 fine-tuning.
 
 **Why.** The original vocabulary had one term for all derivation, and derivation kinds are not
-interchangeable. Across 3,206 `base_model:` tags harvested from the top 4,000 models by download:
-**quantized 1,030, finetune 507, adapter 39, merge 27**, with the remainder bare. Quantization is
-the most commonly declared derivation in the ecosystem and had no name in the model, so the most
-common real relation would have been flattened into the generic one.
+interchangeable. Two samples, counting **distinct `base_model:` references**:
+
+| Relation | Top 4,000 by download (n=1,603) | 1,000 most recently modified (n=186) |
+|---|---:|---:|
+| `quantized` | 1,030 (64.3%) | 63 (33.9%) |
+| `finetune` | 507 (31.6%) | 84 (45.2%) |
+| `adapter` | 39 (2.4%) | 27 (14.5%) |
+| `merge` | 27 (1.7%) | 12 (6.5%) |
+
+All four kinds occur in numbers too large to treat as edge cases, and **every reference in both
+samples carries a qualifier — zero were bare.** The registry always states the derivation kind, so
+a single generic relation discards information that is always present.
+
+Note that the mix is sample-dependent: quantization dominates by download-weighted popularity,
+where GGUF republications of popular models are overrepresented, while fine-tuning leads among
+recently-modified models. That instability is itself an argument for recording the qualifier rather
+than assuming a default — no default is safe across slices of the same registry.
+
+**Correction (2026-09-03).** This entry originally cited "3,206 tags ... with the remainder bare"
+and called quantization the most common derivation in the ecosystem without qualification. Both
+were wrong. The 3,206 figure double-counted: the registry emits a bare tag *and* a qualified tag
+for every reference, so the distinct-reference count is 1,603 and the table above sums to it. And
+the ecosystem-wide claim did not survive a second sample. The decision is unchanged; its evidence
+is corrected. The error was in the first commit's message, which cannot be amended, so it is
+recorded here.
 
 The consequence is not cosmetic. DEC-005 anticipates that quantized, merged, and heavily
 continued-pretrained models are where weight-level comparison performs worst. An edge that carries
@@ -353,7 +374,13 @@ presents every derivation as equally checkable.
 **On the bare case.** A `base_model:` declaration with no qualifier says a base exists and does not
 say how it was used. Recording `derives-from` with the kind unspecified is what the source
 supports. Inferring fine-tuning because it is the common case is exactly the inference DEC-010
-forbids, and it would be wrong more often than not given the distribution above.
+forbids, and the sampling above shows it would be wrong most of the time in one slice and a
+minority of the time in another.
+
+The rule is retained as **defensive rather than load-bearing**: no bare-only reference was observed
+on this registry in either sample. It covers other registries, older metadata, and the possibility
+that this registry's tagging changes. A rule that never fires here is cheap; discovering the need
+for it at runtime is not.
 
 **Alternatives considered.** Making `Relation` an open vocabulary normalized like `NodeKind`.
 Rejected: relation kind drives phase-two method selection, so an unrecognized relation must fail

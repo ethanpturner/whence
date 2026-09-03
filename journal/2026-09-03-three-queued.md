@@ -39,6 +39,11 @@ models: **quantized 1,030, finetune 507, adapter 39, merge 27.** Quantization is
 declared derivation in the ecosystem, at about twice the rate of fine-tuning — and it had no name in
 the data model. The most common real relation was the one I had not modelled.
 
+> **Corrected 2026-09-03**, see `2026-09-03-verifying-the-measurement.md`. The 3,206 figure
+> double-counts, the distinct-reference count is 1,603, and the ecosystem-wide claim about
+> quantization does not survive a second sample. Left as written because this is a dated record of
+> what I believed at the time.
+
 The consequence is not bookkeeping. DEC-005 already anticipates that quantized and merged models are
 where weight comparison performs worst, so an edge carrying its qualifier tells phase two in advance
 which of its results to distrust. A flattened edge presents every derivation as equally checkable.
