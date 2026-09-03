@@ -389,3 +389,41 @@ loudly rather than normalize to something plausible. The enum stays closed and g
 **Tradeoffs.** A registry that invents a qualifier the enum lacks stops the run. That is the
 intended behaviour — see above — but it means the enum needs revisiting as the ecosystem's
 vocabulary moves.
+
+---
+
+## DEC-016 — The repository's own dependencies are pinned by content and verified by its own rules
+
+**Date:** 2026-09-03
+**Status:** Accepted
+
+**Decision.** Vendored third-party files are pinned in `schema/PINNED.yaml` by git blob id, SHA-256,
+and size, alongside the source commit. `scripts/verify_pins.py` recomputes those digests and emits
+`verified`, `contradicted`, or `unverifiable` per file. Both digests are recorded rather than one:
+git's object id is SHA-1 based and SHA-1 is not collision resistant, so either alone is a weaker
+claim than both together.
+
+**Why.** The schemas were originally retrieved from the `master` branch and recorded with a date.
+That is a reference by name to a moving target — exactly the pattern DEC-002 rejects in a model's
+dependency record — and `schema/README.md` said so in its first version while doing it anyway. A
+provenance tool whose own dependency record is unpinned is not in a position to make the argument.
+
+The verifier applies the project's rules to the project. `PINNED.yaml` is a claim; recomputing the
+digests is what turns it into a finding, which is the claimed-versus-verified distinction the tool
+is designed to make about model lineage (DEC-001). A missing file is `unverifiable` rather than
+`contradicted`, because absence of the artifact is not evidence that the recorded digest is wrong.
+And the `--online` upstream check is advisory: a network failure reports `unverifiable` and leaves
+the exit code alone, per DEC-014's rule that a transient condition produces no verdict.
+
+**Alternatives considered.** A git submodule. Rejected: it pins, but it makes the offline guarantee
+depend on submodule initialisation, and the vendored set is three files that change rarely.
+Recording only SHA-256 was also considered; the blob id is kept because it is the value GitHub
+reports, so a pin can be checked against the API without downloading the file.
+
+**Tradeoffs.** Updating a vendored file is now three steps rather than one. That is the intended
+friction: an unnoticed change to a schema the mapping document claims conformance against is
+precisely what the pin exists to catch.
+
+**Open questions.** Whether the same treatment should extend to `uv.lock` once there are runtime
+dependencies to lock. The lock file already pins; what it lacks is a verdict-emitting check in the
+same shape as this one.

@@ -54,6 +54,9 @@ an implementation detail.
   marker is deselected in `addopts` precisely so a bare `pytest` cannot reach out.
 - **A benchmark scenario is registered in `benchmarks/scenarios.yaml` or it is not part of the
   set.** Never discover scenarios by scanning directories.
+- **Vendored files are pinned by content digest and verified** (DEC-016).
+  `scripts/verify_pins.py` checks `schema/PINNED.yaml` offline and emits the project's own three
+  verdicts. Updating a vendored file means regenerating the pin, not editing around it.
 - **Match the prose register** in docs and PR descriptions: flat declarative, no marketing
   language, no emoji, no second person. State the rule, then state why the alternative fails.
 

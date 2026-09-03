@@ -1,0 +1,35 @@
+# Pinned vendored dependencies.
+#
+# The record below is a CLAIM about what this repository contains. `scripts/verify_pins.py`
+# turns it into a verified or contradicted statement by recomputing the digests. That is the
+# same claimed-versus-verified distinction the tool is designed to make about model lineage,
+# applied to this repository's own dependencies (DEC-016).
+#
+# `blob_sha1` is the git object id of the file content -- the same value GitHub reports for the
+# blob -- so it verifies the exact bytes independently of any branch, tag, or commit. `sha256` is
+# recorded alongside it because git's object id is SHA-1 based and SHA-1 is not collision
+# resistant; either alone is a weaker claim than both together.
+
+source:
+  repository: https://github.com/CycloneDX/specification
+  # Content was verified present at this commit. Retrieval originally used the `master` branch,
+  # which is exactly the unpinned-by-name pattern DEC-002 exists to reject; the commit is recorded
+  # so the reference no longer depends on where a branch points.
+  commit: 595d98f16159bdf7463adc140509ded479130b8b
+  commit_date: "2026-09-02T06:55:26Z"
+  path_prefix: schema/
+  license: Apache-2.0
+
+files:
+  - path: bom-1.7.schema.json
+    blob_sha1: 1ca17a2e3f1f684dfcbe66b4f182d6ea21464278
+    sha256: 73308edec3ab2d38bfffd993e96a042b594314143b6971a6e9ed98bbb6bd76ce
+    size: 315722
+  - path: spdx.schema.json
+    blob_sha1: 2dccc87e3cb3c3438d3f1623a3483657ee8d4189
+    sha256: ea6e844ee6fba1e93473d94834d0ee0996970533497935f932f73d488ffdf4a3
+    size: 62077
+  - path: jsf-0.82.schema.json
+    blob_sha1: f46bfb1e52731ad1280123ff3e2bd29bd18d4bc2
+    sha256: 8bae002c25e723db7ee1f26afde680ae1a2b1a8f6b4b4b0fd65dc3becb090aae
+    size: 8058
