@@ -620,3 +620,47 @@ signature is not an absent one and the difference matters to whoever published i
 
 **Open questions.** Whether to accept an identity policy and verify against it. That would let the
 state reach `valid` honestly, and it needs the policy format designed first.
+
+---
+
+## DEC-022 — Tensor-inventory comparison is rejected
+
+**Date:** 2026-09-03
+**Status:** Rejected
+
+**Proposal.** Compare a model's tensor inventory against its declared base's. The `safetensors`
+format carries a JSON header listing every tensor's name, dtype and shape, and it is readable with a
+byte-range request: **32 KB retrieves the full 290-tensor inventory of a 1 GB model**, and sharded
+models publish `model.safetensors.index.json`, which lists every tensor name outright. A far
+stronger fingerprint than configuration, at almost no cost. It looked like the obvious next
+increment after DEC-020.
+
+**Rejected on measurement.** Of 20 sampled declared fine-tunes, 14 were comparable and **3 had
+differing inventories — all three legitimate**:
+
+| Pair | Difference | What it actually is |
+|---|---|---|
+| `Qwen3-0.6B` ← `Qwen3-0.6B-Base` | `+lm_head.weight` | an **untied output head**, normal for an instruct variant |
+| `Qwen3-Embedding-0.6B` ← `Qwen3-0.6B-Base` | 310 renamed | a **`model.` prefix** difference from a wrapper class; the tensors are otherwise identical |
+| `whisper-large-v3-turbo` ← `whisper-large-v3` | −672 tensors | a **pruned decoder**; the turbo variant has fewer layers by design |
+
+A 21% false-positive rate on real declared fine-tunes — the same magnitude as the first
+configuration field set, which flagged 9 of 35.
+
+**Why the intuition failed.** "A fine-tune preserves the tensor inventory" is false in three
+independent ways. Fine-tunes **add** tensors when an output head is untied. Wrapper classes
+**rename** them wholesale via module prefixes. Distilled and pruned variants **remove** whole
+layers and are still legitimately declared as derived.
+
+**Why no weaker form was adopted.** Normalising prefixes and comparing the shapes of
+commonly-named tensors would remove the second case and part of the first. It is also, at that
+point, the configuration check with more steps and more places to be wrong — DEC-020 already
+compares the dimensions those shapes are derived from, more cheaply and with a measured zero
+false-positive rate. Adding a second path to the same conclusion buys nothing and doubles the
+surface.
+
+**What this leaves.** Weight-level comparison of tensor *values* remains unbuilt and DEC-005's
+bound stands. This entry closes the cheap approximation of it, and the reason is worth keeping:
+**four successive attempts at a structural signal, three rejected on measurement.** Each was
+plausible, internally coherent, and wrong about real published models in a way only contact with
+them revealed.
