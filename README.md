@@ -4,6 +4,12 @@
 metadata and emits a CycloneDX 1.7 ML-BOM. It also detects OMS signatures and, opt-in, compares a
 declared base's transformer body.
 
+Where a card declares no `base_model` but says in words what it was built from, that sentence
+becomes an edge carrying the quotation and the name **exactly as written** — never qualified with a
+namespace the card did not give (DEC-023). The pattern's error rate is measured against published
+cards rather than asserted: its first version produced ten claims across 91 of them and all ten
+named an ordinary English word.
+
 **No edge is ever `verified`** — see below, which is the point rather than a gap. Phase two *began*
 with the structural check (DEC-020), the only mechanism that can emit `contradicted`; weight-level
 comparison of tensor values is not built (DEC-005), and a structural match is a necessary condition,
@@ -14,6 +20,7 @@ uv run whence resolve nvidia/Llama-3.1-Nemotron-70B-Instruct-HF \
     --scenario benchmarks/declared-base --bom
 uv run whence evaluate          # every recorded scenario, scored against its truth set, offline
 uv run whence resolve <model> --check-structure --check-signatures   # phase two, opt-in
+uv run python scripts/measure_prose.py --limit 60 --search distill  # what the prose scan does live
 ```
 
 ## What it does

@@ -208,6 +208,9 @@ def _score_unresolvable(result: Score, expected_dir: Path, report: ResolutionRep
         # an optional `edge:` naming what must stay `unverifiable`, and a row without one is prose
         # -- counted, not silently passed. Parsing the sentence instead would be a scorer that
         # believes whatever the truth set happens to phrase in a familiar way.
+        if "source" in row and "relation" in row:
+            _score_unresolvable_edge(result, row, report)
+            continue
         pair = row.get("edge")
         if not isinstance(pair, dict):
             result.unchecked_prose += 1
@@ -232,6 +235,52 @@ def _score_unresolvable(result: Score, expected_dir: Path, report: ResolutionRep
             result.honesty_failures.append(f"composition aggregate {missing!r} expected and absent")
         for present in forbidden & actual:
             result.honesty_failures.append(f"composition aggregate {present!r} must not appear")
+
+
+def _score_unresolvable_edge(result: Score, row: dict[str, Any], report: ResolutionReport) -> None:
+    """An edge that exists and cannot be established -- `prose-only-base`'s whole scenario.
+
+    The name is on the **target**, not on `declared_as`. `declared_as` pairs a name that was given
+    with an artifact that was resolved (DEC-011), and here nothing resolved: the card says the model
+    derives from "Mistral-7B-v0.2" and the tool declines to guess whose. Putting the name in
+    `declared_as` with an empty target would record a claim with nothing it is a claim about.
+
+    The excerpt is checked because without it the edge is an assertion with nothing behind it, and
+    a reader cannot audit the tool's refusal to resolve -- which is the reason DEC-012 permits an
+    excerpt at all.
+    """
+    declared = str(row.get("declared_as") or row.get("target") or "")
+    relation = str(row["relation"])
+    edge = next(
+        (
+            e
+            for e in report.edges
+            if e.source.slug == str(row["source"])
+            and e.relation.value == relation
+            and (e.declared_as.slug if e.declared_as else e.target.slug) == declared
+        ),
+        None,
+    )
+    if edge is None:
+        result.missed.append(f"{row['source']} --{relation}--> {declared} (unresolvable)")
+        return
+    for field_name, actual in (
+        ("provenance", edge.provenance.value),
+        ("verdict", edge.verdict.value),
+    ):
+        if row.get(field_name) and actual != row[field_name]:
+            result.mismatched.append(f"{declared} {field_name} {actual} != {row[field_name]}")
+    evidence = edge.evidence[0] if edge.evidence else None
+    if row.get("evidence_locator"):
+        got = evidence.locator if evidence else None
+        if got != row["evidence_locator"]:
+            result.mismatched.append(f"{declared} locator {got} != {row['evidence_locator']}")
+    if row.get("evidence_excerpt"):
+        got_excerpt = (evidence.excerpt or "") if evidence else ""
+        wanted = " ".join(str(row["evidence_excerpt"]).split())
+        if " ".join(got_excerpt.split()) != wanted:
+            result.mismatched.append(f"{declared} excerpt {got_excerpt!r} != {wanted!r}")
+    result.recovered.append(f"{row['source']} --{relation}--> {declared}")
 
 
 def _check_keys_are_all_handled(result: Score, expected_dir: Path) -> None:

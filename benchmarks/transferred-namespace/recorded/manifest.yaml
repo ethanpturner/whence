@@ -13,6 +13,13 @@ interactions:
   - request: GET /api/models/stable-diffusion-v1-5/stable-diffusion-v1-5
     status: 200
     body: model-stable-diffusion-v1-5-stable-diffusion-v1-5.json
+  # Read because the card declares no `base_model` (DEC-010). It states no derivation in prose
+  # either, so no edge comes of it -- which is the correct outcome and worth having recorded: a
+  # scenario where the prose scan runs and finds nothing is what keeps it from being assumed to
+  # fire whenever it is invoked.
+  - request: GET /stable-diffusion-v1-5/stable-diffusion-v1-5/raw/main/README.md
+    status: 200
+    body: readme-stable-diffusion-v1-5-stable-diffusion-v1-5.md
   # The original namespace still exists as a shell and publishes nothing.
   - request: GET /api/organizations/runwayml/overview
     status: 200

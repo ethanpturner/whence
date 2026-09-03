@@ -670,3 +670,71 @@ bound stands. This entry closes the cheap approximation of it, and the reason is
 **four successive attempts at a structural signal, three rejected on measurement.** Each was
 plausible, internally coherent, and wrong about real published models in a way only contact with
 them revealed.
+
+---
+
+## DEC-023 — A prose derivation is read, never resolved, and the pattern's error rate is measured
+
+**Date:** 2026-09-03
+**Status:** Accepted
+
+**Decision.** When a model card declares no `base_model`, its README is read for a derivation
+stated in words. A recognised claim becomes an edge with `unresolvable` provenance, `unverifiable`
+verdict, and the **name exactly as the card wrote it** — unqualified, with no namespace inferred.
+The sentence travels with it as `Evidence.excerpt`, bounded and marked when cut (DEC-012).
+
+**Why read prose at all.** DEC-010 says a card's prose is evidence of a claim. `prose-only-base` is
+the case that makes it matter: the frontmatter carries no lineage field, and the body says plainly
+that the model is "an instruct fine-tuned version of the Mistral-7B-v0.2". Emitting nothing there
+records a model with no ancestry, which is false — the derivation happened, and the card says so.
+
+**Why never resolve it.** Qualifying "Mistral-7B-v0.2" with the obvious owner yields
+`mistralai/Mistral-7B-v0.2`, which the registry answers 401 for, and 401 without credentials does
+not distinguish "no such repository" from "exists and you may not see it". The guess would probably
+be right; it would still be a guess, and `expected-absent.yaml` scores it as invention.
+
+**Why the pattern is narrow, with the measurement.** This is a heuristic over attacker-controlled
+English, and a heuristic whose error rate nobody measured is an assertion. `scripts/measure_prose.py`
+runs it against published cards. The first version asked only for four alphanumeric characters after
+a derivation verb: against **91 cards it produced ten claims, and all ten named an ordinary English
+word** — "this", "specialized", "Alibaba". Requiring a name to be qualified or to carry a digit
+removed all ten.
+
+The failures that survived that came from **markdown tables**, in two shapes: a quantization file
+inventory saying a build was "re-quantized from F16" — a precision format, not a model — and a
+model-family table saying that a *sibling* was fine-tuned from this card's own model, which is true
+with the arrow pointing the other way. Skipping table rows is the rule behind both: a card states
+its own lineage in prose, and a table is a list about several things.
+
+**As it stands**, across 174 cards sampled from three searches, the scanner produced 18 claims, of
+which 7 are on cards with no `base_model` and so are the only ones the tool would actually emit.
+All 7 name the right ancestor. The remaining imprecision is in the 11 it would not reach: one reads
+"distilled from Qwen3.8-Max-generated outputs" and takes the name as `Qwen3.8-Max-generated`, where
+the teacher is `Qwen3.8-Max`. That is a claim with its quotation attached and no resolution behind
+it, which is what this decision is for — but it is not a clean result and is recorded as one.
+
+**Precision over recall, deliberately.** A missed claim leaves a card with no lineage edge, which is
+the honest state of a card that says nothing machine-readable. A wrong one puts a fabricated
+ancestor in a BOM.
+
+**What is not established.** How the pattern behaves across the registry rather than three
+searches, and whether the verb list misses common phrasings. `merged` is excluded on purpose: a
+merge names several parents, and a sentence naming one of them is not the lineage.
+
+---
+
+## DEC-024 — The node-count ceiling exists, not only the depth one
+
+**Date:** 2026-09-03
+**Status:** Accepted
+
+**Decision.** `Resolver` carries `max_nodes` alongside `max_depth`, default 200. Reaching it stops
+the traversal and appends a ceiling naming what was not followed.
+
+**Why.** DEC-007 specified both ceilings and only the depth one was built. Depth does not bound a
+graph: one model naming forty parents is depth one and forty requests, and a merge lineage is
+exactly that shape. A traversal with no width bound is unbounded in the case the bound was for.
+
+Consistent with DEC-007, it stops rather than truncating silently, and the stop is in
+`ceilings_hit` where a reader and the scorer both see it.
+

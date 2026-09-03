@@ -33,6 +33,7 @@ from whence.domain import (
     normalize_node_kind,
     now,
 )
+from whence.prose import find_claims
 from whence.registry import Registry
 from whence.signing import detect as detect_signature
 from whence.structure import check as structural_check
@@ -99,11 +100,15 @@ class Resolver:
         registry: Registry,
         host: str = "huggingface.co",
         max_depth: int = 2,
+        max_nodes: int = 200,
         *,
         check_structure: bool = False,
         check_signatures: bool = False,
     ) -> None:
         self._registry, self._host, self._max_depth = registry, host, max_depth
+        # DEC-007's second ceiling. Depth alone does not bound a graph: one model naming forty
+        # parents is depth one and forty requests.
+        self._max_nodes = max_nodes
         # Opt-in: one extra request per resolved model. Detection only -- a present bundle reports
         # `unverifiable`, never `valid` (DEC-021).
         self._check_signatures = check_signatures
@@ -243,6 +248,62 @@ class Resolver:
             out.append((library, Relation.REQUIRES_PACKAGE, "package", "cardData.library_name"))
         return out
 
+    def _add_prose_edges(self, source: ArtifactRef, body: dict[str, Any], state: _State) -> None:
+        """A derivation the card states in words, when it states none in metadata (DEC-010).
+
+        Only when `base_model` is absent. A card that declares a base has answered the question,
+        and reading its prose as well would emit a second, weaker edge alongside the good one --
+        and every wrong claim measured against published cards came from a card that had a
+        structured answer already.
+
+        The edge is `unresolvable` provenance and `unverifiable` verdict, and its target is the
+        name **exactly as written**. Qualifying "Mistral-7B-v0.2" with the obvious owner yields a
+        repository the registry answers 401 for; the guess would probably be right and it would
+        still be a guess. The sentence travels with it as evidence, so a reader can audit the
+        refusal instead of taking it on trust.
+        """
+        card = body.get("cardData") or {}
+        if _as_list(card.get("base_model")):
+            return
+        response = self._registry.get(f"/{source.slug}/raw/main/README.md")
+        if response.status != 200:
+            return
+        raw = response.body.get("_raw") if isinstance(response.body, dict) else None
+        if not isinstance(raw, str):
+            return
+        for claim in find_claims(raw, subject=source.slug):
+            target = ArtifactRef(host=self._host, namespace="", name=claim.name, pinned=False)
+            if target.slug in state.nodes:
+                continue
+            self._record_node(
+                target,
+                "model",
+                Verdict.UNVERIFIABLE,
+                False,
+                ("named only in the card's prose; not resolved, and no namespace inferred",),
+                state,
+            )
+            state.edges.append(
+                Edge(
+                    source=source,
+                    target=target,
+                    relation=Relation(claim.relation),
+                    provenance=ProvenanceClass.UNRESOLVABLE,
+                    verdict=Verdict.UNVERIFIABLE,
+                    evidence=(
+                        Evidence(
+                            locator=f"README.md:{claim.line}",
+                            content_digest=_digest(raw),
+                            # Untrusted data (DEC-012): bounded, marked when cut, and never passed
+                            # to a log record, where it would be indistinguishable from prose the
+                            # tool emitted about itself.
+                            excerpt=claim.excerpt,
+                            excerpt_truncated=claim.truncated,
+                        ),
+                    ),
+                )
+            )
+
     def resolve(self, root_slug: str) -> ResolutionReport:
         state = _State()
         root_ref, _, cls, _ = self._resolve_artifact(root_slug, state, kind="model")
@@ -275,6 +336,17 @@ class Resolver:
                 continue
             for slug, relation, kind, locator in self._declared_edges(response.body):
                 self._add_edge(ref, slug, relation, kind, locator, state, frontier, depth)
+            self._add_prose_edges(ref, response.body, state)
+
+            if len(state.nodes) >= self._max_nodes:
+                # DEC-007 names a node-count ceiling alongside the depth one, and only the depth
+                # one existed. A wide graph -- a merge naming forty parents -- was traversed to
+                # exhaustion whatever the caller asked for. Reaching it stops the traversal and is
+                # reported; it never silently truncates.
+                state.ceilings.append(
+                    f"node count {self._max_nodes} reached; the remaining frontier was not followed"
+                )
+                break
 
         return ResolutionReport(
             root=root_ref,

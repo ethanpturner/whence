@@ -161,3 +161,52 @@ def test_a_same_namespace_redirect_asks_no_ownership_question() -> None:
     registry = _Renaming()
     Resolver(registry, max_depth=1).resolve("org/root")
     assert not [p for p in registry.asked if "organizations" in p or "author=" in p]
+
+
+def test_the_node_count_ceiling_stops_a_wide_graph() -> None:
+    """DEC-007 named both ceilings and only the depth one existed (DEC-024).
+
+    Depth does not bound a graph: one model naming forty parents is depth one and forty requests.
+    Reaching the ceiling stops and is reported, rather than truncating silently.
+    """
+    from whence.registry import Response
+
+    class _Wide:
+        def get(self, path: str) -> Response:
+            if path.endswith("/raw/main/README.md"):
+                return Response(status=404, body=None)
+            if path == "/api/models/a/root":
+                return Response(
+                    status=200,
+                    body={
+                        "sha": "root",
+                        "cardData": {"base_model": [f"a/base{i}" for i in range(40)]},
+                    },
+                )
+            return Response(status=200, body={"sha": "x", "cardData": {}})
+
+    report = Resolver(_Wide(), max_depth=3, max_nodes=10).resolve("a/root")
+    assert any("node count 10" in c for c in report.ceilings_hit)
+    assert not report.partial, "a ceiling is a stop the tool chose, not a transient failure"
+
+
+def test_a_card_declaring_a_base_is_not_also_read_for_prose() -> None:
+    """DEC-023. A card that declares a base has answered the question, and reading its prose too
+    would emit a second, weaker edge beside the good one. Every wrong claim the measurement found
+    came from a card that already had a structured answer."""
+    from whence.registry import Response
+
+    asked: list[str] = []
+
+    class _Declared:
+        def get(self, path: str) -> Response:
+            asked.append(path)
+            if path == "/api/models/a/root":
+                return Response(
+                    status=200,
+                    body={"sha": "root", "cardData": {"base_model": "a/base"}},
+                )
+            return Response(status=200, body={"sha": "b", "cardData": {}})
+
+    Resolver(_Declared(), max_depth=1).resolve("a/root")
+    assert not [p for p in asked if p.endswith("/raw/main/README.md")]

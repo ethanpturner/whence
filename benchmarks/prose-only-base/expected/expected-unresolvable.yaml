@@ -3,11 +3,17 @@
 
 unresolvable:
   - source: mistralai/Mistral-7B-Instruct-v0.2
+    # The name goes on the target, not on `declared_as`. `declared_as` pairs a name that was given
+    # with an artifact that was resolved (DEC-011), and nothing resolved here: the card names
+    # "Mistral-7B-v0.2" and the tool declines to guess whose. The scorer accepts either spelling.
     declared_as: "Mistral-7B-v0.2"
     relation: derives-from
     provenance: unresolvable
     verdict: unverifiable
-    evidence_locator: "README.md:71"
+    # 79, not 71. The authored number pointed at `print(result)` inside a code block; the claim is
+    # eight lines further down in the recorded README. An authored locator that does not match the
+    # recorded artifact is simply wrong -- and it was unchecked, so it stayed wrong.
+    evidence_locator: "README.md:79"
     evidence_excerpt: >-
       The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version
       of the Mistral-7B-v0.2.
