@@ -74,13 +74,18 @@ the diff.
 
 ## Relationship to sibling projects
 
-`whence` is one of three planned tools sharing one thesis: a security claim should be a checkable
-artifact rather than an assertion. The others are `tearline` (retrieval entitlement verification)
-and `attestrun` (evaluation attestation and offline replay).
+One of four sharing a thesis: a security claim should be a checkable artifact rather than an
+assertion. [`trace`](https://github.com/ethanpturner/trace) is where the distinction originates
+(its DEC-009), [`tearline`](https://github.com/ethanpturner/tearline) applies it to retrieval
+entitlements, and [`attestrun`](https://github.com/ethanpturner/attestrun) to the evaluation
+results the others produce.
 
-The three-valued verdict is defined here first and is expected to move into `attestrun` once that
-exists, with `whence` importing it. Until then it lives in this repository's domain module. Do not
-build a shared "commons" package for three projects that do not yet exist.
+**The verdict vocabulary is shared by agreement, not by import.** All of them declare `verified` /
+`contradicted` / `unverifiable` and none imports it from another. Settled in `attestrun`'s DEC-001:
+a reader cloning this repository should not need a second one to run it, the independent agreement
+is what demonstrates the distinction generalises, and a dependency from the verified to the verifier
+points the wrong way. Do not extract it into a shared package, and do not read the repetition as
+debt.
 
-The claimed-versus-verified distinction is inherited from the Trace project's DEC-009. Cite that
-lineage where it is load-bearing; do not continue Trace's decision numbering here.
+The claimed-versus-verified distinction is inherited from Trace's DEC-009. Cite that lineage where
+it is load-bearing; do not continue another project's decision numbering here.
