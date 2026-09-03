@@ -85,7 +85,7 @@ def test_quantization_is_out_of_scope() -> None:
     )
 
 
-def test_nested_dimensions_are_found(tmp_path_factory: pytest.TempPathFactory) -> None:
+def test_nested_dimensions_are_found() -> None:
     """Composite and multimodal configurations nest the text model's dimensions. Reading only the
     top level left 13 of 45 sampled real pairs uncomparable; reading `text_config` leaves 2."""
     registry = _Configs(
@@ -106,7 +106,7 @@ def test_nested_dimensions_are_found(tmp_path_factory: pytest.TempPathFactory) -
     assert "read from text_config/top" in result.detail
 
 
-def test_levels_are_not_merged(tmp_path_factory: pytest.TempPathFactory) -> None:
+def test_levels_are_not_merged() -> None:
     """A composite model's top-level dimensions may describe a vision tower rather than the text
     model. Merging across levels would compare different components while looking like a match."""
     registry = _Configs(

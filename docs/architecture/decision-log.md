@@ -584,3 +584,39 @@ false positive. Every recovered case used `text_config`; the two that remain (`w
 and stops. A composite model's top-level `hidden_size` may describe a vision tower rather than the
 text model, and mixing the two would compare different components while looking like a clean match —
 the same class of error as the first two field sets, reached from a third direction.
+
+---
+
+## DEC-021 — OMS signatures are detected, not verified, and a present one is `unverifiable`
+
+**Date:** 2026-09-03
+**Status:** Accepted
+
+**Decision.** `whence` reads `model.sig` and reports `SignatureState`. A model with no bundle is
+`unsigned`. A model with a Sigstore bundle is **`unverifiable`** — never `valid`. Verification of
+the certificate chain, the transparency log, and the signed digests is not implemented.
+
+**Why detection is worth having at all.** Measured before implementing: of 45,000 models sampled by
+download rank, **63 carry `model.sig`** — about 1 in 700, with IBM Granite among the publishers.
+Rare, and real, and the distinction between a publisher who signs and one who does not is worth
+surfacing on its own.
+
+**Why a present bundle is not `valid`.** Presence establishes that the publisher signed something.
+It does not establish that the signature is valid, that it covers the files in front of you, or that
+the identity it binds is one you trust. Reporting it as `valid` would be transcription presented as
+verification — the error this whole project exists to correct — committed about the one artifact
+whose entire purpose is verification. That would be the worst place in the codebase to make it.
+
+**Why verification is deferred rather than attempted.** Checking a Sigstore bundle properly means a
+certificate chain, a Rekor inclusion proof, and an identity policy saying *which* signer is
+acceptable — and that last one has no general answer. A tool that verified the cryptography and
+accepted any identity would report `valid` for a model signed by anyone at all, which is a worse
+claim than `unverifiable` because it sounds like more. Doing it properly needs a policy the caller
+supplies, and that is a design, not an afternoon.
+
+**Also detected:** a `model.sig` that is not a Sigstore bundle, and a bundle missing its DSSE
+envelope or verification material. Both resolve `unverifiable` with the reason, because a malformed
+signature is not an absent one and the difference matters to whoever published it.
+
+**Open questions.** Whether to accept an identity policy and verify against it. That would let the
+state reach `valid` honestly, and it needs the policy format designed first.

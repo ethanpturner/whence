@@ -44,6 +44,16 @@ rather than silently recorded under its name. `benchmarks/transferred-namespace/
 instance: `runwayml/stable-diffusion-v1-5` redirects into an organization controlled by someone
 else, and file requests under the old path are served from the new namespace with no error.
 
+## Signatures
+
+`whence` reads OpenSSF Model Signing bundles (`model.sig`) and reports whether a publisher signed.
+A model with no bundle is `unsigned`; a model with one is **`unverifiable`, never `valid`** —
+presence establishes that the publisher signed something, not that the signature is valid, covers
+the files in front of you, or binds an identity you trust (DEC-021).
+
+Adoption measured before implementing: 63 of 45,000 models sampled by download rank carry a bundle,
+about 1 in 700.
+
 ## Scope
 
 Read `docs/architecture/project-scope.md` for the scope and the non-goals, and
