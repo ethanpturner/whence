@@ -96,3 +96,34 @@ def test_the_relation_follows_the_verb() -> None:
     ):
         card = f"# Card\n\nThis model was {verb} from DeepSeek-R1 for speed.\n"
         assert find_claims(card)[0].relation == relation
+
+
+def test_a_precision_format_is_not_an_ancestor() -> None:
+    """Found at 1,091 cards: `--quantized-from--> FP16`. A dtype, not an artifact -- and every
+    model has one, so the claim is empty as well as wrong. Systematic rather than incidental,
+    because naming the source precision is how a quantization card is normally written."""
+    for sentence in (
+        "This model is quantized from FP16.",
+        "Quantized from the BF16 weights published upstream.",
+        "Requantizations of a Q5_K_M quant of a trending 70b model.",
+        "Distilled from an E4M3 checkpoint.",
+    ):
+        assert find_claims(f"# Card\n\n{sentence}\n") == [], sentence
+    # Still fires on a real name in the same sentence shape.
+    assert find_claims("# Card\n\nQuantized from meta-llama/Llama-3.1-8B.\n")
+
+
+def test_based_on_is_not_a_lineage_phrase() -> None:
+    """Deliberately unmatched, and the measurement is why (DEC-023).
+
+    `based on` / `built on` is the largest phrasing class the pattern misses -- 59 of 389 candidate
+    cards. Accepting it took claims from 11 to 75 and most of the additions were wrong: datasets a
+    model was fine-tuned *on*, models it was merely compared to, and bare version fragments.
+    English uses "based on" for every relation a card has to another name.
+    """
+    for sentence in (
+        "ChemLLM-7B-Chat is built based on InternLM-2 with a chemistry corpus.",
+        "This model is based on the transformer architecture.",
+        "gte-Qwen2-1.5B-instruct is built on Qwen2-1.5B.",
+    ):
+        assert find_claims(f"# Card\n\n{sentence}\n") == [], sentence

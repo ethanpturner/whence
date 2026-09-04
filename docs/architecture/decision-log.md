@@ -706,20 +706,39 @@ model-family table saying that a *sibling* was fine-tuned from this card's own m
 with the arrow pointing the other way. Skipping table rows is the rule behind both: a card states
 its own lineage in prose, and a table is a list about several things.
 
-**As it stands**, across 174 cards sampled from three searches, the scanner produced 18 claims, of
-which 7 are on cards with no `base_model` and so are the only ones the tool would actually emit.
-All 7 name the right ancestor. The remaining imprecision is in the 11 it would not reach: one reads
-"distilled from Qwen3.8-Max-generated outputs" and takes the name as `Qwen3.8-Max-generated`, where
-the teacher is `Qwen3.8-Max`. That is a claim with its quotation attached and no resolution behind
-it, which is what this decision is for — but it is not a clean result and is recorded as one.
+**As it stands**, measured across **1,091 published cards** pooled from twelve searches. Of those,
+**389 declare no `base_model`** and are therefore the only cards the scanner is ever run against —
+a card with a structured answer is never read for prose. On those 389 it produced **11 claims, and
+all 11 name the right ancestor.**
+
+One further false-positive class was found at this sample size and fixed: `--quantized-from--> FP16`.
+A precision format read as an artifact. It is systematic rather than incidental, because describing
+the source precision is the normal way to write a quantization card, and it is why numeric formats
+and quantization schemes are now rejected by shape.
+
+**Recall, and why the pattern is not widened.** Of the 389 candidates, 248 mention a derivation
+somewhere in prose and produce no claim. That number badly overstates what is missed: 47 of them are
+cards the scanner is *right* to ignore — unfilled template boilerplate (`Finetuned from model
+[optional]: [More Information Needed]`), models trained *from scratch*, and models "based on the
+transformer architecture", which names an architecture and not an ancestor.
+
+The largest genuinely-missing phrasing class is `based on` / `built on`, at 59 cards. Widening the
+pattern to accept it was tried and measured: **claims went from 11 to 75**, and the additions are
+mostly wrong. They name datasets a model was fine-tuned *on* (`Kinetics-400`, `VQAv2`), models it is
+merely *compared* to (`GPT4`, `Fable-5`), bare fragments (`v2`), and outright wrong families — a
+Mistral quantization acquiring a `Llama-2` ancestor. "Based on" is the phrasing English uses for
+every kind of relation a card has to another name, which is exactly why it is common and exactly why
+it cannot carry a lineage edge.
 
 **Precision over recall, deliberately.** A missed claim leaves a card with no lineage edge, which is
 the honest state of a card that says nothing machine-readable. A wrong one puts a fabricated
 ancestor in a BOM.
 
-**What is not established.** How the pattern behaves across the registry rather than three
-searches, and whether the verb list misses common phrasings. `merged` is excluded on purpose: a
-merge names several parents, and a sentence naming one of them is not the lineage.
+**What is not established.** How the pattern behaves outside a downloads-sorted sample: the 1,091
+cards are the most-downloaded matches for twelve terms, and popular cards are better written than
+the median. `merged` is excluded on purpose: a merge names several parents, and a sentence naming one
+of them is not the lineage — `merge-lineage` shows what that looks like when it is declared properly
+instead.
 
 ---
 

@@ -64,6 +64,22 @@ _PATTERN = re.compile(
 )
 
 
+#: Numeric formats and quantization schemes. "Quantized from FP16" names a **dtype**, not an
+#: artifact: it says what precision the weights were in, and every model has a precision. Measured
+#: against 1,091 published cards this was the only remaining false-positive class in the claims the
+#: tool would actually emit -- one in twelve -- and it is systematic rather than incidental, since
+#: describing the source precision is the normal way to write a quantization card.
+_FORMAT_TOKEN = re.compile(
+    r"""^(?:
+        (?:f|fp|bf|int|uint|nf|mx)\d{1,2}        # fp16, bf16, int8, nf4, f32
+      | i?q\d(?:_[a-z0-9]+)*                     # q4_k_m, q8_0, iq3_m
+      | e\dm\d                                  # e4m3, e5m2
+      | (?:awq|gptq|gguf|ggml|exl\d|safetensors)
+    )$""",
+    re.IGNORECASE | re.VERBOSE,
+)
+
+
 @dataclass(frozen=True)
 class ProseClaim:
     """A derivation a card states in words, and the sentence that states it."""
@@ -145,6 +161,10 @@ def find_claims(readme: str, *, subject: str | None = None) -> list[ProseClaim]:
         text = " ".join(line for _, line in paragraph)
         for match in _PATTERN.finditer(text):
             name = match.group("name").rstrip("._-,;:)")
+            # "Quantized from FP16" names the precision the weights were in, which every model has.
+            # It is not an artifact and cannot be a node.
+            if _FORMAT_TOKEN.match(name):
+                continue
             if subject is not None and name.lower() in {
                 subject.lower(),
                 subject.split("/")[-1].lower(),

@@ -7,8 +7,11 @@ declared base's transformer body.
 Where a card declares no `base_model` but says in words what it was built from, that sentence
 becomes an edge carrying the quotation and the name **exactly as written** — never qualified with a
 namespace the card did not give (DEC-023). The pattern's error rate is measured against published
-cards rather than asserted: its first version produced ten claims across 91 of them and all ten
-named an ordinary English word.
+cards rather than asserted. Across **1,091 cards**, 389 of which declare no `base_model` and are
+therefore the only ones it is run against, it makes **11 claims and all 11 name the right
+ancestor**. Widening it to the commonest phrasing it misses — "based on" — was tried and rejected
+on the numbers: claims go from 11 to 75, and the additions name datasets, models merely compared
+to, and bare version fragments.
 
 **No edge is ever `verified`** — see below, which is the point rather than a gap. Phase two *began*
 with the structural check (DEC-020), the only mechanism that can emit `contradicted`; weight-level
