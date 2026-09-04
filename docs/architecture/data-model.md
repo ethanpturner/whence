@@ -110,7 +110,7 @@ no signature is `unsigned`; it is never `invalid`, and the distinction is not co
 first two may produce a verdict; a `transient` outcome produces no edge, no verdict, and no
 composition, and sets `ResolutionReport.partial`.
 
-**`Relation`** — closed (DEC-015). `derives-from`, `quantized-from`, `merged-from`, `adapts`,
+**`Relation`** — closed (DEC-015). `derives-from`, `quantized-from`, `distilled-from`, `merged-from`, `adapts`,
 `tokenized-by`, `trained-on`, `requires-package`.
 
 Where source metadata declares a derivation qualifier, the qualified relation is recorded. Where the

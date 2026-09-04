@@ -809,3 +809,92 @@ need different halves of that list.
 preceded it asserted only that a ceiling was reported, which is the weaker claim the implementation
 happened to satisfy.
 
+---
+
+## DEC-027 — `distilled-from` is its own relation
+
+**Date:** 2026-09-04
+**Status:** Accepted
+
+**Decision.** `Relation` gains `distilled-from`. DEC-015 closes the set, so adding to it is a design
+change and this is the entry for it.
+
+**Why it is not `derives-from`.** A distilled model's weights are not derived from its teacher's.
+The student is trained on the teacher's *outputs*, usually with a different architecture and a
+different parameter count — `DeepSeek-R1-Distill-Qwen-7B` has Qwen's body and R1's behaviour. Nothing
+of the teacher's tensors is present to compare, so **no weight-level method can ever confirm a
+distillation**, where a fine-tune at least leaves a body that a structural check can contradict
+(DEC-020).
+
+That is precisely the distinction this project exists to keep visible. Flattening it to
+`derives-from` would tell a reader that the same kind of evidence is available for both, and it is
+not: for one, phase two might eventually say something; for the other it never will.
+
+**Why it is not `trained-on`.** That relation's target is a corpus. A teacher model is an artifact
+with its own lineage, and putting it on the dataset axis would strand it — its own parents would
+hang off a node the graph treats as training data.
+
+**How it was found.** The prose scanner emitted `distilled-from` from the day it was written and
+nothing rejected it, because the only recorded card carrying a prose derivation says "fine-tuned".
+The first live capture of a card saying "distilled" raised `ValueError: 'distilled-from' is not a
+valid Relation` — which is DEC-015 working exactly as intended, refusing to normalize a relation
+nobody had decided about, at the cost of one crash rather than a corpus of quietly wrong edges.
+
+**Not decided.** Whether the registry's qualifier tags should map to it. They carry no `distilled`
+qualifier today — `deepseek-ai`'s own distillations declare no `base_model` at all — so there is
+nothing to map, and inventing a mapping for a tag that does not exist would be guessing at a
+convention rather than reading one.
+
+---
+
+## DEC-028 — A republished card's prose is read as the republisher's claim, and the limitation is recorded rather than engineered around
+
+**Date:** 2026-09-04
+**Status:** Accepted
+
+**Decision.** The prose scanner reads a model card as a statement by whoever published it, without
+attempting to detect that the card was copied from upstream. Where that produces a claim about the
+wrong artifact, the edge is still `unresolvable` / `unverifiable` with the sentence attached, and
+`quantized-republication` pins the behaviour so the corpus is not silent about it.
+
+**The case.** `LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2` republishes DeepSeek's model
+card verbatim — normal practice when publishing a quantization. That card contains DeepSeek's
+sentence about their own family: *"we have open-sourced DeepSeek-R1-Zero, DeepSeek-R1, and six dense
+models distilled from DeepSeek-R1 based on Llama and Qwen."* The scanner emits
+`--distilled-from--> DeepSeek-R1`.
+
+The edge is approximately true and specifically wrong. The artifact is a *quantization of* one of
+those six, not a distillation, and the sentence's subject is DeepSeek describing a set.
+
+**Why it is not narrowed. Three signals were tried and measured against the 389-card candidate
+sample:**
+
+- **Suppress cards that never name their own repository.** Catches this case; also suppresses two
+  claims that are correct. 2 of 11 claims lost to catch one.
+- **Suppress sentences describing a plurality** ("six dense models", "we have open-sourced").
+  Catches this case, and also suppresses **all six official `deepseek-ai` distillations** — which
+  carry the identical sentence on their own cards, where it is correct. 6 of 11 lost.
+- **Require the sentence's subject to be this artifact**, by name or by self-reference ("this
+  model", "we fine-tuned"). Sound in principle and the one that describes what the five clearly-good
+  claims have in common — but implemented against real names it discriminates nothing, because
+  `DeepSeek-R1-Zero` appearing in the lead-in matches `DeepSeek-R1-Distill-Llama-70B…` under any
+  prefix or substring rule loose enough to handle real naming.
+
+**What the measurement actually revealed**, and it is the more useful finding: **6 of the scanner's
+11 claims are right by family membership rather than by reading a self-description.** The DeepSeek
+distillations' own cards state the family sentence, and the claim is correct only because the
+artifact happens to be one of the six. The 11/11 precision in DEC-023 holds as a fact about output,
+and the mechanism behind it is weaker than the number suggests. That is worth writing down.
+
+**Why emitting it is nonetheless defensible.** A publisher who republishes another party's card
+verbatim under their own name is, in a real sense, making those claims about their artifact — it is
+the only description they offer. The verdict is `unverifiable`, the provenance is `unresolvable`,
+and the sentence travels with the edge, so a reader sees the family prose and can judge it. That is
+the mitigation available; it is not a fix, and calling it one would be the overclaiming this project
+measures.
+
+**Open.** Comparing a card against its declared upstream's card would detect verbatim republication
+directly, and would cost one request on a path that already fetches the base. It is the first
+approach worth trying if this class grows, and it is not attempted here because the sample contains
+one instance.
+

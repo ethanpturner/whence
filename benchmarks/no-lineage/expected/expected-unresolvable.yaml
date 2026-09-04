@@ -1,0 +1,15 @@
+unresolvable:
+  - subject: "whether this model has any ancestor at all"
+    why: >-
+      The card declares none. That is the absence of a claim, not a claim of absence: a model
+      trained from scratch and a model whose publisher never filled in `base_model` produce
+      identical metadata. The tool reports what was asserted and does not convert silence into a
+      negative finding.
+    still_established: >-
+      That the card asserts no derivation, that it names two training corpora and one library, and
+      that the artifact pins to a revision.
+
+  - subject: "which repositories `bookcorpus` and `wikipedia` refer to"
+    why: >-
+      Both are bare names. `wikipedia` alone matches at least two published datasets under
+      different namespaces, and picking one would be resolution by assumption (DEC-010).

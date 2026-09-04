@@ -104,5 +104,10 @@ class LiveRegistry:
         try:
             body = r.json()
         except ValueError:
-            body = None
+            # A non-JSON body is text, not nothing. Discarding it meant the prose scanner (DEC-023)
+            # never saw a card against the live registry: it worked in replay, where the recorded
+            # loader wraps text as `_raw`, and silently found no claims in every live run. The two
+            # sides of the seam have to agree on the shape or a recording proves nothing about the
+            # thing it stands in for.
+            body = {"_raw": r.text} if r.text else None
         return Response(status=r.status_code, body=body, location=location)

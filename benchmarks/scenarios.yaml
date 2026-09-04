@@ -68,31 +68,11 @@ scenarios:
     # answers 401, and three plausible shortcuts to a confident answer are all wrong. The
     # negative set carries more weight here than the positive one.
 
-# Intended first scenarios, not yet authored:
-#
-# - slug: declared-base
-#   measures: a single-hop derivation whose base is declared in config. The simplest true positive.
-#
-# - slug: prose-only-base
-#   measures: a base named in card prose but not resolvable to a repository. Correct output is
-#             unverifiable, not a guessed edge (DEC-010).
-#
-# - slug: deleted-namespace
-#   measures: a declared base whose owning account no longer exists. Correct output is an
-#             unpinned, unreachable node - the Unit 42 scenario, and the direct test of DEC-002.
-#
-#   measures: multi-parent merge provenance, including depth-ceiling reporting (DEC-007).
-#
-# - slug: quantized-republication
-#   measures: a requantized copy republished under a new namespace. Expected to be the hardest
-#             case for any later weight-level method (DEC-005).
-#
-# - slug: no-lineage
-#   measures: a model with no upstream. The negative set - correct output asserts nothing.
-
   - slug: merge-lineage
+    name: A merge naming six parents in ten declarations
     path: benchmarks/merge-lineage
     status: recorded
+    category: lineage-resolution
     measures: >-
       a wide graph: ten declarations naming six parents, four of them adapters, and the node-count
       ceiling DEC-024 added for exactly this shape
@@ -105,3 +85,24 @@ scenarios:
     # Phase two's first increment. The verdict stays `unverifiable` even though the check passed:
     # every fine-tune of this base has this exact body, so agreement narrows the field to "one of
     # many" rather than "this one". expected-absent forbids `verified` for that reason.
+
+  - slug: quantized-republication
+    name: A requantization of a quantization, with the chain broken in the middle
+    path: benchmarks/quantized-republication
+    status: recorded
+    category: abstention
+    # GGUF over EXL2 over a distillation, across three namespaces. The hardest case any
+    # weight-level method will face (DEC-005): every step is lossy, so nothing upstream can ever be
+    # matched. The middle node declares no base at all, and its repository name spells out the link
+    # it does not declare -- the strongest invention trap in the corpus, because the guess is
+    # almost certainly right. Also pins the copied-card limitation (DEC-028).
+
+  - slug: no-lineage
+    name: A model with no upstream
+    path: benchmarks/no-lineage
+    status: recorded
+    category: abstention
+    # The negative case: correct output asserts nothing about ancestry while still recording the
+    # corpora and library the card does declare. "No ancestor" and "nothing known" are different
+    # statements and the graph has to be able to make the first one. The card's derivation verbs
+    # all describe descendants, which is the trap.

@@ -1,0 +1,54 @@
+# Edges a tool invents when a chain is visibly broken and the missing link is visibly guessable.
+
+absent:
+  - source: LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2
+    target: deepseek-ai/DeepSeek-R1-Distill-Llama-70B
+    relation: quantized-from
+    why: >-
+      **The strongest invention trap in this corpus.** The repository name contains
+      `DeepSeek-R1-Distill-Llama-70B`; prefixing the obvious namespace yields a repository that
+      exists and answers 200; and the guess is almost certainly correct. It is still a guess, made
+      by the tool and not by any publisher. A resolver that repairs chains from repository names is
+      right here and wrong wherever a name is aspirational, coincidental, or deliberate -- and its
+      output looks identical in all four cases.
+
+  - source: PrunaAI/LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed
+    target: deepseek-ai/DeepSeek-R1-Distill-Llama-70B
+    relation: quantized-from
+    why: >-
+      The same repair one hop further, collapsing the EXL2 stage entirely. It also loses the fact
+      that two independent parties handled these weights, which is the part a supply-chain reader
+      needs most.
+
+  - source: PrunaAI/LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed
+    target: LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2
+    relation: derives-from
+    verdict_if_emitted: verified
+    why: >-
+      Flattening the relation, and then over-claiming it. `quantized-from` is what the qualifier
+      says, and no verdict above `unverifiable` is reachable: requantization leaves nothing to
+      compare, so this edge is unverifiable permanently rather than pending phase two.
+
+negative_assertions:
+  - claim: "this model is a distillation of DeepSeek-R1"
+    why: >-
+      It is a requantization of a quantization of one. The prose edge on the middle node says
+      `distilled-from` because the copied card says so; reading it as a description of the root
+      collapses three lossy steps and two publishers into one.
+
+  - claim: "the EXL2 repository is hiding its provenance"
+    why: >-
+      Nothing establishes intent. Publishers omit `base_model` constantly, and the card it copied
+      does not declare one either -- DeepSeek's own distillations carry no `base_model` field. An
+      absent declaration is an absent declaration.
+
+  - claim: "the chain is complete because the names line up"
+    why: >-
+      The names lining up is the hazard, not the evidence. This is the exact artifact a republisher
+      would produce whether or not the weights came from where the name says.
+
+behaviour_absent:
+  - behaviour: "resolving a target by parsing the source repository's name"
+    why: >-
+      Nowhere, at any depth, for any relation. The name is the publisher's choice of string; the
+      graph records what publishers declare, not what they imply.

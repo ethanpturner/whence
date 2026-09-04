@@ -127,3 +127,31 @@ def test_based_on_is_not_a_lineage_phrase() -> None:
         "gte-Qwen2-1.5B-instruct is built on Qwen2-1.5B.",
     ):
         assert find_claims(f"# Card\n\n{sentence}\n") == [], sentence
+
+
+def test_a_family_sentence_still_produces_a_claim_and_that_is_recorded() -> None:
+    """DEC-028, pinned so the limitation cannot be forgotten or silently changed.
+
+    A card republished verbatim from upstream carries the upstream publisher's prose. Here the
+    sentence describes a *set* of models, one of which this artifact is a quantization of -- so the
+    claim is approximately true and specifically wrong. Three narrowings were measured and each
+    cost more correct claims than it saved; the decision is to emit with the sentence attached.
+    """
+    card = (
+        "# Card\n\nTo support the research community, we have open-sourced DeepSeek-R1-Zero, "
+        "DeepSeek-R1, and six dense models distilled from DeepSeek-R1 based on Llama and Qwen.\n"
+    )
+    claims = find_claims(card, subject="LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2")
+    assert [(c.name, c.relation) for c in claims] == [("DeepSeek-R1", "distilled-from")]
+    # The sentence travels with it. It is the only thing that lets a reader see this is family
+    # prose rather than a self-description, so its presence is the mitigation.
+    assert "we have open-sourced" in claims[0].excerpt
+
+
+def test_distilled_is_its_own_relation() -> None:
+    """DEC-027. A student's weights are not derived from its teacher's, so no weight-level method
+    can ever confirm a distillation -- where a fine-tune leaves a body to compare."""
+    from whence.domain import Relation
+
+    claim = find_claims("# Card\n\nThis model was distilled from DeepSeek-R1.\n")[0]
+    assert Relation(claim.relation) is Relation.DISTILLED_FROM

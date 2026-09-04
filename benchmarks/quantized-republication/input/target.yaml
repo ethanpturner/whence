@@ -1,0 +1,3 @@
+# A GGUF requantization of an EXL2 quantization of a distillation, across three namespaces.
+target: PrunaAI/LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed
+max_depth: 2

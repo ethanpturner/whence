@@ -1,0 +1,30 @@
+# Everything the card asserts. No derivation edge appears, because the card names no ancestor.
+
+root:
+  ref: { host: huggingface.co, namespace: google-bert, name: bert-base-uncased }
+  revision: 86b5e0934494bd15c9632b12f734a8a67f723594
+  pinned: true
+
+edges:
+  # Bare names with no namespace. `unresolvable` provenance, and still emitted: the card asserts
+  # them, and dropping an assertion whose target cannot be pinned shortens the graph silently.
+  - source: google-bert/bert-base-uncased
+    target: bookcorpus
+    relation: trained-on
+    provenance: unresolvable
+    verdict: unverifiable
+    node_kind: dataset
+
+  - source: google-bert/bert-base-uncased
+    target: wikipedia
+    relation: trained-on
+    provenance: unresolvable
+    verdict: unverifiable
+    node_kind: dataset
+
+  - source: google-bert/bert-base-uncased
+    target: transformers
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    node_kind: package

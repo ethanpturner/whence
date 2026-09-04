@@ -1,0 +1,12 @@
+# Captured registry interactions, replayed offline (DEC-009). Written by
+# scripts/capture_scenario.py; status codes are part of the recording, and a 401 or 404 is
+# recorded as the response it is rather than treated as a capture failure.
+captured_at: 2026-09-04
+host: huggingface.co
+interactions:
+  - request: GET /api/models/google-bert/bert-base-uncased
+    status: 200
+    body: model-google-bert-bert-base-uncased.json
+  - request: GET /google-bert/bert-base-uncased/raw/main/README.md
+    status: 200
+    body: readme-google-bert-bert-base-uncased.md

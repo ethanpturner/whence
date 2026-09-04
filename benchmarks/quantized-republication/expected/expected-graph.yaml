@@ -1,0 +1,35 @@
+# Edges that genuinely exist and should be recovered. The chain is deliberately incomplete.
+
+root:
+  ref: { host: huggingface.co, namespace: PrunaAI,
+         name: LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed }
+  revision: 710bd9ed28be28925eb6b9385afb3a547abb4b10
+  pinned: true
+
+edges:
+  # The one declared link. `quantized-from` comes from the registry's own
+  # `base_model:quantized:` qualifier, not from "GGUF" appearing in the name (DEC-015).
+  - source: PrunaAI/LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed
+    target: LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2
+    relation: quantized-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+    target_revision: 70bb75187c45304de4552495126193e36fe9a049
+    why: >-
+      Both ends pin. That establishes the two artifacts exist and which revisions were named -- not
+      that this GGUF was produced from that EXL2 file. Requantization is lossy and irreversible, so
+      no later weight-level method will close this gap either (DEC-005).
+
+  - source: PrunaAI/LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed
+    target: pruna-ai
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    node_kind: package
+
+  - source: LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2
+    target: transformers
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    node_kind: package

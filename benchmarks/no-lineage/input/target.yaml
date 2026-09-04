@@ -1,0 +1,3 @@
+# A foundation model with no upstream artifact. The negative case: correct output asserts nothing.
+target: google-bert/bert-base-uncased
+max_depth: 2

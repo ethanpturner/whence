@@ -1,0 +1,63 @@
+# The whole scenario. Every entry is an edge a helpful tool invents when there is nothing to report.
+
+absent:
+  # The prose trap: the card's derivation verbs all describe descendants.
+  - source: google-bert/bert-base-uncased
+    target: bert-base-cased
+    relation: derives-from
+    why: >-
+      The sibling-name guess. `google-bert/bert-base-cased` exists, differs by one word, and is not
+      an ancestor of anything -- the two were trained separately. Name similarity is not lineage,
+      and this is the shape it takes when a model has no parent to find.
+
+  - source: google-bert/bert-base-uncased
+    target: bert-base-multilingual-uncased
+    relation: derives-from
+    why: >-
+      The same guess in the other direction. A tool that treats a shared name prefix as a family
+      tree will connect every BERT to every other BERT and call it provenance.
+
+  - source: google-bert/bert-base-uncased
+    target: transformers
+    relation: derives-from
+    why: >-
+      Reading the library as an ancestor. `transformers` is a package the model requires, and
+      `requires-package` is the relation for it. Collapsing the two puts a Python library in a
+      lineage chain.
+
+  - source: google-bert/bert-base-uncased
+    target: bookcorpus
+    relation: derives-from
+    why: >-
+      Promoting a corpus to a parent. The model was trained on it, which `trained-on` records. A
+      dataset is not an artifact the weights derive from, and conflating them makes every model
+      look like a derivation of its training data.
+
+negative_assertions:
+  - claim: "bert-base-uncased was trained from scratch"
+    why: >-
+      Nothing here establishes that. The card asserts no base model, which is not the same as
+      asserting there was none -- a model trained from scratch and a model whose publisher omitted
+      its base are indistinguishable from metadata. DEC-001 keeps both on `unverifiable`.
+
+  - claim: "nothing is known about this model's provenance"
+    why: >-
+      Two training corpora and a library are known and recorded. What is absent is a derivation
+      edge, and an empty graph would say something much stronger and much less true.
+
+  - claim: "the model card is incomplete because it declares no base_model"
+    why: >-
+      A foundation model has no base to declare. Treating the absence of the field as a defect is
+      the DEC-009 failure this project's sibling was built around: missing documentation is not
+      proof of anything.
+
+omissions:
+  - omitted: "the trained-on edges, because their targets do not resolve"
+    why: >-
+      `bookcorpus` and `wikipedia` are bare names and cannot be pinned. The assertion is still the
+      card's, and dropping it would make a model that names its corpora look like one that does not.
+
+  - omitted: "the whole graph, because there is no lineage in it"
+    why: >-
+      A tool that emits nothing when it finds no derivation cannot be distinguished from one that
+      failed to run.

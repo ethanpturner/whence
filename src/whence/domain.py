@@ -57,6 +57,10 @@ class Relation(StrEnum):
 
     DERIVES_FROM = "derives-from"
     QUANTIZED_FROM = "quantized-from"
+    #: Trained on a teacher model's outputs. Distinct from DERIVES_FROM because the student's
+    #: weights are not derived from the teacher's at all -- no weight-level method can ever confirm
+    #: it, where a fine-tune at least leaves something to compare (DEC-027).
+    DISTILLED_FROM = "distilled-from"
     MERGED_FROM = "merged-from"
     ADAPTS = "adapts"
     TOKENIZED_BY = "tokenized-by"

@@ -1,0 +1,15 @@
+# Captured registry interactions, replayed offline (DEC-009). Written by
+# scripts/capture_scenario.py; status codes are part of the recording, and a 401 or 404 is
+# recorded as the response it is rather than treated as a capture failure.
+captured_at: 2026-09-04
+host: huggingface.co
+interactions:
+  - request: GET /api/models/PrunaAI/LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed
+    status: 200
+    body: model-PrunaAI-LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed.json
+  - request: GET /api/models/LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2
+    status: 200
+    body: model-LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2.json
+  - request: GET /LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2/raw/main/README.md
+    status: 200
+    body: readme-LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2.md

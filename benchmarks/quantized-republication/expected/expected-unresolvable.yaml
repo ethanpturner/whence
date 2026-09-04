@@ -1,0 +1,33 @@
+unresolvable:
+  # The prose edge, emitted from a card the publisher copied from upstream. Scored so the corpus
+  # pins the behaviour rather than leaving the corpus silent about the tool's weakest output.
+  - source: LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2
+    declared_as: "DeepSeek-R1"
+    relation: distilled-from
+    provenance: unresolvable
+    verdict: unverifiable
+    evidence_locator: "README.md:58"
+    evidence_excerpt: >-
+      To support the research community, we have open-sourced DeepSeek-R1-Zero, DeepSeek-R1, and
+      six dense models distilled from DeepSeek-R1 based on Llama and Qwen.
+    why: >-
+      The card is DeepSeek's, republished verbatim with the quantization -- normal practice, and it
+      means the sentence's subject is DeepSeek describing six models rather than this artifact
+      describing itself. The edge is approximately true and specifically wrong: this is a
+      quantization OF one of those six, not a distillation. It is emitted because the card does say
+      it (DEC-010), `unverifiable` because nothing supports more, and with the sentence attached so
+      a reader can see it is family prose. DEC-028 records why narrowing the scanner to exclude it
+      was measured and rejected.
+
+  - subject: "the link between the EXL2 quantization and the model it quantized"
+    edge: { source: PrunaAI/LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed,
+            relation: quantized-from,
+            target: LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2 }
+    why: >-
+      `LoneStriker/...-exl2` declares no base model and carries no qualifier tag. Its repository
+      name spells the chain out and a name is not a declaration. The graph stops where the metadata
+      stops.
+    still_established: >-
+      That PrunaAI declares this EXL2 file as its source and both artifacts pin to revisions; that
+      the EXL2 repository asserts no ancestry of its own; and that the only thing connecting it to
+      DeepSeek is a string in its name and a paragraph of somebody else's prose.
