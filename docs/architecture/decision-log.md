@@ -738,3 +738,55 @@ exactly that shape. A traversal with no width bound is unbounded in the case the
 Consistent with DEC-007, it stops rather than truncating silently, and the stop is in
 `ceilings_hit` where a reader and the scorer both see it.
 
+---
+
+## DEC-025 — A repeated declaration is one edge carrying a count, not several edges
+
+**Date:** 2026-09-03
+**Status:** Accepted
+
+**Decision.** An edge is identified by (source, relation, name-as-declared). A card naming the same
+parent more than once produces **one** edge with `declared_count` set to the number of times it was
+named, not one edge per declaration.
+
+**Why.** mergekit writes one `base_model` entry per merge slice, so a parent weighted across five
+slices is declared five times. `merge-lineage` is exactly that: ten entries naming six artifacts.
+Emitting ten edges says the model has ten dependencies, which it does not — a reader counting them
+is wrong by four, and two renderings of the same model diff as though the graph had changed.
+
+The repetition is not noise, though, which is why it is not simply discarded. It says how much of
+the merge that parent accounts for, and that is the most interesting thing the card discloses about
+the recipe.
+
+**Why the declared name and not the resolved one.** Two declarations of a name that redirects
+elsewhere are still one relationship. Comparing resolved targets would deduplicate correctly except
+where a redirect is involved — the case least likely to be noticed and most likely to matter.
+
+**Tradeoffs.** `declared_count` is a field a consumer must know to read; a consumer that ignores it
+sees six dependencies and loses the weighting. That is the right failure direction: the count is
+extra information about a correct graph, where the repeats were correct information about a wrong
+one.
+
+---
+
+## DEC-026 — A ceiling names what it did not follow
+
+**Date:** 2026-09-03
+**Status:** Accepted
+
+**Decision.** Reaching a ceiling appends a record naming the specific branches that were not
+expanded, not merely that some remained.
+
+**Why.** DEC-007 already says a ceiling "never silently truncates and never omits", and the first
+node-count ceiling (DEC-024) recorded `"the remaining frontier was not followed"`. That is a silent
+truncation with a sentence acknowledging it: a reader learns the BOM is incomplete and cannot learn
+in which direction, which is the part that determines whether the omission matters to them.
+
+`merge-lineage` stops five branches short, and the five it names include a full model and four
+adapters — a reader who cares about adapter provenance and a reader who cares about base weights
+need different halves of that list.
+
+**How it was found.** Building the scenario the ceiling was written for. The synthetic test that
+preceded it asserted only that a ceiling was reported, which is the weaker claim the implementation
+happened to satisfy.
+

@@ -138,6 +138,11 @@ class Edge(DomainModel):
     provenance: ProvenanceClass
     verdict: Verdict
     evidence: tuple[Evidence, ...] = ()
+    #: How many times the source declared this same relation to this same target. Normally 1. A
+    #: mergekit card emits one `base_model` entry per merge slice, so a parent weighted across five
+    #: slices is declared five times -- which is a fact about the recipe, not five dependencies.
+    #: Emitting five identical edges overstated the graph; the count carries what they meant.
+    declared_count: int = 1
 
     @model_validator(mode="after")
     def _rules(self) -> Edge:

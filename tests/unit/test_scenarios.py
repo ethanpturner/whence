@@ -10,7 +10,7 @@ import yaml
 
 from whence.evaluate import score
 from whence.registry import RecordedRegistry
-from whence.resolve import Resolver
+from whence.resolve import Resolver, resolver_for
 
 ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = yaml.safe_load((ROOT / "benchmarks" / "scenarios.yaml").read_text())
@@ -21,13 +21,9 @@ RECORDED = [e for e in REGISTRY["scenarios"] if e["status"] == "recorded"]
 def test_scenario(entry: dict[str, object]) -> None:
     scenario = ROOT / str(entry["path"])
     target = yaml.safe_load((scenario / "input" / "target.yaml").read_text())
-    resolver = Resolver(
-        RecordedRegistry(scenario / "recorded"),
-        max_depth=int(target.get("max_depth", 2)),
-        check_structure=bool(target.get("check_structure", False)),
-        check_signatures=bool(target.get("check_signatures", False)),
+    report = resolver_for(target, RecordedRegistry(scenario / "recorded")).resolve(
+        str(target["target"])
     )
-    report = resolver.resolve(str(target["target"]))
     result = score(report, scenario / "expected", str(entry["slug"]))
     assert result.passed, (
         f"missed={result.missed} mismatched={result.mismatched} "
@@ -188,6 +184,10 @@ def test_the_node_count_ceiling_stops_a_wide_graph() -> None:
 
     report = Resolver(_Wide(), max_depth=3, max_nodes=10).resolve("a/root")
     assert any("node count 10" in c for c in report.ceilings_hit)
+    ceiling = next(c for c in report.ceilings_hit if "node count" in c)
+    # DEC-007: a ceiling names what was not followed. Saying only that a frontier remained is the
+    # silent truncation the decision forbids, with a sentence acknowledging it.
+    assert "a/base" in ceiling, ceiling
     assert not report.partial, "a ceiling is a stop the tool chose, not a transient failure"
 
 

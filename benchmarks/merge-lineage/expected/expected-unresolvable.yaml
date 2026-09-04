@@ -1,0 +1,37 @@
+# What the run must admit it did not determine.
+
+ceilings:
+  - expect_reported: true
+    kind: node count
+    # The five branches the run stopped short of. Named, so the check fails if the ceiling reverts
+    # to saying only that a frontier remained -- which is the silent truncation DEC-007 forbids,
+    # with a sentence acknowledging it.
+    names_unfollowed:
+      - Blackroot/Llama3-RP-Lora
+      - zementalist/llama-3-8B-chat-psychotherapist
+      - Blackroot/Llama-3-8B-Abomination-LORA
+      - ResplendentAI/Llama3_RP_ORPO_LoRA
+      - meta-llama/Meta-Llama-3-8B
+    why: >-
+      `max_nodes: 10` is below this graph's fourteen nodes, so the traversal stops. DEC-007 requires
+      that a ceiling never silently truncate and never omit: the ceiling names the five branches it
+      did not follow, so a reader knows which parts of the graph are missing rather than only that
+      some are.
+
+unresolvable:
+  - subject: "whether the six declared parents were in fact merged into this model"
+    edge: { source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF, relation: merged-from,
+            target: failspy/Llama-3-8B-Instruct-MopeyMule }
+    why: >-
+      Resolution establishes that each named artifact exists and can be pinned. It says nothing
+      about whether the merge happened, and a merge is the case where weight-level comparison would
+      help least: the output is a blend, so no parent's tensors survive intact to be matched.
+    still_established: >-
+      That the card asserts six parents, that all six resolve and pin, that one of them accounts for
+      five of the ten declared slices, and that four are adapters over two different base models.
+
+  - subject: "the un-quantized merge this artifact was built from"
+    why: >-
+      The card names the merge's parents and not the merge. The obvious reconstruction of its name
+      answers 401 under two plausible namespaces, and a name the tool assembled is not a name anyone
+      declared. The chain is missing a generation and the graph says so by not inventing one.

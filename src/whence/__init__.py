@@ -16,7 +16,7 @@ import yaml
 from whence.cyclonedx import to_cyclonedx
 from whence.evaluate import score
 from whence.registry import LiveRegistry, RecordedRegistry, Registry
-from whence.resolve import Resolver
+from whence.resolve import Resolver, resolver_for
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 
@@ -30,6 +30,7 @@ def _cmd_resolve(args: argparse.Namespace) -> int:
     resolver = Resolver(
         _registry_for(scenario),
         max_depth=args.max_depth,
+        max_nodes=args.max_nodes,
         check_structure=args.check_structure,
         check_signatures=args.check_signatures,
     )
@@ -63,13 +64,9 @@ def _cmd_evaluate(args: argparse.Namespace) -> int:
             continue
         scenario = ROOT / entry["path"]
         target = yaml.safe_load((scenario / "input" / "target.yaml").read_text())
-        resolver = Resolver(
-            RecordedRegistry(scenario / "recorded"),
-            max_depth=int(target.get("max_depth", 2)),
-            check_structure=bool(target.get("check_structure", False)),
-            check_signatures=bool(target.get("check_signatures", False)),
+        report = resolver_for(target, RecordedRegistry(scenario / "recorded")).resolve(
+            str(target["target"])
         )
-        report = resolver.resolve(str(target["target"]))
         result = score(report, scenario / "expected", entry["slug"])
         total_prose += result.unchecked_prose
         if result.passed:
@@ -106,6 +103,12 @@ def main() -> int:
         "--scenario", help="replay a benchmark scenario's recording instead of the network"
     )
     resolve.add_argument("--max-depth", type=int, default=2)
+    resolve.add_argument(
+        "--max-nodes",
+        type=int,
+        default=200,
+        help="stop after this many nodes and name what was not followed (DEC-024)",
+    )
     resolve.add_argument(
         "--check-signatures",
         action="store_true",

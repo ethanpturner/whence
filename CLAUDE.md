@@ -68,6 +68,13 @@ an implementation detail.
 - **Vendored files are pinned by content digest and verified** (DEC-016).
   `scripts/verify_pins.py` checks `schema/PINNED.yaml` offline and emits the project's own three
   verdicts. Updating a vendored file means regenerating the pin, not editing around it.
+- **A recording is captured, never written.** `scripts/capture_scenario.py` resolves a target
+  against the live registry and writes the manifest the replay reads back. Hand-authoring a
+  response puts a shape into the benchmark that the registry never produced, and the tool then
+  passes against a registry that does not exist.
+- **One place builds a resolver from a `target.yaml`:** `resolve.resolver_for`. There were two, and
+  they drifted the moment `max_nodes` was added -- the scenario test kept passing against a ceiling
+  that never fired.
 - **A heuristic over card text is measured before it ships.** `scripts/measure_prose.py` runs the
   prose scanner against live cards and prints every claim it would put in a BOM. The first version
   of the pattern was 0/10 correct against 91 cards; the numbers and what they changed are in

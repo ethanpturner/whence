@@ -1,0 +1,54 @@
+# Captured registry interactions, replayed offline (DEC-009). Written by
+# scripts/capture_scenario.py; status codes are part of the recording, and a 401 or 404 is
+# recorded as the response it is rather than treated as a capture failure.
+captured_at: 2026-09-04
+host: huggingface.co
+interactions:
+  - request: GET /api/models/QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    status: 200
+    body: model-QuantFactory-ScaduTorrent1.1-8b-model_stock-GGUF.json
+  - request: GET /api/models/failspy/Llama-3-8B-Instruct-MopeyMule
+    status: 200
+    body: model-failspy-Llama-3-8B-Instruct-MopeyMule.json
+  - request: GET /api/models/kloodia/lora-8b-math
+    status: 200
+    body: model-kloodia-lora-8b-math.json
+  - request: GET /api/models/Blackroot/Llama3-RP-Lora
+    status: 200
+    body: model-Blackroot-Llama3-RP-Lora.json
+  - request: GET /api/models/zementalist/llama-3-8B-chat-psychotherapist
+    status: 200
+    body: model-zementalist-llama-3-8B-chat-psychotherapist.json
+  - request: GET /api/models/Blackroot/Llama-3-8B-Abomination-LORA
+    status: 200
+    body: model-Blackroot-Llama-3-8B-Abomination-LORA.json
+  - request: GET /api/models/ResplendentAI/Llama3_RP_ORPO_LoRA
+    status: 200
+    body: model-ResplendentAI-Llama3_RP_ORPO_LoRA.json
+  - request: GET /failspy/Llama-3-8B-Instruct-MopeyMule/raw/main/README.md
+    status: 200
+    body: null
+  - request: GET /api/models/meta-llama/Meta-Llama-3-8B
+    status: 200
+    body: model-meta-llama-Meta-Llama-3-8B.json
+  - request: GET /Blackroot/Llama3-RP-Lora/raw/main/README.md
+    status: 200
+    body: null
+  - request: GET /api/datasets/mpingale/mental-health-chat-dataset
+    status: 200
+    body: dataset-mpingale-mental-health-chat-dataset.json
+  - request: GET /api/datasets/Amod/mental_health_counseling_conversations
+    status: 200
+    body: dataset-Amod-mental_health_counseling_conversations.json
+  - request: GET /api/datasets/heliosbrahma/mental_health_chatbot_dataset
+    status: 200
+    body: dataset-heliosbrahma-mental_health_chatbot_dataset.json
+  - request: GET /zementalist/llama-3-8B-chat-psychotherapist/raw/main/README.md
+    status: 200
+    body: null
+  - request: GET /Blackroot/Llama-3-8B-Abomination-LORA/raw/main/README.md
+    status: 200
+    body: null
+  - request: GET /api/models/unsloth/llama-3-8b-bnb-4bit
+    status: 200
+    body: model-unsloth-llama-3-8b-bnb-4bit.json

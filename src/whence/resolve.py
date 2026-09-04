@@ -73,6 +73,23 @@ def parse_ref(slug: str, host: str, revision: str | None = None) -> ArtifactRef 
     )
 
 
+def resolver_for(target: dict[str, Any], registry: Registry) -> Resolver:
+    """Build a resolver from a scenario's `input/target.yaml`.
+
+    One place, because there were two -- the CLI's `evaluate` and the scenario test each read the
+    file and each constructed a `Resolver` -- and they drifted the moment `max_nodes` was added.
+    The test kept passing against a ceiling that never fired, which is the failure a benchmark is
+    least able to notice about itself.
+    """
+    return Resolver(
+        registry,
+        max_depth=int(target.get("max_depth", 2)),
+        max_nodes=int(target.get("max_nodes", 200)),
+        check_structure=bool(target.get("check_structure", False)),
+        check_signatures=bool(target.get("check_signatures", False)),
+    )
+
+
 def relation_for(slug: str, tags: list[str]) -> Relation:
     for tag in tags:
         parts = tag.split(":")
@@ -342,10 +359,19 @@ class Resolver:
             if len(state.nodes) >= self._max_nodes:
                 # DEC-007 names a node-count ceiling alongside the depth one, and only the depth
                 # one existed. A wide graph -- a merge naming forty parents -- was traversed to
-                # exhaustion whatever the caller asked for. Reaching it stops the traversal and is
-                # reported; it never silently truncates.
+                # exhaustion whatever the caller asked for.
+                #
+                # DEC-007 also requires that a ceiling name what was not followed, and the first
+                # version of this said only "the remaining frontier", which is the silent
+                # truncation the decision forbids with a sentence acknowledging it. The unexpanded
+                # frontier is listed, so a reader knows which branches the BOM is missing rather
+                # than only that it is missing some.
+                unfollowed = [
+                    pending.slug for pending, _ in frontier if pending.slug not in expanded
+                ]
                 state.ceilings.append(
-                    f"node count {self._max_nodes} reached; the remaining frontier was not followed"
+                    f"node count {self._max_nodes} reached; not followed: "
+                    + (", ".join(dict.fromkeys(unfollowed)) or "nothing was left on the frontier")
                 )
                 break
 
@@ -376,6 +402,25 @@ class Resolver:
                 pass
         return now()
 
+    @staticmethod
+    def _already_declared(state: _State, source: str, relation: Relation, target: str) -> int:
+        """Index of an identical edge already recorded, or -1.
+
+        Identity is (source, relation, name-as-declared). A card may name the same parent
+        repeatedly -- a mergekit recipe does it once per slice -- and each repetition is the same
+        relationship asserted again, not another one.
+
+        Matching on the declared name rather than the resolved one matters where a redirect is in
+        play: two declarations of a name that redirects elsewhere are still one relationship, and
+        comparing resolved targets would miss that only when a redirect exists -- the case least
+        likely to be noticed.
+        """
+        for index, edge in enumerate(state.edges):
+            declared = edge.declared_as.slug if edge.declared_as else edge.target.slug
+            if edge.source.slug == source and edge.relation is relation and declared == target:
+                return index
+        return -1
+
     def _add_edge(
         self,
         source: ArtifactRef,
@@ -387,6 +432,15 @@ class Resolver:
         frontier: list[tuple[ArtifactRef, int]],
         depth: int,
     ) -> None:
+        # A repeat declaration bumps the count rather than appending a second identical edge. Done
+        # before any request, so five slices naming one parent cost one resolution rather than five.
+        existing = self._already_declared(state, source.slug, relation, slug)
+        if existing >= 0:
+            previous = state.edges[existing]
+            state.edges[existing] = Edge.model_validate(
+                {**previous.model_dump(), "declared_count": previous.declared_count + 1}
+            )
+            return
         if kind == "package":
             target = ArtifactRef(host="pypi", namespace="", name=slug, pinned=False)
             self._record_node(

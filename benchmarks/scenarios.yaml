@@ -81,7 +81,6 @@ scenarios:
 #   measures: a declared base whose owning account no longer exists. Correct output is an
 #             unpinned, unreachable node - the Unit 42 scenario, and the direct test of DEC-002.
 #
-# - slug: merge-lineage
 #   measures: multi-parent merge provenance, including depth-ceiling reporting (DEC-007).
 #
 # - slug: quantized-republication
@@ -90,6 +89,13 @@ scenarios:
 #
 # - slug: no-lineage
 #   measures: a model with no upstream. The negative set - correct output asserts nothing.
+
+  - slug: merge-lineage
+    path: benchmarks/merge-lineage
+    status: recorded
+    measures: >-
+      a wide graph: ten declarations naming six parents, four of them adapters, and the node-count
+      ceiling DEC-024 added for exactly this shape
 
   - slug: structural-compatible
     name: A declared base whose transformer body is compatible

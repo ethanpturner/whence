@@ -1,0 +1,52 @@
+# Edges and conclusions that must not appear. Each is a specific, plausible mistake.
+
+absent:
+  # The elided generation. This GGUF quantizes a merge, and the card declares the merge's parents
+  # directly -- so the un-quantized merge is missing from the chain.
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: QuantFactory/ScaduTorrent1.1-8b-model_stock
+    relation: quantized-from
+    why: >-
+      The obvious reconstruction: strip `-GGUF` and keep the namespace. The registry answers 401,
+      which does not distinguish absence from denial, and the name was assembled by the tool rather
+      than stated by anyone. DEC-010 forbids it however well the pattern fits -- and the pattern
+      fits here better than almost anywhere, which is why it belongs in this file.
+
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: nbeerbower/ScaduTorrent1.1-8b-model_stock
+    relation: quantized-from
+    why: >-
+      The same guess with the upstream author's namespace instead. Also 401. A second plausible
+      owner for one invented name is a good reason not to invent it.
+
+  # Duplicate declarations are not duplicate dependencies.
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: failspy/Llama-3-8B-Instruct-MopeyMule
+    relation: derives-from
+    why: >-
+      Flattening. The registry's qualifier says `merge`, and `merged-from` is what DEC-015 has the
+      relation for. A merge with one named parent reads as a fine-tune, which this is not.
+
+negative_assertions:
+  - claim: "this model has ten parents"
+    why: >-
+      Six. Ten is the number of `base_model` entries, and five of them name one artifact because
+      mergekit writes one entry per merge slice. Counting declarations as dependencies inflates
+      every merge in a corpus, and merges are where a supply-chain graph is already hardest to read.
+
+  - claim: "the four LoRA adapters are not real parents"
+    why: >-
+      Nothing establishes that. An adapter can be merged into weights, so the target being an
+      adapter does not refute the declared relation. The tool records what was declared and keeps
+      resolving; the adapters' own `adapts` edges are what tell a reader more.
+
+  - claim: "the merge is reproducible from this graph"
+    why: >-
+      The graph records what the card asserts about its inputs, not the merge method, the weights,
+      or the slice boundaries. `model_stock` appears in the name and nowhere in the metadata.
+
+  - claim: "the missing branches were not followed because they could not be resolved"
+    why: >-
+      They were not followed because the run reached its node ceiling. That is a stop the tool
+      chose, and it is reported as one -- distinct from an unreachable target, and distinct again
+      from a transient failure that produced no answer at all.

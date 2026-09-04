@@ -1,0 +1,8 @@
+# A published mergekit merge, republished as a GGUF quantization. The card declares ten
+# `base_model` entries naming six distinct artifacts, four of which are LoRA adapters.
+target: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+max_depth: 2
+# Deliberately below the graph's node count, so the DEC-024 ceiling is exercised by the scenario it
+# exists for rather than only by a synthetic test. A merge is the shape that makes a node-count
+# ceiling necessary at all: this graph is two deep and wide enough to need one.
+max_nodes: 10

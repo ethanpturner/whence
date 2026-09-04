@@ -70,6 +70,11 @@ def _claim(edge: Edge, index: int) -> tuple[dict[str, Any], dict[str, Any]]:
             data.append(_evidence_data("whence:risk", "ownership-boundary-crossed"))
     for item in edge.evidence:
         data.append(_evidence_data("whence:locator", item.locator))
+    if edge.declared_count > 1:
+        # The card asserted this same relationship more than once. A merge recipe does it once per
+        # slice, so the number says how much of the merge this parent accounts for -- information
+        # that was previously carried, wrongly, as repeated identical claims.
+        data.append(_evidence_data("whence:declared-count", str(edge.declared_count)))
     claim = {
         # Derived from what the claim is about, not from its position in the list. An index-based
         # ref moves for every claim after any upstream change, so a diff of two BOMs shows every

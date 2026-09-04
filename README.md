@@ -21,6 +21,7 @@ uv run whence resolve nvidia/Llama-3.1-Nemotron-70B-Instruct-HF \
 uv run whence evaluate          # every recorded scenario, scored against its truth set, offline
 uv run whence resolve <model> --check-structure --check-signatures   # phase two, opt-in
 uv run python scripts/measure_prose.py --limit 60 --search distill  # what the prose scan does live
+uv run python scripts/capture_scenario.py <slug> <model>            # record a scenario, live
 ```
 
 ## What it does

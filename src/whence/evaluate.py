@@ -69,6 +69,16 @@ def score(report: ResolutionReport, expected_dir: Path, scenario: str) -> Score:
         if e.declared_as is not None
     }
 
+    # An edge is identified by (source, relation, target), so two of them are one relationship
+    # asserted twice -- never two dependencies. A BOM carrying repeats inflates the graph and makes
+    # two renderings of the same model diff as though it had changed.
+    keys = [_key(e.source.slug, e.target.slug, e.relation.value) for e in report.edges]
+    for duplicate in {k for k in keys if keys.count(k) > 1}:
+        result.honesty_failures.append(
+            f"{duplicate} was emitted {keys.count(duplicate)} times; repeated declarations are one "
+            "edge carrying a `declared_count`, not several edges"
+        )
+
     graph_path = expected_dir / "expected-graph.yaml"
     if graph_path.exists():
         for row in (yaml.safe_load(graph_path.read_text()) or {}).get("edges") or []:
@@ -88,6 +98,12 @@ def score(report: ResolutionReport, expected_dir: Path, scenario: str) -> Score:
                     problems.append(f"declared_as {got} != {row['declared_as']}")
             if row.get("target_revision") and edge.target.revision != row["target_revision"]:
                 problems.append(f"revision {edge.target.revision} != {row['target_revision']}")
+            # How many times the source declared this same relationship. Unscored until
+            # `merge-lineage` was mutation-tested: removing the deduplication emitted five
+            # identical edges and every scenario still passed, because nothing looked.
+            expected_count = int(row.get("declared_count", 1))
+            if edge.declared_count != expected_count:
+                problems.append(f"declared_count {edge.declared_count} != {expected_count}")
             (result.mismatched if problems else result.recovered).append(
                 f"{key} ({'; '.join(problems)})" if problems else key
             )
@@ -195,8 +211,24 @@ def _score_unresolvable(result: Score, expected_dir: Path, report: ResolutionRep
         return
     loaded = yaml.safe_load(path.read_text()) or {}
     for row in loaded.get("ceilings") or []:
-        if row.get("expect_reported") and not report.ceilings_hit:
+        if not row.get("expect_reported"):
+            continue
+        if not report.ceilings_hit:
             result.honesty_failures.append("a ceiling was expected and none was reported")
+            continue
+        # `kind` distinguishes the depth ceiling from the node-count one. Checking only that some
+        # ceiling was reported let a scenario written for one pass on the other -- which is what
+        # `merge-lineage` did before `max_nodes` was wired into the evaluator at all.
+        kind = str(row.get("kind") or "")
+        if kind and not any(kind in hit for hit in report.ceilings_hit):
+            result.honesty_failures.append(
+                f"expected a {kind!r} ceiling; got {list(report.ceilings_hit)}"
+            )
+        for name in row.get("names_unfollowed") or []:
+            if not any(str(name) in hit for hit in report.ceilings_hit):
+                result.honesty_failures.append(
+                    f"the ceiling does not name {name}, which it stopped short of (DEC-007)"
+                )
 
     by_pair = {(e.source.slug, e.relation.value, e.target.slug): e for e in report.edges}
     for row in loaded.get("unresolvable") or []:

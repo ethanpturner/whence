@@ -1,0 +1,88 @@
+# Edges that genuinely exist and should be recovered, under `max_nodes: 10`.
+
+root:
+  ref: { host: huggingface.co, namespace: QuantFactory, name: ScaduTorrent1.1-8b-model_stock-GGUF }
+  revision: 59fc03079ddaf71a94ae4844c19780d1de40fbde
+  pinned: true
+
+edges:
+  # Six distinct parents from ten declarations. The relation comes from the registry's own
+  # `base_model:merge:` qualifier, not from the word "merge" in the model's name (DEC-015).
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: failspy/Llama-3-8B-Instruct-MopeyMule
+    relation: merged-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+    declared_count: 5
+    why: >-
+      Declared five times, once per merge slice. One edge carrying the count, not five edges: a
+      reader counting dependencies would otherwise get ten where there are six, and two BOMs of the
+      same model would diff as though the graph had changed.
+
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: kloodia/lora-8b-math
+    relation: merged-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: Blackroot/Llama3-RP-Lora
+    relation: merged-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: zementalist/llama-3-8B-chat-psychotherapist
+    relation: merged-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: Blackroot/Llama-3-8B-Abomination-LORA
+    relation: merged-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: ResplendentAI/Llama3_RP_ORPO_LoRA
+    relation: merged-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+
+  # Depth two. The card calls this parent a merge input; the parent's own card calls itself an
+  # adapter over Llama-3-8B. Both are recorded, and the second is reachable only because
+  # resolution continued past the names the root declared.
+  - source: kloodia/lora-8b-math
+    target: meta-llama/Meta-Llama-3-8B
+    relation: adapts
+    provenance: asserted-by-card
+    verdict: unverifiable
+
+  - source: QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF
+    target: transformers
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    node_kind: package
+
+  - source: failspy/Llama-3-8B-Instruct-MopeyMule
+    target: transformers
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    node_kind: package
+
+  - source: kloodia/lora-8b-math
+    target: peft
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    node_kind: package
+
+nodes:
+  - ref: failspy/Llama-3-8B-Instruct-MopeyMule
+    pinned: true
+    reachable: true
+    notes: >-
+      The one parent declared repeatedly, and the only one of the six that is a full model rather
+      than an adapter or a fine-tune of one.
