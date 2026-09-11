@@ -171,6 +171,13 @@ A node whose target is reported absent stays in `components[]` with:
 | `whence:namespace-state` = `free` \| `held` \| `unknown` | whether the owning namespace also resolves |
 | `whence:risk` = `reregistrable-reference` | set only when `namespace-state` is `free` |
 
+A card that names the model as its own base (DEC-031) produces a `dependsOn` entry naming the
+component's own purl and, on the component:
+
+| Property | Meaning |
+|---|---|
+| `whence:declaration` = `self-referential` | the card's `base_model` is the model itself; the edge is recorded, not followed |
+
 `whence:risk` is deliberately not a verdict and is not carried in `declarations`. The lineage claim
 stays `unverifiable`; the risk attaches to the component, because that is what a consumer needs to
 act on. Conflating the two would put an alarm in a field that reads as a judgment about the

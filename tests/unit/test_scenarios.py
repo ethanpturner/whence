@@ -244,3 +244,37 @@ def test_replaying_a_recording_twice_produces_the_same_bytes() -> None:
     refs = [c["bom-ref"] for c in first["declarations"]["claims"]]  # type: ignore[index]
     assert len(refs) == len(set(refs))
     assert not any(ref.rsplit("-", 1)[-1].isdigit() for ref in refs), "a ref is positional again"
+
+
+def test_a_self_referential_base_is_recorded_flagged_and_not_requested() -> None:
+    """DEC-031. The claim is an edge from the node to itself; the node is flagged; the declared
+    base is not resolved again, because it is the node already in hand."""
+    from whence.registry import Response
+
+    requests: list[str] = []
+
+    class _Registry:
+        def get(self, path: str) -> Response:
+            requests.append(path)
+            if path == "/api/models/own/base":
+                return Response(
+                    status=200,
+                    body={
+                        "id": "own/base",
+                        "sha": "a" * 40,
+                        "cardData": {"base_model": "own/base"},
+                    },
+                )
+            raise AssertionError(f"unexpected request: {path}")
+
+    report = Resolver(_Registry()).resolve("own/base")
+    self_edges = [e for e in report.edges if e.source.slug == e.target.slug == "own/base"]
+    assert len(self_edges) == 1
+    assert self_edges[0].verdict.value == "unverifiable"
+    assert self_edges[0].provenance.value == "asserted-by-card"
+    (node,) = [n for n in report.nodes if n.ref.slug == "own/base"]
+    assert ("whence:declaration", "self-referential") in node.properties
+    # The root is listed once to resolve and once to expand; nothing else is asked for. A second
+    # distinct path here would be the declared base being resolved as if it were another model.
+    assert set(requests) == {"/api/models/own/base"}, "the declared base must not be requested"
+    assert not report.partial and not report.ceilings_hit

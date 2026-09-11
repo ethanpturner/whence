@@ -1,0 +1,47 @@
+# Conclusions and edges that must not appear.
+
+absent:
+  - source: nmthien/vietnamese-gpt2
+    target: nmthien/vietnamese-gpt2
+    relation: derives-from
+    verdict_if_emitted: contradicted
+    why: >-
+      A self-reference is not evidence against a derivation; it is a declaration that says nothing
+      about ancestry. `contradicted` would assert that the tool established the model has no such
+      base, which it did not look into.
+
+  - source: nmthien/vietnamese-gpt2
+    target: nmthien/vietnamese-gpt2
+    relation: derives-from
+    verdict_if_emitted: verified
+    why: >-
+      A name resolving to itself is the one case where "the target exists and pins" is trivially
+      true, and it establishes nothing about a derivation. The verdict stays `unverifiable`.
+
+negative_assertions:
+  - claim: "nmthien/vietnamese-gpt2 has no upstream"
+    why: >-
+      The card's `base_model` field is degenerate, not empty. Absence of a usable declaration is
+      not a statement that no ancestor exists (DEC-010); the graph records the claim as made and
+      stops.
+
+  - claim: "the intended base was some other nmthien model, or the model the name resembles"
+    why: >-
+      Heuristic completion. The card declared one string; nothing in the metadata names another
+      artifact, and guessing which repository the author meant is inference (DEC-010).
+
+omissions:
+  - omitted: "the self-referential edge"
+    why: >-
+      Dropping it is the natural implementation and erases the fact that the card's lineage
+      metadata is unusable. A reader of the BOM should be able to see that the declaration exists
+      and points nowhere.
+  - omitted: "whence:declaration: self-referential"
+    why: >-
+      Without the flag the edge is indistinguishable from a real dependency in `dependsOn`, and the
+      consumer has to notice the loop by walking the graph.
+  - omitted: "a second resolution request for the declared base"
+    why: >-
+      The target is the node already in hand. A request would spend the rate budget learning what
+      the recording already holds, and a frontier entry for it would be a step towards the loop
+      the traversal exists to avoid.

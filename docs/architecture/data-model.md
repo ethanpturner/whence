@@ -160,6 +160,10 @@ type, and provenance for an unfamiliar kind is still provenance.
   controls the name (DEC-002).
 - **An absent target never yields `contradicted`.** Deletion is evidence about the reference, not
   about the relationship. The derivation may have occurred before the deletion.
+- **A self-referential base declaration is recorded and flagged, never followed** (DEC-031). The
+  edge from the node to itself is emitted with `provenance = asserted-by-card` and
+  `verdict = unverifiable`; the node carries `whence:declaration: self-referential`; no request is
+  made for the declared base and nothing is guessed about the base the author meant.
 
 ## 9. `FingerprintEvidenceFile`
 

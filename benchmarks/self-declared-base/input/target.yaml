@@ -1,0 +1,3 @@
+target: nmthien/vietnamese-gpt2
+host: huggingface.co
+max_depth: 2
