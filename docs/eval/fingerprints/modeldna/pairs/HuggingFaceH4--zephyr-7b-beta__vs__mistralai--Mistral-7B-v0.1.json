@@ -1,0 +1,130 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "pool": "positive",
+ "kind": "fine-tune",
+ "subject": "HuggingFaceH4/zephyr-7b-beta",
+ "subject_fingerprinted_as": "HuggingFaceH4/zephyr-7b-beta",
+ "subject_revision": "892b3d7a7b1cf10c7a701c60881cd93df615734c",
+ "candidate": "mistralai/Mistral-7B-v0.1",
+ "candidate_fingerprinted_as": "mistralai/Mistral-7B-v0.1",
+ "candidate_revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "verdict": {
+  "verdict": "FINE_TUNE",
+  "description": "small parameter delta from one parent (SFT/DPO/LoRA-merged regime)",
+  "probability": 0.9984935511340388,
+  "best_candidate": "mistralai/Mistral-7B-v0.1",
+  "notes": [],
+  "candidates": [
+   {
+    "candidate_id": "mistralai/Mistral-7B-v0.1",
+    "family": "mistralai/Mistral-7B-v0.1",
+    "probability": 0.9984935511340388,
+    "ruled_out": null,
+    "evidence": {
+     "suspect_id": "HuggingFaceH4/zephyr-7b-beta",
+     "candidate_id": "mistralai/Mistral-7B-v0.1",
+     "shape_compatible": true,
+     "layers_match": true,
+     "inventory_match": true,
+     "tokenizer_match": false,
+     "sigma_r": {
+      "attn.k": 0.999991525287222,
+      "attn.o": 0.9999961499442225,
+      "attn.q": 0.9999846544356001,
+      "attn.v": 0.9999950613685362,
+      "mlp.down": 0.9998658056898422,
+      "mlp.gate": 0.9999831546540238,
+      "mlp.up": 0.9999301909521003
+     },
+     "sigma_r_mean": 0.9999637917616495,
+     "vector_cos": {
+      "norm.final": 1.0,
+      "norm.in": 0.9999999996801888,
+      "norm.post": 0.9999999999999999
+     },
+     "vector_norm_r": {
+      "norm.in": 0.9999999999980929,
+      "norm.post": 0.9999999999999998
+     },
+     "vector_cos_mean": 0.9999999998933963,
+     "pcs_cos": {
+      "attn.k": 0.999113932672889,
+      "attn.o": 0.9993891587810483,
+      "attn.q": 0.9991883660847042,
+      "attn.v": 0.9995058044877168,
+      "mlp.down": 0.9991920461472128
+     },
+     "pcs_cos_mean": 0.9992778616347142,
+     "spectra_r": {
+      "attn.k": 0.9999707589831928,
+      "attn.o": 0.9999494800742971,
+      "attn.q": 0.9999547446706264,
+      "attn.v": 0.9998903189105195
+     },
+     "spectra_logdist": {
+      "attn.k": 0.001642720369108289,
+      "attn.o": 0.001157719042491007,
+      "attn.q": 0.002677356783441503,
+      "attn.v": 0.001746997712478879
+     },
+     "spectra_r_mean": 0.9999413256596589,
+     "spectra_kind": "sketch",
+     "notes": []
+    }
+   }
+  ]
+ },
+ "evidence": {
+  "suspect_id": "HuggingFaceH4/zephyr-7b-beta",
+  "candidate_id": "mistralai/Mistral-7B-v0.1",
+  "shape_compatible": true,
+  "layers_match": true,
+  "inventory_match": true,
+  "tokenizer_match": false,
+  "sigma_r": {
+   "attn.k": 0.999991525287222,
+   "attn.o": 0.9999961499442225,
+   "attn.q": 0.9999846544356001,
+   "attn.v": 0.9999950613685362,
+   "mlp.down": 0.9998658056898422,
+   "mlp.gate": 0.9999831546540238,
+   "mlp.up": 0.9999301909521003
+  },
+  "sigma_r_mean": 0.9999637917616495,
+  "vector_cos": {
+   "norm.final": 1.0,
+   "norm.in": 0.9999999996801888,
+   "norm.post": 0.9999999999999999
+  },
+  "vector_norm_r": {
+   "norm.in": 0.9999999999980929,
+   "norm.post": 0.9999999999999998
+  },
+  "vector_cos_mean": 0.9999999998933963,
+  "pcs_cos": {
+   "attn.k": 0.999113932672889,
+   "attn.o": 0.9993891587810483,
+   "attn.q": 0.9991883660847042,
+   "attn.v": 0.9995058044877168,
+   "mlp.down": 0.9991920461472128
+  },
+  "pcs_cos_mean": 0.9992778616347142,
+  "spectra_r": {
+   "attn.k": 0.9999707589831928,
+   "attn.o": 0.9999494800742971,
+   "attn.q": 0.9999547446706264,
+   "attn.v": 0.9998903189105195
+  },
+  "spectra_logdist": {
+   "attn.k": 0.001642720369108289,
+   "attn.o": 0.001157719042491007,
+   "attn.q": 0.002677356783441503,
+   "attn.v": 0.001746997712478879
+  },
+  "spectra_r_mean": 0.9999413256596589,
+  "spectra_kind": "sketch",
+  "notes": []
+ }
+}

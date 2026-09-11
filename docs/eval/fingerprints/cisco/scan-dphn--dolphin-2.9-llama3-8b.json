@@ -1,0 +1,149 @@
+{
+  "model_info": {
+    "model_path": "dphn/dolphin-2.9-llama3-8b",
+    "model_type": "llama",
+    "architectures": [
+      "LlamaForCausalLM"
+    ],
+    "hidden_size": 4096,
+    "num_hidden_layers": 32,
+    "num_attention_heads": 32,
+    "num_key_value_heads": 8,
+    "head_dim": 128,
+    "intermediate_size": 14336,
+    "vocab_size": 128258,
+    "tie_word_embeddings": false,
+    "hidden_act": "silu",
+    "num_parameters": 8030277632,
+    "arch_hash": "627ba517bf5af7e8df0103a1da401b5cf0b51874eefe262f33dcfc978abb172c",
+    "family_hash": "32f3abc37c94912fe51e2d77fb869ac4d57405ef2422fd6037754bfe8683776b",
+    "param_bucket": "1-10B",
+    "has_weight_signals": true
+  },
+  "matches": [
+    {
+      "asset_id": "Hermes-2-Pro-Llama-3-8B__hf-safetensors",
+      "model_id": "Hermes-2-Pro-Llama-3-8B",
+      "family_id": "nousresearch--hermes",
+      "family_name": "Hermes",
+      "param_bucket": "1-10B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.9919,
+        "identity_score": 0.9919,
+        "mfi_score": 0.9193,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.2025,
+        "eas": null,
+        "nlf": 0.9709,
+        "lep": 0.9917,
+        "end": 0.9947,
+        "wvc": 0.9976,
+        "tfv": 0.81
+      },
+      "provenance_decision": "High-Confidence Match",
+      "elapsed_ms": 65.55
+    },
+    {
+      "asset_id": "gpt2-medium__hf-safetensors",
+      "model_id": "gpt2-medium",
+      "family_id": "openaicommunity--gpt",
+      "family_name": "GPT",
+      "param_bucket": "<=1B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.8507,
+        "identity_score": 0.8507,
+        "mfi_score": 0.2974,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.1015,
+        "eas": 0.9108,
+        "nlf": 0.5978,
+        "lep": 0.9294,
+        "end": 0.777,
+        "wvc": null,
+        "tfv": 0.406
+      },
+      "provenance_decision": "High-Confidence Match",
+      "elapsed_ms": 7.27
+    },
+    {
+      "asset_id": "Llama-3.1-8B__hf-safetensors",
+      "model_id": "Llama-3.1-8B",
+      "family_id": "metallama--llama",
+      "family_name": "Llama",
+      "param_bucket": "1-10B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.7998,
+        "identity_score": 0.7998,
+        "mfi_score": 0.9194,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.2025,
+        "eas": 0.975,
+        "nlf": 0.9996,
+        "lep": 0.9894,
+        "end": 0.0219,
+        "wvc": 0.9827,
+        "tfv": 0.81
+      },
+      "provenance_decision": "High-Confidence Match",
+      "elapsed_ms": 66.97
+    },
+    {
+      "asset_id": "Llama-3.1-Nemotron-Nano-8B-v1__hf-safetensors",
+      "model_id": "Llama-3.1-Nemotron-Nano-8B-v1",
+      "family_id": "nvidia--nemotron",
+      "family_name": "Nemotron",
+      "param_bucket": "1-10B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.791,
+        "identity_score": 0.791,
+        "mfi_score": 0.9194,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.2025,
+        "eas": 0.9876,
+        "nlf": 0.9991,
+        "lep": 0.9706,
+        "end": 0.0201,
+        "wvc": 0.9355,
+        "tfv": 0.81
+      },
+      "provenance_decision": "High-Confidence Match",
+      "elapsed_ms": 72.57
+    },
+    {
+      "asset_id": "Llama-3.1-Nemotron-Nano-VL-8B-V1__hf-safetensors",
+      "model_id": "Llama-3.1-Nemotron-Nano-VL-8B-V1",
+      "family_id": "nvidia--nemotron",
+      "family_name": "Nemotron",
+      "param_bucket": "1-10B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.7905,
+        "identity_score": 0.7905,
+        "mfi_score": 0.782,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.2025,
+        "eas": 0.9977,
+        "nlf": 0.9557,
+        "lep": 0.989,
+        "end": 0.021,
+        "wvc": 0.9172,
+        "tfv": 0.81
+      },
+      "provenance_decision": "High-Confidence Match",
+      "elapsed_ms": 62.12
+    }
+  ],
+  "match_count": 5,
+  "elapsed_ms": 374826.51,
+  "extract_seconds": 358.399,
+  "lookup_seconds": 16.337
+}

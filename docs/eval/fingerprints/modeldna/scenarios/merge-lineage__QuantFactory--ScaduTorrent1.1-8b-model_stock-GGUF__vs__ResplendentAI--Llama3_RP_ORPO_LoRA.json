@@ -1,0 +1,11 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "scenario": "merge-lineage",
+ "subject": "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF",
+ "subject_revision": "59fc03079ddaf71a94ae4844c19780d1de40fbde",
+ "candidate": "ResplendentAI/Llama3_RP_ORPO_LoRA",
+ "candidate_revision": "5f85e23918724add2278728ee75c908fd6ba68f8",
+ "error": "SourceError: Hub API error for ResplendentAI/Llama3_RP_ORPO_LoRA: (Request ID: Root=1-6aa351a9-6085efcf0ceca0b70f6ab677;ab0d8322-4611-4dbc-be8b-c45bb74b9341)\n\n429 Too Many Requests for url: https://huggingface.co/api/models/ResplendentAI/Llama3_RP_ORPO_LoRA/revision/5f85e23918724add2278728ee75c908fd6ba68f8?blobs=true.\nmaximum queue size reached"
+}

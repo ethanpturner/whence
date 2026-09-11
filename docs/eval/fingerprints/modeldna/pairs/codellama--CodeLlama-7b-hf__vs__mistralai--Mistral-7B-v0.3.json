@@ -1,0 +1,104 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "pool": "negative",
+ "kind": "continued-pretrain suspect vs cross-family parent",
+ "subject": "codellama/CodeLlama-7b-hf",
+ "subject_fingerprinted_as": "codellama/CodeLlama-7b-hf",
+ "subject_revision": "6c284d1468fe6c413cf56183e69b194dcfa27fe6",
+ "candidate": "mistralai/Mistral-7B-v0.3",
+ "candidate_fingerprinted_as": "mistralai/Mistral-7B-v0.3",
+ "candidate_revision": "caa1feb0e54d415e2df31207e5f4e273e33509b1",
+ "verdict": {
+  "verdict": "NO_MATCH",
+  "description": "no reference parent supported; consistent with independent training or an unindexed base",
+  "probability": null,
+  "best_candidate": null,
+  "notes": [
+   "no candidate had compatible structure; the base may simply not be indexed"
+  ],
+  "candidates": [
+   {
+    "candidate_id": "mistralai/Mistral-7B-v0.3",
+    "family": "mistralai/Mistral-7B-v0.3",
+    "probability": null,
+    "ruled_out": "incompatible tensor shapes",
+    "evidence": {
+     "suspect_id": "codellama/CodeLlama-7b-hf",
+     "candidate_id": "mistralai/Mistral-7B-v0.3",
+     "shape_compatible": false,
+     "layers_match": true,
+     "inventory_match": false,
+     "tokenizer_match": false,
+     "sigma_r": {
+      "attn.k": 0.564396609538643,
+      "attn.o": 0.8747567746487569,
+      "attn.q": 0.2710825473105479,
+      "attn.v": 0.8057693557793022,
+      "mlp.down": 0.4002919411114828,
+      "mlp.gate": 0.5743477745418495,
+      "mlp.up": 0.20378869734537264
+     },
+     "sigma_r_mean": 0.527776242896565,
+     "vector_cos": {
+      "norm.final": 0.9873625482384231,
+      "norm.in": 0.9756883976105485,
+      "norm.post": 0.9916471452753024
+     },
+     "vector_norm_r": {
+      "norm.in": 0.9694283584101305,
+      "norm.post": 0.9930181515255669
+     },
+     "vector_cos_mean": 0.9848993637080913,
+     "pcs_cos": {},
+     "pcs_cos_mean": null,
+     "spectra_r": {},
+     "spectra_logdist": {},
+     "spectra_r_mean": null,
+     "spectra_kind": "",
+     "notes": [
+      "tensor shapes differ; only shape-independent signals compared"
+     ]
+    }
+   }
+  ]
+ },
+ "evidence": {
+  "suspect_id": "codellama/CodeLlama-7b-hf",
+  "candidate_id": "mistralai/Mistral-7B-v0.3",
+  "shape_compatible": false,
+  "layers_match": true,
+  "inventory_match": false,
+  "tokenizer_match": false,
+  "sigma_r": {
+   "attn.k": 0.564396609538643,
+   "attn.o": 0.8747567746487569,
+   "attn.q": 0.2710825473105479,
+   "attn.v": 0.8057693557793022,
+   "mlp.down": 0.4002919411114828,
+   "mlp.gate": 0.5743477745418495,
+   "mlp.up": 0.20378869734537264
+  },
+  "sigma_r_mean": 0.527776242896565,
+  "vector_cos": {
+   "norm.final": 0.9873625482384231,
+   "norm.in": 0.9756883976105485,
+   "norm.post": 0.9916471452753024
+  },
+  "vector_norm_r": {
+   "norm.in": 0.9694283584101305,
+   "norm.post": 0.9930181515255669
+  },
+  "vector_cos_mean": 0.9848993637080913,
+  "pcs_cos": {},
+  "pcs_cos_mean": null,
+  "spectra_r": {},
+  "spectra_logdist": {},
+  "spectra_r_mean": null,
+  "spectra_kind": "",
+  "notes": [
+   "tensor shapes differ; only shape-independent signals compared"
+  ]
+ }
+}

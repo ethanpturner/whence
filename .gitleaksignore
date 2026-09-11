@@ -17,3 +17,8 @@ e44c2b33a00c642eb9df8898e471227ea6b1038c:benchmarks/structural-compatible/record
 # Second instance, same class: `Ahmet98983/Wormgpt`, a Space name inside the verbatim listing of
 # `HuggingFaceH4/zephyr-7b-beta`, captured unauthenticated by scripts/measure_lineagebench.py.
 9b3d3d6b2e4e700e5e4df36429389cad42f5bb50:docs/eval/lineagebench/recorded/model-HuggingFaceH4-zephyr-7b-beta.json:generic-api-key:1
+# 2026-09-10, fingerprint measurement. A model revision digest sitting next to a model name in the
+# scenario driver's pair table, and a Space name in a verbatim recorded listing -- the same class
+# as the two entries above.
+docs/eval/fingerprints/modeldna/scenarios-driver.py.txt:generic-api-key:16
+docs/eval/fingerprints/recorded/000-api-models-HuggingFaceH4-zephyr-7b-beta.json:generic-api-key:1

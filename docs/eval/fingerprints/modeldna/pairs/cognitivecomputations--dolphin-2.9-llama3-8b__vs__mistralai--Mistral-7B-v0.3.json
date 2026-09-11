@@ -1,0 +1,132 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "pool": "negative",
+ "kind": "fine-tune suspect vs cross-family parent",
+ "subject": "cognitivecomputations/dolphin-2.9-llama3-8b",
+ "subject_fingerprinted_as": "dphn/dolphin-2.9-llama3-8b",
+ "subject_revision": "d94261ccf9597b04b60b0dd5d15c76e9da2bb6f1",
+ "candidate": "mistralai/Mistral-7B-v0.3",
+ "candidate_fingerprinted_as": "mistralai/Mistral-7B-v0.3",
+ "candidate_revision": "caa1feb0e54d415e2df31207e5f4e273e33509b1",
+ "verdict": {
+  "verdict": "SAME_FAMILY_UNRESOLVED",
+  "description": "family-level match, exact parent ambiguous",
+  "probability": 0.58323578643302,
+  "best_candidate": "mistralai/Mistral-7B-v0.3",
+  "notes": [
+   "strongest candidate mistralai/Mistral-7B-v0.3 sits in the abstention band; evidence is suggestive, not conclusive"
+  ],
+  "candidates": [
+   {
+    "candidate_id": "mistralai/Mistral-7B-v0.3",
+    "family": "mistralai/Mistral-7B-v0.3",
+    "probability": 0.58323578643302,
+    "ruled_out": null,
+    "evidence": {
+     "suspect_id": "dphn/dolphin-2.9-llama3-8b",
+     "candidate_id": "mistralai/Mistral-7B-v0.3",
+     "shape_compatible": true,
+     "layers_match": true,
+     "inventory_match": false,
+     "tokenizer_match": false,
+     "sigma_r": {
+      "attn.k": 0.6382414758683584,
+      "attn.o": 0.9522236813176421,
+      "attn.q": 0.6400339006094738,
+      "attn.v": 0.9400306691800902,
+      "mlp.down": 0.24825855315969184,
+      "mlp.gate": 0.7486822204849813,
+      "mlp.up": 0.7988570413196945
+     },
+     "sigma_r_mean": 0.709475363134276,
+     "vector_cos": {
+      "norm.final": 0.9884170686077999,
+      "norm.in": 0.9572017956128871,
+      "norm.post": 0.9775730684438674
+     },
+     "vector_norm_r": {
+      "norm.in": 0.9308950437184249,
+      "norm.post": 0.9857130806912908
+     },
+     "vector_cos_mean": 0.9743973108881848,
+     "pcs_cos": {
+      "attn.k": 0.0016704558375868557,
+      "attn.o": 0.0010678909489827077,
+      "attn.q": 0.0038082706602615185,
+      "attn.v": 0.0031158421026139436,
+      "mlp.down": 0.002886279537169844
+     },
+     "pcs_cos_mean": 0.0025097478173229737,
+     "spectra_r": {
+      "attn.k": 0.944169860159882,
+      "attn.o": 0.9437456016225841,
+      "attn.q": 0.9819554722126151,
+      "attn.v": 0.9743954078878551
+     },
+     "spectra_logdist": {
+      "attn.k": 1.660540459192833,
+      "attn.o": 1.2567863999415305,
+      "attn.q": 1.5760352904447936,
+      "attn.v": 1.2670054126597026
+     },
+     "spectra_r_mean": 0.961066585470734,
+     "spectra_kind": "sketch",
+     "notes": []
+    }
+   }
+  ]
+ },
+ "evidence": {
+  "suspect_id": "dphn/dolphin-2.9-llama3-8b",
+  "candidate_id": "mistralai/Mistral-7B-v0.3",
+  "shape_compatible": true,
+  "layers_match": true,
+  "inventory_match": false,
+  "tokenizer_match": false,
+  "sigma_r": {
+   "attn.k": 0.6382414758683584,
+   "attn.o": 0.9522236813176421,
+   "attn.q": 0.6400339006094738,
+   "attn.v": 0.9400306691800902,
+   "mlp.down": 0.24825855315969184,
+   "mlp.gate": 0.7486822204849813,
+   "mlp.up": 0.7988570413196945
+  },
+  "sigma_r_mean": 0.709475363134276,
+  "vector_cos": {
+   "norm.final": 0.9884170686077999,
+   "norm.in": 0.9572017956128871,
+   "norm.post": 0.9775730684438674
+  },
+  "vector_norm_r": {
+   "norm.in": 0.9308950437184249,
+   "norm.post": 0.9857130806912908
+  },
+  "vector_cos_mean": 0.9743973108881848,
+  "pcs_cos": {
+   "attn.k": 0.0016704558375868557,
+   "attn.o": 0.0010678909489827077,
+   "attn.q": 0.0038082706602615185,
+   "attn.v": 0.0031158421026139436,
+   "mlp.down": 0.002886279537169844
+  },
+  "pcs_cos_mean": 0.0025097478173229737,
+  "spectra_r": {
+   "attn.k": 0.944169860159882,
+   "attn.o": 0.9437456016225841,
+   "attn.q": 0.9819554722126151,
+   "attn.v": 0.9743954078878551
+  },
+  "spectra_logdist": {
+   "attn.k": 1.660540459192833,
+   "attn.o": 1.2567863999415305,
+   "attn.q": 1.5760352904447936,
+   "attn.v": 1.2670054126597026
+  },
+  "spectra_r_mean": 0.961066585470734,
+  "spectra_kind": "sketch",
+  "notes": []
+ }
+}

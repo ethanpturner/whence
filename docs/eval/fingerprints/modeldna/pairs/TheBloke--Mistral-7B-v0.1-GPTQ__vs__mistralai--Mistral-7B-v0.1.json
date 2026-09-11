@@ -1,0 +1,82 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "pool": "limitation",
+ "kind": "quantized-copy",
+ "subject": "TheBloke/Mistral-7B-v0.1-GPTQ",
+ "subject_fingerprinted_as": "TheBloke/Mistral-7B-v0.1-GPTQ",
+ "subject_revision": "81de15eeac5938bc3b4065dfddf798fe5d215881",
+ "candidate": "mistralai/Mistral-7B-v0.1",
+ "candidate_fingerprinted_as": "mistralai/Mistral-7B-v0.1",
+ "candidate_revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "verdict": {
+  "verdict": "NO_MATCH",
+  "description": "no reference parent supported; consistent with independent training or an unindexed base",
+  "probability": 0.13010847436299788,
+  "best_candidate": "mistralai/Mistral-7B-v0.1",
+  "notes": [],
+  "candidates": [
+   {
+    "candidate_id": "mistralai/Mistral-7B-v0.1",
+    "family": "mistralai/Mistral-7B-v0.1",
+    "probability": 0.13010847436299788,
+    "ruled_out": null,
+    "evidence": {
+     "suspect_id": "TheBloke/Mistral-7B-v0.1-GPTQ",
+     "candidate_id": "mistralai/Mistral-7B-v0.1",
+     "shape_compatible": true,
+     "layers_match": true,
+     "inventory_match": false,
+     "tokenizer_match": false,
+     "sigma_r": {},
+     "sigma_r_mean": null,
+     "vector_cos": {
+      "norm.final": 1.0,
+      "norm.in": 1.0,
+      "norm.post": 0.9999999999999999
+     },
+     "vector_norm_r": {
+      "norm.in": 1.0,
+      "norm.post": 1.0
+     },
+     "vector_cos_mean": 1.0,
+     "pcs_cos": {},
+     "pcs_cos_mean": null,
+     "spectra_r": {},
+     "spectra_logdist": {},
+     "spectra_r_mean": null,
+     "spectra_kind": "sketch",
+     "notes": []
+    }
+   }
+  ]
+ },
+ "evidence": {
+  "suspect_id": "TheBloke/Mistral-7B-v0.1-GPTQ",
+  "candidate_id": "mistralai/Mistral-7B-v0.1",
+  "shape_compatible": true,
+  "layers_match": true,
+  "inventory_match": false,
+  "tokenizer_match": false,
+  "sigma_r": {},
+  "sigma_r_mean": null,
+  "vector_cos": {
+   "norm.final": 1.0,
+   "norm.in": 1.0,
+   "norm.post": 0.9999999999999999
+  },
+  "vector_norm_r": {
+   "norm.in": 1.0,
+   "norm.post": 1.0
+  },
+  "vector_cos_mean": 1.0,
+  "pcs_cos": {},
+  "pcs_cos_mean": null,
+  "spectra_r": {},
+  "spectra_logdist": {},
+  "spectra_r_mean": null,
+  "spectra_kind": "sketch",
+  "notes": []
+ }
+}

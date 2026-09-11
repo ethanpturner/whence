@@ -1,0 +1,142 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "pool": "positive",
+ "kind": "official-instruct",
+ "subject": "Qwen/Qwen2.5-14B-Instruct",
+ "subject_fingerprinted_as": "Qwen/Qwen2.5-14B-Instruct",
+ "subject_revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+ "candidate": "Qwen/Qwen2.5-14B",
+ "candidate_fingerprinted_as": "Qwen/Qwen2.5-14B",
+ "candidate_revision": "97e1e76335b7017d8f67c08a19d103c0504298c9",
+ "verdict": {
+  "verdict": "FINE_TUNE",
+  "description": "small parameter delta from one parent (SFT/DPO/LoRA-merged regime)",
+  "probability": 0.9984982186073073,
+  "best_candidate": "Qwen/Qwen2.5-14B",
+  "notes": [],
+  "candidates": [
+   {
+    "candidate_id": "Qwen/Qwen2.5-14B",
+    "family": "Qwen/Qwen2.5-14B",
+    "probability": 0.9984982186073073,
+    "ruled_out": null,
+    "evidence": {
+     "suspect_id": "Qwen/Qwen2.5-14B-Instruct",
+     "candidate_id": "Qwen/Qwen2.5-14B",
+     "shape_compatible": true,
+     "layers_match": true,
+     "inventory_match": true,
+     "tokenizer_match": true,
+     "sigma_r": {
+      "attn.k": 0.9999999645168115,
+      "attn.o": 0.999999955632123,
+      "attn.q": 0.9999999663851482,
+      "attn.v": 0.9999999733677517,
+      "mlp.down": 0.9999999897609357,
+      "mlp.gate": 0.9999998997219288,
+      "mlp.up": 0.9999999822847316
+     },
+     "sigma_r_mean": 0.9999999616670614,
+     "vector_cos": {
+      "attn.k.bias": 0.9999999826723639,
+      "attn.q.bias": 0.9999999885488277,
+      "attn.v.bias": 0.9999992941097533,
+      "norm.final": 0.9999999999999999,
+      "norm.in": 0.9999999907739819,
+      "norm.post": 0.9999999958446244
+     },
+     "vector_norm_r": {
+      "attn.k.bias": 0.9999999999916279,
+      "attn.q.bias": 0.9999999999992676,
+      "attn.v.bias": 0.9999999985362922,
+      "norm.in": 0.9999999999425889,
+      "norm.post": 0.9999999998931841
+     },
+     "vector_cos_mean": 0.9999998753249252,
+     "pcs_cos": {
+      "attn.k": 0.9999188853944323,
+      "attn.o": 0.9999093933011597,
+      "attn.q": 0.9999036118541919,
+      "attn.v": 0.9999229720708609,
+      "mlp.down": 0.9999107824044065
+     },
+     "pcs_cos_mean": 0.9999131290050102,
+     "spectra_r": {
+      "attn.k": 0.9999957976515591,
+      "attn.o": 0.9999930914499657,
+      "attn.q": 0.9999964818873289,
+      "attn.v": 0.9999813790242671
+     },
+     "spectra_logdist": {
+      "attn.k": 0.0011504154739972923,
+      "attn.o": 0.0011517956664109073,
+      "attn.q": 0.0011423245359380473,
+      "attn.v": 0.001142033045304318
+     },
+     "spectra_r_mean": 0.9999916875032803,
+     "spectra_kind": "sketch",
+     "notes": []
+    }
+   }
+  ]
+ },
+ "evidence": {
+  "suspect_id": "Qwen/Qwen2.5-14B-Instruct",
+  "candidate_id": "Qwen/Qwen2.5-14B",
+  "shape_compatible": true,
+  "layers_match": true,
+  "inventory_match": true,
+  "tokenizer_match": true,
+  "sigma_r": {
+   "attn.k": 0.9999999645168115,
+   "attn.o": 0.999999955632123,
+   "attn.q": 0.9999999663851482,
+   "attn.v": 0.9999999733677517,
+   "mlp.down": 0.9999999897609357,
+   "mlp.gate": 0.9999998997219288,
+   "mlp.up": 0.9999999822847316
+  },
+  "sigma_r_mean": 0.9999999616670614,
+  "vector_cos": {
+   "attn.k.bias": 0.9999999826723639,
+   "attn.q.bias": 0.9999999885488277,
+   "attn.v.bias": 0.9999992941097533,
+   "norm.final": 0.9999999999999999,
+   "norm.in": 0.9999999907739819,
+   "norm.post": 0.9999999958446244
+  },
+  "vector_norm_r": {
+   "attn.k.bias": 0.9999999999916279,
+   "attn.q.bias": 0.9999999999992676,
+   "attn.v.bias": 0.9999999985362922,
+   "norm.in": 0.9999999999425889,
+   "norm.post": 0.9999999998931841
+  },
+  "vector_cos_mean": 0.9999998753249252,
+  "pcs_cos": {
+   "attn.k": 0.9999188853944323,
+   "attn.o": 0.9999093933011597,
+   "attn.q": 0.9999036118541919,
+   "attn.v": 0.9999229720708609,
+   "mlp.down": 0.9999107824044065
+  },
+  "pcs_cos_mean": 0.9999131290050102,
+  "spectra_r": {
+   "attn.k": 0.9999957976515591,
+   "attn.o": 0.9999930914499657,
+   "attn.q": 0.9999964818873289,
+   "attn.v": 0.9999813790242671
+  },
+  "spectra_logdist": {
+   "attn.k": 0.0011504154739972923,
+   "attn.o": 0.0011517956664109073,
+   "attn.q": 0.0011423245359380473,
+   "attn.v": 0.001142033045304318
+  },
+  "spectra_r_mean": 0.9999916875032803,
+  "spectra_kind": "sketch",
+  "notes": []
+ }
+}

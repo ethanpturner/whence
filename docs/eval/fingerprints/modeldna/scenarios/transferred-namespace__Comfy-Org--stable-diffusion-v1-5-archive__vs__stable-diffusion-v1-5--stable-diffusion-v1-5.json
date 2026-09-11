@@ -1,0 +1,11 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "scenario": "transferred-namespace",
+ "subject": "Comfy-Org/stable-diffusion-v1-5-archive",
+ "subject_revision": "9cfd069101959ca3828bf9c04a4419870832b74f",
+ "candidate": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+ "candidate_revision": "451f4fe16113bff5a5d2269ed5ad43b0592e9a14",
+ "error": "SafetensorsError: tensor 'cond_stage_model.transformer.text_model.embeddings.position_embedding.weight' appears in multiple shards"
+}

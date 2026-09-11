@@ -1,0 +1,11 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "scenario": "merge-lineage",
+ "subject": "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF",
+ "subject_revision": "59fc03079ddaf71a94ae4844c19780d1de40fbde",
+ "candidate": "Blackroot/Llama-3-8B-Abomination-LORA",
+ "candidate_revision": "15674105b01c6e95c4a48d21fb324242d1b4cf48",
+ "error": "WeightIndexError: no safetensors or GGUF weights found in Blackroot/Llama-3-8B-Abomination-LORA"
+}
