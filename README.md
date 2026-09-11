@@ -13,10 +13,12 @@ ancestor**. Widening it to the commonest phrasing it misses — "based on" — w
 on the numbers: claims go from 11 to 75, and the additions name datasets, models merely compared
 to, and bare version fragments.
 
-**No edge is ever `verified`** — see below, which is the point rather than a gap. Phase two *began*
-with the structural check (DEC-020), the only mechanism that can emit `contradicted`; weight-level
-comparison of tensor values is not built (DEC-005), and a structural match is a necessary condition,
-not a sufficient one.
+**No edge is verified from metadata**, and `whence` records which evidence, if any, established one.
+Phase two *began* with the structural check (DEC-020), the only mechanism in the tool that can emit
+`contradicted`; a structural match is a necessary condition, not a sufficient one. Weight-level
+verification exists outside this tool — modelDNA and Cisco's Model Provenance Kit both shipped in
+2026 with published measurements — and DEC-029 specifies how their verdicts enter as an evidence
+file that is designed to move an edge to `verified`. That ingest is unbuilt.
 
 ```
 uv run whence resolve nvidia/Llama-3.1-Nemotron-70B-Instruct-HF \
@@ -41,12 +43,17 @@ It answers with three verdicts and never two: an edge is `verified`, `contradict
 `unverifiable`. An edge that cannot be resolved is `unverifiable` — never reported as absent,
 because absence of a resolvable link is not evidence that no link exists.
 
-**Every edge is `unverifiable` unless the structural check contradicts it, and that is the
-finding.** Almost nothing on the
-Hugging Face registry pins its base by digest: cards name a base and stop. So the strongest thing
-resolution establishes is that the named artifact exists and can be pinned — not that the
-derivation happened. Tools that report such an edge without qualification are asserting a
-verification they never performed.
+**From metadata alone, every edge is `unverifiable` unless the structural check contradicts it, and
+that is the finding.** Almost nothing on the Hugging Face registry pins its base by digest: cards
+name a base and stop. So the strongest thing resolution establishes is that the named artifact
+exists and can be pinned — not that the derivation happened. Tools that report such an edge without
+qualification are asserting a verification they never performed.
+
+What `whence` is, then, is the registry-integrity layer and the claim ledger. It decides what there
+is to fingerprint, whether a name still resolves to what the card meant, and keeps a card's
+assertion and a verifier's verdict as two records rather than one. It is not a rival verifier: a
+weight-fingerprint tool runs as a separate process, and its verdict enters under a mapping the
+evidence file declares (DEC-029), because the tool's own negative is not this tool's `contradicted`.
 
 ## The specific failure it exists to prevent
 

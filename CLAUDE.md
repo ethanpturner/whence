@@ -8,12 +8,15 @@ Guidance for Claude Code when working in this repository.
 whether the relationship is claimed or verified.
 
 **What runs**: resolution, redirect handling, response classification, CycloneDX emission, OMS
-signature detection, a structural lineage check, and an evaluation harness scoring **seven**
-recorded scenarios offline.
+signature detection, a structural lineage check, and an evaluation harness scoring **ten**
+recorded scenarios offline. `benchmarks/scenarios.yaml` is the count that is right when this
+sentence is stale.
 
-Phase two **began** with the structural check (DEC-020), which is the only mechanism that can emit
-`contradicted`. **Weight-level comparison of tensor values is not built** (DEC-005), and no edge is
-ever `verified` — a structural match is a necessary condition, not a sufficient one.
+Phase two **began** with the structural check (DEC-020), which is the only mechanism in the tool
+that can emit `contradicted`. **Weight-level comparison of tensor values is not built here**
+(DEC-005), and no edge is verified *from metadata* — a structural match is a necessary condition,
+not a sufficient one. DEC-029 specifies an external fingerprint evidence file that is designed to
+move an edge to `verified`; the ingest is unbuilt, and the tool still downloads no weights.
 
 Keep tense discipline. Present indicative for what runs; "is designed to" for phase two and
 anything else specified but unbuilt. Mixing them is the easiest mistake here and the hardest to

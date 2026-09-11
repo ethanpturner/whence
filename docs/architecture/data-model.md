@@ -2,7 +2,7 @@
 
 **Document version:** 0.1
 **Status:** Proposed
-**Last updated:** 2026-09-02
+**Last updated:** 2026-09-10
 
 This document is authoritative for field names, types, and enumerations. Code conforms to it; it
 does not describe code. A conformance test is intended to parse the tables below and compare them
@@ -21,6 +21,8 @@ fails validation rather than passing downstream stripped and looking valid.
 | `Edge` | 4 | IMPLEMENTED — `domain.py` |
 | `Evidence` | 5 | IMPLEMENTED — `domain.py` |
 | `ResolutionReport` | 6 | IMPLEMENTED — `domain.py` |
+| `FingerprintEvidenceFile` | 9 | SPECIFIED — not implemented (DEC-029) |
+| `FingerprintVerdict` | 10 | SPECIFIED — not implemented (DEC-029) |
 
 When an object is implemented, its row is flipped and the implementing model named in the same
 change, or it ships unguarded. **This table was stale for every object at once**, which is what
@@ -119,6 +121,10 @@ fine-tuning. The enum is closed rather than open like `NodeKind`, because relati
 phase-two method selection: an unrecognized relation must stop the run rather than normalize to
 something plausible.
 
+**`EvidenceEffect`** — closed (DEC-029). `establishes`, `contradicts`, `abstains`. The effect a
+fingerprint verdict class has on an edge's verdict. Declared per class in the evidence file; a
+class used without a declared effect is a validation failure, never a default.
+
 **`NodeKind`** — open vocabulary, normalized to one spelling. Illustrative values: `model`,
 `dataset`, `adapter`, `tokenizer`, `package`. A registry that names a kind this document does not
 list is normalized, not rejected — the closed alternative would fail on the first novel artifact
@@ -146,3 +152,47 @@ type, and provenance for an unfamiliar kind is still provenance.
   controls the name (DEC-002).
 - **An absent target never yields `contradicted`.** Deletion is evidence about the reference, not
   about the relationship. The derivation may have occurred before the deletion.
+
+## 9. `FingerprintEvidenceFile`
+
+The output of an external weight-level lineage tool, read as inert data (DEC-029). `whence` never
+produces one; it consumes one an operator supplies. Specified; the ingest is unbuilt.
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| `tool` | str | yes | The tool's name as it names itself, e.g. `modeldna`. |
+| `tool_version` | str | yes | The tool's own version string. Travels onto every `Evidence` derived from this file. |
+| `generated_at` | datetime | yes | When the tool produced the file. |
+| `classes` | tuple[tuple[str, `EvidenceEffect`], ...] | yes | The effect of every verdict class the tool uses. Every `verdict_class` in `verdicts` must appear here. Stated by whoever ran the tool; not derived. |
+| `verdicts` | tuple[`FingerprintVerdict`, ...] | yes | May be empty. |
+
+## 10. `FingerprintVerdict`
+
+One statement by the tool about one ordered pair of artifacts.
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| `subject` | `ArtifactRef` | yes | The artifact whose lineage is in question. `pinned` must be `True`. |
+| `candidate` | `ArtifactRef` | yes | The artifact it is compared against. `pinned` must be `True`. |
+| `verdict_class` | str | yes | The tool's class, verbatim. Never normalized, never mapped to a `Relation`. |
+| `probability` | float \| None | no | The tool's calibrated probability where it publishes one, in [0, 1]. An attribute of the evidence, never a verdict (DEC-001). |
+| `detail` | str \| None | no | The tool's prose about this pair. Bounded and treated like an excerpt (DEC-012): rendered, never logged, never parsed. |
+
+## 11. Rules for fingerprint evidence
+
+- A verdict whose `subject` or `candidate` is unpinned fails validation (DEC-002). A fingerprint is
+  a statement about bytes, and a name is not bytes.
+- A `verdict_class` absent from `classes` fails validation. Effects are declared, not inferred.
+- A verdict with effect `establishes` on an edge the card declares sets that edge's `verdict` to
+  `verified` and its `provenance` to `verified-by-weights`, and appends an `Evidence` whose
+  `locator` is the file path and whose `content_digest` is the file's digest. The card's own
+  `Evidence` remains on the edge.
+- A verdict with effect `establishes` on a pair no card declares creates an edge with relation
+  `derives-from`, provenance `verified-by-weights`, and the fingerprint as its only evidence. The
+  kind is left as `derives-from` because the tool's class is not a `Relation` (DEC-010, DEC-015).
+- A verdict with effect `contradicts` sets the edge's `verdict` to `contradicted` and appends the
+  evidence. A pair no card declares and a class that contradicts is recorded nowhere: there is no
+  claim to contradict.
+- A verdict with effect `abstains` changes no verdict and is not recorded on the graph.
+- Two evidence files that disagree about one edge are both appended as `Evidence`. Which verdict
+  the edge then carries is open (DEC-029).

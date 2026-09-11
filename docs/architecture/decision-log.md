@@ -1,7 +1,7 @@
 # Decision log
 
 **Document version:** 0.1
-**Last updated:** 2026-09-03
+**Last updated:** 2026-09-10
 
 This document carries no status line of its own. It had one reading `Status: Proposed`, three lines
 above the rule below — exactly the contradiction the rule exists to prevent.
@@ -117,6 +117,11 @@ them the honest output is `unverifiable`.
 
 **Alternatives considered.** Shipping weight comparison in phase one. Rejected: it is the part with
 research risk, and gating the useful part behind it delays everything.
+
+**Amended 2026-09-10 (DEC-029).** Weight-level verification arrives as an *external* evidence
+file, not as a method inside the tool. The bound stands: a fingerprint tool's verdict class enters
+under a mapping the file declares, and a class the tool documents as a known false-negative mode is
+mapped to abstention rather than to `contradicted`.
 
 ---
 
@@ -898,3 +903,81 @@ directly, and would cost one request on a path that already fetches the base. It
 approach worth trying if this class grows, and it is not attempted here because the sample contains
 one instance.
 
+---
+
+## DEC-029 — An external weight-fingerprint verdict is admitted as evidence, under a mapping the file declares
+
+**Date:** 2026-09-10
+**Status:** Accepted
+
+**Decision.** `whence` is designed to read a **fingerprint evidence file** — the output of a
+weight-level lineage tool run as a separate process — and to treat each verdict in it as evidence on
+the edge between the two artifacts it names. The file declares, for every verdict class the tool
+uses, one of three effects: `establishes`, `contradicts`, or `abstains`. A verdict whose class
+`establishes` moves the edge to `verified` with provenance `verified-by-weights`; one whose class
+`contradicts` moves it to `contradicted`; one whose class `abstains` changes nothing. A verdict that
+establishes a derivation no card declares creates the edge, with the fingerprint as its only
+evidence — that is the "undeclared lineage" DEC-005 named as the claim weight-level verification
+would support. The card's assertion is not overwritten: it stays on the edge as its own `Evidence`
+entry, so a reader sees what was claimed and what established it as two records.
+
+The schema is `data-model.md` §9–§10. This entry specifies; the ingest is unbuilt.
+
+**Why now.** Two open-source tools shipped weight-level lineage verification in 2026 with
+published measurements. modelDNA (arXiv 2607.10617) fingerprints from 100–300 MB of HTTP range
+reads, uses eight verdict classes including explicit abstention classes, and reports 0 of 107
+false positives at its reporting threshold and 13 of 13 top-1 attributions on its `lineagebench`
+dataset. Cisco's Model Provenance Kit compares five weight signals against roughly 150 base
+fingerprints and reports 96.4% accuracy on a 111-pair benchmark whose publication is not
+confirmed. Both are motivated by the observation this project rests on — `base_model` is
+self-reported — and both do the thing the README said could not be done from metadata. That
+sentence was true of metadata and is no longer true of the world. A tool that kept reporting
+`unverifiable` about an edge for which a measured verifier holds evidence would be overclaiming in
+the other direction: asserting ignorance where evidence exists.
+
+**Why the mapping is declared, not built in.** A tool's negative class is not a contradiction.
+modelDNA's own limitation cases show it: `upstage/SOLAR-10.7B-v1.0` is a documented depth
+up-scaling of a Mistral model, and the tool returns `NO_MATCH` on the layer-count mismatch;
+`TheBloke/Mistral-7B-v0.1-GPTQ` is a repack of its base, and the tool abstains on the packed
+tensors. Mapping `NO_MATCH` to `contradicted` would have refuted two true derivations. So the
+effect of each class is stated in the file by whoever ran the tool, every class used must be
+mapped, and a missing mapping is an error rather than a default. This is the sibling rule from
+`tearline` — the target states the predicate — applied to a verifier: `whence` does not hardcode
+another tool's semantics and then report its own wrong assumption as a confident verdict.
+
+**Why the verdict class is kept verbatim.** A card that says `finetune` where the tool says
+`QUANTIZED_COPY` or `LIKELY_MERGE` is a false declaration about the *kind* of relationship, not
+about its existence. Nothing here relabels the relation (DEC-010); the class travels with the
+evidence so that disagreement can be counted before anything is decided about it.
+
+**Why both artifacts must be pinned.** A fingerprint is a statement about bytes. A verdict naming
+an unpinned reference is a verdict about whatever those names resolve to today, which is the
+assertion-not-identity problem DEC-002 exists to prevent. A verdict with an unpinned side fails
+validation.
+
+**What does not change.** `whence` downloads no weights and executes no model code (DEC-005,
+DEC-006); the fingerprint tool runs elsewhere and its output is inert data. Probabilities are
+attributes on the evidence and never the verdict (DEC-001; DEC-013 refused the same collapse in
+the serialization). The structural check (DEC-020) keeps its role: it can still only contradict,
+and it runs whether or not an evidence file is present.
+
+**What changes in the tool's own description.** "No edge is ever `verified`" becomes "no edge is
+verified *from metadata*, and `whence` records which evidence, if any, established it." The
+project's distinct contribution is the registry-integrity layer — namespaces, redirects, digests,
+signature presence — and the ledger that keeps a card's claim and a verifier's verdict as separate
+records. It decides what there is to fingerprint and whether a name still resolves to what the
+card meant; it is not a rival verifier.
+
+**Alternatives considered.** Implementing fingerprinting inside `whence`: rejected, because it
+crosses DEC-005 and DEC-006 and duplicates a measured tool with an unmeasured one. A confidence
+score on `Edge`: rejected, DEC-001. Adopting one tool's vocabulary as the verdict directly:
+rejected, because the SOLAR case shows the tool's own negative is not this tool's `contradicted`.
+
+**Tradeoffs.** An operator who declares a wrong mapping produces a wrong `verified`. The file's
+digest, tool name, and version travel on the evidence, so the claim is auditable to its source;
+the mapping is the operator's assertion and is recorded as one.
+
+**Open.** Two evidence files disagreeing about one edge. Both are recorded; which verdict the edge
+carries when two established sources conflict is not decided here, and the agreement matrix
+between modelDNA and the Cisco kit on `lineagebench`'s pairs is the measurement that should decide
+it.
