@@ -1,0 +1,1614 @@
+{
+  "dataset_revision": "5f94189b3cd4922ac787df4e387f0c2622903b17",
+  "models": {
+    "HuggingFaceH4/zephyr-7b-beta": {
+      "revision": "892b3d7a7b1cf10c7a701c60881cd93df615734c",
+      "gated": "false"
+    },
+    "NousResearch/Nous-Hermes-llama-2-7b": {
+      "revision": "cbd525ad0d5012e470c7696d5905345dc082e432",
+      "gated": "false"
+    },
+    "Qwen/Qwen2.5-14B": {
+      "revision": "97e1e76335b7017d8f67c08a19d103c0504298c9",
+      "gated": "false"
+    },
+    "Qwen/Qwen2.5-14B-Instruct": {
+      "revision": "cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+      "gated": "false"
+    },
+    "Qwen/Qwen2.5-7B": {
+      "revision": "d149729398750b98c0af14eb82c78cfe92750796",
+      "gated": "false"
+    },
+    "Qwen/Qwen2.5-7B-Instruct": {
+      "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "gated": "false"
+    },
+    "Qwen/Qwen2.5-Coder-7B-Instruct": {
+      "revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+      "gated": "false"
+    },
+    "TheBloke/Mistral-7B-v0.1-GPTQ": {
+      "revision": "81de15eeac5938bc3b4065dfddf798fe5d215881",
+      "gated": "false"
+    },
+    "codellama/CodeLlama-7b-hf": {
+      "revision": "6c284d1468fe6c413cf56183e69b194dcfa27fe6",
+      "gated": "false"
+    },
+    "cognitivecomputations/dolphin-2.9-llama3-8b": {
+      "revision": null,
+      "gated": "listing answered 307"
+    },
+    "google/gemma-2-9b": {
+      "revision": "33c193028431c2fde6c6e51f29e6f17b60cbfac6",
+      "gated": "manual"
+    },
+    "google/gemma-2-9b-it": {
+      "revision": "11c9b309abf73637e4b6f9a3fa1e92e615547819",
+      "gated": "manual"
+    },
+    "google/gemma-2b": {
+      "revision": "9cf48e52b224239de00d483ec8eb84fb8d0f3a3a",
+      "gated": "manual"
+    },
+    "google/gemma-2b-it": {
+      "revision": "96988410cbdaeb8d5093d1ebdc5a8fb563e02bad",
+      "gated": "manual"
+    },
+    "meta-llama/Llama-2-7b-hf": {
+      "revision": "01c7f73d771dfac7d292323805ebc428287df4f9",
+      "gated": "manual"
+    },
+    "meta-llama/Meta-Llama-3-8B": {
+      "revision": "8cde5ca8380496c9a6cc7ef3a8b46a0372a1d920",
+      "gated": "manual"
+    },
+    "meta-llama/Meta-Llama-3-8B-Instruct": {
+      "revision": "8afb486c1db24fe5011ec46dfbe5b5dccdb575c2",
+      "gated": "manual"
+    },
+    "mistralai/Mistral-7B-Instruct-v0.3": {
+      "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+      "gated": "false"
+    },
+    "mistralai/Mistral-7B-v0.1": {
+      "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+      "gated": "false"
+    },
+    "mistralai/Mistral-7B-v0.3": {
+      "revision": "caa1feb0e54d415e2df31207e5f4e273e33509b1",
+      "gated": "false"
+    },
+    "mlabonne/AlphaMonarch-7B": {
+      "revision": "3de065d84411d74e5b3590f67f52b0b71faf6161",
+      "gated": "false"
+    },
+    "teknium/OpenHermes-2.5-Mistral-7B": {
+      "revision": "24c0bea14d53e6f67f1fbe2eca5bfe7cae389b33",
+      "gated": "false"
+    },
+    "upstage/SOLAR-10.7B-v1.0": {
+      "revision": "5a06298f374dae1fb918d73fba72c7722ce71d36",
+      "gated": "false"
+    }
+  },
+  "pools": {
+    "positive": {
+      "n": 13,
+      "outcomes": {
+        "compatible": 7,
+        "config-unavailable": 6
+      }
+    },
+    "negative": {
+      "n": 107,
+      "outcomes": {
+        "compatible": 2,
+        "config-unavailable": 77,
+        "contradicted": 28
+      }
+    },
+    "limitation": {
+      "n": 2,
+      "outcomes": {
+        "compatible": 1,
+        "contradicted": 1
+      }
+    }
+  },
+  "pairs": [
+    {
+      "pool": "positive",
+      "kind": "fine-tune",
+      "subject": "HuggingFaceH4/zephyr-7b-beta",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "positive",
+      "kind": "fine-tune",
+      "subject": "teknium/OpenHermes-2.5-Mistral-7B",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "positive",
+      "kind": "fine-tune",
+      "subject": "NousResearch/Nous-Hermes-llama-2-7b",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "positive",
+      "kind": "continued-pretrain",
+      "subject": "codellama/CodeLlama-7b-hf",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "positive",
+      "kind": "continued-pretrain",
+      "subject": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "positive",
+      "kind": "fine-tune",
+      "subject": "cognitivecomputations/dolphin-2.9-llama3-8b",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "listing answered 307",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "positive",
+      "kind": "official-instruct",
+      "subject": "google/gemma-2-9b-it",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "positive",
+      "kind": "official-instruct",
+      "subject": "google/gemma-2b-it",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "positive",
+      "kind": "official-instruct",
+      "subject": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "positive",
+      "kind": "official-instruct",
+      "subject": "Qwen/Qwen2.5-7B-Instruct",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "positive",
+      "kind": "official-instruct",
+      "subject": "Qwen/Qwen2.5-14B-Instruct",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "positive",
+      "kind": "official-instruct",
+      "subject": "mistralai/Mistral-7B-Instruct-v0.3",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "positive",
+      "kind": "merge-chain",
+      "subject": "mlabonne/AlphaMonarch-7B",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "HuggingFaceH4/zephyr-7b-beta",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "HuggingFaceH4/zephyr-7b-beta",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "HuggingFaceH4/zephyr-7b-beta",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "HuggingFaceH4/zephyr-7b-beta",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "HuggingFaceH4/zephyr-7b-beta",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "HuggingFaceH4/zephyr-7b-beta",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "teknium/OpenHermes-2.5-Mistral-7B",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "teknium/OpenHermes-2.5-Mistral-7B",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "teknium/OpenHermes-2.5-Mistral-7B",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "teknium/OpenHermes-2.5-Mistral-7B",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "teknium/OpenHermes-2.5-Mistral-7B",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "teknium/OpenHermes-2.5-Mistral-7B",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "NousResearch/Nous-Hermes-llama-2-7b",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "NousResearch/Nous-Hermes-llama-2-7b",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "NousResearch/Nous-Hermes-llama-2-7b",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "NousResearch/Nous-Hermes-llama-2-7b",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "NousResearch/Nous-Hermes-llama-2-7b",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "NousResearch/Nous-Hermes-llama-2-7b",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "NousResearch/Nous-Hermes-llama-2-7b",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "codellama/CodeLlama-7b-hf",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "codellama/CodeLlama-7b-hf",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "codellama/CodeLlama-7b-hf",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "codellama/CodeLlama-7b-hf",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "codellama/CodeLlama-7b-hf",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "codellama/CodeLlama-7b-hf",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "codellama/CodeLlama-7b-hf",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "continued-pretrain suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "cognitivecomputations/dolphin-2.9-llama3-8b",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "listing answered 307",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "cognitivecomputations/dolphin-2.9-llama3-8b",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "listing answered 307",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "cognitivecomputations/dolphin-2.9-llama3-8b",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "listing answered 307",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "cognitivecomputations/dolphin-2.9-llama3-8b",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "listing answered 307",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "cognitivecomputations/dolphin-2.9-llama3-8b",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "listing answered 307",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "cognitivecomputations/dolphin-2.9-llama3-8b",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "listing answered 307",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "fine-tune suspect vs cross-family parent",
+      "subject": "cognitivecomputations/dolphin-2.9-llama3-8b",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "listing answered 307",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2-9b-it",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2-9b-it",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2-9b-it",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2-9b-it",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2-9b-it",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2-9b-it",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2b-it",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2b-it",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2b-it",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2b-it",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2b-it",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "google/gemma-2b-it",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-7B-Instruct",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-7B-Instruct",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-7B-Instruct",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-7B-Instruct",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-7B-Instruct",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-7B-Instruct",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-14B-Instruct",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-14B-Instruct",
+      "candidate": "mistralai/Mistral-7B-v0.3",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-14B-Instruct",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-14B-Instruct",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-14B-Instruct",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "Qwen/Qwen2.5-14B-Instruct",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "mistralai/Mistral-7B-Instruct-v0.3",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "mistralai/Mistral-7B-Instruct-v0.3",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "mistralai/Mistral-7B-Instruct-v0.3",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "mistralai/Mistral-7B-Instruct-v0.3",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "mistralai/Mistral-7B-Instruct-v0.3",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "official-instruct suspect vs cross-family parent",
+      "subject": "mistralai/Mistral-7B-Instruct-v0.3",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "merge-chain suspect vs cross-family parent",
+      "subject": "mlabonne/AlphaMonarch-7B",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "merge-chain suspect vs cross-family parent",
+      "subject": "mlabonne/AlphaMonarch-7B",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "merge-chain suspect vs cross-family parent",
+      "subject": "mlabonne/AlphaMonarch-7B",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "merge-chain suspect vs cross-family parent",
+      "subject": "mlabonne/AlphaMonarch-7B",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "merge-chain suspect vs cross-family parent",
+      "subject": "mlabonne/AlphaMonarch-7B",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "merge-chain suspect vs cross-family parent",
+      "subject": "mlabonne/AlphaMonarch-7B",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.1",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.1",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.1",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.1",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.1",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.1",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.3",
+      "candidate": "meta-llama/Llama-2-7b-hf",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.3",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.3",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "num_key_value_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.3",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "hidden_size",
+        "num_hidden_layers",
+        "num_attention_heads",
+        "intermediate_size"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.3",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "mistralai/Mistral-7B-v0.3",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "meta-llama/Llama-2-7b-hf",
+      "candidate": "meta-llama/Meta-Llama-3-8B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "meta-llama/Llama-2-7b-hf",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "meta-llama/Llama-2-7b-hf",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "meta-llama/Llama-2-7b-hf",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "meta-llama/Llama-2-7b-hf",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "meta-llama/Meta-Llama-3-8B",
+      "candidate": "Qwen/Qwen2.5-7B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "meta-llama/Meta-Llama-3-8B",
+      "candidate": "Qwen/Qwen2.5-14B",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "meta-llama/Meta-Llama-3-8B",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "meta-llama/Meta-Llama-3-8B",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "manual",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "Qwen/Qwen2.5-7B",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "Qwen/Qwen2.5-7B",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "Qwen/Qwen2.5-14B",
+      "candidate": "google/gemma-2b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "negative",
+      "kind": "cross-family parent vs parent",
+      "subject": "Qwen/Qwen2.5-14B",
+      "candidate": "google/gemma-2-9b",
+      "verdict": "unverifiable",
+      "outcome": "config-unavailable",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "manual"
+    },
+    {
+      "pool": "limitation",
+      "kind": "depth-upscale",
+      "subject": "upstage/SOLAR-10.7B-v1.0",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "contradicted",
+      "outcome": "contradicted",
+      "differing_fields": [
+        "num_hidden_layers"
+      ],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    },
+    {
+      "pool": "limitation",
+      "kind": "quantized-copy",
+      "subject": "TheBloke/Mistral-7B-v0.1-GPTQ",
+      "candidate": "mistralai/Mistral-7B-v0.1",
+      "verdict": "unverifiable",
+      "outcome": "compatible",
+      "differing_fields": [],
+      "subject_gated": "false",
+      "candidate_gated": "false"
+    }
+  ]
+}

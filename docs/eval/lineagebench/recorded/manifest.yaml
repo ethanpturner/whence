@@ -1,0 +1,213 @@
+# Captured registry interactions, replayed offline (DEC-009). Written by
+# scripts/measure_lineagebench.py; a 401 on a gated model is recorded as the response
+# it is, because the coverage bound is part of the measurement.
+captured_at: 2026-09-11
+host: huggingface.co
+interactions:
+  - request: GET /api/models/HuggingFaceH4/zephyr-7b-beta
+    status: 200
+    body: model-HuggingFaceH4-zephyr-7b-beta.json
+  - request: GET /api/models/NousResearch/Nous-Hermes-llama-2-7b
+    status: 200
+    body: model-NousResearch-Nous-Hermes-llama-2-7b.json
+  - request: GET /api/models/Qwen/Qwen2.5-14B
+    status: 200
+    body: model-Qwen-Qwen2.5-14B.json
+  - request: GET /api/models/Qwen/Qwen2.5-14B-Instruct
+    status: 200
+    body: model-Qwen-Qwen2.5-14B-Instruct.json
+  - request: GET /api/models/Qwen/Qwen2.5-7B
+    status: 200
+    body: model-Qwen-Qwen2.5-7B.json
+  - request: GET /api/models/Qwen/Qwen2.5-7B-Instruct
+    status: 200
+    body: model-Qwen-Qwen2.5-7B-Instruct.json
+  - request: GET /api/models/Qwen/Qwen2.5-Coder-7B-Instruct
+    status: 200
+    body: model-Qwen-Qwen2.5-Coder-7B-Instruct.json
+  - request: GET /api/models/TheBloke/Mistral-7B-v0.1-GPTQ
+    status: 200
+    body: model-TheBloke-Mistral-7B-v0.1-GPTQ.json
+  - request: GET /api/models/codellama/CodeLlama-7b-hf
+    status: 200
+    body: model-codellama-CodeLlama-7b-hf.json
+  - request: GET /api/models/cognitivecomputations/dolphin-2.9-llama3-8b
+    status: 307
+    location: /api/models/dphn/dolphin-2.9-llama3-8b
+    body: model-cognitivecomputations-dolphin-2.9-llama3-8b.json
+  - request: GET /api/models/google/gemma-2-9b
+    status: 200
+    body: model-google-gemma-2-9b.json
+  - request: GET /api/models/google/gemma-2-9b-it
+    status: 200
+    body: model-google-gemma-2-9b-it.json
+  - request: GET /api/models/google/gemma-2b
+    status: 200
+    body: model-google-gemma-2b.json
+  - request: GET /api/models/google/gemma-2b-it
+    status: 200
+    body: model-google-gemma-2b-it.json
+  - request: GET /api/models/meta-llama/Llama-2-7b-hf
+    status: 200
+    body: model-meta-llama-Llama-2-7b-hf.json
+  - request: GET /api/models/meta-llama/Meta-Llama-3-8B
+    status: 200
+    body: model-meta-llama-Meta-Llama-3-8B.json
+  - request: GET /api/models/meta-llama/Meta-Llama-3-8B-Instruct
+    status: 200
+    body: model-meta-llama-Meta-Llama-3-8B-Instruct.json
+  - request: GET /api/models/mistralai/Mistral-7B-Instruct-v0.3
+    status: 200
+    body: model-mistralai-Mistral-7B-Instruct-v0.3.json
+  - request: GET /api/models/mistralai/Mistral-7B-v0.1
+    status: 200
+    body: model-mistralai-Mistral-7B-v0.1.json
+  - request: GET /api/models/mistralai/Mistral-7B-v0.3
+    status: 200
+    body: model-mistralai-Mistral-7B-v0.3.json
+  - request: GET /api/models/mlabonne/AlphaMonarch-7B
+    status: 200
+    body: model-mlabonne-AlphaMonarch-7B.json
+  - request: GET /api/models/teknium/OpenHermes-2.5-Mistral-7B
+    status: 200
+    body: model-teknium-OpenHermes-2.5-Mistral-7B.json
+  - request: GET /api/models/upstage/SOLAR-10.7B-v1.0
+    status: 200
+    body: model-upstage-SOLAR-10.7B-v1.0.json
+  - request: GET /HuggingFaceH4/zephyr-7b-beta/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/HuggingFaceH4/zephyr-7b-beta/892b3d7a7b1cf10c7a701c60881cd93df615734c/config.json?%2FHuggingFaceH4%2Fzephyr-7b-beta%2Fresolve%2Fmain%2Fconfig.json=&etag=%22c3c550ad931ec57781ffa6f5bf4682e30bb6fbef%22
+    body: config-HuggingFaceH4-zephyr-7b-beta.json
+  - request: GET /api/resolve-cache/models/HuggingFaceH4/zephyr-7b-beta/892b3d7a7b1cf10c7a701c60881cd93df615734c/config.json?%2FHuggingFaceH4%2Fzephyr-7b-beta%2Fresolve%2Fmain%2Fconfig.json=&etag=%22c3c550ad931ec57781ffa6f5bf4682e30bb6fbef%22
+    status: 200
+    body: cached-config-HuggingFaceH4-zephyr-7b-beta.json
+  - request: GET /mistralai/Mistral-7B-v0.1/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/mistralai/Mistral-7B-v0.1/27d67f1b5f57dc0953326b2601d68371d40ea8da/config.json?%2Fmistralai%2FMistral-7B-v0.1%2Fresolve%2Fmain%2Fconfig.json=&etag=%22f4989f072a7f517d01d479eb1685c6e50e014f88%22
+    body: config-mistralai-Mistral-7B-v0.1.json
+  - request: GET /api/resolve-cache/models/mistralai/Mistral-7B-v0.1/27d67f1b5f57dc0953326b2601d68371d40ea8da/config.json?%2Fmistralai%2FMistral-7B-v0.1%2Fresolve%2Fmain%2Fconfig.json=&etag=%22f4989f072a7f517d01d479eb1685c6e50e014f88%22
+    status: 200
+    body: cached-config-mistralai-Mistral-7B-v0.1.json
+  - request: GET /teknium/OpenHermes-2.5-Mistral-7B/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/teknium/OpenHermes-2.5-Mistral-7B/24c0bea14d53e6f67f1fbe2eca5bfe7cae389b33/config.json?%2Fteknium%2FOpenHermes-2.5-Mistral-7B%2Fresolve%2Fmain%2Fconfig.json=&etag=%22c57e6350cdea0de51d85579fdb157b92399c57e4%22
+    body: config-teknium-OpenHermes-2.5-Mistral-7B.json
+  - request: GET /api/resolve-cache/models/teknium/OpenHermes-2.5-Mistral-7B/24c0bea14d53e6f67f1fbe2eca5bfe7cae389b33/config.json?%2Fteknium%2FOpenHermes-2.5-Mistral-7B%2Fresolve%2Fmain%2Fconfig.json=&etag=%22c57e6350cdea0de51d85579fdb157b92399c57e4%22
+    status: 200
+    body: cached-config-teknium-OpenHermes-2.5-Mistral-7B.json
+  - request: GET /NousResearch/Nous-Hermes-llama-2-7b/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/NousResearch/Nous-Hermes-llama-2-7b/cbd525ad0d5012e470c7696d5905345dc082e432/config.json?%2FNousResearch%2FNous-Hermes-llama-2-7b%2Fresolve%2Fmain%2Fconfig.json=&etag=%22b3a7f399f588f3265b821b2cf747613a42c3458b%22
+    body: config-NousResearch-Nous-Hermes-llama-2-7b.json
+  - request: GET /api/resolve-cache/models/NousResearch/Nous-Hermes-llama-2-7b/cbd525ad0d5012e470c7696d5905345dc082e432/config.json?%2FNousResearch%2FNous-Hermes-llama-2-7b%2Fresolve%2Fmain%2Fconfig.json=&etag=%22b3a7f399f588f3265b821b2cf747613a42c3458b%22
+    status: 200
+    body: cached-config-NousResearch-Nous-Hermes-llama-2-7b.json
+  - request: GET /meta-llama/Llama-2-7b-hf/resolve/main/config.json
+    status: 401
+    body: config-meta-llama-Llama-2-7b-hf.json
+  - request: GET /codellama/CodeLlama-7b-hf/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/codellama/CodeLlama-7b-hf/6c284d1468fe6c413cf56183e69b194dcfa27fe6/config.json?%2Fcodellama%2FCodeLlama-7b-hf%2Fresolve%2Fmain%2Fconfig.json=&etag=%225058dd094f9eea4ab7421154cee883c8befbb11e%22
+    body: config-codellama-CodeLlama-7b-hf.json
+  - request: GET /api/resolve-cache/models/codellama/CodeLlama-7b-hf/6c284d1468fe6c413cf56183e69b194dcfa27fe6/config.json?%2Fcodellama%2FCodeLlama-7b-hf%2Fresolve%2Fmain%2Fconfig.json=&etag=%225058dd094f9eea4ab7421154cee883c8befbb11e%22
+    status: 200
+    body: cached-config-codellama-CodeLlama-7b-hf.json
+  - request: GET /Qwen/Qwen2.5-Coder-7B-Instruct/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/Qwen/Qwen2.5-Coder-7B-Instruct/c03e6d358207e414f1eca0bb1891e29f1db0e242/config.json?%2FQwen%2FQwen2.5-Coder-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%221a2ea88621f4248fccfb575beaf64c1ea5d9587f%22
+    body: config-Qwen-Qwen2.5-Coder-7B-Instruct.json
+  - request: GET /api/resolve-cache/models/Qwen/Qwen2.5-Coder-7B-Instruct/c03e6d358207e414f1eca0bb1891e29f1db0e242/config.json?%2FQwen%2FQwen2.5-Coder-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%221a2ea88621f4248fccfb575beaf64c1ea5d9587f%22
+    status: 200
+    body: cached-config-Qwen-Qwen2.5-Coder-7B-Instruct.json
+  - request: GET /Qwen/Qwen2.5-7B/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/Qwen/Qwen2.5-7B/d149729398750b98c0af14eb82c78cfe92750796/config.json?%2FQwen%2FQwen2.5-7B%2Fresolve%2Fmain%2Fconfig.json=&etag=%221a90713f0e2cf13b8320cd576175ff9f0b587ea4%22
+    body: config-Qwen-Qwen2.5-7B.json
+  - request: GET /api/resolve-cache/models/Qwen/Qwen2.5-7B/d149729398750b98c0af14eb82c78cfe92750796/config.json?%2FQwen%2FQwen2.5-7B%2Fresolve%2Fmain%2Fconfig.json=&etag=%221a90713f0e2cf13b8320cd576175ff9f0b587ea4%22
+    status: 200
+    body: cached-config-Qwen-Qwen2.5-7B.json
+  - request: GET /cognitivecomputations/dolphin-2.9-llama3-8b/resolve/main/config.json
+    status: 307
+    location: /dphn/dolphin-2.9-llama3-8b/resolve/main/config.json
+    body: config-cognitivecomputations-dolphin-2.9-llama3-8b.json
+  - request: GET /dphn/dolphin-2.9-llama3-8b/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/dphn/dolphin-2.9-llama3-8b/d94261ccf9597b04b60b0dd5d15c76e9da2bb6f1/config.json?%2Fdphn%2Fdolphin-2.9-llama3-8b%2Fresolve%2Fmain%2Fconfig.json=&etag=%229dfaa71b71bb1ff27cfb9c5773f52b8ddb92dae3%22
+    body: config-dphn-dolphin-2.9-llama3-8b.json
+  - request: GET /api/resolve-cache/models/dphn/dolphin-2.9-llama3-8b/d94261ccf9597b04b60b0dd5d15c76e9da2bb6f1/config.json?%2Fdphn%2Fdolphin-2.9-llama3-8b%2Fresolve%2Fmain%2Fconfig.json=&etag=%229dfaa71b71bb1ff27cfb9c5773f52b8ddb92dae3%22
+    status: 200
+    body: cached-config-dphn-dolphin-2.9-llama3-8b.json
+  - request: GET /meta-llama/Meta-Llama-3-8B/resolve/main/config.json
+    status: 401
+    body: config-meta-llama-Meta-Llama-3-8B.json
+  - request: GET /google/gemma-2-9b-it/resolve/main/config.json
+    status: 401
+    body: config-google-gemma-2-9b-it.json
+  - request: GET /google/gemma-2-9b/resolve/main/config.json
+    status: 401
+    body: config-google-gemma-2-9b.json
+  - request: GET /google/gemma-2b-it/resolve/main/config.json
+    status: 401
+    body: config-google-gemma-2b-it.json
+  - request: GET /google/gemma-2b/resolve/main/config.json
+    status: 401
+    body: config-google-gemma-2b.json
+  - request: GET /meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json
+    status: 401
+    body: config-meta-llama-Meta-Llama-3-8B-Instruct.json
+  - request: GET /Qwen/Qwen2.5-7B-Instruct/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%220178295f88afc3c7f279ed284f961f8c1be00654%22
+    body: config-Qwen-Qwen2.5-7B-Instruct.json
+  - request: GET /api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%220178295f88afc3c7f279ed284f961f8c1be00654%22
+    status: 200
+    body: cached-config-Qwen-Qwen2.5-7B-Instruct.json
+  - request: GET /Qwen/Qwen2.5-14B-Instruct/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/Qwen/Qwen2.5-14B-Instruct/cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8/config.json?%2FQwen%2FQwen2.5-14B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%22172d20a3d7fc27df9ed89628cafdbaf1a773ddc1%22
+    body: config-Qwen-Qwen2.5-14B-Instruct.json
+  - request: GET /api/resolve-cache/models/Qwen/Qwen2.5-14B-Instruct/cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8/config.json?%2FQwen%2FQwen2.5-14B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%22172d20a3d7fc27df9ed89628cafdbaf1a773ddc1%22
+    status: 200
+    body: cached-config-Qwen-Qwen2.5-14B-Instruct.json
+  - request: GET /Qwen/Qwen2.5-14B/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/Qwen/Qwen2.5-14B/97e1e76335b7017d8f67c08a19d103c0504298c9/config.json?%2FQwen%2FQwen2.5-14B%2Fresolve%2Fmain%2Fconfig.json=&etag=%2283bba6e26639fb152bd0077977cf6ea8312b42a9%22
+    body: config-Qwen-Qwen2.5-14B.json
+  - request: GET /api/resolve-cache/models/Qwen/Qwen2.5-14B/97e1e76335b7017d8f67c08a19d103c0504298c9/config.json?%2FQwen%2FQwen2.5-14B%2Fresolve%2Fmain%2Fconfig.json=&etag=%2283bba6e26639fb152bd0077977cf6ea8312b42a9%22
+    status: 200
+    body: cached-config-Qwen-Qwen2.5-14B.json
+  - request: GET /mistralai/Mistral-7B-Instruct-v0.3/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.3/c170c708c41dac9275d15a8fff4eca08d52bab71/config.json?%2Fmistralai%2FMistral-7B-Instruct-v0.3%2Fresolve%2Fmain%2Fconfig.json=&etag=%229f913dc05d66cfb23c16e3c93b3cc4899813dfa6%22
+    body: config-mistralai-Mistral-7B-Instruct-v0.3.json
+  - request: GET /api/resolve-cache/models/mistralai/Mistral-7B-Instruct-v0.3/c170c708c41dac9275d15a8fff4eca08d52bab71/config.json?%2Fmistralai%2FMistral-7B-Instruct-v0.3%2Fresolve%2Fmain%2Fconfig.json=&etag=%229f913dc05d66cfb23c16e3c93b3cc4899813dfa6%22
+    status: 200
+    body: cached-config-mistralai-Mistral-7B-Instruct-v0.3.json
+  - request: GET /mistralai/Mistral-7B-v0.3/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/mistralai/Mistral-7B-v0.3/caa1feb0e54d415e2df31207e5f4e273e33509b1/config.json?%2Fmistralai%2FMistral-7B-v0.3%2Fresolve%2Fmain%2Fconfig.json=&etag=%229f913dc05d66cfb23c16e3c93b3cc4899813dfa6%22
+    body: config-mistralai-Mistral-7B-v0.3.json
+  - request: GET /api/resolve-cache/models/mistralai/Mistral-7B-v0.3/caa1feb0e54d415e2df31207e5f4e273e33509b1/config.json?%2Fmistralai%2FMistral-7B-v0.3%2Fresolve%2Fmain%2Fconfig.json=&etag=%229f913dc05d66cfb23c16e3c93b3cc4899813dfa6%22
+    status: 200
+    body: cached-config-mistralai-Mistral-7B-v0.3.json
+  - request: GET /mlabonne/AlphaMonarch-7B/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/mlabonne/AlphaMonarch-7B/3de065d84411d74e5b3590f67f52b0b71faf6161/config.json?%2Fmlabonne%2FAlphaMonarch-7B%2Fresolve%2Fmain%2Fconfig.json=&etag=%224e8ef56e26933efea1986b90d3545a1007bd8d54%22
+    body: config-mlabonne-AlphaMonarch-7B.json
+  - request: GET /api/resolve-cache/models/mlabonne/AlphaMonarch-7B/3de065d84411d74e5b3590f67f52b0b71faf6161/config.json?%2Fmlabonne%2FAlphaMonarch-7B%2Fresolve%2Fmain%2Fconfig.json=&etag=%224e8ef56e26933efea1986b90d3545a1007bd8d54%22
+    status: 200
+    body: cached-config-mlabonne-AlphaMonarch-7B.json
+  - request: GET /upstage/SOLAR-10.7B-v1.0/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/upstage/SOLAR-10.7B-v1.0/5a06298f374dae1fb918d73fba72c7722ce71d36/config.json?%2Fupstage%2FSOLAR-10.7B-v1.0%2Fresolve%2Fmain%2Fconfig.json=&etag=%2291f31d26dc12d4278dcb0bb99dae2b963db4e280%22
+    body: config-upstage-SOLAR-10.7B-v1.0.json
+  - request: GET /api/resolve-cache/models/upstage/SOLAR-10.7B-v1.0/5a06298f374dae1fb918d73fba72c7722ce71d36/config.json?%2Fupstage%2FSOLAR-10.7B-v1.0%2Fresolve%2Fmain%2Fconfig.json=&etag=%2291f31d26dc12d4278dcb0bb99dae2b963db4e280%22
+    status: 200
+    body: cached-config-upstage-SOLAR-10.7B-v1.0.json
+  - request: GET /TheBloke/Mistral-7B-v0.1-GPTQ/resolve/main/config.json
+    status: 307
+    location: /api/resolve-cache/models/TheBloke/Mistral-7B-v0.1-GPTQ/81de15eeac5938bc3b4065dfddf798fe5d215881/config.json?%2FTheBloke%2FMistral-7B-v0.1-GPTQ%2Fresolve%2Fmain%2Fconfig.json=&etag=%22cf88bc1a45a2d13fa496797c728d6a49910383b1%22
+    body: config-TheBloke-Mistral-7B-v0.1-GPTQ.json
+  - request: GET /api/resolve-cache/models/TheBloke/Mistral-7B-v0.1-GPTQ/81de15eeac5938bc3b4065dfddf798fe5d215881/config.json?%2FTheBloke%2FMistral-7B-v0.1-GPTQ%2Fresolve%2Fmain%2Fconfig.json=&etag=%22cf88bc1a45a2d13fa496797c728d6a49910383b1%22
+    status: 200
+    body: cached-config-TheBloke-Mistral-7B-v0.1-GPTQ.json
