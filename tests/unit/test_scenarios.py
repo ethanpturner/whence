@@ -31,9 +31,10 @@ def test_scenario(entry: dict[str, object]) -> None:
     )
 
 
-def test_no_edge_is_ever_verified_in_phase_one() -> None:
+def test_no_edge_is_verified_without_an_evidence_file() -> None:
     """Resolution establishes that a named artifact exists and pins. It does not establish that
-    the derivation happened (DEC-005)."""
+    the derivation happened (DEC-005). The one path to `verified` is a fingerprint evidence file
+    (DEC-029), and none of the recorded scenarios supplies one."""
     for entry in RECORDED:
         scenario = ROOT / str(entry["path"])
         target = yaml.safe_load((scenario / "input" / "target.yaml").read_text())

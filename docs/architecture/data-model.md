@@ -21,8 +21,8 @@ fails validation rather than passing downstream stripped and looking valid.
 | `Edge` | 4 | IMPLEMENTED — `domain.py` |
 | `Evidence` | 5 | IMPLEMENTED — `domain.py` |
 | `ResolutionReport` | 6 | IMPLEMENTED — `domain.py` |
-| `FingerprintEvidenceFile` | 9 | SPECIFIED — not implemented (DEC-029) |
-| `FingerprintVerdict` | 10 | SPECIFIED — not implemented (DEC-029) |
+| `FingerprintEvidenceFile` | 9 | IMPLEMENTED — `domain.py` (DEC-029) |
+| `FingerprintVerdict` | 10 | IMPLEMENTED — `domain.py` (DEC-029) |
 
 When an object is implemented, its row is flipped and the implementing model named in the same
 change, or it ships unguarded. **This table was stale for every object at once**, which is what
@@ -81,6 +81,14 @@ inline untrusted text into logs or reports.
 | `content_digest` | str | yes | Digest of the material as captured. |
 | `excerpt` | str \| None | no | Bounded excerpt, retained for the report only (DEC-012). |
 | `excerpt_truncated` | bool | yes | Whether the excerpt was cut by the length bound. A truncated excerpt is marked, never silently shortened. |
+| `tool` | str \| None | no | Set only on evidence derived from a fingerprint evidence file (DEC-029): the tool's name as it names itself. |
+| `tool_version` | str \| None | no | The tool's own version string. Set together with `tool`. |
+| `verdict_class` | str \| None | no | The tool's class, verbatim. Set together with `tool`. |
+| `probability` | float \| None | no | The tool's calibrated probability where it publishes one, in [0, 1]. An attribute of the evidence, never a verdict (DEC-001). Requires `tool`. |
+
+The four `tool*` fields travel together: an `Evidence` with some but not all of the first three
+fails validation, and a `probability` without a `tool` fails too. Card evidence leaves all four
+unset, so `from_fingerprint` is a fact about the record and never a guess.
 
 ## 6. `ResolutionReport`
 
@@ -156,7 +164,8 @@ type, and provenance for an unfamiliar kind is still provenance.
 ## 9. `FingerprintEvidenceFile`
 
 The output of an external weight-level lineage tool, read as inert data (DEC-029). `whence` never
-produces one; it consumes one an operator supplies. Specified; the ingest is unbuilt.
+produces one; it consumes one an operator supplies through `whence resolve --evidence FILE`.
+`scripts/fingerprint_evidence.py` builds one from modelDNA pair results under a stated mapping.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
@@ -196,3 +205,9 @@ One statement by the tool about one ordered pair of artifacts.
 - A verdict with effect `abstains` changes no verdict and is not recorded on the graph.
 - Two evidence files that disagree about one edge are both appended as `Evidence`. Which verdict
   the edge then carries is open (DEC-029).
+- A verdict naming an artifact the resolution did not reach, or naming it at a revision other
+  than the one the graph pins, is **unattached** (DEC-030): counted and reported, never used to
+  add a node. The edge an `establishes` verdict creates joins two nodes the resolution reached.
+- An edge the structural check has already moved to `contradicted` is not raised by an
+  `establishes` verdict (DEC-030). The fingerprint evidence is appended and the application
+  reports the pair as conflicting; the edge stays `contradicted`.

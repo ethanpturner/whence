@@ -15,6 +15,9 @@ import yaml
 
 from whence.cyclonedx import to_cyclonedx
 from whence.evaluate import score
+from whence.fingerprint import apply as apply_evidence
+from whence.fingerprint import load as load_evidence
+from whence.fingerprint import summary_lines
 from whence.registry import LiveRegistry, RecordedRegistry, Registry
 from whence.resolve import Resolver, resolver_for
 
@@ -35,6 +38,12 @@ def _cmd_resolve(args: argparse.Namespace) -> int:
         check_signatures=args.check_signatures,
     )
     report = resolver.resolve(args.target)
+    applications = []
+    for raw_path in args.evidence or []:
+        path = Path(raw_path)
+        evidence_file, digest = load_evidence(path)
+        report, application = apply_evidence(report, evidence_file, str(path), digest)
+        applications.append(application)
     if args.bom:
         print(json.dumps(to_cyclonedx(report), indent=2))
     else:
@@ -50,6 +59,9 @@ def _cmd_resolve(args: argparse.Namespace) -> int:
             print(f"  ceiling: {ceiling}")
         for unreached in report.transient_failures:
             print(f"  unreached (transient): {unreached}")
+        for application in applications:
+            for line in summary_lines(application):
+                print(line)
     # A partial run exits non-zero so a pipeline consuming the BOM notices (DEC-014).
     return 1 if report.partial else 0
 
@@ -118,6 +130,15 @@ def main() -> int:
         "--check-structure",
         action="store_true",
         help="compare declared bases' transformer bodies (phase two; can contradict, never verify)",
+    )
+    resolve.add_argument(
+        "--evidence",
+        action="append",
+        metavar="FILE",
+        help=(
+            "a fingerprint evidence file from an external weight-level tool, applied under the "
+            "effects it declares (DEC-029); repeatable"
+        ),
     )
     resolve.add_argument("--bom", action="store_true", help="emit CycloneDX instead of a summary")
     resolve.set_defaults(func=_cmd_resolve)

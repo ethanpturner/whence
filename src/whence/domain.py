@@ -68,6 +68,16 @@ class Relation(StrEnum):
     REQUIRES_PACKAGE = "requires-package"
 
 
+class EvidenceEffect(StrEnum):
+    """What a fingerprint verdict class does to an edge's verdict (DEC-029). Declared per class by
+    whoever ran the tool; a class with no declared effect is a validation failure, never a default,
+    because a tool's own negative is not this tool's `contradicted`."""
+
+    ESTABLISHES = "establishes"
+    CONTRADICTS = "contradicts"
+    ABSTAINS = "abstains"
+
+
 class ResolutionClass(StrEnum):
     """Only the first two may produce a verdict (DEC-014)."""
 
@@ -112,12 +122,38 @@ class ArtifactRef(DomainModel):
 
 
 class Evidence(DomainModel):
-    """Where an assertion was found. `excerpt` is untrusted data (DEC-012)."""
+    """Where an assertion was found. `excerpt` is untrusted data (DEC-012).
+
+    The four optional `tool*` fields are set only on evidence derived from a fingerprint evidence
+    file (DEC-029): they name the external tool, its version, and its verdict class verbatim, with
+    the probability as an attribute and never a verdict (DEC-001). Card evidence leaves them unset.
+    """
 
     locator: str
     content_digest: str
     excerpt: str | None = None
     excerpt_truncated: bool = False
+    tool: str | None = None
+    tool_version: str | None = None
+    verdict_class: str | None = None
+    probability: float | None = None
+
+    @model_validator(mode="after")
+    def _fingerprint_fields_travel_together(self) -> Evidence:
+        fingerprint = (self.tool, self.tool_version, self.verdict_class)
+        if any(f is not None for f in fingerprint) and not all(f is not None for f in fingerprint):
+            raise ValueError("tool, tool_version and verdict_class are set together or not at all")
+        if self.probability is not None and self.tool is None:
+            raise ValueError(
+                "a probability is an attribute of a fingerprint verdict; no tool named"
+            )
+        if self.probability is not None and not 0.0 <= self.probability <= 1.0:
+            raise ValueError("probability must lie in [0, 1]")
+        return self
+
+    @property
+    def from_fingerprint(self) -> bool:
+        return self.tool is not None
 
 
 class Node(DomainModel):
@@ -190,3 +226,59 @@ class ResolutionReport(DomainModel):
                 "partial must be true exactly when transient failures occurred (DEC-014)"
             )
         return self
+
+
+class FingerprintVerdict(DomainModel):
+    """One statement by an external weight-level tool about one ordered pair (DEC-029).
+
+    Both sides are pinned or the verdict fails validation: a fingerprint is a statement about bytes,
+    and a name is not bytes (DEC-002). `verdict_class` is the tool's own class, verbatim -- never
+    normalized and never mapped to a `Relation` (DEC-010, DEC-015).
+    """
+
+    subject: ArtifactRef
+    candidate: ArtifactRef
+    verdict_class: str
+    probability: float | None = None
+    detail: str | None = None
+
+    @model_validator(mode="after")
+    def _both_sides_pinned(self) -> FingerprintVerdict:
+        if not self.subject.pinned or not self.candidate.pinned:
+            raise ValueError(
+                "a fingerprint verdict names two pinned artifacts; an unpinned side is a verdict "
+                "about whatever the name resolves to today (DEC-002)"
+            )
+        if self.probability is not None and not 0.0 <= self.probability <= 1.0:
+            raise ValueError("probability must lie in [0, 1]")
+        return self
+
+
+class FingerprintEvidenceFile(DomainModel):
+    """The output of an external fingerprint tool, read as inert data (DEC-029).
+
+    `classes` declares the effect of every verdict class the tool uses. Every class that appears in
+    `verdicts` must be declared, so that a class nobody thought about cannot default to anything.
+    """
+
+    tool: str
+    tool_version: str
+    generated_at: datetime
+    classes: tuple[tuple[str, EvidenceEffect], ...]
+    verdicts: tuple[FingerprintVerdict, ...]
+
+    @model_validator(mode="after")
+    def _every_class_declared(self) -> FingerprintEvidenceFile:
+        declared = dict(self.classes)
+        if len(declared) != len(self.classes):
+            raise ValueError("a verdict class is declared twice with possibly different effects")
+        undeclared = sorted({v.verdict_class for v in self.verdicts} - set(declared))
+        if undeclared:
+            raise ValueError(
+                f"verdict class(es) {', '.join(undeclared)} carry no declared effect; an effect is "
+                "declared by whoever ran the tool, never defaulted (DEC-029)"
+            )
+        return self
+
+    def effect_of(self, verdict_class: str) -> EvidenceEffect:
+        return dict(self.classes)[verdict_class]
