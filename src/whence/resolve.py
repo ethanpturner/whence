@@ -458,11 +458,47 @@ class Resolver:
             )
             return
 
+        evidence = (Evidence(locator=locator, content_digest=_digest(slug)),)
+        if slug == source.slug:
+            # DEC-031. The card names the artifact as its own base. The claim is recorded exactly
+            # as asserted -- an edge from the node to itself, `unverifiable` -- and it is neither
+            # resolved again nor followed: the target is the node already in hand, and a frontier
+            # entry for it would be a request spent learning nothing. The node carries the flag,
+            # because a consumer reading `dependsOn` for lineage needs to know this edge is a
+            # degenerate declaration rather than a derivation. Found at 675 of 760,460 models in
+            # Stalnaker et al. (arXiv 2502.04484) and 64 of the 45,000 most downloaded on
+            # 2026-09-10; the shape is common enough to name.
+            state.edges.append(
+                Edge(
+                    source=source,
+                    target=source,
+                    relation=relation,
+                    provenance=ProvenanceClass.ASSERTED_BY_CARD,
+                    verdict=Verdict.UNVERIFIABLE,
+                    evidence=evidence,
+                )
+            )
+            node = state.nodes.get(source.slug)
+            if node is not None:
+                state.nodes[source.slug] = Node.model_validate(
+                    {
+                        **node.model_dump(),
+                        "notes": (
+                            *node.notes,
+                            f"declares itself as its own base ({locator}); recorded, not followed",
+                        ),
+                        "properties": (
+                            *node.properties,
+                            ("whence:declaration", "self-referential"),
+                        ),
+                    }
+                )
+            return
+
         resolved, declared, cls, notes = self._resolve_artifact(slug, state, kind=kind)
         if cls is ResolutionClass.TRANSIENT:
             return  # DEC-014: no edge, no verdict.
 
-        evidence = (Evidence(locator=locator, content_digest=_digest(slug)),)
         asserted = (
             ProvenanceClass.ASSERTED_BY_CARD
             if locator.startswith(("cardData.base_model", "cardData.datasets"))

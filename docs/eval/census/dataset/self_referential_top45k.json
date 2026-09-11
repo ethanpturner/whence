@@ -1,0 +1,586 @@
+{
+ "swept": "2026-09-10",
+ "n_models": 45000,
+ "self_referential": [
+  {
+   "id": "raxcore-dev/Rax-4.5",
+   "sha": "6ab58f792f61e6fd144c6335ef87507c5b88bb0d",
+   "downloads": 1059991,
+   "base_model_tags": [
+    "base_model:raxcore-dev/Rax-4.5",
+    "base_model:finetune:raxcore-dev/Rax-4.5"
+   ]
+  },
+  {
+   "id": "vikp/surya_det3",
+   "sha": "467ee9ec33e6e6c5f73e57dbc1415b14032f5b95",
+   "downloads": 267110,
+   "base_model_tags": [
+    "base_model:vikp/surya_det3",
+    "base_model:finetune:vikp/surya_det3"
+   ]
+  },
+  {
+   "id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
+   "sha": "94125d2bd83076b21eed33119525e29eaf3894f4",
+   "downloads": 54686,
+   "base_model_tags": [
+    "base_model:meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
+    "base_model:quantized:meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8"
+   ]
+  },
+  {
+   "id": "kakaocorp/kanana-1.5-v-3b-instruct",
+   "sha": "2e00ef13ccec2e99459a8eada18a1bfd05bff44b",
+   "downloads": 28322,
+   "base_model_tags": [
+    "base_model:kakaocorp/kanana-1.5-v-3b-instruct",
+    "base_model:finetune:kakaocorp/kanana-1.5-v-3b-instruct"
+   ]
+  },
+  {
+   "id": "mixedbread-ai/mxbai-embed-xsmall-v1",
+   "sha": "e6ac24e5d6efb8782b59de1647b3ececb4ece94e",
+   "downloads": 24569,
+   "base_model_tags": [
+    "base_model:mixedbread-ai/mxbai-embed-xsmall-v1",
+    "base_model:quantized:mixedbread-ai/mxbai-embed-xsmall-v1"
+   ]
+  },
+  {
+   "id": "google/t5gemma-b-b-ul2",
+   "sha": "97ea9b7e92738bb57437867277ae38e65345b8d7",
+   "downloads": 18639,
+   "base_model_tags": [
+    "base_model:google/t5gemma-b-b-ul2",
+    "base_model:finetune:google/t5gemma-b-b-ul2"
+   ]
+  },
+  {
+   "id": "nmthien/vietnamese-gpt2",
+   "sha": "ecf5822d75727f196187758a70be4e80c041848a",
+   "downloads": 17242,
+   "base_model_tags": [
+    "base_model:nmthien/vietnamese-gpt2",
+    "base_model:finetune:nmthien/vietnamese-gpt2"
+   ]
+  },
+  {
+   "id": "nvidia/NVIDIA-Nemotron-3-Nano-4B-FP8",
+   "sha": "3fe6dab75665a93884214ad4b1b95cf02717d081",
+   "downloads": 17134,
+   "base_model_tags": [
+    "base_model:nvidia/NVIDIA-Nemotron-3-Nano-4B-FP8",
+    "base_model:quantized:nvidia/NVIDIA-Nemotron-3-Nano-4B-FP8"
+   ]
+  },
+  {
+   "id": "briaai/FIBO",
+   "sha": "7c7e00ca081f6cd24bbbd745d13cc214484c9199",
+   "downloads": 13017,
+   "base_model_tags": [
+    "base_model:briaai/FIBO",
+    "base_model:finetune:briaai/FIBO"
+   ]
+  },
+  {
+   "id": "jangedoo/all-MiniLM-L6-v2-nepali",
+   "sha": "4dd8c1f4cb4978aa03839d1ac36bde3594bf4add",
+   "downloads": 9618,
+   "base_model_tags": [
+    "base_model:jangedoo/all-MiniLM-L6-v2-nepali",
+    "base_model:finetune:jangedoo/all-MiniLM-L6-v2-nepali"
+   ]
+  },
+  {
+   "id": "haywoodsloan/ai-image-detector-deploy",
+   "sha": "4ae1822603cb1ec980c217cfde1ef1b8e0477a16",
+   "downloads": 9499,
+   "base_model_tags": [
+    "base_model:haywoodsloan/ai-image-detector-deploy",
+    "base_model:finetune:haywoodsloan/ai-image-detector-deploy"
+   ]
+  },
+  {
+   "id": "tiiuae/Falcon3-3B-Instruct",
+   "sha": "411bb94318f94f7a5735b77109f456b1e74b42a1",
+   "downloads": 7389,
+   "base_model_tags": [
+    "base_model:tiiuae/Falcon3-3B-Instruct",
+    "base_model:finetune:tiiuae/Falcon3-3B-Instruct"
+   ]
+  },
+  {
+   "id": "google/t5gemma-s-s-prefixlm",
+   "sha": "7b875178ee4c8a97a5df548972b10cfe200ee695",
+   "downloads": 5700,
+   "base_model_tags": [
+    "base_model:google/t5gemma-s-s-prefixlm",
+    "base_model:finetune:google/t5gemma-s-s-prefixlm"
+   ]
+  },
+  {
+   "id": "facebook/dinov3-vitl16-chmv2-dpt-head",
+   "sha": "37130c851a3cf6720f974490707059f5edaeed4e",
+   "downloads": 4043,
+   "base_model_tags": [
+    "base_model:facebook/dinov3-vitl16-chmv2-dpt-head",
+    "base_model:finetune:facebook/dinov3-vitl16-chmv2-dpt-head"
+   ]
+  },
+  {
+   "id": "flair-bio/amplify-120m",
+   "sha": "66983269e31bf692442e9ac5a102c432bc02cab7",
+   "downloads": 3754,
+   "base_model_tags": [
+    "base_model:flair-bio/amplify-120m",
+    "base_model:finetune:flair-bio/amplify-120m"
+   ]
+  },
+  {
+   "id": "hyrinmansoor/changAI-nomic-embed-text-v1.5-finetuned",
+   "sha": "a1eb0deed979a083a756ed470e97684028e5d4a9",
+   "downloads": 3328,
+   "base_model_tags": [
+    "base_model:hyrinmansoor/changAI-nomic-embed-text-v1.5-finetuned",
+    "base_model:finetune:hyrinmansoor/changAI-nomic-embed-text-v1.5-finetuned"
+   ]
+  },
+  {
+   "id": "ozaa77/Cogito-0.9.1-15B",
+   "sha": "3a33b7cc26e097554706c6ab6df1f5adc4d843ec",
+   "downloads": 2327,
+   "base_model_tags": [
+    "base_model:ozaa77/Cogito-0.9.1-15B",
+    "base_model:finetune:ozaa77/Cogito-0.9.1-15B"
+   ]
+  },
+  {
+   "id": "google/t5gemma-2b-2b-ul2",
+   "sha": "f7593b977d03307f371ad1e45d23a4ef83321435",
+   "downloads": 2289,
+   "base_model_tags": [
+    "base_model:google/t5gemma-2b-2b-ul2",
+    "base_model:finetune:google/t5gemma-2b-2b-ul2"
+   ]
+  },
+  {
+   "id": "U4RASD/NeoAraBERT",
+   "sha": "6f6b10be699d96c5df66ce6b4a453736c694a295",
+   "downloads": 2249,
+   "base_model_tags": [
+    "base_model:U4RASD/NeoAraBERT",
+    "base_model:finetune:U4RASD/NeoAraBERT"
+   ]
+  },
+  {
+   "id": "Emiliosbs/Ben3.0-7B-Uncensored",
+   "sha": "2657cd83ac7f59221921c081a59946d1a366a5c2",
+   "downloads": 2084,
+   "base_model_tags": [
+    "base_model:Emiliosbs/Ben3.0-7B-Uncensored",
+    "base_model:finetune:Emiliosbs/Ben3.0-7B-Uncensored"
+   ]
+  },
+  {
+   "id": "ibm-granite/granite-20b-code-instruct-r1.1",
+   "sha": "7a8c41cb84bdb13f97197d35349c273911f46ef8",
+   "downloads": 2027,
+   "base_model_tags": [
+    "base_model:ibm-granite/granite-20b-code-instruct-r1.1",
+    "base_model:finetune:ibm-granite/granite-20b-code-instruct-r1.1"
+   ]
+  },
+  {
+   "id": "Jackrong/Qwen3.5-9B-GLM5.1-Distill-v1",
+   "sha": "6fb13974a79dcc657a70779eaece841cabb82fee",
+   "downloads": 1942,
+   "base_model_tags": [
+    "base_model:Jackrong/Qwen3.5-9B-GLM5.1-Distill-v1",
+    "base_model:adapter:Jackrong/Qwen3.5-9B-GLM5.1-Distill-v1"
+   ]
+  },
+  {
+   "id": "kyutai/hibiki-zero-3b-pytorch-bf16",
+   "sha": "73175ce6243f8ad66b2138b0264a80044b35c1bd",
+   "downloads": 1751,
+   "base_model_tags": [
+    "base_model:kyutai/hibiki-zero-3b-pytorch-bf16",
+    "base_model:finetune:kyutai/hibiki-zero-3b-pytorch-bf16"
+   ]
+  },
+  {
+   "id": "google/t5gemma-s-s-ul2",
+   "sha": "40c99423281545bab24762d48cea3fa09e19071f",
+   "downloads": 1740,
+   "base_model_tags": [
+    "base_model:google/t5gemma-s-s-ul2",
+    "base_model:finetune:google/t5gemma-s-s-ul2"
+   ]
+  },
+  {
+   "id": "BidirLM/BidirLM-Omni-2.5B-Embedding",
+   "sha": "447a6e31be61b84443144afda21374339ce408e6",
+   "downloads": 1701,
+   "base_model_tags": [
+    "base_model:BidirLM/BidirLM-Omni-2.5B-Embedding",
+    "base_model:finetune:BidirLM/BidirLM-Omni-2.5B-Embedding"
+   ]
+  },
+  {
+   "id": "XiaomiMiMo/MiMo-VL-7B-RL-2508",
+   "sha": "4bfb270765825d2fa059011deb4c96fdd579be6f",
+   "downloads": 1626,
+   "base_model_tags": [
+    "base_model:XiaomiMiMo/MiMo-VL-7B-RL-2508",
+    "base_model:finetune:XiaomiMiMo/MiMo-VL-7B-RL-2508"
+   ]
+  },
+  {
+   "id": "siyah1/malayalam-moe-pretrain",
+   "sha": "460ef28568df16b2a3184213d0eabefdf5005f96",
+   "downloads": 1621,
+   "base_model_tags": [
+    "base_model:siyah1/malayalam-moe-pretrain",
+    "base_model:finetune:siyah1/malayalam-moe-pretrain"
+   ]
+  },
+  {
+   "id": "Navyaforaa/LitGram-1.5B",
+   "sha": "f0785a2ed2bdc7e6e96c8f5eb438665c07853d86",
+   "downloads": 1619,
+   "base_model_tags": [
+    "base_model:Navyaforaa/LitGram-1.5B",
+    "base_model:finetune:Navyaforaa/LitGram-1.5B"
+   ]
+  },
+  {
+   "id": "joannetai520/16_bit_model_trymoredata1",
+   "sha": "1415b427c4d45fb03acf798311e89988e8612fe8",
+   "downloads": 1530,
+   "base_model_tags": [
+    "base_model:joannetai520/16_bit_model_trymoredata1",
+    "base_model:finetune:joannetai520/16_bit_model_trymoredata1"
+   ]
+  },
+  {
+   "id": "google/t5gemma-l-l-ul2",
+   "sha": "0b3ff60446397c22003cea08aa22a7da4dcf1d32",
+   "downloads": 1520,
+   "base_model_tags": [
+    "base_model:google/t5gemma-l-l-ul2",
+    "base_model:finetune:google/t5gemma-l-l-ul2"
+   ]
+  },
+  {
+   "id": "zuxler/qwen2.5-1.5b-legal-grpo-reasoning",
+   "sha": "d3e46d1fa0fde60eb0fb2b87ba53c2217f30a60b",
+   "downloads": 1374,
+   "base_model_tags": [
+    "base_model:zuxler/qwen2.5-1.5b-legal-grpo-reasoning",
+    "base_model:finetune:zuxler/qwen2.5-1.5b-legal-grpo-reasoning"
+   ]
+  },
+  {
+   "id": "Sigmandndnns/TriStream-SVS-300M",
+   "sha": "6df69b3018d64ad0c4faeb7152e0b3b346d9d4da",
+   "downloads": 1309,
+   "base_model_tags": [
+    "base_model:Sigmandndnns/TriStream-SVS-300M",
+    "base_model:finetune:Sigmandndnns/TriStream-SVS-300M"
+   ]
+  },
+  {
+   "id": "Brunobkr/OFFELLIA_Quantis",
+   "sha": "405f962b490209401e4c77eff9a15765a0ba1776",
+   "downloads": 1263,
+   "base_model_tags": [
+    "base_model:Brunobkr/OFFELLIA_Quantis",
+    "base_model:quantized:Brunobkr/OFFELLIA_Quantis"
+   ]
+  },
+  {
+   "id": "MaziyarPanahi/xLAM-8x22b-r-GGUF",
+   "sha": "c655ea148de0888525b66561fa9312ec2052d86c",
+   "downloads": 1262,
+   "base_model_tags": [
+    "base_model:MaziyarPanahi/xLAM-8x22b-r-GGUF",
+    "base_model:quantized:MaziyarPanahi/xLAM-8x22b-r-GGUF"
+   ]
+  },
+  {
+   "id": "XiaomiMiMo/MiMo-VL-7B-RL",
+   "sha": "460c34be0c6cfe79b6b311647ae9112784f80b73",
+   "downloads": 1174,
+   "base_model_tags": [
+    "base_model:XiaomiMiMo/MiMo-VL-7B-RL",
+    "base_model:finetune:XiaomiMiMo/MiMo-VL-7B-RL"
+   ]
+  },
+  {
+   "id": "facebook/DepthLM",
+   "sha": "fbf3b975e47f6a2465ce723bcef71a35572d3084",
+   "downloads": 1150,
+   "base_model_tags": [
+    "base_model:facebook/DepthLM",
+    "base_model:finetune:facebook/DepthLM"
+   ]
+  },
+  {
+   "id": "Noormont/NoormontAI",
+   "sha": "f0b7e849d3b3e71ebb34d22c07f7dc40ed902756",
+   "downloads": 1049,
+   "base_model_tags": [
+    "base_model:Noormont/NoormontAI",
+    "base_model:finetune:Noormont/NoormontAI"
+   ]
+  },
+  {
+   "id": "mlx-community/chatterbox-turbo-fp16",
+   "sha": "b2d0a13aa7cfff0a06d9acb247ae91c8f19a6d75",
+   "downloads": 1029,
+   "base_model_tags": [
+    "base_model:mlx-community/chatterbox-turbo-fp16",
+    "base_model:finetune:mlx-community/chatterbox-turbo-fp16"
+   ]
+  },
+  {
+   "id": "thongbuind/SAI_100M",
+   "sha": "e1ea1cd146e6b6d494dcee2a8a688d23bcf61c30",
+   "downloads": 982,
+   "base_model_tags": [
+    "base_model:thongbuind/SAI_100M",
+    "base_model:finetune:thongbuind/SAI_100M"
+   ]
+  },
+  {
+   "id": "briaai/Fibo-Edit",
+   "sha": "1bee4ae9b119d2634ec9f378370f2a1ae49d89cc",
+   "downloads": 939,
+   "base_model_tags": [
+    "base_model:briaai/Fibo-Edit",
+    "base_model:finetune:briaai/Fibo-Edit"
+   ]
+  },
+  {
+   "id": "nickprock/multi-sentence-BERTino",
+   "sha": "f3a06017b2f0a72b3fd6b28c589d7518e5cb45c3",
+   "downloads": 919,
+   "base_model_tags": [
+    "base_model:nickprock/multi-sentence-BERTino",
+    "base_model:quantized:nickprock/multi-sentence-BERTino"
+   ]
+  },
+  {
+   "id": "SyzygyResearch/Mach-1-Additive-35B",
+   "sha": "2664b8f7d1e5c904c00268721a7f2b41d239acf3",
+   "downloads": 918,
+   "base_model_tags": [
+    "base_model:SyzygyResearch/Mach-1-Additive-35B",
+    "base_model:finetune:SyzygyResearch/Mach-1-Additive-35B"
+   ]
+  },
+  {
+   "id": "lolxdasfwa/Quartz-S1-Base-33.89M",
+   "sha": "939573a7a5dd6dee9c3731ad5e6cad6d02559933",
+   "downloads": 911,
+   "base_model_tags": [
+    "base_model:lolxdasfwa/Quartz-S1-Base-33.89M",
+    "base_model:finetune:lolxdasfwa/Quartz-S1-Base-33.89M"
+   ]
+  },
+  {
+   "id": "LeroyDyer/SpydazWebAI_QuietStar_Project",
+   "sha": "d803d7191a3c838cd28e678c6503688787c7ebcc",
+   "downloads": 857,
+   "base_model_tags": [
+    "base_model:LeroyDyer/SpydazWebAI_QuietStar_Project",
+    "base_model:merge:LeroyDyer/SpydazWebAI_QuietStar_Project",
+    "base_model:ezelikman/quietstar-8-ahead",
+    "base_model:merge:ezelikman/quietstar-8-ahead"
+   ]
+  },
+  {
+   "id": "StarpowerTechnology/arXiv-WVY-43M",
+   "sha": "c7b6d1bf24cf19895d6581f46ab2de6db321846a",
+   "downloads": 850,
+   "base_model_tags": [
+    "base_model:StarpowerTechnology/arXiv-WVY-43M",
+    "base_model:finetune:StarpowerTechnology/arXiv-WVY-43M"
+   ]
+  },
+  {
+   "id": "LiquidAI/LFM2-2.6B-Exp",
+   "sha": "2251c865342649ffb4a9f57d07ab2428bb552cf5",
+   "downloads": 835,
+   "base_model_tags": [
+    "base_model:LiquidAI/LFM2-2.6B-Exp",
+    "base_model:finetune:LiquidAI/LFM2-2.6B-Exp"
+   ]
+  },
+  {
+   "id": "Jongbin-kr/qwen2.5-coder-7b_verireason-reasoning_official-sft-1.0",
+   "sha": "3cd7a394b1f87af9693139cdc6e6d455d344034f",
+   "downloads": 828,
+   "base_model_tags": [
+    "base_model:Jongbin-kr/qwen2.5-coder-7b_verireason-reasoning_official-sft-1.0",
+    "base_model:finetune:Jongbin-kr/qwen2.5-coder-7b_verireason-reasoning_official-sft-1.0"
+   ]
+  },
+  {
+   "id": "Jongbin-kr/qwen2.5-coder-7b_verireason-NO-reasoning_official-sft-1.0",
+   "sha": "c8cc9623c5ee5309c2c1a18555b830ec6716d184",
+   "downloads": 798,
+   "base_model_tags": [
+    "base_model:Jongbin-kr/qwen2.5-coder-7b_verireason-NO-reasoning_official-sft-1.0",
+    "base_model:finetune:Jongbin-kr/qwen2.5-coder-7b_verireason-NO-reasoning_official-sft-1.0"
+   ]
+  },
+  {
+   "id": "Kashif786/distilbert-base-multilingual-cased-sindhi-wordpiece",
+   "sha": "9fb9ba3608bd759bfb0f69f61d9cf5699b993dce",
+   "downloads": 761,
+   "base_model_tags": [
+    "base_model:Kashif786/distilbert-base-multilingual-cased-sindhi-wordpiece",
+    "base_model:finetune:Kashif786/distilbert-base-multilingual-cased-sindhi-wordpiece"
+   ]
+  },
+  {
+   "id": "AgreemSrivastava/fitness-qwen-0.5b",
+   "sha": "5607d2abc7e64f983b26b900f0d48c9d2ea2775b",
+   "downloads": 747,
+   "base_model_tags": [
+    "base_model:AgreemSrivastava/fitness-qwen-0.5b",
+    "base_model:finetune:AgreemSrivastava/fitness-qwen-0.5b"
+   ]
+  },
+  {
+   "id": "joannetai520/16_bit_model_try5",
+   "sha": "548e15c28b65a5469bedcbefaf9ad2c9f7826c3c",
+   "downloads": 724,
+   "base_model_tags": [
+    "base_model:joannetai520/16_bit_model_try5",
+    "base_model:finetune:joannetai520/16_bit_model_try5"
+   ]
+  },
+  {
+   "id": "Miiyamoto255/SimplyAI-2B-Uncensored",
+   "sha": "07e951e7532b83717735c1459d3298e0f29a375b",
+   "downloads": 716,
+   "base_model_tags": [
+    "base_model:Miiyamoto255/SimplyAI-2B-Uncensored",
+    "base_model:finetune:Miiyamoto255/SimplyAI-2B-Uncensored"
+   ]
+  },
+  {
+   "id": "darkc0de/XortronCriminalComputingConfig",
+   "sha": "4171f69ab1f2052cae860feb7aed6f29bad33fdf",
+   "downloads": 711,
+   "base_model_tags": [
+    "base_model:TroyDoesAI/BlackSheep-24B",
+    "base_model:merge:TroyDoesAI/BlackSheep-24B",
+    "base_model:darkc0de/XortronCriminalComputingConfig",
+    "base_model:merge:darkc0de/XortronCriminalComputingConfig"
+   ]
+  },
+  {
+   "id": "tihon-nth/gpt-2-4096t-scratch-10ep_",
+   "sha": "5e12528c208da9b915b5e7f452a1b3dac097d1fc",
+   "downloads": 703,
+   "base_model_tags": [
+    "base_model:tihon-nth/gpt-2-4096t-scratch-10ep_",
+    "base_model:finetune:tihon-nth/gpt-2-4096t-scratch-10ep_"
+   ]
+  },
+  {
+   "id": "CodeDevX/Vibe-Coding-Instruct",
+   "sha": "aa16260ea7cd8677ce2ef34a779aaf61e3118fce",
+   "downloads": 688,
+   "base_model_tags": [
+    "base_model:CodeDevX/Vibe-Coding-Instruct",
+    "base_model:finetune:CodeDevX/Vibe-Coding-Instruct"
+   ]
+  },
+  {
+   "id": "deepseek-ai/DeepSeek-Math-V2",
+   "sha": "6ea7c60b42df79beac8cfa51ccb7e19b9e7b6e95",
+   "downloads": 682,
+   "base_model_tags": [
+    "base_model:deepseek-ai/DeepSeek-Math-V2",
+    "base_model:quantized:deepseek-ai/DeepSeek-Math-V2"
+   ]
+  },
+  {
+   "id": "thongbuind/SAI_35M",
+   "sha": "8e2a2ca49761abee6aa7cad2b34b7af06a2ed868",
+   "downloads": 681,
+   "base_model_tags": [
+    "base_model:thongbuind/SAI_35M",
+    "base_model:finetune:thongbuind/SAI_35M"
+   ]
+  },
+  {
+   "id": "Efficient-Large-Model/Sana_1600M_1024px",
+   "sha": "d71cbc8e562b01cd77902952fcf8cbb90aa78e3f",
+   "downloads": 666,
+   "base_model_tags": [
+    "base_model:Efficient-Large-Model/Sana_1600M_1024px",
+    "base_model:finetune:Efficient-Large-Model/Sana_1600M_1024px"
+   ]
+  },
+  {
+   "id": "Xenova/quickdraw-mobilevit-small",
+   "sha": "ceb1c5cc6d623c6cffac36dca08c1903ba879755",
+   "downloads": 662,
+   "base_model_tags": [
+    "base_model:Xenova/quickdraw-mobilevit-small",
+    "base_model:quantized:Xenova/quickdraw-mobilevit-small"
+   ]
+  },
+  {
+   "id": "KeefeBuild/Keefe-Discere-v3.3",
+   "sha": "7f4feabbf54050affb660a818ee10e8cd19fd6ed",
+   "downloads": 661,
+   "base_model_tags": [
+    "base_model:KeefeBuild/Keefe-Discere-v3.3",
+    "base_model:finetune:KeefeBuild/Keefe-Discere-v3.3"
+   ]
+  },
+  {
+   "id": "mhdank/t5_du_test",
+   "sha": "40e2428747ad9e7e42038bf85853b002bffa6956",
+   "downloads": 625,
+   "base_model_tags": [
+    "base_model:mhdank/t5_du_test",
+    "base_model:finetune:mhdank/t5_du_test"
+   ]
+  },
+  {
+   "id": "jaweed123/TinyJLLM",
+   "sha": "c9fed2f35e3d272ded6b760ab2d774c224e0a197",
+   "downloads": 622,
+   "base_model_tags": [
+    "base_model:jaweed123/TinyJLLM",
+    "base_model:quantized:jaweed123/TinyJLLM"
+   ]
+  },
+  {
+   "id": "pijarcandra22/dewata_bert_gelu",
+   "sha": "3a55d20779792e55e7ca49f2aafd2b43fd55cc86",
+   "downloads": 621,
+   "base_model_tags": [
+    "base_model:pijarcandra22/dewata_bert_gelu",
+    "base_model:finetune:pijarcandra22/dewata_bert_gelu"
+   ]
+  },
+  {
+   "id": "theislab/Nicheformer",
+   "sha": "0ba4ba162f9ad3d6c8b713761954c31be2fa69ed",
+   "downloads": 615,
+   "base_model_tags": [
+    "base_model:theislab/Nicheformer",
+    "base_model:finetune:theislab/Nicheformer"
+   ]
+  }
+ ]
+}

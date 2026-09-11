@@ -8,7 +8,7 @@ Guidance for Claude Code when working in this repository.
 whether the relationship is claimed or verified.
 
 **What runs**: resolution, redirect handling, response classification, CycloneDX emission, OMS
-signature detection, a structural lineage check, and an evaluation harness scoring **ten**
+signature detection, a structural lineage check, and an evaluation harness scoring **eleven**
 recorded scenarios offline, plus fingerprint evidence ingest. `benchmarks/scenarios.yaml` is the count that is right when this
 sentence is stale.
 

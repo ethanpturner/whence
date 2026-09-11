@@ -1,0 +1,38 @@
+# A card that names the artifact as its own base. The claim is recorded exactly as asserted --
+# an edge from the node to itself -- and the node is flagged so a consumer does not read the
+# edge as lineage (DEC-031). Nothing is followed, because there is nothing to follow.
+
+root:
+  ref: { host: huggingface.co, namespace: nmthien, name: vietnamese-gpt2 }
+  revision: ecf5822d75727f196187758a70be4e80c041848a
+  pinned: true
+
+edges:
+  - source: nmthien/vietnamese-gpt2
+    target: nmthien/vietnamese-gpt2
+    relation: derives-from
+    provenance: asserted-by-card
+    verdict: unverifiable
+    evidence_locator: "cardData.base_model"
+    notes: >-
+      `asserted-by-card`: the card plainly declares this base in metadata and the reference is
+      well-formed. That the declaration is degenerate is a fact about the claim, recorded on the
+      node, not a reason to drop the edge or invent a different target (DEC-010).
+
+  - source: nmthien/vietnamese-gpt2
+    target: transformers
+    relation: requires-package
+    provenance: asserted-by-config
+    verdict: unverifiable
+    node_kind: package
+
+nodes:
+  - ref: nmthien/vietnamese-gpt2
+    pinned: true
+    reachable: true
+    properties:
+      whence:declaration: self-referential
+    notes: >-
+      The flag is the finding. Without it the BOM's `dependsOn` reads as a model depending on
+      itself with no explanation, and a lineage consumer walking the graph meets an edge that
+      goes nowhere.

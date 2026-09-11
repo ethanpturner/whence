@@ -1,0 +1,12 @@
+unresolvable:
+  - subject: "the lineage of nmthien/vietnamese-gpt2"
+    edge: { source: nmthien/vietnamese-gpt2, relation: derives-from, target: nmthien/vietnamese-gpt2 }
+    why: >-
+      The only base the card declares is the model itself. No other artifact is named in metadata,
+      so the graph has no ancestor to resolve and no verdict stronger than `unverifiable` is
+      reachable for the declared edge.
+    still_established: >-
+      That the card asserts a base, that the assertion is well-formed, that it names the artifact
+      itself, and that the root pins to a revision.
+
+compositions: []

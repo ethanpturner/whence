@@ -106,3 +106,14 @@ scenarios:
     # corpora and library the card does declare. "No ancestor" and "nothing known" are different
     # statements and the graph has to be able to make the first one. The card's derivation verbs
     # all describe descendants, which is the trap.
+
+  - slug: self-declared-base
+    name: A card that names the model as its own base
+    path: benchmarks/self-declared-base
+    status: recorded
+    category: abstention
+    # The degenerate declaration. Stalnaker et al. found 675 of 760,460 models declaring themselves
+    # as their base; 64 of the 45,000 most downloaded did on 2026-09-10. The claim is recorded as
+    # asserted -- an edge from the node to itself -- and flagged on the node, never followed and
+    # never completed with a guess about what the author meant (DEC-031).
+

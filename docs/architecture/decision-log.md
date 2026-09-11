@@ -1034,3 +1034,57 @@ resolved, and evidence attaches to it rather than extending it.
 
 **Open.** The conflicting case has no real instance yet. When one appears it should be recorded as
 a scenario before anything is decided about it.
+
+---
+
+## DEC-031 — A self-referential base declaration is recorded, flagged, and never followed
+
+**Date:** 2026-09-10
+**Status:** Accepted
+
+**Decision.** When a card's `base_model` names the artifact itself, the resolver records the claim
+exactly as asserted — an edge from the node to itself, provenance `asserted-by-card`, verdict
+`unverifiable` — adds the property `whence:declaration: self-referential` and a note to the node,
+and makes no request for the declared base: the target is the node already in hand. The edge is
+never followed, never dropped, and never replaced by a guess at the base the author meant.
+
+**Why the shape is common enough to name.** Stalnaker et al. (arXiv 2502.04484) found 684 cycles
+in the declared base-model graph of 760,460 models, 675 of them a model declaring itself. The
+2026-09-10 sweep of the 45,000 most downloaded models found 64. That is the most frequent malformed
+lineage declaration on this registry — more frequent than a freed namespace (DEC-017's census
+found seven in 1,573) — and a resolver meets it in one of two failure modes. Following it loops or
+spends a request re-resolving a known node. Dropping it treats the declaration as noise and emits a
+model with no declared base, which erases the fact that the card's lineage metadata is unusable.
+Both were possible here: the traversal's `expanded` set prevented the loop, but the resolver still
+issued the request, and nothing marked the edge.
+
+**Why the edge stays.** DEC-010: the tool reports what it resolved, never what it inferred. The
+card made a well-formed declaration and the declaration is the finding. A reader of the BOM should
+see that the author's lineage field points nowhere, and `dependsOn` naming the component's own purl
+is how CycloneDX can say that. The specification does not forbid a self-dependency; the property is
+where a consumer learns why one is present.
+
+**Why the verdict is `unverifiable`.** `contradicted` would assert that the tool established the
+model has no such base, which it did not look into: a self-reference is not evidence against
+ancestry, only the absence of a usable claim about it. `verified` is the trap on the other side — a
+name resolving to itself is the one case where "the target exists and pins" is trivially true, and
+it establishes nothing about a derivation.
+
+**Why no request.** DEC-014's rate budget is finite and the answer is already known. A request
+would also put a second listing of the same model into every recording of this shape, which is
+weight without information.
+
+**Alternatives considered.** Emitting no edge and a node note only: rejected, because the note is
+prose and the edge is what a graph consumer reads (the same reasoning as DEC-014's rejection of a
+note in place of a verdict). Emitting the edge with `provenance: unresolvable`: rejected, because
+the reference *was* constructed and resolves; `unresolvable` is for a reference that could not be
+built at all (DEC-018). Following the redirect case — a declared name that redirects to the model
+itself after a rename — is not handled specially: it resolves through DEC-017's path and the
+resulting self-edge carries `declared_as`, which says what happened.
+
+**Tradeoffs.** A model that declares itself *and* other bases carries the flag on the node while
+only one of its edges is degenerate; the edge's `source == target` identifies which. A dedicated
+edge property would be cleaner and is a data-model change with no second use yet.
+
+**What was measured.** `benchmarks/self-declared-base` records `nmthien/vietnamese-gpt2`, chosen
+from the 64. The sweep's list is `docs/eval/census/dataset/self_referential_top45k.json`.
