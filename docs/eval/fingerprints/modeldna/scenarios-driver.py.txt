@@ -1,0 +1,56 @@
+"""Phase 4: modelDNA over the edges of three recorded whence scenarios, pinned to the recorded revisions."""
+import json, sys, time, traceback
+from pathlib import Path
+from modeldna import __version__
+from modeldna.io.source import HubSource
+from modeldna.fingerprint.extract import extract_fingerprint
+from modeldna.compare import compare_fingerprints
+from modeldna.verdict import judge
+
+OUT = Path(sys.argv[1]); OUT.mkdir(parents=True, exist_ok=True)
+log = open(OUT / "driver.log", "a")
+def say(m): print(time.strftime("%H:%M:%S"), m, file=log, flush=True)
+
+PAIRS = [
+  ("merge-lineage", "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF", "59fc03079ddaf71a94ae4844c19780d1de40fbde", "failspy/Llama-3-8B-Instruct-MopeyMule", "d1cbf407efe727c6b9fc94f22d51ff4915e1856e"),
+  ("merge-lineage", "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF", "59fc03079ddaf71a94ae4844c19780d1de40fbde", "zementalist/llama-3-8B-chat-psychotherapist", "ef8bb4a252dbbb73201236a61b07bbab676142c3"),
+  ("merge-lineage", "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF", "59fc03079ddaf71a94ae4844c19780d1de40fbde", "kloodia/lora-8b-math", "2dcbc0215a7ebf72c9b3a692e5f5b556e9054f22"),
+  ("merge-lineage", "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF", "59fc03079ddaf71a94ae4844c19780d1de40fbde", "Blackroot/Llama3-RP-Lora", "90ee5c4cfdd334b1016dd103ee021f9ea640c4db"),
+  ("merge-lineage", "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF", "59fc03079ddaf71a94ae4844c19780d1de40fbde", "Blackroot/Llama-3-8B-Abomination-LORA", "15674105b01c6e95c4a48d21fb324242d1b4cf48"),
+  ("merge-lineage", "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF", "59fc03079ddaf71a94ae4844c19780d1de40fbde", "ResplendentAI/Llama3_RP_ORPO_LoRA", "5f85e23918724add2278728ee75c908fd6ba68f8"),
+  ("quantized-republication", "PrunaAI/LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed", "710bd9ed28be28925eb6b9385afb3a547abb4b10", "LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2", "70bb75187c45304de4552495126193e36fe9a049"),
+  ("transferred-namespace", "Comfy-Org/stable-diffusion-v1-5-archive", "9cfd069101959ca3828bf9c04a4419870832b74f", "stable-diffusion-v1-5/stable-diffusion-v1-5", "451f4fe16113bff5a5d2269ed5ad43b0592e9a14"),
+]
+fps = {}
+def fp_for(slug, rev):
+    key = (slug, rev)
+    if key in fps: return fps[key]
+    path = OUT / (slug.replace("/", "--") + ".fp.json")
+    if path.exists():
+        from modeldna.fingerprint.extract import Fingerprint
+        fps[key] = Fingerprint.from_dict(json.load(open(path))); return fps[key]
+    t0 = time.time()
+    src = HubSource(slug, revision=rev)
+    fp = extract_fingerprint(src, mode="fast", model_id=slug, revision=rev)
+    d = fp.to_dict(); d["bytes_read"] = getattr(src, "bytes_read", fp.bytes_read)
+    path.write_text(json.dumps(d))
+    say(f"fingerprinted {slug}@{rev[:8]} in {time.time()-t0:.0f}s, {d['bytes_read']/1e6:.0f} MB")
+    fps[key] = fp; return fp
+
+for scenario, s, srev, c, crev in PAIRS:
+    name = f"{scenario}__{s}__vs__{c}".replace("/", "--") + ".json"
+    out = OUT / name
+    if out.exists(): continue
+    rec = {"tool": "modeldna", "tool_version": __version__, "mode": "fast", "scenario": scenario,
+           "subject": s, "subject_revision": srev, "candidate": c, "candidate_revision": crev}
+    try:
+        a = fp_for(s, srev); b = fp_for(c, crev)
+        ev = compare_fingerprints(a, b)
+        v = judge([(ev, c)], suspect_dtype=a.arch.torch_dtype, candidate_dtypes={c: b.arch.torch_dtype})
+        rec["verdict"] = v.to_dict(); rec["evidence"] = ev.to_dict()
+        say(f"{scenario}: {s} vs {c}: {v.verdict.value} p={v.probability}")
+    except Exception as e:
+        rec["error"] = f"{type(e).__name__}: {e}"; rec["traceback"] = traceback.format_exc()
+        say(f"{scenario}: {s} vs {c}: NO VERDICT ({type(e).__name__}: {str(e)[:160]})")
+    out.write_text(json.dumps(rec, indent=1))
+say("done")

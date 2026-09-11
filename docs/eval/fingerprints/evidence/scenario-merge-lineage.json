@@ -1,0 +1,79 @@
+{
+  "tool": "modeldna",
+  "tool_version": "0.1.0",
+  "generated_at": "2026-09-10T18:55:45Z",
+  "classes": [
+    [
+      "EXACT_COPY",
+      "establishes"
+    ],
+    [
+      "QUANTIZED_COPY",
+      "establishes"
+    ],
+    [
+      "FINE_TUNE",
+      "establishes"
+    ],
+    [
+      "SAME_LINEAGE",
+      "establishes"
+    ],
+    [
+      "LIKELY_MERGE",
+      "abstains"
+    ],
+    [
+      "SAME_FAMILY_UNRESOLVED",
+      "abstains"
+    ],
+    [
+      "NO_MATCH",
+      "abstains"
+    ],
+    [
+      "INSUFFICIENT",
+      "abstains"
+    ]
+  ],
+  "verdicts": [
+    {
+      "subject": {
+        "host": "huggingface.co",
+        "namespace": "QuantFactory",
+        "name": "ScaduTorrent1.1-8b-model_stock-GGUF",
+        "revision": "59fc03079ddaf71a94ae4844c19780d1de40fbde",
+        "pinned": true
+      },
+      "candidate": {
+        "host": "huggingface.co",
+        "namespace": "failspy",
+        "name": "Llama-3-8B-Instruct-MopeyMule",
+        "revision": "d1cbf407efe727c6b9fc94f22d51ff4915e1856e",
+        "pinned": true
+      },
+      "verdict_class": "QUANTIZED_COPY",
+      "probability": 0.9984982427478436,
+      "detail": null
+    },
+    {
+      "subject": {
+        "host": "huggingface.co",
+        "namespace": "QuantFactory",
+        "name": "ScaduTorrent1.1-8b-model_stock-GGUF",
+        "revision": "59fc03079ddaf71a94ae4844c19780d1de40fbde",
+        "pinned": true
+      },
+      "candidate": {
+        "host": "huggingface.co",
+        "namespace": "zementalist",
+        "name": "llama-3-8B-chat-psychotherapist",
+        "revision": "ef8bb4a252dbbb73201236a61b07bbab676142c3",
+        "pinned": true
+      },
+      "verdict_class": "NO_MATCH",
+      "probability": 0.034956532306236965,
+      "detail": null
+    }
+  ]
+}

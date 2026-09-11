@@ -1,0 +1,124 @@
+{
+  "tool": "cisco-ai-provenance-kit",
+  "tool_version": "1.1.0",
+  "generated_at": "2026-09-10T18:50:13Z",
+  "classes": [
+    [
+      "Confirmed Match",
+      "abstains"
+    ],
+    [
+      "High-Confidence Match",
+      "establishes"
+    ],
+    [
+      "Weak Match",
+      "abstains"
+    ],
+    [
+      "Not Matched",
+      "abstains"
+    ],
+    [
+      "Insufficient data",
+      "abstains"
+    ]
+  ],
+  "verdicts": [
+    {
+      "subject": {
+        "host": "huggingface.co",
+        "namespace": "HuggingFaceH4",
+        "name": "zephyr-7b-beta",
+        "revision": "892b3d7a7b1cf10c7a701c60881cd93df615734c",
+        "pinned": true
+      },
+      "candidate": {
+        "host": "huggingface.co",
+        "namespace": "mistralai",
+        "name": "Mistral-7B-v0.1",
+        "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+        "pinned": true
+      },
+      "verdict_class": "Confirmed Match",
+      "probability": 1.0,
+      "detail": "mfi_tier=1 identity=0.9032 match_type=exact_arch"
+    },
+    {
+      "subject": {
+        "host": "huggingface.co",
+        "namespace": "HuggingFaceH4",
+        "name": "zephyr-7b-beta",
+        "revision": "892b3d7a7b1cf10c7a701c60881cd93df615734c",
+        "pinned": true
+      },
+      "candidate": {
+        "host": "huggingface.co",
+        "namespace": "mistralai",
+        "name": "Mistral-7B-Instruct-v0.3",
+        "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+        "pinned": true
+      },
+      "verdict_class": "High-Confidence Match",
+      "probability": 0.889,
+      "detail": "mfi_tier=3 identity=0.889 match_type=similarity"
+    },
+    {
+      "subject": {
+        "host": "huggingface.co",
+        "namespace": "teknium",
+        "name": "OpenHermes-2.5-Mistral-7B",
+        "revision": "24c0bea14d53e6f67f1fbe2eca5bfe7cae389b33",
+        "pinned": true
+      },
+      "candidate": {
+        "host": "huggingface.co",
+        "namespace": "mistralai",
+        "name": "Mistral-7B-v0.1",
+        "revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+        "pinned": true
+      },
+      "verdict_class": "Weak Match",
+      "probability": 0.6854,
+      "detail": "mfi_tier=3 identity=0.6854 match_type=similarity"
+    },
+    {
+      "subject": {
+        "host": "huggingface.co",
+        "namespace": "teknium",
+        "name": "OpenHermes-2.5-Mistral-7B",
+        "revision": "24c0bea14d53e6f67f1fbe2eca5bfe7cae389b33",
+        "pinned": true
+      },
+      "candidate": {
+        "host": "huggingface.co",
+        "namespace": "mistralai",
+        "name": "Mistral-7B-Instruct-v0.3",
+        "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71",
+        "pinned": true
+      },
+      "verdict_class": "Weak Match",
+      "probability": 0.6702,
+      "detail": "mfi_tier=3 identity=0.6702 match_type=similarity"
+    },
+    {
+      "subject": {
+        "host": "huggingface.co",
+        "namespace": "teknium",
+        "name": "OpenHermes-2.5-Mistral-7B",
+        "revision": "24c0bea14d53e6f67f1fbe2eca5bfe7cae389b33",
+        "pinned": true
+      },
+      "candidate": {
+        "host": "huggingface.co",
+        "namespace": "HuggingFaceH4",
+        "name": "zephyr-7b-beta",
+        "revision": "892b3d7a7b1cf10c7a701c60881cd93df615734c",
+        "pinned": true
+      },
+      "verdict_class": "Not Matched",
+      "probability": 0.6365,
+      "detail": "mfi_tier=3 identity=0.6365 match_type=similarity"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "pool": "positive",
+ "kind": "fine-tune",
+ "subject": "teknium/OpenHermes-2.5-Mistral-7B",
+ "subject_fingerprinted_as": "teknium/OpenHermes-2.5-Mistral-7B",
+ "subject_revision": "24c0bea14d53e6f67f1fbe2eca5bfe7cae389b33",
+ "candidate": "mistralai/Mistral-7B-v0.1",
+ "candidate_fingerprinted_as": "mistralai/Mistral-7B-v0.1",
+ "candidate_revision": "27d67f1b5f57dc0953326b2601d68371d40ea8da",
+ "verdict": {
+  "verdict": "FINE_TUNE",
+  "description": "small parameter delta from one parent (SFT/DPO/LoRA-merged regime)",
+  "probability": 0.9984965956174866,
+  "best_candidate": "mistralai/Mistral-7B-v0.1",
+  "notes": [],
+  "candidates": [
+   {
+    "candidate_id": "mistralai/Mistral-7B-v0.1",
+    "family": "mistralai/Mistral-7B-v0.1",
+    "probability": 0.9984965956174866,
+    "ruled_out": null,
+    "evidence": {
+     "suspect_id": "teknium/OpenHermes-2.5-Mistral-7B",
+     "candidate_id": "mistralai/Mistral-7B-v0.1",
+     "shape_compatible": true,
+     "layers_match": true,
+     "inventory_match": false,
+     "tokenizer_match": false,
+     "sigma_r": {
+      "attn.k": 0.9999997248707484,
+      "attn.o": 0.9999996154869618,
+      "attn.q": 0.999999249047109,
+      "attn.v": 0.9999998494374363,
+      "mlp.down": 0.9999855303778837,
+      "mlp.gate": 0.9999970413838412,
+      "mlp.up": 0.9999907760394939
+     },
+     "sigma_r_mean": 0.9999959695204963,
+     "vector_cos": {
+      "norm.final": 1.0,
+      "norm.in": 0.9999999999919396,
+      "norm.post": 0.9999999999993995
+     },
+     "vector_norm_r": {
+      "norm.in": 0.9999999999999982,
+      "norm.post": 1.0
+     },
+     "vector_cos_mean": 0.999999999997113,
+     "pcs_cos": {
+      "attn.k": 0.9998638255113838,
+      "attn.o": 0.9995517376148616,
+      "attn.q": 0.9999004001357252,
+      "attn.v": 0.9995247411992553,
+      "mlp.down": 0.9995774842419056
+     },
+     "pcs_cos_mean": 0.9996836377406264,
+     "spectra_r": {
+      "attn.k": 0.999994590710098,
+      "attn.o": 0.999957965833705,
+      "attn.q": 0.9999962955222563,
+      "attn.v": 0.999908813281981
+     },
+     "spectra_logdist": {
+      "attn.k": 0.0005636207673894395,
+      "attn.o": 0.0008381269844022044,
+      "attn.q": 0.0005624902558922174,
+      "attn.v": 0.0009274194242724267
+     },
+     "spectra_r_mean": 0.99996441633701,
+     "spectra_kind": "sketch",
+     "notes": []
+    }
+   }
+  ]
+ },
+ "evidence": {
+  "suspect_id": "teknium/OpenHermes-2.5-Mistral-7B",
+  "candidate_id": "mistralai/Mistral-7B-v0.1",
+  "shape_compatible": true,
+  "layers_match": true,
+  "inventory_match": false,
+  "tokenizer_match": false,
+  "sigma_r": {
+   "attn.k": 0.9999997248707484,
+   "attn.o": 0.9999996154869618,
+   "attn.q": 0.999999249047109,
+   "attn.v": 0.9999998494374363,
+   "mlp.down": 0.9999855303778837,
+   "mlp.gate": 0.9999970413838412,
+   "mlp.up": 0.9999907760394939
+  },
+  "sigma_r_mean": 0.9999959695204963,
+  "vector_cos": {
+   "norm.final": 1.0,
+   "norm.in": 0.9999999999919396,
+   "norm.post": 0.9999999999993995
+  },
+  "vector_norm_r": {
+   "norm.in": 0.9999999999999982,
+   "norm.post": 1.0
+  },
+  "vector_cos_mean": 0.999999999997113,
+  "pcs_cos": {
+   "attn.k": 0.9998638255113838,
+   "attn.o": 0.9995517376148616,
+   "attn.q": 0.9999004001357252,
+   "attn.v": 0.9995247411992553,
+   "mlp.down": 0.9995774842419056
+  },
+  "pcs_cos_mean": 0.9996836377406264,
+  "spectra_r": {
+   "attn.k": 0.999994590710098,
+   "attn.o": 0.999957965833705,
+   "attn.q": 0.9999962955222563,
+   "attn.v": 0.999908813281981
+  },
+  "spectra_logdist": {
+   "attn.k": 0.0005636207673894395,
+   "attn.o": 0.0008381269844022044,
+   "attn.q": 0.0005624902558922174,
+   "attn.v": 0.0009274194242724267
+  },
+  "spectra_r_mean": 0.99996441633701,
+  "spectra_kind": "sketch",
+  "notes": []
+ }
+}

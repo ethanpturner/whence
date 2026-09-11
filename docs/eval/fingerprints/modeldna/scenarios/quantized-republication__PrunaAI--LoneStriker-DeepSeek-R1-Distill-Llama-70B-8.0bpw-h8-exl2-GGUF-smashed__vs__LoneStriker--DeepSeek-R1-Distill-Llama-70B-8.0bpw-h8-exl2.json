@@ -1,0 +1,11 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "scenario": "quantized-republication",
+ "subject": "PrunaAI/LoneStriker-DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2-GGUF-smashed",
+ "subject_revision": "710bd9ed28be28925eb6b9385afb3a547abb4b10",
+ "candidate": "LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2",
+ "candidate_revision": "70bb75187c45304de4552495126193e36fe9a049",
+ "error": "SourceError: HEAD model-00001-of-000017.safetensors on LoneStriker/DeepSeek-R1-Distill-Llama-70B-8.0bpw-h8-exl2: HTTP 404"
+}

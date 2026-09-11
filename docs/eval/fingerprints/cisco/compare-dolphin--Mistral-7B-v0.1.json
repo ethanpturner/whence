@@ -1,0 +1,33 @@
+{
+  "model_a": "dphn/dolphin-2.9-llama3-8b",
+  "model_b": "mistralai/Mistral-7B-v0.1",
+  "signals": {
+    "eas": 0.7001,
+    "nlf": 0.8827,
+    "lep": 0.9382,
+    "end": 0.0226,
+    "wvc": 0.0032,
+    "tfv": 0.4371,
+    "voa": 0.0709
+  },
+  "scores": {
+    "mfi_score": 0.7076,
+    "mfi_tier": 3,
+    "mfi_match": "soft_match",
+    "identity_score": 0.4777,
+    "tokenizer_score": 0.1624,
+    "pipeline_score": 0.4777,
+    "provenance_decision": "Not Matched"
+  },
+  "interpretation": {
+    "label": "Not Matched",
+    "colour": "#e74c3c"
+  },
+  "time_seconds": 273.472,
+  "timing": {
+    "total_seconds": 273.472,
+    "metadata_extract_seconds": 2.319,
+    "weight_feature_extract_seconds": 270.791,
+    "cache_hit": "ws, mfi, tfv"
+  }
+}

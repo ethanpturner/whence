@@ -1,0 +1,70 @@
+"""Run modelDNA once per model and once per lineagebench pair, pinned to the recorded revisions.
+
+Runs in modelDNA's own venv, never whence's (DEC-006). Output is inert JSON.
+"""
+import json, sys, time, traceback
+from pathlib import Path
+
+from modeldna import __version__
+from modeldna.io.source import HubSource
+from modeldna.fingerprint.extract import extract_fingerprint
+from modeldna.compare import compare_fingerprints
+from modeldna.verdict import judge
+
+OUT = Path(sys.argv[1])
+RESULTS = json.load(open(sys.argv[2]))
+# cognitivecomputations/... answers 307 to dphn/...; fingerprint the artifact the redirect serves.
+ALIAS = {"cognitivecomputations/dolphin-2.9-llama3-8b": ("dphn/dolphin-2.9-llama3-8b", "d94261ccf9597b04b60b0dd5d15c76e9da2bb6f1")}
+
+def pinned(slug):
+    if slug in ALIAS:
+        return ALIAS[slug]
+    return slug, RESULTS["models"][slug]["revision"]
+
+pairs = [p for p in RESULTS["pairs"] if p["outcome"] in ("compatible", "contradicted")]
+models = sorted({p["subject"] for p in pairs} | {p["candidate"] for p in pairs})
+log = open(OUT / "driver.log", "a")
+def say(msg):
+    print(time.strftime("%H:%M:%S"), msg, file=log, flush=True)
+
+fps = {}
+for slug in models:
+    real, rev = pinned(slug)
+    fpath = OUT / "fingerprints" / (real.replace("/", "--") + ".json")
+    if fpath.exists():
+        from modeldna.fingerprint.extract import Fingerprint
+        fps[slug] = Fingerprint.from_dict(json.load(open(fpath)))
+        say(f"cached {real}")
+        continue
+    t0 = time.time()
+    try:
+        src = HubSource(real, revision=rev)
+        fp = extract_fingerprint(src, mode="fast", model_id=real, revision=rev)
+        d = fp.to_dict(); d["bytes_read"] = getattr(src, "bytes_read", fp.bytes_read)
+        fpath.write_text(json.dumps(d))
+        fps[slug] = fp
+        say(f"fingerprinted {real}@{rev[:8]} in {time.time()-t0:.0f}s, {d['bytes_read']/1e6:.0f} MB")
+    except Exception as e:
+        say(f"FAILED {real}: {e!r}")
+        (OUT / "fingerprints" / (real.replace("/", "--") + ".error.txt")).write_text(traceback.format_exc())
+
+for p in pairs:
+    s, c = p["subject"], p["candidate"]
+    name = f"{s}__vs__{c}".replace("/", "--") + ".json"
+    ppath = OUT / "pairs" / name
+    if ppath.exists() or s not in fps or c not in fps:
+        if s not in fps or c not in fps:
+            say(f"skip pair {s} vs {c}: fingerprint missing")
+        continue
+    rs, revs = pinned(s); rc, revc = pinned(c)
+    ev = compare_fingerprints(fps[s], fps[c])
+    verdict = judge([(ev, rc)], suspect_dtype=fps[s].arch.torch_dtype, candidate_dtypes={rc: fps[c].arch.torch_dtype})
+    ppath.write_text(json.dumps({
+        "tool": "modeldna", "tool_version": __version__, "mode": "fast",
+        "pool": p["pool"], "kind": p["kind"],
+        "subject": s, "subject_fingerprinted_as": rs, "subject_revision": revs,
+        "candidate": c, "candidate_fingerprinted_as": rc, "candidate_revision": revc,
+        "verdict": verdict.to_dict(), "evidence": ev.to_dict(),
+    }, indent=1))
+    say(f"pair {s} vs {c}: {verdict.verdict.value} p={verdict.probability}")
+say("done")

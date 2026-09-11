@@ -1,0 +1,149 @@
+{
+  "model_info": {
+    "model_path": "Qwen/Qwen2.5-7B-Instruct",
+    "model_type": "qwen2",
+    "architectures": [
+      "Qwen2ForCausalLM"
+    ],
+    "hidden_size": 3584,
+    "num_hidden_layers": 28,
+    "num_attention_heads": 28,
+    "num_key_value_heads": 4,
+    "head_dim": null,
+    "intermediate_size": 18944,
+    "vocab_size": 152064,
+    "tie_word_embeddings": false,
+    "hidden_act": "silu",
+    "num_parameters": 7615616512,
+    "arch_hash": "c49c3c199b61e41df25f31c95f003276bea3482d5186039df2aba75d12c50c0e",
+    "family_hash": "87ad4eac5ce65d66c76a147e0ee1c61474c70003330a495fa47f7edbe8c78613",
+    "param_bucket": "1-10B",
+    "has_weight_signals": true
+  },
+  "matches": [
+    {
+      "asset_id": "NextCoder-7B__hf-safetensors",
+      "model_id": "NextCoder-7B",
+      "family_id": "microsoft--nextcoder",
+      "family_name": "microsoft--nextcoder",
+      "param_bucket": "1-10B",
+      "match_type": "exact_arch",
+      "scores": {
+        "pipeline_score": 1.0,
+        "identity_score": 0.6338,
+        "mfi_score": 1.0,
+        "mfi_tier": 1,
+        "mfi_match_type": "exact",
+        "tokenizer_score": 0.2125,
+        "eas": null,
+        "nlf": 0.8569,
+        "lep": 0.9893,
+        "end": 0.9376,
+        "wvc": 0.0032,
+        "tfv": 0.85
+      },
+      "provenance_decision": "Confirmed Match",
+      "elapsed_ms": 52.76
+    },
+    {
+      "asset_id": "OpenCodeReasoning-Nemotron-1.1-7B__hf-safetensors",
+      "model_id": "OpenCodeReasoning-Nemotron-1.1-7B",
+      "family_id": "nvidia--nemotron",
+      "family_name": "Nemotron",
+      "param_bucket": "1-10B",
+      "match_type": "exact_arch",
+      "scores": {
+        "pipeline_score": 1.0,
+        "identity_score": 0.9605,
+        "mfi_score": 1.0,
+        "mfi_tier": 1,
+        "mfi_match_type": "exact",
+        "tokenizer_score": 0.2125,
+        "eas": 0.9976,
+        "nlf": 0.9567,
+        "lep": 0.9993,
+        "end": 0.995,
+        "wvc": 0.8378,
+        "tfv": 0.85
+      },
+      "provenance_decision": "Confirmed Match",
+      "elapsed_ms": 54.35
+    },
+    {
+      "asset_id": "OpenCodeReasoning-Nemotron-7B__hf-safetensors",
+      "model_id": "OpenCodeReasoning-Nemotron-7B",
+      "family_id": "nvidia--nemotron",
+      "family_name": "Nemotron",
+      "param_bucket": "1-10B",
+      "match_type": "exact_arch",
+      "scores": {
+        "pipeline_score": 1.0,
+        "identity_score": 0.9637,
+        "mfi_score": 1.0,
+        "mfi_tier": 1,
+        "mfi_match_type": "exact",
+        "tokenizer_score": 0.2125,
+        "eas": 0.9983,
+        "nlf": 0.9569,
+        "lep": 0.9997,
+        "end": 0.9987,
+        "wvc": 0.8478,
+        "tfv": 0.85
+      },
+      "provenance_decision": "Confirmed Match",
+      "elapsed_ms": 52.91
+    },
+    {
+      "asset_id": "Qwen2-7B-Instruct__hf-safetensors",
+      "model_id": "Qwen2-7B-Instruct",
+      "family_id": "qwen--qwen",
+      "family_name": "Qwen",
+      "param_bucket": "1-10B",
+      "match_type": "exact_arch",
+      "scores": {
+        "pipeline_score": 1.0,
+        "identity_score": 0.8477,
+        "mfi_score": 1.0,
+        "mfi_tier": 1,
+        "mfi_match_type": "exact",
+        "tokenizer_score": 0.2125,
+        "eas": null,
+        "nlf": 0.8706,
+        "lep": 0.9973,
+        "end": 0.8607,
+        "wvc": 0.7133,
+        "tfv": 0.85
+      },
+      "provenance_decision": "Confirmed Match",
+      "elapsed_ms": 54.43
+    },
+    {
+      "asset_id": "Qwen2.5-7B-Instruct__hf-safetensors",
+      "model_id": "Qwen2.5-7B-Instruct",
+      "family_id": "qwen--qwen",
+      "family_name": "Qwen",
+      "param_bucket": "1-10B",
+      "match_type": "exact_arch",
+      "scores": {
+        "pipeline_score": 1.0,
+        "identity_score": 0.9821,
+        "mfi_score": 1.0,
+        "mfi_tier": 1,
+        "mfi_match_type": "exact",
+        "tokenizer_score": 0.2125,
+        "eas": null,
+        "nlf": 0.8569,
+        "lep": 1.0,
+        "end": 1.0,
+        "wvc": 1.0,
+        "tfv": 0.85
+      },
+      "provenance_decision": "Confirmed Match",
+      "elapsed_ms": 53.23
+    }
+  ],
+  "match_count": 5,
+  "elapsed_ms": 309585.74,
+  "extract_seconds": 294.225,
+  "lookup_seconds": 15.274
+}

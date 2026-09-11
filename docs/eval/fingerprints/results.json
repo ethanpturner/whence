@@ -1,0 +1,636 @@
+{
+  "evidence_files": [
+    {
+      "locator": "docs/eval/fingerprints/evidence/lineagebench-modeldna.json",
+      "digest": "1a1f861b75365d1ffbdce363664a9039cb944a416f64d2f8982a37dcf255773c",
+      "tool": "modeldna",
+      "tool_version": "0.1.0",
+      "verdicts_in_file": 39,
+      "classes": {
+        "EXACT_COPY": "establishes",
+        "QUANTIZED_COPY": "establishes",
+        "FINE_TUNE": "establishes",
+        "SAME_LINEAGE": "establishes",
+        "LIKELY_MERGE": "abstains",
+        "SAME_FAMILY_UNRESOLVED": "abstains",
+        "NO_MATCH": "abstains",
+        "INSUFFICIENT": "abstains"
+      },
+      "class_counts": {
+        "NO_MATCH": 30,
+        "SAME_FAMILY_UNRESOLVED": 2,
+        "FINE_TUNE": 6,
+        "SAME_LINEAGE": 1
+      }
+    },
+    {
+      "locator": "docs/eval/fingerprints/evidence/lineagebench-cisco.json",
+      "digest": "1183b2a2293b1a33e4e49457c3b02fed265d4b8293151b4492e4ed1fb8cfa3a1",
+      "tool": "cisco-ai-provenance-kit",
+      "tool_version": "1.1.0",
+      "verdicts_in_file": 5,
+      "classes": {
+        "Confirmed Match": "abstains",
+        "High-Confidence Match": "establishes",
+        "Weak Match": "abstains",
+        "Not Matched": "abstains",
+        "Insufficient data": "abstains"
+      },
+      "class_counts": {
+        "Confirmed Match": 1,
+        "High-Confidence Match": 1,
+        "Weak Match": 2,
+        "Not Matched": 1
+      }
+    }
+  ],
+  "suspects": [
+    {
+      "suspect": "HuggingFaceH4/zephyr-7b-beta",
+      "root": "HuggingFaceH4/zephyr-7b-beta",
+      "documented_kind": "fine-tune",
+      "edges_before": 5,
+      "declared": [
+        "HuggingFaceH4/zephyr-7b-beta --derives-from--> mistralai/Mistral-7B-v0.1 [unverifiable]",
+        "HuggingFaceH4/zephyr-7b-beta --trained-on--> HuggingFaceH4/ultrachat_200k [unverifiable]",
+        "HuggingFaceH4/zephyr-7b-beta --trained-on--> HuggingFaceH4/ultrafeedback_binarized [unverifiable]"
+      ],
+      "moved": [
+        {
+          "source": "HuggingFaceH4/zephyr-7b-beta",
+          "relation": "derives-from",
+          "target": "mistralai/Mistral-7B-v0.1",
+          "before": "unverifiable",
+          "after": "verified",
+          "tool": "modeldna",
+          "class": "FINE_TUNE",
+          "probability": 0.9984935511340388
+        }
+      ],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 3,
+          "established": [
+            "HuggingFaceH4/zephyr-7b-beta ~ mistralai/Mistral-7B-v0.1 [FINE_TUNE]"
+          ],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 2,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 2,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 1,
+          "unattached": [
+            "HuggingFaceH4/zephyr-7b-beta ~ mistralai/Mistral-7B-Instruct-v0.3 [High-Confidence Match]: candidate mistralai/Mistral-7B-Instruct-v0.3 is not an artifact this resolution reached"
+          ]
+        }
+      },
+      "evidence_records_on_edges": 1
+    },
+    {
+      "suspect": "NousResearch/Nous-Hermes-llama-2-7b",
+      "root": "NousResearch/Nous-Hermes-llama-2-7b",
+      "documented_kind": "fine-tune",
+      "edges_before": 1,
+      "declared": [],
+      "moved": [],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 4,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 4,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 0
+    },
+    {
+      "suspect": "Qwen/Qwen2.5-14B-Instruct",
+      "root": "Qwen/Qwen2.5-14B-Instruct",
+      "documented_kind": "official-instruct",
+      "edges_before": 2,
+      "declared": [
+        "Qwen/Qwen2.5-14B-Instruct --derives-from--> Qwen/Qwen2.5-14B [unverifiable]"
+      ],
+      "moved": [
+        {
+          "source": "Qwen/Qwen2.5-14B-Instruct",
+          "relation": "derives-from",
+          "target": "Qwen/Qwen2.5-14B",
+          "before": "unverifiable",
+          "after": "verified",
+          "tool": "modeldna",
+          "class": "FINE_TUNE",
+          "probability": 0.9984982186073073
+        }
+      ],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 3,
+          "established": [
+            "Qwen/Qwen2.5-14B-Instruct ~ Qwen/Qwen2.5-14B [FINE_TUNE]"
+          ],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 2,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 1
+    },
+    {
+      "suspect": "Qwen/Qwen2.5-7B-Instruct",
+      "root": "Qwen/Qwen2.5-7B-Instruct",
+      "documented_kind": "official-instruct",
+      "edges_before": 3,
+      "declared": [
+        "Qwen/Qwen2.5-7B-Instruct --derives-from--> Qwen/Qwen2.5-7B [unverifiable]"
+      ],
+      "moved": [
+        {
+          "source": "Qwen/Qwen2.5-7B-Instruct",
+          "relation": "derives-from",
+          "target": "Qwen/Qwen2.5-7B",
+          "before": "unverifiable",
+          "after": "verified",
+          "tool": "modeldna",
+          "class": "FINE_TUNE",
+          "probability": 0.9984977654859319
+        }
+      ],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 3,
+          "established": [
+            "Qwen/Qwen2.5-7B-Instruct ~ Qwen/Qwen2.5-7B [FINE_TUNE]"
+          ],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 2,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 1
+    },
+    {
+      "suspect": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "root": "Qwen/Qwen2.5-Coder-7B-Instruct",
+      "documented_kind": "continued-pretrain",
+      "edges_before": 4,
+      "declared": [
+        "Qwen/Qwen2.5-Coder-7B-Instruct --derives-from--> Qwen/Qwen2.5-Coder-7B [unverifiable]",
+        "Qwen/Qwen2.5-Coder-7B --derives-from--> Qwen/Qwen2.5-7B [unverifiable]"
+      ],
+      "moved": [],
+      "created": [
+        {
+          "source": "Qwen/Qwen2.5-Coder-7B-Instruct",
+          "relation": "derives-from",
+          "target": "Qwen/Qwen2.5-7B",
+          "tool": "modeldna",
+          "class": "SAME_LINEAGE",
+          "probability": 0.9796270945135623,
+          "documented_kind": "continued-pretrain"
+        }
+      ],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 3,
+          "established": [],
+          "created": [
+            "Qwen/Qwen2.5-Coder-7B-Instruct ~ Qwen/Qwen2.5-7B [SAME_LINEAGE]"
+          ],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 2,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 1
+    },
+    {
+      "suspect": "TheBloke/Mistral-7B-v0.1-GPTQ",
+      "root": "TheBloke/Mistral-7B-v0.1-GPTQ",
+      "documented_kind": "quantized-copy",
+      "edges_before": 3,
+      "declared": [
+        "TheBloke/Mistral-7B-v0.1-GPTQ --quantized-from--> mistralai/Mistral-7B-v0.1 [unverifiable]"
+      ],
+      "moved": [],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 1,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 1,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 0
+    },
+    {
+      "suspect": "codellama/CodeLlama-7b-hf",
+      "root": "codellama/CodeLlama-7b-hf",
+      "documented_kind": "continued-pretrain",
+      "edges_before": 1,
+      "declared": [],
+      "moved": [],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 4,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 4,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 0
+    },
+    {
+      "suspect": "cognitivecomputations/dolphin-2.9-llama3-8b",
+      "root": "dphn/dolphin-2.9-llama3-8b",
+      "documented_kind": "fine-tune",
+      "edges_before": 13,
+      "declared": [
+        "dphn/dolphin-2.9-llama3-8b --derives-from--> meta-llama/Meta-Llama-3-8B [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> QuixiAI/Dolphin-2.9 [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> teknium/OpenHermes-2.5 [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> m-a-p/CodeFeedback-Filtered-Instruction [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> QuixiAI/dolphin-coder [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> QuixiAI/samantha-data [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> HuggingFaceH4/ultrachat_200k [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> microsoft/orca-math-word-problems-200k [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> abacusai/SystemChat-1.1 [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> Locutusque/function-calling-chatml [unverifiable]",
+        "dphn/dolphin-2.9-llama3-8b --trained-on--> internlm/Agent-FLAN [unverifiable]"
+      ],
+      "moved": [],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 4,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 4,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 0
+    },
+    {
+      "suspect": "google/gemma-2-9b-it",
+      "root": "google/gemma-2-9b-it",
+      "documented_kind": "official-instruct",
+      "edges_before": 3,
+      "declared": [
+        "google/gemma-2-9b-it --derives-from--> google/gemma-2-9b [unverifiable]"
+      ],
+      "moved": [],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 0
+    },
+    {
+      "suspect": "google/gemma-2b-it",
+      "root": "google/gemma-2b-it",
+      "documented_kind": "official-instruct",
+      "edges_before": 1,
+      "declared": [],
+      "moved": [],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 0
+    },
+    {
+      "suspect": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "root": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "documented_kind": "official-instruct",
+      "edges_before": 1,
+      "declared": [],
+      "moved": [],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 0
+    },
+    {
+      "suspect": "mistralai/Mistral-7B-Instruct-v0.3",
+      "root": "mistralai/Mistral-7B-Instruct-v0.3",
+      "documented_kind": "official-instruct",
+      "edges_before": 3,
+      "declared": [
+        "mistralai/Mistral-7B-Instruct-v0.3 --derives-from--> mistralai/Mistral-7B-v0.3 [unverifiable]"
+      ],
+      "moved": [
+        {
+          "source": "mistralai/Mistral-7B-Instruct-v0.3",
+          "relation": "derives-from",
+          "target": "mistralai/Mistral-7B-v0.3",
+          "before": "unverifiable",
+          "after": "verified",
+          "tool": "modeldna",
+          "class": "FINE_TUNE",
+          "probability": 0.9984974581685039
+        }
+      ],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 3,
+          "established": [
+            "mistralai/Mistral-7B-Instruct-v0.3 ~ mistralai/Mistral-7B-v0.3 [FINE_TUNE]"
+          ],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 2,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 1
+    },
+    {
+      "suspect": "mlabonne/AlphaMonarch-7B",
+      "root": "mlabonne/AlphaMonarch-7B",
+      "documented_kind": "merge-chain",
+      "edges_before": 4,
+      "declared": [
+        "mlabonne/AlphaMonarch-7B --derives-from--> mlabonne/NeuralMonarch-7B [unverifiable]",
+        "mlabonne/NeuralMonarch-7B --derives-from--> mlabonne/Monarch-7B [unverifiable]"
+      ],
+      "moved": [],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 3,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 2,
+          "unattached": [
+            "mlabonne/AlphaMonarch-7B ~ mistralai/Mistral-7B-v0.1 [FINE_TUNE]: candidate mistralai/Mistral-7B-v0.1 is not an artifact this resolution reached"
+          ]
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 0
+    },
+    {
+      "suspect": "teknium/OpenHermes-2.5-Mistral-7B",
+      "root": "teknium/OpenHermes-2.5-Mistral-7B",
+      "documented_kind": "fine-tune",
+      "edges_before": 4,
+      "declared": [
+        "teknium/OpenHermes-2.5-Mistral-7B --derives-from--> mistralai/Mistral-7B-v0.1 [unverifiable]",
+        "teknium/OpenHermes-2.5-Mistral-7B --trained-on--> teknium/OpenHermes-2.5 [unverifiable]"
+      ],
+      "moved": [
+        {
+          "source": "teknium/OpenHermes-2.5-Mistral-7B",
+          "relation": "derives-from",
+          "target": "mistralai/Mistral-7B-v0.1",
+          "before": "unverifiable",
+          "after": "verified",
+          "tool": "modeldna",
+          "class": "FINE_TUNE",
+          "probability": 0.9984965956174866
+        }
+      ],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 3,
+          "established": [
+            "teknium/OpenHermes-2.5-Mistral-7B ~ mistralai/Mistral-7B-v0.1 [FINE_TUNE]"
+          ],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 2,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 3,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 3,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 1
+    },
+    {
+      "suspect": "upstage/SOLAR-10.7B-v1.0",
+      "root": "upstage/SOLAR-10.7B-v1.0",
+      "documented_kind": "depth-upscale",
+      "edges_before": 1,
+      "declared": [],
+      "moved": [],
+      "created": [],
+      "applications": {
+        "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+          "verdicts_about_subject": 1,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 1,
+          "unattached": []
+        },
+        "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+          "verdicts_about_subject": 0,
+          "established": [],
+          "created": [],
+          "contradicted": [],
+          "conflicting": [],
+          "abstained": 0,
+          "unattached": []
+        }
+      },
+      "evidence_records_on_edges": 0
+    }
+  ],
+  "totals": {
+    "docs/eval/fingerprints/evidence/lineagebench-modeldna.json": {
+      "verdicts_about_subject": 35,
+      "established": 5,
+      "created": 1,
+      "contradicted": 0,
+      "conflicting": 0,
+      "abstained": 28,
+      "unattached": 1
+    },
+    "docs/eval/fingerprints/evidence/lineagebench-cisco.json": {
+      "verdicts_about_subject": 5,
+      "established": 0,
+      "created": 0,
+      "contradicted": 0,
+      "conflicting": 0,
+      "abstained": 4,
+      "unattached": 1
+    }
+  },
+  "kind_disagreements": []
+}

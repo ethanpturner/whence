@@ -1,0 +1,149 @@
+{
+  "model_info": {
+    "model_path": "teknium/OpenHermes-2.5-Mistral-7B",
+    "model_type": "mistral",
+    "architectures": [
+      "MistralForCausalLM"
+    ],
+    "hidden_size": 4096,
+    "num_hidden_layers": 32,
+    "num_attention_heads": 32,
+    "num_key_value_heads": 8,
+    "head_dim": 128,
+    "intermediate_size": 14336,
+    "vocab_size": 32002,
+    "tie_word_embeddings": false,
+    "hidden_act": "silu",
+    "num_parameters": 7241748480,
+    "arch_hash": "fc767defe985294841e820109d81566b11450efa28ab091473bb403b4eaed3e6",
+    "family_hash": "344e9ed9c2aeeff62a0f3dd2309976b3bd96f6f16423efda7f0c127469951746",
+    "param_bucket": "1-10B",
+    "has_weight_signals": true
+  },
+  "matches": [
+    {
+      "asset_id": "Mistral-7B-v0.1__hf-safetensors",
+      "model_id": "Mistral-7B-v0.1",
+      "family_id": "mistralai--mistral",
+      "family_name": "Mistral",
+      "param_bucket": "1-10B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.6854,
+        "identity_score": 0.6854,
+        "mfi_score": 0.9193,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.165,
+        "eas": null,
+        "nlf": 0.8573,
+        "lep": 1.0,
+        "end": 0.0007,
+        "wvc": 0.9997,
+        "tfv": 0.66
+      },
+      "provenance_decision": "Weak Match",
+      "elapsed_ms": 65.12
+    },
+    {
+      "asset_id": "gpt2-xl__hf-safetensors",
+      "model_id": "gpt2-xl",
+      "family_id": "openaicommunity--gpt",
+      "family_name": "GPT",
+      "param_bucket": "1-10B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.6738,
+        "identity_score": 0.6738,
+        "mfi_score": 0.3593,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.0924,
+        "eas": 0.9014,
+        "nlf": 0.6894,
+        "lep": 0.9398,
+        "end": 0.0119,
+        "wvc": null,
+        "tfv": 0.3695
+      },
+      "provenance_decision": "Weak Match",
+      "elapsed_ms": 12.47
+    },
+    {
+      "asset_id": "Mistral-7B-Instruct-v0.3__hf-safetensors",
+      "model_id": "Mistral-7B-Instruct-v0.3",
+      "family_id": "mistralai--mistral",
+      "family_name": "Mistral",
+      "param_bucket": "1-10B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.6702,
+        "identity_score": 0.6702,
+        "mfi_score": 0.9165,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.1637,
+        "eas": null,
+        "nlf": 0.8576,
+        "lep": 0.9968,
+        "end": 0.0011,
+        "wvc": 0.9552,
+        "tfv": 0.6547
+      },
+      "provenance_decision": "Weak Match",
+      "elapsed_ms": 67.81
+    },
+    {
+      "asset_id": "gpt2-medium__hf-safetensors",
+      "model_id": "gpt2-medium",
+      "family_id": "openaicommunity--gpt",
+      "family_name": "GPT",
+      "param_bucket": "<=1B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.6596,
+        "identity_score": 0.6596,
+        "mfi_score": 0.3593,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.0924,
+        "eas": 0.8967,
+        "nlf": 0.6721,
+        "lep": 0.8921,
+        "end": 0.0094,
+        "wvc": null,
+        "tfv": 0.3695
+      },
+      "provenance_decision": "Weak Match",
+      "elapsed_ms": 6.21
+    },
+    {
+      "asset_id": "zephyr-7b-beta__hf-safetensors",
+      "model_id": "zephyr-7b-beta",
+      "family_id": "huggingfaceh4--zephyr",
+      "family_name": "Zephyr",
+      "param_bucket": "1-10B",
+      "match_type": "similarity",
+      "scores": {
+        "pipeline_score": 0.6365,
+        "identity_score": 0.6365,
+        "mfi_score": 0.9193,
+        "mfi_tier": 3,
+        "mfi_match_type": "soft_match",
+        "tokenizer_score": 0.165,
+        "eas": 0.6755,
+        "nlf": 0.9452,
+        "lep": 0.9999,
+        "end": 0.0007,
+        "wvc": 0.7505,
+        "tfv": 0.66
+      },
+      "provenance_decision": "Not Matched",
+      "elapsed_ms": 67.05
+    }
+  ],
+  "match_count": 5,
+  "elapsed_ms": 298778.78,
+  "extract_seconds": 283.797,
+  "lookup_seconds": 14.898
+}

@@ -1,0 +1,127 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "scenario": "merge-lineage",
+ "subject": "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF",
+ "subject_revision": "59fc03079ddaf71a94ae4844c19780d1de40fbde",
+ "candidate": "failspy/Llama-3-8B-Instruct-MopeyMule",
+ "candidate_revision": "d1cbf407efe727c6b9fc94f22d51ff4915e1856e",
+ "verdict": {
+  "verdict": "QUANTIZED_COPY",
+  "description": "weights match a reference entry within quantization noise",
+  "probability": 0.9984982427478436,
+  "best_candidate": "failspy/Llama-3-8B-Instruct-MopeyMule",
+  "notes": [],
+  "candidates": [
+   {
+    "candidate_id": "failspy/Llama-3-8B-Instruct-MopeyMule",
+    "family": "failspy/Llama-3-8B-Instruct-MopeyMule",
+    "probability": 0.9984982427478436,
+    "ruled_out": null,
+    "evidence": {
+     "suspect_id": "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF",
+     "candidate_id": "failspy/Llama-3-8B-Instruct-MopeyMule",
+     "shape_compatible": true,
+     "layers_match": true,
+     "inventory_match": false,
+     "tokenizer_match": false,
+     "sigma_r": {
+      "attn.k": 0.9999999117964807,
+      "attn.o": 0.9999999155957309,
+      "attn.q": 0.9999993126952788,
+      "attn.v": 0.9999999862489968,
+      "mlp.down": 0.9999978147692354,
+      "mlp.gate": 0.999999961439294,
+      "mlp.up": 0.9999990909660866
+     },
+     "sigma_r_mean": 0.9999994276444434,
+     "vector_cos": {
+      "norm.final": 1.0,
+      "norm.in": 1.0,
+      "norm.post": 0.9999999999999998
+     },
+     "vector_norm_r": {
+      "norm.in": 0.9999999999999822,
+      "norm.post": 0.9999999999999926
+     },
+     "vector_cos_mean": 1.0,
+     "pcs_cos": {
+      "attn.k": 0.999972017502602,
+      "attn.o": 0.999946679068516,
+      "attn.q": 0.999874289581786,
+      "attn.v": 0.9998397128662797,
+      "mlp.down": 0.9999584171638561
+     },
+     "pcs_cos_mean": 0.999918223236608,
+     "spectra_r": {
+      "attn.k": 0.9999993824343032,
+      "attn.o": 0.9999944339051796,
+      "attn.q": 0.9999967419983768,
+      "attn.v": 0.9999598915810878
+     },
+     "spectra_logdist": {
+      "attn.k": 0.00017783866209714137,
+      "attn.o": 0.0002071432660397855,
+      "attn.q": 0.00037074636027898105,
+      "attn.v": 0.00041650871681094903
+     },
+     "spectra_r_mean": 0.9999876124797369,
+     "spectra_kind": "sketch",
+     "notes": []
+    }
+   }
+  ]
+ },
+ "evidence": {
+  "suspect_id": "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF",
+  "candidate_id": "failspy/Llama-3-8B-Instruct-MopeyMule",
+  "shape_compatible": true,
+  "layers_match": true,
+  "inventory_match": false,
+  "tokenizer_match": false,
+  "sigma_r": {
+   "attn.k": 0.9999999117964807,
+   "attn.o": 0.9999999155957309,
+   "attn.q": 0.9999993126952788,
+   "attn.v": 0.9999999862489968,
+   "mlp.down": 0.9999978147692354,
+   "mlp.gate": 0.999999961439294,
+   "mlp.up": 0.9999990909660866
+  },
+  "sigma_r_mean": 0.9999994276444434,
+  "vector_cos": {
+   "norm.final": 1.0,
+   "norm.in": 1.0,
+   "norm.post": 0.9999999999999998
+  },
+  "vector_norm_r": {
+   "norm.in": 0.9999999999999822,
+   "norm.post": 0.9999999999999926
+  },
+  "vector_cos_mean": 1.0,
+  "pcs_cos": {
+   "attn.k": 0.999972017502602,
+   "attn.o": 0.999946679068516,
+   "attn.q": 0.999874289581786,
+   "attn.v": 0.9998397128662797,
+   "mlp.down": 0.9999584171638561
+  },
+  "pcs_cos_mean": 0.999918223236608,
+  "spectra_r": {
+   "attn.k": 0.9999993824343032,
+   "attn.o": 0.9999944339051796,
+   "attn.q": 0.9999967419983768,
+   "attn.v": 0.9999598915810878
+  },
+  "spectra_logdist": {
+   "attn.k": 0.00017783866209714137,
+   "attn.o": 0.0002071432660397855,
+   "attn.q": 0.00037074636027898105,
+   "attn.v": 0.00041650871681094903
+  },
+  "spectra_r_mean": 0.9999876124797369,
+  "spectra_kind": "sketch",
+  "notes": []
+ }
+}

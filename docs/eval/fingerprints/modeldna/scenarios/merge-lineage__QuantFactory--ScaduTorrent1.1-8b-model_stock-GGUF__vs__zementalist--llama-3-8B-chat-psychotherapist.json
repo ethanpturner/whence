@@ -1,0 +1,99 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "scenario": "merge-lineage",
+ "subject": "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF",
+ "subject_revision": "59fc03079ddaf71a94ae4844c19780d1de40fbde",
+ "candidate": "zementalist/llama-3-8B-chat-psychotherapist",
+ "candidate_revision": "ef8bb4a252dbbb73201236a61b07bbab676142c3",
+ "verdict": {
+  "verdict": "NO_MATCH",
+  "description": "no reference parent supported; consistent with independent training or an unindexed base",
+  "probability": 0.034956532306236965,
+  "best_candidate": "zementalist/llama-3-8B-chat-psychotherapist",
+  "notes": [],
+  "candidates": [
+   {
+    "candidate_id": "zementalist/llama-3-8B-chat-psychotherapist",
+    "family": "zementalist/llama-3-8B-chat-psychotherapist",
+    "probability": 0.034956532306236965,
+    "ruled_out": null,
+    "evidence": {
+     "suspect_id": "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF",
+     "candidate_id": "zementalist/llama-3-8B-chat-psychotherapist",
+     "shape_compatible": true,
+     "layers_match": true,
+     "inventory_match": false,
+     "tokenizer_match": false,
+     "sigma_r": {
+      "attn.k": 0.08872710126447865,
+      "attn.o": 0.38255572799033016,
+      "mlp.down": -0.3858768139735142,
+      "mlp.gate": 0.3212484315547279,
+      "mlp.up": -0.19398590224699594
+     },
+     "sigma_r_mean": 0.04253370891780531,
+     "vector_cos": {
+      "norm.final": 1.0,
+      "norm.in": 1.0,
+      "norm.post": 0.9999999999999998
+     },
+     "vector_norm_r": {
+      "norm.in": 1.0,
+      "norm.post": 0.9999999999999998
+     },
+     "vector_cos_mean": 1.0,
+     "pcs_cos": {
+      "attn.k": 0.0002323222418694438,
+      "attn.o": 0.002339708936802889,
+      "mlp.down": -0.003907489893390013
+     },
+     "pcs_cos_mean": -0.0004451529049058934,
+     "spectra_r": {},
+     "spectra_logdist": {},
+     "spectra_r_mean": null,
+     "spectra_kind": "sketch",
+     "notes": []
+    }
+   }
+  ]
+ },
+ "evidence": {
+  "suspect_id": "QuantFactory/ScaduTorrent1.1-8b-model_stock-GGUF",
+  "candidate_id": "zementalist/llama-3-8B-chat-psychotherapist",
+  "shape_compatible": true,
+  "layers_match": true,
+  "inventory_match": false,
+  "tokenizer_match": false,
+  "sigma_r": {
+   "attn.k": 0.08872710126447865,
+   "attn.o": 0.38255572799033016,
+   "mlp.down": -0.3858768139735142,
+   "mlp.gate": 0.3212484315547279,
+   "mlp.up": -0.19398590224699594
+  },
+  "sigma_r_mean": 0.04253370891780531,
+  "vector_cos": {
+   "norm.final": 1.0,
+   "norm.in": 1.0,
+   "norm.post": 0.9999999999999998
+  },
+  "vector_norm_r": {
+   "norm.in": 1.0,
+   "norm.post": 0.9999999999999998
+  },
+  "vector_cos_mean": 1.0,
+  "pcs_cos": {
+   "attn.k": 0.0002323222418694438,
+   "attn.o": 0.002339708936802889,
+   "mlp.down": -0.003907489893390013
+  },
+  "pcs_cos_mean": -0.0004451529049058934,
+  "spectra_r": {},
+  "spectra_logdist": {},
+  "spectra_r_mean": null,
+  "spectra_kind": "sketch",
+  "notes": []
+ }
+}

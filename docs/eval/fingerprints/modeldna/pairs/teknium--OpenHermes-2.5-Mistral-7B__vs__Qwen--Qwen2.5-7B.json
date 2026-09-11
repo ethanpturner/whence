@@ -1,0 +1,74 @@
+{
+ "tool": "modeldna",
+ "tool_version": "0.1.0",
+ "mode": "fast",
+ "pool": "negative",
+ "kind": "fine-tune suspect vs cross-family parent",
+ "subject": "teknium/OpenHermes-2.5-Mistral-7B",
+ "subject_fingerprinted_as": "teknium/OpenHermes-2.5-Mistral-7B",
+ "subject_revision": "24c0bea14d53e6f67f1fbe2eca5bfe7cae389b33",
+ "candidate": "Qwen/Qwen2.5-7B",
+ "candidate_fingerprinted_as": "Qwen/Qwen2.5-7B",
+ "candidate_revision": "d149729398750b98c0af14eb82c78cfe92750796",
+ "verdict": {
+  "verdict": "NO_MATCH",
+  "description": "no reference parent supported; consistent with independent training or an unindexed base",
+  "probability": null,
+  "best_candidate": null,
+  "notes": [
+   "no candidate had compatible structure; the base may simply not be indexed"
+  ],
+  "candidates": [
+   {
+    "candidate_id": "Qwen/Qwen2.5-7B",
+    "family": "Qwen/Qwen2.5-7B",
+    "probability": null,
+    "ruled_out": "layer count mismatch",
+    "evidence": {
+     "suspect_id": "teknium/OpenHermes-2.5-Mistral-7B",
+     "candidate_id": "Qwen/Qwen2.5-7B",
+     "shape_compatible": false,
+     "layers_match": false,
+     "inventory_match": false,
+     "tokenizer_match": false,
+     "sigma_r": {},
+     "sigma_r_mean": null,
+     "vector_cos": {},
+     "vector_norm_r": {},
+     "vector_cos_mean": null,
+     "pcs_cos": {},
+     "pcs_cos_mean": null,
+     "spectra_r": {},
+     "spectra_logdist": {},
+     "spectra_r_mean": null,
+     "spectra_kind": "",
+     "notes": [
+      "layer count differs (32 vs 28); per-layer signals skipped (depth surgery needs alignment search, v0.3)"
+     ]
+    }
+   }
+  ]
+ },
+ "evidence": {
+  "suspect_id": "teknium/OpenHermes-2.5-Mistral-7B",
+  "candidate_id": "Qwen/Qwen2.5-7B",
+  "shape_compatible": false,
+  "layers_match": false,
+  "inventory_match": false,
+  "tokenizer_match": false,
+  "sigma_r": {},
+  "sigma_r_mean": null,
+  "vector_cos": {},
+  "vector_norm_r": {},
+  "vector_cos_mean": null,
+  "pcs_cos": {},
+  "pcs_cos_mean": null,
+  "spectra_r": {},
+  "spectra_logdist": {},
+  "spectra_r_mean": null,
+  "spectra_kind": "",
+  "notes": [
+   "layer count differs (32 vs 28); per-layer signals skipped (depth surgery needs alignment search, v0.3)"
+  ]
+ }
+}
