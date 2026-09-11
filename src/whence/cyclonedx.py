@@ -14,7 +14,7 @@ from __future__ import annotations
 import hashlib
 from typing import Any
 
-from whence.domain import Edge, Node, ResolutionReport
+from whence.domain import Edge, Node, ProvenanceClass, ResolutionReport, Verdict
 
 _TYPES = {"model": "machine-learning-model", "dataset": "data", "package": "library"}
 
@@ -70,6 +70,16 @@ def _claim(edge: Edge, index: int) -> tuple[dict[str, Any], dict[str, Any]]:
             data.append(_evidence_data("whence:risk", "ownership-boundary-crossed"))
     for item in edge.evidence:
         data.append(_evidence_data("whence:locator", item.locator))
+        if item.from_fingerprint:
+            # DEC-029: the external tool, its version, and its class verbatim; the probability is
+            # an attribute here and never the claim's verdict (DEC-001).
+            data.append(_evidence_data("whence:fingerprint-tool", str(item.tool)))
+            data.append(_evidence_data("whence:fingerprint-tool-version", str(item.tool_version)))
+            data.append(_evidence_data("whence:fingerprint-class", str(item.verdict_class)))
+            if item.probability is not None:
+                data.append(
+                    _evidence_data("whence:fingerprint-probability", f"{item.probability:.4f}")
+                )
     if edge.declared_count > 1:
         # The card asserted this same relationship more than once. A merge recipe does it once per
         # slice, so the number says how much of the merge this parent accounts for -- information
@@ -96,6 +106,26 @@ def _claim(edge: Edge, index: int) -> tuple[dict[str, Any], dict[str, Any]]:
 
 
 def _reasoning(edge: Edge) -> str:
+    fingerprints = [e for e in edge.evidence if e.from_fingerprint]
+    if edge.provenance is ProvenanceClass.VERIFIED_BY_WEIGHTS:
+        tools = ", ".join(dict.fromkeys(f"{e.tool} {e.tool_version}" for e in fingerprints))
+        declared = (
+            "The card declares this relation"
+            if len(edge.evidence) > len(fingerprints)
+            else ("No card declares this relation")
+        )
+        return (
+            f"Established by a weight-level fingerprint verdict from {tools}, read as evidence "
+            f"under the effect its file declares (DEC-029). {declared}; the fingerprint is what "
+            "established it, and the two are recorded separately."
+        )
+    if edge.verdict is Verdict.CONTRADICTED and fingerprints:
+        tools = ", ".join(dict.fromkeys(f"{e.tool} {e.tool_version}" for e in fingerprints))
+        return (
+            "Declared in source metadata and contradicted by a weight-level fingerprint verdict "
+            f"from {tools}, under the effect its file declares (DEC-029). The claim stays on the "
+            "edge as the record of what was asserted."
+        )
     if edge.provenance.value.startswith("asserted"):
         base = (
             "Declared in source metadata with no revision attached. The named artifact resolves and "

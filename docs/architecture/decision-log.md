@@ -981,3 +981,56 @@ the mapping is the operator's assertion and is recorded as one.
 carries when two established sources conflict is not decided here, and the agreement matrix
 between modelDNA and the Cisco kit on `lineagebench`'s pairs is the measurement that should decide
 it.
+
+## DEC-030 — A fingerprint verdict attaches only to artifacts the resolution reached, and never raises a contradicted edge
+
+**Date:** 2026-09-10
+**Status:** Accepted
+
+**Decision.** Two rules DEC-029 left implicit, settled while building the ingest. First, a
+fingerprint verdict attaches to the graph only when both artifacts it names are nodes the
+resolution reached, at the revision the graph pins. A verdict naming an artifact the run never
+resolved, or naming it at another revision, is recorded as **unattached** — counted, printed with
+its reason, and used for nothing else. The edge an `establishes` verdict creates where no card
+declares one therefore joins two resolved nodes; it never adds a node. Second, an edge the
+structural check (DEC-020) has already moved to `contradicted` is not raised to `verified` by an
+`establishes` verdict. The fingerprint evidence is appended, the application reports the pair as
+conflicting, and the edge stays `contradicted`.
+
+**Why the first rule.** DEC-010 forbids inferring what was not resolved. A node built from a
+verdict's `ArtifactRef` would carry a `reachable` the tool never checked, a `signature` state it
+never looked for, and a namespace state it never queried — three unmeasured facts asserted as
+measured. The fingerprinter established something about two byte sequences; it established
+nothing about whether the registry still serves them under those names. If the artifact matters,
+resolve it, then apply the evidence. The revision rule follows from DEC-002 the same way DEC-029's
+pinning rule does: a fingerprint of revision A is not evidence about revision B, however alike
+their names.
+
+**Why the second rule.** The body check contradicts on transformer dimensions read from
+`config.json`; a fingerprinter samples tensors from the weights. Where the two disagree, either the
+configuration is wrong about the weights it ships with, or the fingerprinter matched a body it
+should not have. Neither is for this tool to adjudicate, and DEC-029 already declines to decide
+between two disagreeing evidence files. Leaving the edge `contradicted` with both records attached
+is the conservative reading and the visible one: a reader sees the disagreement rather than a
+`verified` that quietly outvoted a measured refutation. In the measurement so far the case has not
+arisen, because modelDNA's own layer-count gate returns `NO_MATCH` or `INSUFFICIENT` where the
+body differs.
+
+**What this changed in the harness.** `evaluate` previously failed any `verified` edge. It now
+fails a `verified` edge that carries no fingerprint evidence record, and a `verified-by-weights`
+provenance with none. The ten recorded scenarios supply no evidence file and are unchanged by
+this; the pin in `test_scenarios.py` is renamed to say what it now asserts — no edge is verified
+*without an evidence file* — rather than that no edge is ever verified.
+
+**Alternatives considered.** Creating the node from the verdict with `reachable = false`: rejected;
+the artifact may be perfectly reachable, and a false negative asserted as fact is the same error
+in the other direction. Letting `establishes` override `contradicted` when the probability is
+high: rejected, because a threshold on the probability is the collapse of a three-valued verdict
+into a score that DEC-001 and DEC-013 refuse.
+
+**Tradeoffs.** An operator holding a fingerprint for an artifact outside the resolved graph has to
+widen the resolution before the evidence counts. That is the point: the graph says what was
+resolved, and evidence attaches to it rather than extending it.
+
+**Open.** The conflicting case has no real instance yet. When one appears it should be recorded as
+a scenario before anything is decided about it.

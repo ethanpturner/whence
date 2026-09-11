@@ -9,14 +9,15 @@ whether the relationship is claimed or verified.
 
 **What runs**: resolution, redirect handling, response classification, CycloneDX emission, OMS
 signature detection, a structural lineage check, and an evaluation harness scoring **ten**
-recorded scenarios offline. `benchmarks/scenarios.yaml` is the count that is right when this
+recorded scenarios offline, plus fingerprint evidence ingest. `benchmarks/scenarios.yaml` is the count that is right when this
 sentence is stale.
 
 Phase two **began** with the structural check (DEC-020), which is the only mechanism in the tool
 that can emit `contradicted`. **Weight-level comparison of tensor values is not built here**
 (DEC-005), and no edge is verified *from metadata* — a structural match is a necessary condition,
-not a sufficient one. DEC-029 specifies an external fingerprint evidence file that is designed to
-move an edge to `verified`; the ingest is unbuilt, and the tool still downloads no weights.
+not a sufficient one. DEC-029's external fingerprint evidence file is read by `whence resolve
+--evidence FILE` and moves an edge to `verified` or `contradicted` under the effect the file
+declares; the tool still downloads no weights, and the fingerprinter runs as a separate process.
 
 Keep tense discipline. Present indicative for what runs; "is designed to" for phase two and
 anything else specified but unbuilt. Mixing them is the easiest mistake here and the hardest to

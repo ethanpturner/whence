@@ -77,6 +77,10 @@ Typed fields live in `declarations.evidence[].data[]`, where `name` is a namespa
 | `whence:verdict` | the `Verdict` token (DEC-001) |
 | `whence:declared-as` | the pre-redirect reference, present only when it differs (DEC-011) |
 | `whence:locator` | where in the source material the assertion was found |
+| `whence:fingerprint-tool` | on fingerprint evidence only (DEC-029): the external tool's name |
+| `whence:fingerprint-tool-version` | the tool's own version string |
+| `whence:fingerprint-class` | the tool's verdict class, verbatim; never a `Relation` |
+| `whence:fingerprint-probability` | the tool's calibrated probability, four decimals; an attribute, never the verdict |
 
 Excerpts of registry-hosted text are carried the same way and remain untrusted data under DEC-012:
 never in a log record, never parsed for meaning.

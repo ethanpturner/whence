@@ -33,7 +33,7 @@ from typing import Any
 import yaml
 
 from whence.cyclonedx import to_cyclonedx
-from whence.domain import ResolutionReport
+from whence.domain import Edge, ResolutionReport
 
 
 @dataclass
@@ -50,6 +50,13 @@ class Score:
     @property
     def passed(self) -> bool:
         return not (self.missed or self.mismatched or self.invented or self.honesty_failures)
+
+
+def _established_by_fingerprint(edge: Edge) -> bool:
+    """A `verified` verdict is admissible only when a DEC-029 evidence record is on the edge."""
+    return edge.provenance.value == "verified-by-weights" and any(
+        e.from_fingerprint for e in edge.evidence
+    )
 
 
 def _key(source: str, target: str, relation: str) -> str:
@@ -132,11 +139,15 @@ def score(report: ResolutionReport, expected_dir: Path, scenario: str) -> Score:
     _score_nodes(result, expected_dir, report)
     _score_unresolvable(result, expected_dir, report)
 
-    # No edge is ever `verified`: resolution establishes existence, not derivation, and the
-    # structural check is a necessary condition rather than a sufficient one (DEC-005, DEC-020).
+    # No edge is `verified` from metadata: resolution establishes existence, not derivation, and
+    # the structural check is a necessary condition rather than a sufficient one (DEC-005,
+    # DEC-020). The one thing that can carry an edge to `verified` is a fingerprint evidence file
+    # (DEC-029), and then the edge carries that file's evidence and `verified-by-weights`.
     for edge in report.edges:
-        if edge.verdict.value == "verified":
-            result.honesty_failures.append(f"verdict `verified` on {edge.relation.value} edge")
+        if edge.verdict.value == "verified" and not _established_by_fingerprint(edge):
+            result.honesty_failures.append(
+                f"verdict `verified` on {edge.relation.value} edge with no fingerprint evidence"
+            )
 
     _check_keys_are_all_handled(result, expected_dir)
     return result
@@ -233,8 +244,11 @@ def _score_unresolvable(result: Score, expected_dir: Path, report: ResolutionRep
     by_pair = {(e.source.slug, e.relation.value, e.target.slug): e for e in report.edges}
     for row in loaded.get("unresolvable") or []:
         subject = str(row.get("subject") or "")
-        if any(e.provenance.value == "verified-by-weights" for e in report.edges):
-            result.honesty_failures.append("verified-by-weights claimed; no such comparison exists")
+        for e in report.edges:
+            if e.provenance.value == "verified-by-weights" and not _established_by_fingerprint(e):
+                result.honesty_failures.append(
+                    "verified-by-weights claimed with no fingerprint evidence on the edge"
+                )
         # `subject` is written for a person: "whether the declared artifact and the redirect target
         # are the same bytes" says what is open far better than a triple would. So the row carries
         # an optional `edge:` naming what must stay `unverifiable`, and a row without one is prose

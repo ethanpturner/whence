@@ -17,8 +17,10 @@ to, and bare version fragments.
 Phase two *began* with the structural check (DEC-020), the only mechanism in the tool that can emit
 `contradicted`; a structural match is a necessary condition, not a sufficient one. Weight-level
 verification exists outside this tool — modelDNA and Cisco's Model Provenance Kit both shipped in
-2026 with published measurements — and DEC-029 specifies how their verdicts enter as an evidence
-file that is designed to move an edge to `verified`. That ingest is unbuilt.
+2026 with published measurements — and their verdicts enter through `whence resolve --evidence
+FILE` as an evidence file whose declared effects can move an edge to `verified` or `contradicted`
+(DEC-029). The fingerprinter runs as a separate process; this tool still downloads no weights.
+`docs/eval/fingerprints.md` is the measurement of that path against `lineagebench`.
 
 ```
 uv run whence resolve nvidia/Llama-3.1-Nemotron-70B-Instruct-HF \
