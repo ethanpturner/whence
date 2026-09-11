@@ -1,0 +1,1 @@
+{"id": "ibm-granite/granite-timeseries-ttm-r3", "author": "ibm-granite", "sha": "ea17cfd2e3edcaea21eb8dcecd18bf88971482fa", "gated": false, "private": false, "siblings": [{"rfilename": ".gitattributes"}, {"rfilename": "README.md"}, {"rfilename": "config.json"}, {"rfilename": "model.safetensors"}, {"rfilename": "model.sig"}, {"rfilename": "ttm_image.webp"}]}

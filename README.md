@@ -68,7 +68,10 @@ assertion. A digest is a fact.
 Every node `whence` emits carries a revision digest, and a node it could not pin is marked as such
 rather than silently recorded under its name. `benchmarks/deleted-namespace/` captures a live instance of an unclaimed one — of 1,573
 base-reference namespaces checked in the download-ranked head, **7 are held by neither an
-organization nor a user**, roughly 1 in 220. `benchmarks/transferred-namespace/` captures the other
+organization nor a user**, roughly 1 in 220. Among references already known to be dead the rate is
+1 in 9: of the 1,377 base-model names Stalnaker et al. found unresolvable in 2024, 134 sit in 57
+free namespaces today, one of them declared by 25 models (`docs/eval/census.md`).
+`benchmarks/transferred-namespace/` captures the other
 shape: `runwayml/stable-diffusion-v1-5` redirects into an organization controlled by someone
 else, and file requests under the old path are served from the new namespace with no error.
 
@@ -80,7 +83,10 @@ presence establishes that the publisher signed something, not that the signature
 the files in front of you, or binds an identity you trust (DEC-021).
 
 Adoption measured before implementing: 63 of 45,000 models sampled by download rank carry a bundle,
-about 1 in 700.
+about 1 in 700 (64 a week later). What those bundles bind is measured in
+`docs/eval/signatures.md`: 63 of 64 verify cryptographically, and 7 of the 63 bind IBM's signing
+identity under a namespace that is not IBM's — the signature was copied along with the model. A
+tool that reported `valid` on presence would be wrong about at least those seven.
 
 ## Scope
 

@@ -1,0 +1,391 @@
+{
+ "swept": "2026-09-10",
+ "method": "GET /api/models?sort=downloads&direction=-1&limit=1000&expand[]=siblings&expand[]=tags&expand[]=sha, 45 pages",
+ "n_models": 45000,
+ "signed": [
+  {
+   "id": "ibm-granite/granite-4.1-30b",
+   "sha": "4fae6278f7132abf5e971f9de49ebbad09c54cce",
+   "downloads": 558899,
+   "n_files": 24
+  },
+  {
+   "id": "ibm-granite/granite-speech-4.1-2b",
+   "sha": "de575db64086f84fdc79da4932d1076e965bc546",
+   "downloads": 362142,
+   "n_files": 29
+  },
+  {
+   "id": "openai/privacy-filter",
+   "sha": "7ffa9a043d54d1be65afb281eddf0ffbe629385b",
+   "downloads": 293128,
+   "n_files": 25
+  },
+  {
+   "id": "ibm-granite/granite-4.1-3b",
+   "sha": "c0650403e44e78ec0262dab1c90914c65b196c4e",
+   "downloads": 254451,
+   "n_files": 14
+  },
+  {
+   "id": "ibm-granite/granite-4.2-30b-GGUF",
+   "sha": "27b350a791e81d9a4d1ddca1c49282e9ec533768",
+   "downloads": 253074,
+   "n_files": 20
+  },
+  {
+   "id": "ibm-granite/granite-4.2-8b-GGUF",
+   "sha": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+   "downloads": 230676,
+   "n_files": 19
+  },
+  {
+   "id": "ibm-granite/granite-4.2-3b-GGUF",
+   "sha": "c40945d71cd90f249a56985e8155551a9188dc30",
+   "downloads": 216166,
+   "n_files": 19
+  },
+  {
+   "id": "ibm-granite/granite-4.1-8b",
+   "sha": "1504002f650e656a0a3789d99574df12e3e94ed0",
+   "downloads": 207441,
+   "n_files": 16
+  },
+  {
+   "id": "ibm-granite/granite-speech-4.1-2b-plus",
+   "sha": "1454e6e1e33845ca9280ff65f52cf1141ba6e6e2",
+   "downloads": 125134,
+   "n_files": 13
+  },
+  {
+   "id": "ibm-granite/granite-embedding-311m-multilingual-r2",
+   "sha": "44399559930365213510b1ee2eb15ded83374f0e",
+   "downloads": 117691,
+   "n_files": 20
+  },
+  {
+   "id": "ibm-granite/granite-vision-4.1-4b",
+   "sha": "37d591f06319e8f1638b5adcf58bdf50e0f84f7a",
+   "downloads": 115833,
+   "n_files": 31
+  },
+  {
+   "id": "ibm-granite/granite-embedding-97m-multilingual-r2",
+   "sha": "835ad14087e140460703cf0fae09f97d469d65c2",
+   "downloads": 99229,
+   "n_files": 18
+  },
+  {
+   "id": "ibm-granite/granite-speech-4.1-2b-nar",
+   "sha": "a1e3416e25ce29ab3852778e54fa8b3bd59c4bf2",
+   "downloads": 85007,
+   "n_files": 21
+  },
+  {
+   "id": "ibm-granite/granite-timeseries-ttm-r3",
+   "sha": "ea17cfd2e3edcaea21eb8dcecd18bf88971482fa",
+   "downloads": 61561,
+   "n_files": 6
+  },
+  {
+   "id": "ibm-granite/granite-4.0-tiny-preview",
+   "sha": "4ec5f963443b2e15e9be82595289e96ff082e280",
+   "downloads": 58168,
+   "n_files": 12
+  },
+  {
+   "id": "ibm-granite/granite-4.0-h-tiny",
+   "sha": "791e0d3d28c86e106c9b6e0b4cecdee0375b6124",
+   "downloads": 50574,
+   "n_files": 15
+  },
+  {
+   "id": "ibm-granite/granite-4.0-micro",
+   "sha": "56111ae135df9c53a78c99028e7bc24035a9e979",
+   "downloads": 49930,
+   "n_files": 14
+  },
+  {
+   "id": "ibm-granite/granite-guardian-4.1-8b",
+   "sha": "ab01ccca5dcfb80246369a086a4a87a29198f5af",
+   "downloads": 30946,
+   "n_files": 16
+  },
+  {
+   "id": "ibm-granite/granite-timeseries-flowstate-r1",
+   "sha": "05effc6cb39ee16dce9dd0064ed1a76e4b8ff464",
+   "downloads": 29063,
+   "n_files": 7
+  },
+  {
+   "id": "ibm-granite/granite-4.2-8b",
+   "sha": "f8de16cdcdbc6c779ca517604e050d82cc119e44",
+   "downloads": 26811,
+   "n_files": 17
+  },
+  {
+   "id": "ibm-granite/granite-4.2-3b",
+   "sha": "e459acceac81e5fe67c07d9cfc72329a332e7eb1",
+   "downloads": 26634,
+   "n_files": 15
+  },
+  {
+   "id": "ibm-granite/granite-4.0-1b-base",
+   "sha": "15148e99f8ca689325e2067ba282b23dec6670c7",
+   "downloads": 26286,
+   "n_files": 11
+  },
+  {
+   "id": "ibm-granite/granite-4.0-h-small",
+   "sha": "b8c0982bab7fde4eb48110f5a069527c008fab39",
+   "downloads": 23810,
+   "n_files": 26
+  },
+  {
+   "id": "ibm-granite/granite-4.1-8b-fp8",
+   "sha": "070021b3608433b6107a00733d561c9779b9937e",
+   "downloads": 22311,
+   "n_files": 15
+  },
+  {
+   "id": "ibm-granite/granite-speech-5.0-470m-turboctc",
+   "sha": "18ca3c1de6cd092b5a30c39fb0f04550b38ed1a0",
+   "downloads": 21361,
+   "n_files": 14
+  },
+  {
+   "id": "ibm-granite/granite-4.0-1b",
+   "sha": "6a7381ba1f54d684ff508d991aeb7dc580157103",
+   "downloads": 19733,
+   "n_files": 12
+  },
+  {
+   "id": "ibm-granite/granite-4.0-350m",
+   "sha": "bd8a1497065c0d6ba1ef19af6b0d2b14bacf71c2",
+   "downloads": 18021,
+   "n_files": 12
+  },
+  {
+   "id": "ibm-granite/granite-4.2-30b",
+   "sha": "9e668ce1c538387ef24d3644e9b0606647762636",
+   "downloads": 15006,
+   "n_files": 24
+  },
+  {
+   "id": "ibm-granite/granite-swash-2b",
+   "sha": "af1e3227100b61088eead48389ab5409b5d0e39c",
+   "downloads": 14932,
+   "n_files": 8
+  },
+  {
+   "id": "ibm-granite/granite-swash-3b-a600m",
+   "sha": "568a94fcfeff42a8cab9ee2ffea89fde12071282",
+   "downloads": 13503,
+   "n_files": 9
+  },
+  {
+   "id": "ibm-granite/granite-4.1-3b-base",
+   "sha": "dacb9cb9157bec98e99b09f285c92a4d58405c96",
+   "downloads": 11225,
+   "n_files": 13
+  },
+  {
+   "id": "ibm-granite/granite-4.0-h-micro",
+   "sha": "d5f01a3ea75f088947be3aae039f4ad52837dfde",
+   "downloads": 10820,
+   "n_files": 14
+  },
+  {
+   "id": "cyankiwi/granite-4.1-3b-AWQ-INT4",
+   "sha": "8b08334b436063f4196a72b387081631978ceeff",
+   "downloads": 5013,
+   "n_files": 12
+  },
+  {
+   "id": "ibm-granite/granite-4.0-h-350m",
+   "sha": "3b17b717b8f2f5d305b0a92c1491e239aeda19c8",
+   "downloads": 4692,
+   "n_files": 12
+  },
+  {
+   "id": "ibm-granite/granite-4.1-8b-base",
+   "sha": "cbc32f94fbf8179ca4b22b664831f6a73965bb16",
+   "downloads": 4323,
+   "n_files": 13
+  },
+  {
+   "id": "ibm-granite/granite-4.0-h-1b",
+   "sha": "d18cca4c121edb87d022116d281ce212c9136f57",
+   "downloads": 4243,
+   "n_files": 10
+  },
+  {
+   "id": "ibm-granite/granite-4.0-h-350m-base",
+   "sha": "dc555b6939c863bb96034d1eae7601da36bd42e4",
+   "downloads": 3622,
+   "n_files": 11
+  },
+  {
+   "id": "ibm-granite/granite-4.0-350m-base",
+   "sha": "a50b46cef21c8a86b15f0496cb794487a78a910b",
+   "downloads": 2834,
+   "n_files": 11
+  },
+  {
+   "id": "ibm-granite/granite-4.1-30b-fp8",
+   "sha": "aa99937ea2b8acf605601a0789ad2daea26b4c7e",
+   "downloads": 2822,
+   "n_files": 20
+  },
+  {
+   "id": "ibm-granite/granite-timeseries-patchtst-fm-r2",
+   "sha": "b125275f9204d37cbb81fe47b9cf5e08a521e829",
+   "downloads": 2615,
+   "n_files": 10
+  },
+  {
+   "id": "huihui-ai/Huihui-granite-4.1-3b-abliterated",
+   "sha": "338ec9f827d47e19fa854c2e3467bfbfd4fa486d",
+   "downloads": 2555,
+   "n_files": 17
+  },
+  {
+   "id": "ibm-granite/granite-4.1-3b-fp8",
+   "sha": "cb2c6e010b2ab22a6f02b36a2751ca1ee6fc05f5",
+   "downloads": 2472,
+   "n_files": 13
+  },
+  {
+   "id": "ibm-granite/granite-4.2-30b-nvfp4",
+   "sha": "bddf34bc6db17e5c4f586e49c1668c8e97610446",
+   "downloads": 2291,
+   "n_files": 18
+  },
+  {
+   "id": "ibm-granite/granite-switch-4.1-3b-preview",
+   "sha": "7a3ac02e07868411424ac89440397b475da66fa7",
+   "downloads": 2277,
+   "n_files": 29
+  },
+  {
+   "id": "ibm-granite/granite-speech-5.0-470m-turboctc-nc",
+   "sha": "0eb7b4fe726a294815dc45d342860465b5af68ef",
+   "downloads": 1967,
+   "n_files": 14
+  },
+  {
+   "id": "ibm-granite/granite-4.1-30b-base",
+   "sha": "9bb22a92d17f4a51788c4750d32764ed068d94f2",
+   "downloads": 1930,
+   "n_files": 21
+  },
+  {
+   "id": "cyankiwi/granite-4.1-8b-AWQ-INT4",
+   "sha": "fa064183bb41de889823fe192a80c83eaced4f90",
+   "downloads": 1845,
+   "n_files": 14
+  },
+  {
+   "id": "unsloth/granite-4.0-h-tiny",
+   "sha": "3af1d9261fb89e676b137cb8bb37f594775f3d56",
+   "downloads": 1821,
+   "n_files": 15
+  },
+  {
+   "id": "ibm-granite/granite-4.2-8b-fp8",
+   "sha": "6eb3735036ce2010f4ec8319820172a1c06508d7",
+   "downloads": 1804,
+   "n_files": 16
+  },
+  {
+   "id": "ibm-granite/granite-4.2-30b-fp8",
+   "sha": "bee6d7463fd7064455f59ac480a3fcdcae5cb801",
+   "downloads": 1601,
+   "n_files": 21
+  },
+  {
+   "id": "ibm-granite/granite-4.0-h-micro-base",
+   "sha": "372ede0bc484284e08ce574e773c96cd2b89b367",
+   "downloads": 1287,
+   "n_files": 13
+  },
+  {
+   "id": "ibm-granite/granite-4.2-8b-nvfp4",
+   "sha": "fd3b6082de9225a8e866d7f80d96cdc22f1ae89e",
+   "downloads": 1265,
+   "n_files": 16
+  },
+  {
+   "id": "unsloth/granite-4.1-3b",
+   "sha": "e42729497b5d4dc8a8dbd069bae5fd695f8cee49",
+   "downloads": 1196,
+   "n_files": 14
+  },
+  {
+   "id": "ibm-granite/granite-switch-4.1-8b-preview",
+   "sha": "c739556e0b2c66f21e5108dc4036f52e1893e256",
+   "downloads": 1131,
+   "n_files": 31
+  },
+  {
+   "id": "unsloth/granite-4.1-8b",
+   "sha": "acb681dfd7b46ea403274f041c70d28da947b1ab",
+   "downloads": 1069,
+   "n_files": 16
+  },
+  {
+   "id": "ibm-granite/granite-switch-4.1-30b-preview",
+   "sha": "b2d1c82bbd5913f8a07e35c911b402783d1423e1",
+   "downloads": 904,
+   "n_files": 40
+  },
+  {
+   "id": "ibm-granite/granite-4.2-8b-mxfp4",
+   "sha": "1e429c026f7a94ac22da2f604b7440b4e806d50c",
+   "downloads": 856,
+   "n_files": 16
+  },
+  {
+   "id": "ibm-granite/granite-4.2-3b-nvfp4",
+   "sha": "c30d480be0e8440e84835497f00218628fc2ab1c",
+   "downloads": 855,
+   "n_files": 14
+  },
+  {
+   "id": "ibm-granite/granite-4.2-3b-mxfp4",
+   "sha": "40caf0f3c49b05128358355ff01faf2df10f62f9",
+   "downloads": 852,
+   "n_files": 14
+  },
+  {
+   "id": "ibm-granite/granite-4.2-30b-mxfp4",
+   "sha": "8d0c2fb8cf713cae830f1f315925104b0f375b72",
+   "downloads": 827,
+   "n_files": 18
+  },
+  {
+   "id": "ibm-granite/granite-4.0-micro-base",
+   "sha": "98e1d641451818f6c8e6b17c1c359b5b4ac495d0",
+   "downloads": 783,
+   "n_files": 13
+  },
+  {
+   "id": "ibm-granite/granite-4.2-3b-fp8",
+   "sha": "579eab44700093cf415d70534060b653dc4d6b45",
+   "downloads": 774,
+   "n_files": 14
+  },
+  {
+   "id": "cyankiwi/granite-4.1-30b-AWQ-INT4",
+   "sha": "b83a2effb72953db295717abb335aa7948c1bf46",
+   "downloads": 663,
+   "n_files": 16
+  },
+  {
+   "id": "ibm-granite/granite-4.0-h-1b-base",
+   "sha": "8d34631309affca6f6f8350684ddcb8994b0dc31",
+   "downloads": 633,
+   "n_files": 11
+  }
+ ]
+}

@@ -1,0 +1,1207 @@
+{
+ "ibm-granite/granite-4.1-30b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-04T17:28:32+00:00",
+  "log_index": "1437773705",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 22
+ },
+ "ibm-granite/granite-speech-4.1-2b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-06-12T16:31:44+00:00",
+  "log_index": "1804178216",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 27
+ },
+ "openai/privacy-filter": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "mihaimaruseac@openai.com"
+  ],
+  "issuer": "https://github.com/login/oauth",
+  "not_before": "2026-04-21T21:59:55+00:00",
+  "log_index": "1354612699",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 4
+ },
+ "ibm-granite/granite-4.1-3b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-04T17:34:43+00:00",
+  "log_index": "1437810623",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "ibm-granite/granite-4.2-30b-GGUF": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:52:41+00:00",
+  "log_index": "2691307099",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 18
+ },
+ "ibm-granite/granite-4.2-8b-GGUF": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:09:46+00:00",
+  "log_index": "2690851747",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 17
+ },
+ "ibm-granite/granite-4.2-3b-GGUF": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:07:43+00:00",
+  "log_index": "2690842393",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 17
+ },
+ "ibm-granite/granite-4.1-8b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-04T17:35:00+00:00",
+  "log_index": "1437811208",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 14
+ },
+ "ibm-granite/granite-speech-4.1-2b-plus": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-06-16T18:17:12+00:00",
+  "log_index": "1840650155",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 11
+ },
+ "ibm-granite/granite-embedding-311m-multilingual-r2": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-18T19:48:13+00:00",
+  "log_index": "1569463614",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 18
+ },
+ "ibm-granite/granite-vision-4.1-4b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-06T14:18:00+00:00",
+  "log_index": "1450033429",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 30
+ },
+ "ibm-granite/granite-embedding-97m-multilingual-r2": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-18T19:47:56+00:00",
+  "log_index": "1569462913",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 16
+ },
+ "ibm-granite/granite-speech-4.1-2b-nar": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-30T18:03:12+00:00",
+  "log_index": "1411873787",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 21
+ },
+ "ibm-granite/granite-timeseries-ttm-r3": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-06-29T19:33:52+00:00",
+  "log_index": "2012738322",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 4
+ },
+ "ibm-granite/granite-4.0-tiny-preview": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite.Preview@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-11-03T21:16:28+00:00",
+  "log_index": "664131763",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 10
+ },
+ "ibm-granite/granite-4.0-h-tiny": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-11-03T19:36:35+00:00",
+  "log_index": "663838764",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 13
+ },
+ "ibm-granite/granite-4.0-micro": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-11-03T19:33:49+00:00",
+  "log_index": "663819238",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "ibm-granite/granite-guardian-4.1-8b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-08-27T14:27:55+00:00",
+  "log_index": "2617645614",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 14
+ },
+ "ibm-granite/granite-timeseries-flowstate-r1": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-29T14:18:12+00:00",
+  "log_index": "1401813979",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 5
+ },
+ "ibm-granite/granite-4.2-8b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-04T21:01:00+00:00",
+  "log_index": "2716160115",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 15
+ },
+ "ibm-granite/granite-4.2-3b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:53:54+00:00",
+  "log_index": "2691320555",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 13
+ },
+ "ibm-granite/granite-4.0-1b-base": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-06-12T21:14:33+00:00",
+  "log_index": "1805627272",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 9
+ },
+ "ibm-granite/granite-4.0-h-small": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-11-03T19:37:35+00:00",
+  "log_index": "663844253",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 24
+ },
+ "ibm-granite/granite-4.1-8b-fp8": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-29T18:37:17+00:00",
+  "log_index": "1404134598",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 13
+ },
+ "ibm-granite/granite-speech-5.0-470m-turboctc": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-08-25T14:23:47+00:00",
+  "log_index": "2583532501",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "ibm-granite/granite-4.0-1b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-10-23T08:35:40+00:00",
+  "log_index": "632554867",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 10
+ },
+ "ibm-granite/granite-4.0-350m": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-10-23T08:37:45+00:00",
+  "log_index": "632561968",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 10
+ },
+ "ibm-granite/granite-4.2-30b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-04T21:00:40+00:00",
+  "log_index": "2716158769",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 22
+ },
+ "ibm-granite/granite-swash-2b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-07-07T01:35:47+00:00",
+  "log_index": "2092348974",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 6
+ },
+ "ibm-granite/granite-swash-3b-a600m": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-07-09T21:47:48+00:00",
+  "log_index": "2132443032",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 7
+ },
+ "ibm-granite/granite-4.1-3b-base": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-28T23:13:48+00:00",
+  "log_index": "1398619323",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 11
+ },
+ "ibm-granite/granite-4.0-h-micro": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-11-03T19:35:37+00:00",
+  "log_index": "663831910",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "cyankiwi/granite-4.1-3b-AWQ-INT4": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-04T17:34:43+00:00",
+  "log_index": "1437810623",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "ibm-granite/granite-4.0-h-350m": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-10-23T08:40:59+00:00",
+  "log_index": "632572567",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 10
+ },
+ "ibm-granite/granite-4.1-8b-base": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-28T23:13:29+00:00",
+  "log_index": "1398616439",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 11
+ },
+ "ibm-granite/granite-4.0-h-1b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-10-23T08:39:59+00:00",
+  "log_index": "632569609",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 8
+ },
+ "ibm-granite/granite-4.0-h-350m-base": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-10-23T09:34:18+00:00",
+  "log_index": "632721037",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 9
+ },
+ "ibm-granite/granite-4.0-350m-base": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-10-23T09:33:37+00:00",
+  "log_index": "632720552",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 9
+ },
+ "ibm-granite/granite-4.1-30b-fp8": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-24T14:22:35+00:00",
+  "log_index": "1370587537",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 18
+ },
+ "ibm-granite/granite-timeseries-patchtst-fm-r2": {
+  "parses": false,
+  "material": [
+   "tlogEntries",
+   "x509CertificateChain"
+  ],
+  "error": "InvalidBundle: expected certificate in bundle"
+ },
+ "huihui-ai/Huihui-granite-4.1-3b-abliterated": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-28T23:15:06+00:00",
+  "log_index": "1398631579",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "ibm-granite/granite-4.1-3b-fp8": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-21T19:33:07+00:00",
+  "log_index": "1353140718",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 11
+ },
+ "ibm-granite/granite-4.2-30b-nvfp4": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:06:09+00:00",
+  "log_index": "2690828956",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 16
+ },
+ "ibm-granite/granite-switch-4.1-3b-preview": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-04T16:50:14+00:00",
+  "log_index": "1437732968",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 26
+ },
+ "ibm-granite/granite-speech-5.0-470m-turboctc-nc": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-08-25T14:25:22+00:00",
+  "log_index": "2583536875",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "ibm-granite/granite-4.1-30b-base": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-28T23:14:42+00:00",
+  "log_index": "1398627786",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 19
+ },
+ "cyankiwi/granite-4.1-8b-AWQ-INT4": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-28T23:14:55+00:00",
+  "log_index": "1398629833",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 14
+ },
+ "unsloth/granite-4.0-h-tiny": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-10-01T03:09:34+00:00",
+  "log_index": "574894963",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 13
+ },
+ "ibm-granite/granite-4.2-8b-fp8": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:08:57+00:00",
+  "log_index": "2690849163",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 14
+ },
+ "ibm-granite/granite-4.2-30b-fp8": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:03:29+00:00",
+  "log_index": "2690793668",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 19
+ },
+ "ibm-granite/granite-4.0-h-micro-base": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-11-03T19:36:08+00:00",
+  "log_index": "663835598",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 11
+ },
+ "ibm-granite/granite-4.2-8b-nvfp4": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:10:37+00:00",
+  "log_index": "2690853658",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 14
+ },
+ "unsloth/granite-4.1-3b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-28T23:15:06+00:00",
+  "log_index": "1398631579",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "ibm-granite/granite-switch-4.1-8b-preview": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-04T16:50:25+00:00",
+  "log_index": "1437733131",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 28
+ },
+ "unsloth/granite-4.1-8b": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-28T23:14:55+00:00",
+  "log_index": "1398629833",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 14
+ },
+ "ibm-granite/granite-switch-4.1-30b-preview": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-05-04T16:50:37+00:00",
+  "log_index": "1437733345",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 37
+ },
+ "ibm-granite/granite-4.2-8b-mxfp4": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:10:20+00:00",
+  "log_index": "2690853009",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 14
+ },
+ "ibm-granite/granite-4.2-3b-nvfp4": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:08:12+00:00",
+  "log_index": "2690845462",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "ibm-granite/granite-4.2-3b-mxfp4": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:08:01+00:00",
+  "log_index": "2690844429",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "ibm-granite/granite-4.2-30b-mxfp4": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:05:52+00:00",
+  "log_index": "2690825494",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 16
+ },
+ "ibm-granite/granite-4.0-micro-base": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-verify@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2025-11-03T19:34:36+00:00",
+  "log_index": "663824525",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 11
+ },
+ "ibm-granite/granite-4.2-3b-fp8": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-09-02T21:07:19+00:00",
+  "log_index": "2690839205",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 12
+ },
+ "cyankiwi/granite-4.1-30b-AWQ-INT4": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-04-29T17:18:57+00:00",
+  "log_index": "1403453422",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 22
+ },
+ "ibm-granite/granite-4.0-h-1b-base": {
+  "parses": true,
+  "material": [
+   "certificate",
+   "timestampVerificationData",
+   "tlogEntries"
+  ],
+  "san": [
+   "Granite-sign@ibm.com"
+  ],
+  "issuer": "https://sigstore.verify.ibm.com/oauth2",
+  "not_before": "2026-06-12T20:47:40+00:00",
+  "log_index": "1805483459",
+  "verifies": true,
+  "payload_type": "application/vnd.in-toto+json",
+  "predicate_type": "https://model_signing/signature/v1.0",
+  "n_subjects": 1,
+  "n_resources": 9
+ }
+}
