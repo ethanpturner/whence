@@ -13,3 +13,7 @@
 # produced them carried a credential, so nothing in them can be a token of ours. A capture made
 # WITH credentials would invalidate that reasoning and must be re-examined rather than ignored.
 e44c2b33a00c642eb9df8898e471227ea6b1038c:benchmarks/structural-compatible/recorded/model-Qwen-Qwen2.5-0.5B.json:generic-api-key:1
+#
+# Second instance, same class: `Ahmet98983/Wormgpt`, a Space name inside the verbatim listing of
+# `HuggingFaceH4/zephyr-7b-beta`, captured unauthenticated by scripts/measure_lineagebench.py.
+9b3d3d6b2e4e700e5e4df36429389cad42f5bb50:docs/eval/lineagebench/recorded/model-HuggingFaceH4-zephyr-7b-beta.json:generic-api-key:1
