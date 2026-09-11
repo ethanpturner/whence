@@ -1,0 +1,666 @@
+# Captured registry interactions, replayed offline (DEC-009). Written by
+# scripts/measure_signatures.py. Model listings are projected to
+# id/author/sha/gated/private and the sibling file names; overviews to
+# name/fullname/isVerified/plan/numModels. Bundles are recorded whole. Every status,
+# redirect and kept value is what the registry returned.
+captured_at: 2026-09-11
+host: huggingface.co
+interactions:
+  - request: GET /api/models/ibm-granite/granite-4.1-30b
+    status: 200
+    body: model-ibm-granite-granite-4.1-30b.json
+  - request: GET /ibm-granite/granite-4.1-30b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.1-30b/4fae6278f7132abf5e971f9de49ebbad09c54cce/model.sig?%2Fibm-granite%2Fgranite-4.1-30b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2259845c142da3f13c3d898667fa67c2f6bc84484d%22
+    body: bundle-ibm-granite-granite-4.1-30b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.1-30b/4fae6278f7132abf5e971f9de49ebbad09c54cce/model.sig?%2Fibm-granite%2Fgranite-4.1-30b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2259845c142da3f13c3d898667fa67c2f6bc84484d%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.1-30b.json
+  - request: GET /api/organizations/ibm-granite/overview
+    status: 200
+    body: org-ibm-granite.json
+  - request: GET /api/models/ibm-granite/granite-speech-4.1-2b
+    status: 200
+    body: model-ibm-granite-granite-speech-4.1-2b.json
+  - request: GET /ibm-granite/granite-speech-4.1-2b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-speech-4.1-2b/de575db64086f84fdc79da4932d1076e965bc546/model.sig?%2Fibm-granite%2Fgranite-speech-4.1-2b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2205b3ee8c41b5c8ba5c37e7bf993eaede891924d6%22
+    body: bundle-ibm-granite-granite-speech-4.1-2b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-speech-4.1-2b/de575db64086f84fdc79da4932d1076e965bc546/model.sig?%2Fibm-granite%2Fgranite-speech-4.1-2b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2205b3ee8c41b5c8ba5c37e7bf993eaede891924d6%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-speech-4.1-2b.json
+  - request: GET /api/models/openai/privacy-filter
+    status: 200
+    body: model-openai-privacy-filter.json
+  - request: GET /openai/privacy-filter/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/openai/privacy-filter/7ffa9a043d54d1be65afb281eddf0ffbe629385b/model.sig?%2Fopenai%2Fprivacy-filter%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22fdf1d09c24d995403e59d4a45db1655ec9d8921f%22
+    body: bundle-openai-privacy-filter.json
+  - request: GET /api/resolve-cache/models/openai/privacy-filter/7ffa9a043d54d1be65afb281eddf0ffbe629385b/model.sig?%2Fopenai%2Fprivacy-filter%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22fdf1d09c24d995403e59d4a45db1655ec9d8921f%22
+    status: 200
+    body: cached-bundle-openai-privacy-filter.json
+  - request: GET /api/organizations/openai/overview
+    status: 200
+    body: org-openai.json
+  - request: GET /api/models/ibm-granite/granite-4.1-3b
+    status: 200
+    body: model-ibm-granite-granite-4.1-3b.json
+  - request: GET /ibm-granite/granite-4.1-3b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.1-3b/c0650403e44e78ec0262dab1c90914c65b196c4e/model.sig?%2Fibm-granite%2Fgranite-4.1-3b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%221b670921a42c67370d3883303045f9d6705daa47%22
+    body: bundle-ibm-granite-granite-4.1-3b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.1-3b/c0650403e44e78ec0262dab1c90914c65b196c4e/model.sig?%2Fibm-granite%2Fgranite-4.1-3b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%221b670921a42c67370d3883303045f9d6705daa47%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.1-3b.json
+  - request: GET /api/models/ibm-granite/granite-4.2-30b-GGUF
+    status: 200
+    body: model-ibm-granite-granite-4.2-30b-GGUF.json
+  - request: GET /ibm-granite/granite-4.2-30b-GGUF/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-30b-GGUF/27b350a791e81d9a4d1ddca1c49282e9ec533768/model.sig?%2Fibm-granite%2Fgranite-4.2-30b-GGUF%2Fresolve%2Fmain%2Fmodel.sig=&etag=%228b00298c4c344808e789bea1948992acd94280a1%22
+    body: bundle-ibm-granite-granite-4.2-30b-GGUF.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-30b-GGUF/27b350a791e81d9a4d1ddca1c49282e9ec533768/model.sig?%2Fibm-granite%2Fgranite-4.2-30b-GGUF%2Fresolve%2Fmain%2Fmodel.sig=&etag=%228b00298c4c344808e789bea1948992acd94280a1%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-30b-GGUF.json
+  - request: GET /api/models/ibm-granite/granite-4.2-8b-GGUF
+    status: 200
+    body: model-ibm-granite-granite-4.2-8b-GGUF.json
+  - request: GET /ibm-granite/granite-4.2-8b-GGUF/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-8b-GGUF/93f3f6a8938ee922b784cf4e5b4203cd3428df8f/model.sig?%2Fibm-granite%2Fgranite-4.2-8b-GGUF%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22bc274cc4d11c5773fdfb891c494bc292de38e274%22
+    body: bundle-ibm-granite-granite-4.2-8b-GGUF.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-8b-GGUF/93f3f6a8938ee922b784cf4e5b4203cd3428df8f/model.sig?%2Fibm-granite%2Fgranite-4.2-8b-GGUF%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22bc274cc4d11c5773fdfb891c494bc292de38e274%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-8b-GGUF.json
+  - request: GET /api/models/ibm-granite/granite-4.2-3b-GGUF
+    status: 200
+    body: model-ibm-granite-granite-4.2-3b-GGUF.json
+  - request: GET /ibm-granite/granite-4.2-3b-GGUF/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-3b-GGUF/c40945d71cd90f249a56985e8155551a9188dc30/model.sig?%2Fibm-granite%2Fgranite-4.2-3b-GGUF%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ddf37ed98559bb2af5776a900778c07c6bd069f3%22
+    body: bundle-ibm-granite-granite-4.2-3b-GGUF.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-3b-GGUF/c40945d71cd90f249a56985e8155551a9188dc30/model.sig?%2Fibm-granite%2Fgranite-4.2-3b-GGUF%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ddf37ed98559bb2af5776a900778c07c6bd069f3%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-3b-GGUF.json
+  - request: GET /api/models/ibm-granite/granite-4.1-8b
+    status: 200
+    body: model-ibm-granite-granite-4.1-8b.json
+  - request: GET /ibm-granite/granite-4.1-8b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.1-8b/1504002f650e656a0a3789d99574df12e3e94ed0/model.sig?%2Fibm-granite%2Fgranite-4.1-8b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22c5d45756c27eb6d8e9d4eb2aff3d3c086f76f35b%22
+    body: bundle-ibm-granite-granite-4.1-8b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.1-8b/1504002f650e656a0a3789d99574df12e3e94ed0/model.sig?%2Fibm-granite%2Fgranite-4.1-8b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22c5d45756c27eb6d8e9d4eb2aff3d3c086f76f35b%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.1-8b.json
+  - request: GET /api/models/ibm-granite/granite-speech-4.1-2b-plus
+    status: 200
+    body: model-ibm-granite-granite-speech-4.1-2b-plus.json
+  - request: GET /ibm-granite/granite-speech-4.1-2b-plus/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-speech-4.1-2b-plus/1454e6e1e33845ca9280ff65f52cf1141ba6e6e2/model.sig?%2Fibm-granite%2Fgranite-speech-4.1-2b-plus%2Fresolve%2Fmain%2Fmodel.sig=&etag=%229a564ecf5dc742dfffa710e4c3417a24cb4cc7be%22
+    body: bundle-ibm-granite-granite-speech-4.1-2b-plus.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-speech-4.1-2b-plus/1454e6e1e33845ca9280ff65f52cf1141ba6e6e2/model.sig?%2Fibm-granite%2Fgranite-speech-4.1-2b-plus%2Fresolve%2Fmain%2Fmodel.sig=&etag=%229a564ecf5dc742dfffa710e4c3417a24cb4cc7be%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-speech-4.1-2b-plus.json
+  - request: GET /api/models/ibm-granite/granite-embedding-311m-multilingual-r2
+    status: 200
+    body: model-ibm-granite-granite-embedding-311m-multilingual-r2.json
+  - request: GET /ibm-granite/granite-embedding-311m-multilingual-r2/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-embedding-311m-multilingual-r2/44399559930365213510b1ee2eb15ded83374f0e/model.sig?%2Fibm-granite%2Fgranite-embedding-311m-multilingual-r2%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2204f40a23e0fa0259a6c7818c22382552052960cc%22
+    body: bundle-ibm-granite-granite-embedding-311m-multilingual-r2.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-embedding-311m-multilingual-r2/44399559930365213510b1ee2eb15ded83374f0e/model.sig?%2Fibm-granite%2Fgranite-embedding-311m-multilingual-r2%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2204f40a23e0fa0259a6c7818c22382552052960cc%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-embedding-311m-multilingual-r2.json
+  - request: GET /api/models/ibm-granite/granite-vision-4.1-4b
+    status: 200
+    body: model-ibm-granite-granite-vision-4.1-4b.json
+  - request: GET /ibm-granite/granite-vision-4.1-4b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-vision-4.1-4b/37d591f06319e8f1638b5adcf58bdf50e0f84f7a/model.sig?%2Fibm-granite%2Fgranite-vision-4.1-4b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2242f86a461b06c42c95c2452c33968e43ffeb37f8%22
+    body: bundle-ibm-granite-granite-vision-4.1-4b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-vision-4.1-4b/37d591f06319e8f1638b5adcf58bdf50e0f84f7a/model.sig?%2Fibm-granite%2Fgranite-vision-4.1-4b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2242f86a461b06c42c95c2452c33968e43ffeb37f8%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-vision-4.1-4b.json
+  - request: GET /api/models/ibm-granite/granite-embedding-97m-multilingual-r2
+    status: 200
+    body: model-ibm-granite-granite-embedding-97m-multilingual-r2.json
+  - request: GET /ibm-granite/granite-embedding-97m-multilingual-r2/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-embedding-97m-multilingual-r2/835ad14087e140460703cf0fae09f97d469d65c2/model.sig?%2Fibm-granite%2Fgranite-embedding-97m-multilingual-r2%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ab6ec51a958e886ad7a4d1895da140af61cec34c%22
+    body: bundle-ibm-granite-granite-embedding-97m-multilingual-r2.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-embedding-97m-multilingual-r2/835ad14087e140460703cf0fae09f97d469d65c2/model.sig?%2Fibm-granite%2Fgranite-embedding-97m-multilingual-r2%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ab6ec51a958e886ad7a4d1895da140af61cec34c%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-embedding-97m-multilingual-r2.json
+  - request: GET /api/models/ibm-granite/granite-speech-4.1-2b-nar
+    status: 200
+    body: model-ibm-granite-granite-speech-4.1-2b-nar.json
+  - request: GET /ibm-granite/granite-speech-4.1-2b-nar/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-speech-4.1-2b-nar/a1e3416e25ce29ab3852778e54fa8b3bd59c4bf2/model.sig?%2Fibm-granite%2Fgranite-speech-4.1-2b-nar%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ff8f05fc6cb3e442776d7e9a356cd17ce990a470%22
+    body: bundle-ibm-granite-granite-speech-4.1-2b-nar.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-speech-4.1-2b-nar/a1e3416e25ce29ab3852778e54fa8b3bd59c4bf2/model.sig?%2Fibm-granite%2Fgranite-speech-4.1-2b-nar%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ff8f05fc6cb3e442776d7e9a356cd17ce990a470%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-speech-4.1-2b-nar.json
+  - request: GET /api/models/ibm-granite/granite-timeseries-ttm-r3
+    status: 200
+    body: model-ibm-granite-granite-timeseries-ttm-r3.json
+  - request: GET /ibm-granite/granite-timeseries-ttm-r3/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-timeseries-ttm-r3/ea17cfd2e3edcaea21eb8dcecd18bf88971482fa/model.sig?%2Fibm-granite%2Fgranite-timeseries-ttm-r3%2Fresolve%2Fmain%2Fmodel.sig=&etag=%227252e4c5f2706a2774faa66ba00de1ed0b30ce45%22
+    body: bundle-ibm-granite-granite-timeseries-ttm-r3.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-timeseries-ttm-r3/ea17cfd2e3edcaea21eb8dcecd18bf88971482fa/model.sig?%2Fibm-granite%2Fgranite-timeseries-ttm-r3%2Fresolve%2Fmain%2Fmodel.sig=&etag=%227252e4c5f2706a2774faa66ba00de1ed0b30ce45%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-timeseries-ttm-r3.json
+  - request: GET /api/models/ibm-granite/granite-4.0-tiny-preview
+    status: 200
+    body: model-ibm-granite-granite-4.0-tiny-preview.json
+  - request: GET /ibm-granite/granite-4.0-tiny-preview/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-tiny-preview/4ec5f963443b2e15e9be82595289e96ff082e280/model.sig?%2Fibm-granite%2Fgranite-4.0-tiny-preview%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22e2f42ee3b6aa85c85e9952d86b9f4ee0e3b7efb1%22
+    body: bundle-ibm-granite-granite-4.0-tiny-preview.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-tiny-preview/4ec5f963443b2e15e9be82595289e96ff082e280/model.sig?%2Fibm-granite%2Fgranite-4.0-tiny-preview%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22e2f42ee3b6aa85c85e9952d86b9f4ee0e3b7efb1%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-tiny-preview.json
+  - request: GET /api/models/ibm-granite/granite-4.0-h-tiny
+    status: 200
+    body: model-ibm-granite-granite-4.0-h-tiny.json
+  - request: GET /ibm-granite/granite-4.0-h-tiny/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-h-tiny/791e0d3d28c86e106c9b6e0b4cecdee0375b6124/model.sig?%2Fibm-granite%2Fgranite-4.0-h-tiny%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22b667dc6a1d5c41dd22d6d5fb9a4366f5861684fd%22
+    body: bundle-ibm-granite-granite-4.0-h-tiny.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-h-tiny/791e0d3d28c86e106c9b6e0b4cecdee0375b6124/model.sig?%2Fibm-granite%2Fgranite-4.0-h-tiny%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22b667dc6a1d5c41dd22d6d5fb9a4366f5861684fd%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-h-tiny.json
+  - request: GET /api/models/ibm-granite/granite-4.0-micro
+    status: 200
+    body: model-ibm-granite-granite-4.0-micro.json
+  - request: GET /ibm-granite/granite-4.0-micro/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-micro/56111ae135df9c53a78c99028e7bc24035a9e979/model.sig?%2Fibm-granite%2Fgranite-4.0-micro%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22cbd05ccd44b9388fa40232161f1c44704d1063ab%22
+    body: bundle-ibm-granite-granite-4.0-micro.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-micro/56111ae135df9c53a78c99028e7bc24035a9e979/model.sig?%2Fibm-granite%2Fgranite-4.0-micro%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22cbd05ccd44b9388fa40232161f1c44704d1063ab%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-micro.json
+  - request: GET /api/models/ibm-granite/granite-guardian-4.1-8b
+    status: 200
+    body: model-ibm-granite-granite-guardian-4.1-8b.json
+  - request: GET /ibm-granite/granite-guardian-4.1-8b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-guardian-4.1-8b/ab01ccca5dcfb80246369a086a4a87a29198f5af/model.sig?%2Fibm-granite%2Fgranite-guardian-4.1-8b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22f2effab994175188b17283a50733d201683932cb%22
+    body: bundle-ibm-granite-granite-guardian-4.1-8b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-guardian-4.1-8b/ab01ccca5dcfb80246369a086a4a87a29198f5af/model.sig?%2Fibm-granite%2Fgranite-guardian-4.1-8b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22f2effab994175188b17283a50733d201683932cb%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-guardian-4.1-8b.json
+  - request: GET /api/models/ibm-granite/granite-timeseries-flowstate-r1
+    status: 200
+    body: model-ibm-granite-granite-timeseries-flowstate-r1.json
+  - request: GET /ibm-granite/granite-timeseries-flowstate-r1/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-timeseries-flowstate-r1/05effc6cb39ee16dce9dd0064ed1a76e4b8ff464/model.sig?%2Fibm-granite%2Fgranite-timeseries-flowstate-r1%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22292d5c5f5240aa3557cbed15039f83636389dbb0%22
+    body: bundle-ibm-granite-granite-timeseries-flowstate-r1.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-timeseries-flowstate-r1/05effc6cb39ee16dce9dd0064ed1a76e4b8ff464/model.sig?%2Fibm-granite%2Fgranite-timeseries-flowstate-r1%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22292d5c5f5240aa3557cbed15039f83636389dbb0%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-timeseries-flowstate-r1.json
+  - request: GET /api/models/ibm-granite/granite-4.2-8b
+    status: 200
+    body: model-ibm-granite-granite-4.2-8b.json
+  - request: GET /ibm-granite/granite-4.2-8b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-8b/f8de16cdcdbc6c779ca517604e050d82cc119e44/model.sig?%2Fibm-granite%2Fgranite-4.2-8b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%222ae39df2ed93ab7e478144050e690ed582133a8c%22
+    body: bundle-ibm-granite-granite-4.2-8b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-8b/f8de16cdcdbc6c779ca517604e050d82cc119e44/model.sig?%2Fibm-granite%2Fgranite-4.2-8b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%222ae39df2ed93ab7e478144050e690ed582133a8c%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-8b.json
+  - request: GET /api/models/ibm-granite/granite-4.2-3b
+    status: 200
+    body: model-ibm-granite-granite-4.2-3b.json
+  - request: GET /ibm-granite/granite-4.2-3b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-3b/e459acceac81e5fe67c07d9cfc72329a332e7eb1/model.sig?%2Fibm-granite%2Fgranite-4.2-3b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22c1df57fa2a840e57636990934f540c1405cb9c9e%22
+    body: bundle-ibm-granite-granite-4.2-3b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-3b/e459acceac81e5fe67c07d9cfc72329a332e7eb1/model.sig?%2Fibm-granite%2Fgranite-4.2-3b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22c1df57fa2a840e57636990934f540c1405cb9c9e%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-3b.json
+  - request: GET /api/models/ibm-granite/granite-4.0-1b-base
+    status: 200
+    body: model-ibm-granite-granite-4.0-1b-base.json
+  - request: GET /ibm-granite/granite-4.0-1b-base/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-1b-base/15148e99f8ca689325e2067ba282b23dec6670c7/model.sig?%2Fibm-granite%2Fgranite-4.0-1b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22e23076cb6975fb279fe0996ac105e0e464dca443%22
+    body: bundle-ibm-granite-granite-4.0-1b-base.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-1b-base/15148e99f8ca689325e2067ba282b23dec6670c7/model.sig?%2Fibm-granite%2Fgranite-4.0-1b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22e23076cb6975fb279fe0996ac105e0e464dca443%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-1b-base.json
+  - request: GET /api/models/ibm-granite/granite-4.0-h-small
+    status: 200
+    body: model-ibm-granite-granite-4.0-h-small.json
+  - request: GET /ibm-granite/granite-4.0-h-small/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-h-small/b8c0982bab7fde4eb48110f5a069527c008fab39/model.sig?%2Fibm-granite%2Fgranite-4.0-h-small%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2299c550e3d10758d11e25fd2f1d162eb91b3c4193%22
+    body: bundle-ibm-granite-granite-4.0-h-small.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-h-small/b8c0982bab7fde4eb48110f5a069527c008fab39/model.sig?%2Fibm-granite%2Fgranite-4.0-h-small%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2299c550e3d10758d11e25fd2f1d162eb91b3c4193%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-h-small.json
+  - request: GET /api/models/ibm-granite/granite-4.1-8b-fp8
+    status: 200
+    body: model-ibm-granite-granite-4.1-8b-fp8.json
+  - request: GET /ibm-granite/granite-4.1-8b-fp8/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.1-8b-fp8/070021b3608433b6107a00733d561c9779b9937e/model.sig?%2Fibm-granite%2Fgranite-4.1-8b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22bcebdd0046d9e36b8312506050d3c71e2e42a628%22
+    body: bundle-ibm-granite-granite-4.1-8b-fp8.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.1-8b-fp8/070021b3608433b6107a00733d561c9779b9937e/model.sig?%2Fibm-granite%2Fgranite-4.1-8b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22bcebdd0046d9e36b8312506050d3c71e2e42a628%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.1-8b-fp8.json
+  - request: GET /api/models/ibm-granite/granite-speech-5.0-470m-turboctc
+    status: 200
+    body: model-ibm-granite-granite-speech-5.0-470m-turboctc.json
+  - request: GET /ibm-granite/granite-speech-5.0-470m-turboctc/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-speech-5.0-470m-turboctc/18ca3c1de6cd092b5a30c39fb0f04550b38ed1a0/model.sig?%2Fibm-granite%2Fgranite-speech-5.0-470m-turboctc%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ad998c4890ede37a1f515b711024629d9cd5763a%22
+    body: bundle-ibm-granite-granite-speech-5.0-470m-turboctc.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-speech-5.0-470m-turboctc/18ca3c1de6cd092b5a30c39fb0f04550b38ed1a0/model.sig?%2Fibm-granite%2Fgranite-speech-5.0-470m-turboctc%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ad998c4890ede37a1f515b711024629d9cd5763a%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-speech-5.0-470m-turboctc.json
+  - request: GET /api/models/ibm-granite/granite-4.0-1b
+    status: 200
+    body: model-ibm-granite-granite-4.0-1b.json
+  - request: GET /ibm-granite/granite-4.0-1b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-1b/6a7381ba1f54d684ff508d991aeb7dc580157103/model.sig?%2Fibm-granite%2Fgranite-4.0-1b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22094b4e034f346f39449db77083eb6ef86222b6b9%22
+    body: bundle-ibm-granite-granite-4.0-1b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-1b/6a7381ba1f54d684ff508d991aeb7dc580157103/model.sig?%2Fibm-granite%2Fgranite-4.0-1b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22094b4e034f346f39449db77083eb6ef86222b6b9%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-1b.json
+  - request: GET /api/models/ibm-granite/granite-4.0-350m
+    status: 200
+    body: model-ibm-granite-granite-4.0-350m.json
+  - request: GET /ibm-granite/granite-4.0-350m/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-350m/bd8a1497065c0d6ba1ef19af6b0d2b14bacf71c2/model.sig?%2Fibm-granite%2Fgranite-4.0-350m%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22f3db7e6ff4432b53ffbd20341db7fd49327c741d%22
+    body: bundle-ibm-granite-granite-4.0-350m.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-350m/bd8a1497065c0d6ba1ef19af6b0d2b14bacf71c2/model.sig?%2Fibm-granite%2Fgranite-4.0-350m%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22f3db7e6ff4432b53ffbd20341db7fd49327c741d%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-350m.json
+  - request: GET /api/models/ibm-granite/granite-4.2-30b
+    status: 200
+    body: model-ibm-granite-granite-4.2-30b.json
+  - request: GET /ibm-granite/granite-4.2-30b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-30b/9e668ce1c538387ef24d3644e9b0606647762636/model.sig?%2Fibm-granite%2Fgranite-4.2-30b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22168e0aa153a37494d7ddf9ce79ba8e2a8fa1f346%22
+    body: bundle-ibm-granite-granite-4.2-30b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-30b/9e668ce1c538387ef24d3644e9b0606647762636/model.sig?%2Fibm-granite%2Fgranite-4.2-30b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22168e0aa153a37494d7ddf9ce79ba8e2a8fa1f346%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-30b.json
+  - request: GET /api/models/ibm-granite/granite-swash-2b
+    status: 200
+    body: model-ibm-granite-granite-swash-2b.json
+  - request: GET /ibm-granite/granite-swash-2b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-swash-2b/af1e3227100b61088eead48389ab5409b5d0e39c/model.sig?%2Fibm-granite%2Fgranite-swash-2b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ddf721583dbc2e69692712fb9c6c0a9485062df4%22
+    body: bundle-ibm-granite-granite-swash-2b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-swash-2b/af1e3227100b61088eead48389ab5409b5d0e39c/model.sig?%2Fibm-granite%2Fgranite-swash-2b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22ddf721583dbc2e69692712fb9c6c0a9485062df4%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-swash-2b.json
+  - request: GET /api/models/ibm-granite/granite-swash-3b-a600m
+    status: 200
+    body: model-ibm-granite-granite-swash-3b-a600m.json
+  - request: GET /ibm-granite/granite-swash-3b-a600m/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-swash-3b-a600m/568a94fcfeff42a8cab9ee2ffea89fde12071282/model.sig?%2Fibm-granite%2Fgranite-swash-3b-a600m%2Fresolve%2Fmain%2Fmodel.sig=&etag=%228c13bc04b093aa0656922c33b181485a9b97a38d%22
+    body: bundle-ibm-granite-granite-swash-3b-a600m.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-swash-3b-a600m/568a94fcfeff42a8cab9ee2ffea89fde12071282/model.sig?%2Fibm-granite%2Fgranite-swash-3b-a600m%2Fresolve%2Fmain%2Fmodel.sig=&etag=%228c13bc04b093aa0656922c33b181485a9b97a38d%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-swash-3b-a600m.json
+  - request: GET /api/models/ibm-granite/granite-4.1-3b-base
+    status: 200
+    body: model-ibm-granite-granite-4.1-3b-base.json
+  - request: GET /ibm-granite/granite-4.1-3b-base/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.1-3b-base/dacb9cb9157bec98e99b09f285c92a4d58405c96/model.sig?%2Fibm-granite%2Fgranite-4.1-3b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22cd41beeca59750e5c8322956bc2a419949eb1938%22
+    body: bundle-ibm-granite-granite-4.1-3b-base.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.1-3b-base/dacb9cb9157bec98e99b09f285c92a4d58405c96/model.sig?%2Fibm-granite%2Fgranite-4.1-3b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22cd41beeca59750e5c8322956bc2a419949eb1938%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.1-3b-base.json
+  - request: GET /api/models/ibm-granite/granite-4.0-h-micro
+    status: 200
+    body: model-ibm-granite-granite-4.0-h-micro.json
+  - request: GET /ibm-granite/granite-4.0-h-micro/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-h-micro/d5f01a3ea75f088947be3aae039f4ad52837dfde/model.sig?%2Fibm-granite%2Fgranite-4.0-h-micro%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22254b2226400e13c180867d00e44499fcd4673987%22
+    body: bundle-ibm-granite-granite-4.0-h-micro.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-h-micro/d5f01a3ea75f088947be3aae039f4ad52837dfde/model.sig?%2Fibm-granite%2Fgranite-4.0-h-micro%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22254b2226400e13c180867d00e44499fcd4673987%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-h-micro.json
+  - request: GET /api/models/cyankiwi/granite-4.1-3b-AWQ-INT4
+    status: 200
+    body: model-cyankiwi-granite-4.1-3b-AWQ-INT4.json
+  - request: GET /cyankiwi/granite-4.1-3b-AWQ-INT4/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/cyankiwi/granite-4.1-3b-AWQ-INT4/8b08334b436063f4196a72b387081631978ceeff/model.sig?%2Fcyankiwi%2Fgranite-4.1-3b-AWQ-INT4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%221b670921a42c67370d3883303045f9d6705daa47%22
+    body: bundle-cyankiwi-granite-4.1-3b-AWQ-INT4.json
+  - request: GET /api/resolve-cache/models/cyankiwi/granite-4.1-3b-AWQ-INT4/8b08334b436063f4196a72b387081631978ceeff/model.sig?%2Fcyankiwi%2Fgranite-4.1-3b-AWQ-INT4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%221b670921a42c67370d3883303045f9d6705daa47%22
+    status: 200
+    body: cached-bundle-cyankiwi-granite-4.1-3b-AWQ-INT4.json
+  - request: GET /api/organizations/cyankiwi/overview
+    status: 200
+    body: org-cyankiwi.json
+  - request: GET /api/models/ibm-granite/granite-4.0-h-350m
+    status: 200
+    body: model-ibm-granite-granite-4.0-h-350m.json
+  - request: GET /ibm-granite/granite-4.0-h-350m/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-h-350m/3b17b717b8f2f5d305b0a92c1491e239aeda19c8/model.sig?%2Fibm-granite%2Fgranite-4.0-h-350m%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22280843dc1aa71233eae9abe72a59dbd1e92d70fb%22
+    body: bundle-ibm-granite-granite-4.0-h-350m.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-h-350m/3b17b717b8f2f5d305b0a92c1491e239aeda19c8/model.sig?%2Fibm-granite%2Fgranite-4.0-h-350m%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22280843dc1aa71233eae9abe72a59dbd1e92d70fb%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-h-350m.json
+  - request: GET /api/models/ibm-granite/granite-4.1-8b-base
+    status: 200
+    body: model-ibm-granite-granite-4.1-8b-base.json
+  - request: GET /ibm-granite/granite-4.1-8b-base/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.1-8b-base/cbc32f94fbf8179ca4b22b664831f6a73965bb16/model.sig?%2Fibm-granite%2Fgranite-4.1-8b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22f75b26f6100f09f8537ac329537b711e36882689%22
+    body: bundle-ibm-granite-granite-4.1-8b-base.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.1-8b-base/cbc32f94fbf8179ca4b22b664831f6a73965bb16/model.sig?%2Fibm-granite%2Fgranite-4.1-8b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22f75b26f6100f09f8537ac329537b711e36882689%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.1-8b-base.json
+  - request: GET /api/models/ibm-granite/granite-4.0-h-1b
+    status: 200
+    body: model-ibm-granite-granite-4.0-h-1b.json
+  - request: GET /ibm-granite/granite-4.0-h-1b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-h-1b/d18cca4c121edb87d022116d281ce212c9136f57/model.sig?%2Fibm-granite%2Fgranite-4.0-h-1b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2285d155cfbb0252c93a336762887d5daba1b23be2%22
+    body: bundle-ibm-granite-granite-4.0-h-1b.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-h-1b/d18cca4c121edb87d022116d281ce212c9136f57/model.sig?%2Fibm-granite%2Fgranite-4.0-h-1b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2285d155cfbb0252c93a336762887d5daba1b23be2%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-h-1b.json
+  - request: GET /api/models/ibm-granite/granite-4.0-h-350m-base
+    status: 200
+    body: model-ibm-granite-granite-4.0-h-350m-base.json
+  - request: GET /ibm-granite/granite-4.0-h-350m-base/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-h-350m-base/dc555b6939c863bb96034d1eae7601da36bd42e4/model.sig?%2Fibm-granite%2Fgranite-4.0-h-350m-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%227e8a574fe83be491ec601ed9e5117ff18815ce60%22
+    body: bundle-ibm-granite-granite-4.0-h-350m-base.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-h-350m-base/dc555b6939c863bb96034d1eae7601da36bd42e4/model.sig?%2Fibm-granite%2Fgranite-4.0-h-350m-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%227e8a574fe83be491ec601ed9e5117ff18815ce60%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-h-350m-base.json
+  - request: GET /api/models/ibm-granite/granite-4.0-350m-base
+    status: 200
+    body: model-ibm-granite-granite-4.0-350m-base.json
+  - request: GET /ibm-granite/granite-4.0-350m-base/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-350m-base/a50b46cef21c8a86b15f0496cb794487a78a910b/model.sig?%2Fibm-granite%2Fgranite-4.0-350m-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22e3dc2dd3965b2dbf22752307eab28dcdb8edfa27%22
+    body: bundle-ibm-granite-granite-4.0-350m-base.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-350m-base/a50b46cef21c8a86b15f0496cb794487a78a910b/model.sig?%2Fibm-granite%2Fgranite-4.0-350m-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22e3dc2dd3965b2dbf22752307eab28dcdb8edfa27%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-350m-base.json
+  - request: GET /api/models/ibm-granite/granite-4.1-30b-fp8
+    status: 200
+    body: model-ibm-granite-granite-4.1-30b-fp8.json
+  - request: GET /ibm-granite/granite-4.1-30b-fp8/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.1-30b-fp8/aa99937ea2b8acf605601a0789ad2daea26b4c7e/model.sig?%2Fibm-granite%2Fgranite-4.1-30b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%225d17e96ba3ec57e7f7c31e8e0c04d00d71c64780%22
+    body: bundle-ibm-granite-granite-4.1-30b-fp8.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.1-30b-fp8/aa99937ea2b8acf605601a0789ad2daea26b4c7e/model.sig?%2Fibm-granite%2Fgranite-4.1-30b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%225d17e96ba3ec57e7f7c31e8e0c04d00d71c64780%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.1-30b-fp8.json
+  - request: GET /api/models/ibm-granite/granite-timeseries-patchtst-fm-r2
+    status: 200
+    body: model-ibm-granite-granite-timeseries-patchtst-fm-r2.json
+  - request: GET /ibm-granite/granite-timeseries-patchtst-fm-r2/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-timeseries-patchtst-fm-r2/b125275f9204d37cbb81fe47b9cf5e08a521e829/model.sig?%2Fibm-granite%2Fgranite-timeseries-patchtst-fm-r2%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22b8c51851be0fe68561744edc63eba5b19844ddd9%22
+    body: bundle-ibm-granite-granite-timeseries-patchtst-fm-r2.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-timeseries-patchtst-fm-r2/b125275f9204d37cbb81fe47b9cf5e08a521e829/model.sig?%2Fibm-granite%2Fgranite-timeseries-patchtst-fm-r2%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22b8c51851be0fe68561744edc63eba5b19844ddd9%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-timeseries-patchtst-fm-r2.json
+  - request: GET /api/models/huihui-ai/Huihui-granite-4.1-3b-abliterated
+    status: 200
+    body: model-huihui-ai-Huihui-granite-4.1-3b-abliterated.json
+  - request: GET /huihui-ai/Huihui-granite-4.1-3b-abliterated/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/huihui-ai/Huihui-granite-4.1-3b-abliterated/338ec9f827d47e19fa854c2e3467bfbfd4fa486d/model.sig?%2Fhuihui-ai%2FHuihui-granite-4.1-3b-abliterated%2Fresolve%2Fmain%2Fmodel.sig=&etag=%220d2c3026d6f1d87888df90972a7595e4e958a990%22
+    body: bundle-huihui-ai-Huihui-granite-4.1-3b-abliterated.json
+  - request: GET /api/resolve-cache/models/huihui-ai/Huihui-granite-4.1-3b-abliterated/338ec9f827d47e19fa854c2e3467bfbfd4fa486d/model.sig?%2Fhuihui-ai%2FHuihui-granite-4.1-3b-abliterated%2Fresolve%2Fmain%2Fmodel.sig=&etag=%220d2c3026d6f1d87888df90972a7595e4e958a990%22
+    status: 200
+    body: cached-bundle-huihui-ai-Huihui-granite-4.1-3b-abliterated.json
+  - request: GET /api/organizations/huihui-ai/overview
+    status: 404
+    body: org-huihui-ai.json
+  - request: GET /api/users/huihui-ai/overview
+    status: 200
+    body: user-huihui-ai.json
+  - request: GET /api/models/ibm-granite/granite-4.1-3b-fp8
+    status: 200
+    body: model-ibm-granite-granite-4.1-3b-fp8.json
+  - request: GET /ibm-granite/granite-4.1-3b-fp8/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.1-3b-fp8/cb2c6e010b2ab22a6f02b36a2751ca1ee6fc05f5/model.sig?%2Fibm-granite%2Fgranite-4.1-3b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22622be865f1f9356209efd92ce707ab743c834c42%22
+    body: bundle-ibm-granite-granite-4.1-3b-fp8.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.1-3b-fp8/cb2c6e010b2ab22a6f02b36a2751ca1ee6fc05f5/model.sig?%2Fibm-granite%2Fgranite-4.1-3b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22622be865f1f9356209efd92ce707ab743c834c42%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.1-3b-fp8.json
+  - request: GET /api/models/ibm-granite/granite-4.2-30b-nvfp4
+    status: 200
+    body: model-ibm-granite-granite-4.2-30b-nvfp4.json
+  - request: GET /ibm-granite/granite-4.2-30b-nvfp4/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-30b-nvfp4/bddf34bc6db17e5c4f586e49c1668c8e97610446/model.sig?%2Fibm-granite%2Fgranite-4.2-30b-nvfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22f2cac73b399eb38def8419cd942898749fb47431%22
+    body: bundle-ibm-granite-granite-4.2-30b-nvfp4.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-30b-nvfp4/bddf34bc6db17e5c4f586e49c1668c8e97610446/model.sig?%2Fibm-granite%2Fgranite-4.2-30b-nvfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22f2cac73b399eb38def8419cd942898749fb47431%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-30b-nvfp4.json
+  - request: GET /api/models/ibm-granite/granite-switch-4.1-3b-preview
+    status: 200
+    body: model-ibm-granite-granite-switch-4.1-3b-preview.json
+  - request: GET /ibm-granite/granite-switch-4.1-3b-preview/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-switch-4.1-3b-preview/7a3ac02e07868411424ac89440397b475da66fa7/model.sig?%2Fibm-granite%2Fgranite-switch-4.1-3b-preview%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2291300fd306e7e58c9517d18531e4b78a0bc3384e%22
+    body: bundle-ibm-granite-granite-switch-4.1-3b-preview.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-switch-4.1-3b-preview/7a3ac02e07868411424ac89440397b475da66fa7/model.sig?%2Fibm-granite%2Fgranite-switch-4.1-3b-preview%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2291300fd306e7e58c9517d18531e4b78a0bc3384e%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-switch-4.1-3b-preview.json
+  - request: GET /api/models/ibm-granite/granite-speech-5.0-470m-turboctc-nc
+    status: 200
+    body: model-ibm-granite-granite-speech-5.0-470m-turboctc-nc.json
+  - request: GET /ibm-granite/granite-speech-5.0-470m-turboctc-nc/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-speech-5.0-470m-turboctc-nc/0eb7b4fe726a294815dc45d342860465b5af68ef/model.sig?%2Fibm-granite%2Fgranite-speech-5.0-470m-turboctc-nc%2Fresolve%2Fmain%2Fmodel.sig=&etag=%229b65b446042f88312ed4fa0e67fcabcef164c819%22
+    body: bundle-ibm-granite-granite-speech-5.0-470m-turboctc-nc.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-speech-5.0-470m-turboctc-nc/0eb7b4fe726a294815dc45d342860465b5af68ef/model.sig?%2Fibm-granite%2Fgranite-speech-5.0-470m-turboctc-nc%2Fresolve%2Fmain%2Fmodel.sig=&etag=%229b65b446042f88312ed4fa0e67fcabcef164c819%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-speech-5.0-470m-turboctc-nc.json
+  - request: GET /api/models/ibm-granite/granite-4.1-30b-base
+    status: 200
+    body: model-ibm-granite-granite-4.1-30b-base.json
+  - request: GET /ibm-granite/granite-4.1-30b-base/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.1-30b-base/9bb22a92d17f4a51788c4750d32764ed068d94f2/model.sig?%2Fibm-granite%2Fgranite-4.1-30b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2254351eaeaca4ba820a13c2a34f48898bd93835eb%22
+    body: bundle-ibm-granite-granite-4.1-30b-base.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.1-30b-base/9bb22a92d17f4a51788c4750d32764ed068d94f2/model.sig?%2Fibm-granite%2Fgranite-4.1-30b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2254351eaeaca4ba820a13c2a34f48898bd93835eb%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.1-30b-base.json
+  - request: GET /api/models/cyankiwi/granite-4.1-8b-AWQ-INT4
+    status: 200
+    body: model-cyankiwi-granite-4.1-8b-AWQ-INT4.json
+  - request: GET /cyankiwi/granite-4.1-8b-AWQ-INT4/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/cyankiwi/granite-4.1-8b-AWQ-INT4/fa064183bb41de889823fe192a80c83eaced4f90/model.sig?%2Fcyankiwi%2Fgranite-4.1-8b-AWQ-INT4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2256486ff720b957fdba322b3d39d5076122c971ec%22
+    body: bundle-cyankiwi-granite-4.1-8b-AWQ-INT4.json
+  - request: GET /api/resolve-cache/models/cyankiwi/granite-4.1-8b-AWQ-INT4/fa064183bb41de889823fe192a80c83eaced4f90/model.sig?%2Fcyankiwi%2Fgranite-4.1-8b-AWQ-INT4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2256486ff720b957fdba322b3d39d5076122c971ec%22
+    status: 200
+    body: cached-bundle-cyankiwi-granite-4.1-8b-AWQ-INT4.json
+  - request: GET /api/models/unsloth/granite-4.0-h-tiny
+    status: 200
+    body: model-unsloth-granite-4.0-h-tiny.json
+  - request: GET /unsloth/granite-4.0-h-tiny/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/unsloth/granite-4.0-h-tiny/3af1d9261fb89e676b137cb8bb37f594775f3d56/model.sig?%2Funsloth%2Fgranite-4.0-h-tiny%2Fresolve%2Fmain%2Fmodel.sig=&etag=%222d0b5f8fca8de98c4dffcb7c61da89d7c6529032%22
+    body: bundle-unsloth-granite-4.0-h-tiny.json
+  - request: GET /api/resolve-cache/models/unsloth/granite-4.0-h-tiny/3af1d9261fb89e676b137cb8bb37f594775f3d56/model.sig?%2Funsloth%2Fgranite-4.0-h-tiny%2Fresolve%2Fmain%2Fmodel.sig=&etag=%222d0b5f8fca8de98c4dffcb7c61da89d7c6529032%22
+    status: 200
+    body: cached-bundle-unsloth-granite-4.0-h-tiny.json
+  - request: GET /api/organizations/unsloth/overview
+    status: 200
+    body: org-unsloth.json
+  - request: GET /api/models/ibm-granite/granite-4.2-8b-fp8
+    status: 200
+    body: model-ibm-granite-granite-4.2-8b-fp8.json
+  - request: GET /ibm-granite/granite-4.2-8b-fp8/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-8b-fp8/6eb3735036ce2010f4ec8319820172a1c06508d7/model.sig?%2Fibm-granite%2Fgranite-4.2-8b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2211538becdcb48679520690520434c497f82c9814%22
+    body: bundle-ibm-granite-granite-4.2-8b-fp8.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-8b-fp8/6eb3735036ce2010f4ec8319820172a1c06508d7/model.sig?%2Fibm-granite%2Fgranite-4.2-8b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2211538becdcb48679520690520434c497f82c9814%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-8b-fp8.json
+  - request: GET /api/models/ibm-granite/granite-4.2-30b-fp8
+    status: 200
+    body: model-ibm-granite-granite-4.2-30b-fp8.json
+  - request: GET /ibm-granite/granite-4.2-30b-fp8/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-30b-fp8/bee6d7463fd7064455f59ac480a3fcdcae5cb801/model.sig?%2Fibm-granite%2Fgranite-4.2-30b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2229978607de885bc4177ca3aabcf7860c46dce42d%22
+    body: bundle-ibm-granite-granite-4.2-30b-fp8.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-30b-fp8/bee6d7463fd7064455f59ac480a3fcdcae5cb801/model.sig?%2Fibm-granite%2Fgranite-4.2-30b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2229978607de885bc4177ca3aabcf7860c46dce42d%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-30b-fp8.json
+  - request: GET /api/models/ibm-granite/granite-4.0-h-micro-base
+    status: 200
+    body: model-ibm-granite-granite-4.0-h-micro-base.json
+  - request: GET /ibm-granite/granite-4.0-h-micro-base/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-h-micro-base/372ede0bc484284e08ce574e773c96cd2b89b367/model.sig?%2Fibm-granite%2Fgranite-4.0-h-micro-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22caf76541266d26ee5701a58c43fbf7028e529373%22
+    body: bundle-ibm-granite-granite-4.0-h-micro-base.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-h-micro-base/372ede0bc484284e08ce574e773c96cd2b89b367/model.sig?%2Fibm-granite%2Fgranite-4.0-h-micro-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22caf76541266d26ee5701a58c43fbf7028e529373%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-h-micro-base.json
+  - request: GET /api/models/ibm-granite/granite-4.2-8b-nvfp4
+    status: 200
+    body: model-ibm-granite-granite-4.2-8b-nvfp4.json
+  - request: GET /ibm-granite/granite-4.2-8b-nvfp4/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-8b-nvfp4/fd3b6082de9225a8e866d7f80d96cdc22f1ae89e/model.sig?%2Fibm-granite%2Fgranite-4.2-8b-nvfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%220ff1244f9738edebb872952700b5a62c997e0334%22
+    body: bundle-ibm-granite-granite-4.2-8b-nvfp4.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-8b-nvfp4/fd3b6082de9225a8e866d7f80d96cdc22f1ae89e/model.sig?%2Fibm-granite%2Fgranite-4.2-8b-nvfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%220ff1244f9738edebb872952700b5a62c997e0334%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-8b-nvfp4.json
+  - request: GET /api/models/unsloth/granite-4.1-3b
+    status: 200
+    body: model-unsloth-granite-4.1-3b.json
+  - request: GET /unsloth/granite-4.1-3b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/unsloth/granite-4.1-3b/e42729497b5d4dc8a8dbd069bae5fd695f8cee49/model.sig?%2Funsloth%2Fgranite-4.1-3b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%220d2c3026d6f1d87888df90972a7595e4e958a990%22
+    body: bundle-unsloth-granite-4.1-3b.json
+  - request: GET /api/resolve-cache/models/unsloth/granite-4.1-3b/e42729497b5d4dc8a8dbd069bae5fd695f8cee49/model.sig?%2Funsloth%2Fgranite-4.1-3b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%220d2c3026d6f1d87888df90972a7595e4e958a990%22
+    status: 200
+    body: cached-bundle-unsloth-granite-4.1-3b.json
+  - request: GET /api/models/ibm-granite/granite-switch-4.1-8b-preview
+    status: 200
+    body: model-ibm-granite-granite-switch-4.1-8b-preview.json
+  - request: GET /ibm-granite/granite-switch-4.1-8b-preview/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-switch-4.1-8b-preview/c739556e0b2c66f21e5108dc4036f52e1893e256/model.sig?%2Fibm-granite%2Fgranite-switch-4.1-8b-preview%2Fresolve%2Fmain%2Fmodel.sig=&etag=%221101b0bd179ba4e616aeb9959c5f8054189f135c%22
+    body: bundle-ibm-granite-granite-switch-4.1-8b-preview.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-switch-4.1-8b-preview/c739556e0b2c66f21e5108dc4036f52e1893e256/model.sig?%2Fibm-granite%2Fgranite-switch-4.1-8b-preview%2Fresolve%2Fmain%2Fmodel.sig=&etag=%221101b0bd179ba4e616aeb9959c5f8054189f135c%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-switch-4.1-8b-preview.json
+  - request: GET /api/models/unsloth/granite-4.1-8b
+    status: 200
+    body: model-unsloth-granite-4.1-8b.json
+  - request: GET /unsloth/granite-4.1-8b/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/unsloth/granite-4.1-8b/acb681dfd7b46ea403274f041c70d28da947b1ab/model.sig?%2Funsloth%2Fgranite-4.1-8b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2256486ff720b957fdba322b3d39d5076122c971ec%22
+    body: bundle-unsloth-granite-4.1-8b.json
+  - request: GET /api/resolve-cache/models/unsloth/granite-4.1-8b/acb681dfd7b46ea403274f041c70d28da947b1ab/model.sig?%2Funsloth%2Fgranite-4.1-8b%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2256486ff720b957fdba322b3d39d5076122c971ec%22
+    status: 200
+    body: cached-bundle-unsloth-granite-4.1-8b.json
+  - request: GET /api/models/ibm-granite/granite-switch-4.1-30b-preview
+    status: 200
+    body: model-ibm-granite-granite-switch-4.1-30b-preview.json
+  - request: GET /ibm-granite/granite-switch-4.1-30b-preview/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-switch-4.1-30b-preview/b2d1c82bbd5913f8a07e35c911b402783d1423e1/model.sig?%2Fibm-granite%2Fgranite-switch-4.1-30b-preview%2Fresolve%2Fmain%2Fmodel.sig=&etag=%225724758a89c3964c0af1d83bd470832260c812da%22
+    body: bundle-ibm-granite-granite-switch-4.1-30b-preview.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-switch-4.1-30b-preview/b2d1c82bbd5913f8a07e35c911b402783d1423e1/model.sig?%2Fibm-granite%2Fgranite-switch-4.1-30b-preview%2Fresolve%2Fmain%2Fmodel.sig=&etag=%225724758a89c3964c0af1d83bd470832260c812da%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-switch-4.1-30b-preview.json
+  - request: GET /api/models/ibm-granite/granite-4.2-8b-mxfp4
+    status: 200
+    body: model-ibm-granite-granite-4.2-8b-mxfp4.json
+  - request: GET /ibm-granite/granite-4.2-8b-mxfp4/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-8b-mxfp4/1e429c026f7a94ac22da2f604b7440b4e806d50c/model.sig?%2Fibm-granite%2Fgranite-4.2-8b-mxfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2230ece6c3bd0d55f8e9cc532923998a11ae5ed423%22
+    body: bundle-ibm-granite-granite-4.2-8b-mxfp4.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-8b-mxfp4/1e429c026f7a94ac22da2f604b7440b4e806d50c/model.sig?%2Fibm-granite%2Fgranite-4.2-8b-mxfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2230ece6c3bd0d55f8e9cc532923998a11ae5ed423%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-8b-mxfp4.json
+  - request: GET /api/models/ibm-granite/granite-4.2-3b-nvfp4
+    status: 200
+    body: model-ibm-granite-granite-4.2-3b-nvfp4.json
+  - request: GET /ibm-granite/granite-4.2-3b-nvfp4/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-3b-nvfp4/c30d480be0e8440e84835497f00218628fc2ab1c/model.sig?%2Fibm-granite%2Fgranite-4.2-3b-nvfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2292c339ce5df62f2a176ae415fe850f212a00f1c9%22
+    body: bundle-ibm-granite-granite-4.2-3b-nvfp4.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-3b-nvfp4/c30d480be0e8440e84835497f00218628fc2ab1c/model.sig?%2Fibm-granite%2Fgranite-4.2-3b-nvfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2292c339ce5df62f2a176ae415fe850f212a00f1c9%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-3b-nvfp4.json
+  - request: GET /api/models/ibm-granite/granite-4.2-3b-mxfp4
+    status: 200
+    body: model-ibm-granite-granite-4.2-3b-mxfp4.json
+  - request: GET /ibm-granite/granite-4.2-3b-mxfp4/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-3b-mxfp4/40caf0f3c49b05128358355ff01faf2df10f62f9/model.sig?%2Fibm-granite%2Fgranite-4.2-3b-mxfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2245207b23c85f53cc1f35e32b070a027fd92efafe%22
+    body: bundle-ibm-granite-granite-4.2-3b-mxfp4.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-3b-mxfp4/40caf0f3c49b05128358355ff01faf2df10f62f9/model.sig?%2Fibm-granite%2Fgranite-4.2-3b-mxfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2245207b23c85f53cc1f35e32b070a027fd92efafe%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-3b-mxfp4.json
+  - request: GET /api/models/ibm-granite/granite-4.2-30b-mxfp4
+    status: 200
+    body: model-ibm-granite-granite-4.2-30b-mxfp4.json
+  - request: GET /ibm-granite/granite-4.2-30b-mxfp4/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-30b-mxfp4/8d0c2fb8cf713cae830f1f315925104b0f375b72/model.sig?%2Fibm-granite%2Fgranite-4.2-30b-mxfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22e798ff2854fb91c750007f3f363e7758fd4cb95b%22
+    body: bundle-ibm-granite-granite-4.2-30b-mxfp4.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-30b-mxfp4/8d0c2fb8cf713cae830f1f315925104b0f375b72/model.sig?%2Fibm-granite%2Fgranite-4.2-30b-mxfp4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22e798ff2854fb91c750007f3f363e7758fd4cb95b%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-30b-mxfp4.json
+  - request: GET /api/models/ibm-granite/granite-4.0-micro-base
+    status: 200
+    body: model-ibm-granite-granite-4.0-micro-base.json
+  - request: GET /ibm-granite/granite-4.0-micro-base/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-micro-base/98e1d641451818f6c8e6b17c1c359b5b4ac495d0/model.sig?%2Fibm-granite%2Fgranite-4.0-micro-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22bb44c143eb896d31facb21ca3382573d311b9baf%22
+    body: bundle-ibm-granite-granite-4.0-micro-base.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-micro-base/98e1d641451818f6c8e6b17c1c359b5b4ac495d0/model.sig?%2Fibm-granite%2Fgranite-4.0-micro-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22bb44c143eb896d31facb21ca3382573d311b9baf%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-micro-base.json
+  - request: GET /api/models/ibm-granite/granite-4.2-3b-fp8
+    status: 200
+    body: model-ibm-granite-granite-4.2-3b-fp8.json
+  - request: GET /ibm-granite/granite-4.2-3b-fp8/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.2-3b-fp8/579eab44700093cf415d70534060b653dc4d6b45/model.sig?%2Fibm-granite%2Fgranite-4.2-3b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22d3dd1c02e5cbbdd2f306ac2827a8d6ae6f358cd9%22
+    body: bundle-ibm-granite-granite-4.2-3b-fp8.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.2-3b-fp8/579eab44700093cf415d70534060b653dc4d6b45/model.sig?%2Fibm-granite%2Fgranite-4.2-3b-fp8%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22d3dd1c02e5cbbdd2f306ac2827a8d6ae6f358cd9%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.2-3b-fp8.json
+  - request: GET /api/models/cyankiwi/granite-4.1-30b-AWQ-INT4
+    status: 200
+    body: model-cyankiwi-granite-4.1-30b-AWQ-INT4.json
+  - request: GET /cyankiwi/granite-4.1-30b-AWQ-INT4/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/cyankiwi/granite-4.1-30b-AWQ-INT4/b83a2effb72953db295717abb335aa7948c1bf46/model.sig?%2Fcyankiwi%2Fgranite-4.1-30b-AWQ-INT4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2260745f99f908d29d0b4760df0b07b57386e4afa4%22
+    body: bundle-cyankiwi-granite-4.1-30b-AWQ-INT4.json
+  - request: GET /api/resolve-cache/models/cyankiwi/granite-4.1-30b-AWQ-INT4/b83a2effb72953db295717abb335aa7948c1bf46/model.sig?%2Fcyankiwi%2Fgranite-4.1-30b-AWQ-INT4%2Fresolve%2Fmain%2Fmodel.sig=&etag=%2260745f99f908d29d0b4760df0b07b57386e4afa4%22
+    status: 200
+    body: cached-bundle-cyankiwi-granite-4.1-30b-AWQ-INT4.json
+  - request: GET /api/models/ibm-granite/granite-4.0-h-1b-base
+    status: 200
+    body: model-ibm-granite-granite-4.0-h-1b-base.json
+  - request: GET /ibm-granite/granite-4.0-h-1b-base/resolve/main/model.sig
+    status: 307
+    location: /api/resolve-cache/models/ibm-granite/granite-4.0-h-1b-base/8d34631309affca6f6f8350684ddcb8994b0dc31/model.sig?%2Fibm-granite%2Fgranite-4.0-h-1b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22bff65130979e5097cc18452cb4458e4b21307e0c%22
+    body: bundle-ibm-granite-granite-4.0-h-1b-base.json
+  - request: GET /api/resolve-cache/models/ibm-granite/granite-4.0-h-1b-base/8d34631309affca6f6f8350684ddcb8994b0dc31/model.sig?%2Fibm-granite%2Fgranite-4.0-h-1b-base%2Fresolve%2Fmain%2Fmodel.sig=&etag=%22bff65130979e5097cc18452cb4458e4b21307e0c%22
+    status: 200
+    body: cached-bundle-ibm-granite-granite-4.0-h-1b-base.json

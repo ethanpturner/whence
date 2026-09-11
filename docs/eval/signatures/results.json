@@ -1,0 +1,2215 @@
+{
+  "swept": "2026-09-10",
+  "swept_models": 45000,
+  "signed_models": 64,
+  "detection": {
+    "unverifiable": 64
+  },
+  "verifies": {
+    "None": 1,
+    "True": 63
+  },
+  "verification_material": {
+    "[\"certificate\"]": 63,
+    "[\"x509CertificateChain\"]": 1
+  },
+  "identity": {
+    "does-not-match": 7,
+    "matches": 56,
+    "undeterminable": 1
+  },
+  "signer_domain": {
+    "None": 1,
+    "ibm.com": 62,
+    "openai.com": 1
+  },
+  "namespaces": {
+    "cyankiwi": {
+      "models": 3,
+      "status": 200,
+      "name": "cyankiwi",
+      "fullname": "cyankiwi",
+      "isVerified": false,
+      "plan": "team",
+      "numModels": 322
+    },
+    "huihui-ai": {
+      "models": 1,
+      "status": 200,
+      "fullname": "huihui.ai",
+      "numModels": 182
+    },
+    "ibm-granite": {
+      "models": 56,
+      "status": 200,
+      "name": "ibm-granite",
+      "fullname": "IBM Granite",
+      "isVerified": false,
+      "plan": "enterprise",
+      "numModels": 241
+    },
+    "openai": {
+      "models": 1,
+      "status": 200,
+      "name": "openai",
+      "fullname": "OpenAI",
+      "isVerified": true,
+      "plan": "plus",
+      "numModels": 39
+    },
+    "unsloth": {
+      "models": 3,
+      "status": 200,
+      "name": "unsloth",
+      "fullname": "Unsloth AI",
+      "isVerified": true,
+      "plan": "team",
+      "numModels": 1457
+    }
+  },
+  "bundles_shared_across_models": 6,
+  "models_with_unsigned_present_files": 9,
+  "models_with_signed_absent_files": 6,
+  "rows": [
+    {
+      "model": "ibm-granite/granite-4.1-30b",
+      "revision": "4fae6278f7132abf5e971f9de49ebbad09c54cce",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 24,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1437773705",
+      "payload_sha256": "47e778cae90156e50fc248dcb907c8d666593bb4974108ec91235429925f9e42",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-30b"
+      ],
+      "signed_files": 22,
+      "signed_and_present": 22,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-speech-4.1-2b",
+      "revision": "de575db64086f84fdc79da4932d1076e965bc546",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 29,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1804178216",
+      "payload_sha256": "ada252585c0daffe7a8f34d2a04bf499f103f3e3eb10b59cc9977b08db9d7f6d",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-speech-4.1-2b"
+      ],
+      "signed_files": 27,
+      "signed_and_present": 27,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "openai/privacy-filter",
+      "revision": "7ffa9a043d54d1be65afb281eddf0ffbe629385b",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 25,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1354612699",
+      "payload_sha256": "55f82afd55778156b5853bb50cdf41946553320e9de8feb98f43680ba0499566",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "original"
+      ],
+      "signed_files": 4,
+      "signed_and_present": 4,
+      "signed_but_absent": [],
+      "present_but_unsigned": [
+        "README.md",
+        "onnx/model.onnx",
+        "onnx/model.onnx_data",
+        "onnx/model.onnx_data_1",
+        "onnx/model.onnx_data_2",
+        "onnx/model_fp16.onnx",
+        "onnx/model_fp16.onnx_data",
+        "onnx/model_fp16.onnx_data_1",
+        "onnx/model_q4.onnx",
+        "onnx/model_q4.onnx_data",
+        "onnx/model_q4f16.onnx",
+        "onnx/model_q4f16.onnx_data",
+        "onnx/model_quantized.onnx",
+        "onnx/model_quantized.onnx_data",
+        "original/config.json",
+        "original/model.safetensors",
+        "original/viterbi_calibration.json",
+        "tokenizer.json",
+        "tokenizer_config.json"
+      ],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "mihaimaruseac@openai.com"
+      ],
+      "issuer": "https://github.com/login/oauth",
+      "signer_domain": "openai.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.1-3b",
+      "revision": "c0650403e44e78ec0262dab1c90914c65b196c4e",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1437810623",
+      "payload_sha256": "db1bb33816e938d4dbcc121ebc5c828a00478f1b44194d051f41c49f908b253b",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-3b"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": [
+        "cyankiwi/granite-4.1-3b-AWQ-INT4"
+      ]
+    },
+    {
+      "model": "ibm-granite/granite-4.2-30b-GGUF",
+      "revision": "27b350a791e81d9a4d1ddca1c49282e9ec533768",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 20,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2691307099",
+      "payload_sha256": "bafe1a06ae56ccb8a60ad0087b55dd6d8614ef38716405c1505d8918078c5877",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-30b-GGUF"
+      ],
+      "signed_files": 18,
+      "signed_and_present": 18,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-8b-GGUF",
+      "revision": "93f3f6a8938ee922b784cf4e5b4203cd3428df8f",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 19,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690851747",
+      "payload_sha256": "42c04b01aad9483dde25c7e16503775819d2ef040f21ea2d967d7f1ef4032886",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-8b-GGUF"
+      ],
+      "signed_files": 17,
+      "signed_and_present": 17,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-3b-GGUF",
+      "revision": "c40945d71cd90f249a56985e8155551a9188dc30",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 19,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690842393",
+      "payload_sha256": "a7eabfd1f78e50412ab916c5c9c349a0cd2c28ad30372c3e05b6deefdbff2cfa",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-3b-GGUF"
+      ],
+      "signed_files": 17,
+      "signed_and_present": 17,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.1-8b",
+      "revision": "1504002f650e656a0a3789d99574df12e3e94ed0",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 16,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1437811208",
+      "payload_sha256": "858725c6c0d218b5cd7f57e1b049524311292fcfde65fb97416705f3d611eb11",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-8b"
+      ],
+      "signed_files": 14,
+      "signed_and_present": 14,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-speech-4.1-2b-plus",
+      "revision": "1454e6e1e33845ca9280ff65f52cf1141ba6e6e2",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 13,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1840650155",
+      "payload_sha256": "7e22924280641f8a6cc8d23b1558ce58c59273b1a301e86764addaf2750d4c2e",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-speech-4.1-2b-plus"
+      ],
+      "signed_files": 11,
+      "signed_and_present": 11,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-embedding-311m-multilingual-r2",
+      "revision": "44399559930365213510b1ee2eb15ded83374f0e",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 20,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1569463614",
+      "payload_sha256": "cf6966f2146b12e75f52f62568186d1ef874900017d8969c4c48c75723019326",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-embedding-311m-multilingual-r2"
+      ],
+      "signed_files": 18,
+      "signed_and_present": 18,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-vision-4.1-4b",
+      "revision": "37d591f06319e8f1638b5adcf58bdf50e0f84f7a",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 31,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1450033429",
+      "payload_sha256": "bcbe8be5a30a4e973c51af0a4d68a117cac062092f1c6682a4fa8fd7be21a5e3",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-vision-4.1-4b"
+      ],
+      "signed_files": 30,
+      "signed_and_present": 29,
+      "signed_but_absent": [
+        "added_tokens.json"
+      ],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-embedding-97m-multilingual-r2",
+      "revision": "835ad14087e140460703cf0fae09f97d469d65c2",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 18,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1569462913",
+      "payload_sha256": "29f05a991cd0a37637263f43c7175fb7ec768dfb0c747fc368cd47d06b7fd903",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-embedding-97m-multilingual-r2"
+      ],
+      "signed_files": 16,
+      "signed_and_present": 16,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-speech-4.1-2b-nar",
+      "revision": "a1e3416e25ce29ab3852778e54fa8b3bd59c4bf2",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 21,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1411873787",
+      "payload_sha256": "2d9d74d5a7d445ed2508f38c3181935e93da8858957812727d5c553ef1810efc",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-speech-4.1-2b-nar"
+      ],
+      "signed_files": 21,
+      "signed_and_present": 13,
+      "signed_but_absent": [
+        "configuration_nle.py",
+        "feature_extraction_nle.py",
+        "merges.txt",
+        "modeling_conformer.py",
+        "modeling_ctc.py",
+        "modeling_nle.py",
+        "modeling_projector.py",
+        "tokenizer.py"
+      ],
+      "present_but_unsigned": [
+        "configuration_granite_speech_nar.py",
+        "feature_extraction_granite_speech_nar.py",
+        "generation_config.json",
+        "modeling_granite_speech_nar.py",
+        "processing_granite_speech_nar.py",
+        "processor_config.json"
+      ],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-timeseries-ttm-r3",
+      "revision": "ea17cfd2e3edcaea21eb8dcecd18bf88971482fa",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 6,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2012738322",
+      "payload_sha256": "57b6a468c942b5101bacc144c797bcef5d2390c60b15a901573defd90ad426e2",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "main"
+      ],
+      "signed_files": 4,
+      "signed_and_present": 4,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-tiny-preview",
+      "revision": "4ec5f963443b2e15e9be82595289e96ff082e280",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 12,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "664131763",
+      "payload_sha256": "69b72d830d28e2ca6bec787e9744ee1b65d907f0df5f2e16ebf6498fa161cca8",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-tiny-preview"
+      ],
+      "signed_files": 10,
+      "signed_and_present": 10,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite.Preview@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-h-tiny",
+      "revision": "791e0d3d28c86e106c9b6e0b4cecdee0375b6124",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 15,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "663838764",
+      "payload_sha256": "4d593a02188d934df3592b8395d8c8025cc012b326c37e680e53c1fac15189e9",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-h-tiny"
+      ],
+      "signed_files": 13,
+      "signed_and_present": 13,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-micro",
+      "revision": "56111ae135df9c53a78c99028e7bc24035a9e979",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "663819238",
+      "payload_sha256": "5e297bd892eca33cf450db6c8197ab2571679012925a7d88f2267f5ebe2692d2",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-micro"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-guardian-4.1-8b",
+      "revision": "ab01ccca5dcfb80246369a086a4a87a29198f5af",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 16,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2617645614",
+      "payload_sha256": "c255912b143ca0c08359c2be6185be772904147e78dd3dacaf0cc2295795def4",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-guardian-4.1-8b-OFFICIAL"
+      ],
+      "signed_files": 14,
+      "signed_and_present": 14,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-timeseries-flowstate-r1",
+      "revision": "05effc6cb39ee16dce9dd0064ed1a76e4b8ff464",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 7,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1401813979",
+      "payload_sha256": "b57c94d90dcd7ee1526493cb6fb09af51a668fc37b0b2424fe086572524fbfb8",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-main"
+      ],
+      "signed_files": 5,
+      "signed_and_present": 5,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-8b",
+      "revision": "f8de16cdcdbc6c779ca517604e050d82cc119e44",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 17,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2716160115",
+      "payload_sha256": "6fac0ec5b29d53b35b69e9cfa9b70ff0cfeba35ddf4bacf0632a72d9e277dfcb",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-8b"
+      ],
+      "signed_files": 15,
+      "signed_and_present": 15,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-3b",
+      "revision": "e459acceac81e5fe67c07d9cfc72329a332e7eb1",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 15,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2691320555",
+      "payload_sha256": "ee61a66657c055748304aa2927f60e107fb72ffde197ffc9e7f0e686de302328",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-3b"
+      ],
+      "signed_files": 13,
+      "signed_and_present": 13,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-1b-base",
+      "revision": "15148e99f8ca689325e2067ba282b23dec6670c7",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 11,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1805627272",
+      "payload_sha256": "ca56e60263bc3f43bedd9696beda63242904916d6131a4fb079c83249b181d43",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-1b-base"
+      ],
+      "signed_files": 9,
+      "signed_and_present": 9,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-h-small",
+      "revision": "b8c0982bab7fde4eb48110f5a069527c008fab39",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 26,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "663844253",
+      "payload_sha256": "3fd4396f58767e7ed9bb59ba2ee120502abe3a7cf34a4811fc3d0359dd270a79",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-h-small"
+      ],
+      "signed_files": 24,
+      "signed_and_present": 24,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.1-8b-fp8",
+      "revision": "070021b3608433b6107a00733d561c9779b9937e",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 15,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1404134598",
+      "payload_sha256": "18adb1d45b3431770cc23c6df8ed2bd83631343044e7027cca907a9eafc8ceba",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-8b-fp8"
+      ],
+      "signed_files": 13,
+      "signed_and_present": 13,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-speech-5.0-470m-turboctc",
+      "revision": "18ca3c1de6cd092b5a30c39fb0f04550b38ed1a0",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2583532501",
+      "payload_sha256": "ba61197280a86f8ea6ce103d1ea8512831ab4fd8319e25c0d4255f9df8b5bd65",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-speech-5.0-470m-turboctc"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-1b",
+      "revision": "6a7381ba1f54d684ff508d991aeb7dc580157103",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 12,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "632554867",
+      "payload_sha256": "b2cb6126cd85344740349ca13c549bec2e76a4290055c3df7549f801541dbe8e",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-1b"
+      ],
+      "signed_files": 10,
+      "signed_and_present": 10,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-350m",
+      "revision": "bd8a1497065c0d6ba1ef19af6b0d2b14bacf71c2",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 12,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "632561968",
+      "payload_sha256": "680b14f2b217ab859f014f1b9125f1787b1852563ba5dfc927d9989bbc6887ce",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-350m"
+      ],
+      "signed_files": 10,
+      "signed_and_present": 10,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-30b",
+      "revision": "9e668ce1c538387ef24d3644e9b0606647762636",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 24,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2716158769",
+      "payload_sha256": "edc6805c3b32bab786285bb6a041d9ea534658fbd6cca10d0eaca0a73ae6db39",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-30b"
+      ],
+      "signed_files": 22,
+      "signed_and_present": 22,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-swash-2b",
+      "revision": "af1e3227100b61088eead48389ab5409b5d0e39c",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 8,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2092348974",
+      "payload_sha256": "6a1da0d2628daffdbd7d050e0ff9c4d08110fdc4cc0db88df7cc61f8d99baaa1",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-swash-2b"
+      ],
+      "signed_files": 6,
+      "signed_and_present": 6,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-swash-3b-a600m",
+      "revision": "568a94fcfeff42a8cab9ee2ffea89fde12071282",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 9,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2132443032",
+      "payload_sha256": "42f12dbb2654f4fafc11c54f39d113e1603a6da055ca413c07eed54df42389b8",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-swash-3b-a600m"
+      ],
+      "signed_files": 7,
+      "signed_and_present": 7,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.1-3b-base",
+      "revision": "dacb9cb9157bec98e99b09f285c92a4d58405c96",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 13,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1398619323",
+      "payload_sha256": "0b58b2ac709e18c45fc8f7c93f49dce370dfd45179f7bf562d77adf4c169df29",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-3b-base"
+      ],
+      "signed_files": 11,
+      "signed_and_present": 11,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-h-micro",
+      "revision": "d5f01a3ea75f088947be3aae039f4ad52837dfde",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "663831910",
+      "payload_sha256": "824e7678f08671b122df4bcd92eecaffa5de50b3354f4c8e94ca6fedc13b20c4",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-h-micro"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "cyankiwi/granite-4.1-3b-AWQ-INT4",
+      "revision": "8b08334b436063f4196a72b387081631978ceeff",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 12,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1437810623",
+      "payload_sha256": "db1bb33816e938d4dbcc121ebc5c828a00478f1b44194d051f41c49f908b253b",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-3b"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 9,
+      "signed_but_absent": [
+        "model-00001-of-00002.safetensors",
+        "model-00002-of-00002.safetensors",
+        "model.safetensors.index.json"
+      ],
+      "present_but_unsigned": [
+        "model.safetensors"
+      ],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "does-not-match",
+      "bundle_shared_with": [
+        "ibm-granite/granite-4.1-3b"
+      ]
+    },
+    {
+      "model": "ibm-granite/granite-4.0-h-350m",
+      "revision": "3b17b717b8f2f5d305b0a92c1491e239aeda19c8",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 12,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "632572567",
+      "payload_sha256": "756b33d79256a00bf7bd78ed2e4b139d1660823200b486a1c93d7d5723f53bc7",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-h-350m"
+      ],
+      "signed_files": 10,
+      "signed_and_present": 10,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.1-8b-base",
+      "revision": "cbc32f94fbf8179ca4b22b664831f6a73965bb16",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 13,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1398616439",
+      "payload_sha256": "f92657669c1946a3a8c66f35ca952a0f3a99c4d733c6dd865646d6ae876a9be3",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-8b-base"
+      ],
+      "signed_files": 11,
+      "signed_and_present": 11,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-h-1b",
+      "revision": "d18cca4c121edb87d022116d281ce212c9136f57",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 10,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "632569609",
+      "payload_sha256": "41d5a0ea570f102346a972fb33fb5e7c101c6fa0e31a59a8a314df0d38907644",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-h-1b"
+      ],
+      "signed_files": 8,
+      "signed_and_present": 8,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-h-350m-base",
+      "revision": "dc555b6939c863bb96034d1eae7601da36bd42e4",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 11,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "632721037",
+      "payload_sha256": "aa1c92358b52b8e246b3a377a91f04daa4015ea48a022cd4d8eb832e2117c6c6",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-h-350m-base"
+      ],
+      "signed_files": 9,
+      "signed_and_present": 9,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-350m-base",
+      "revision": "a50b46cef21c8a86b15f0496cb794487a78a910b",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 11,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "632720552",
+      "payload_sha256": "9ddbaa5ce00fe8e8c0f50ed731011e4e53bd7c2acbc6715387964b108d0c6faf",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-350m-base"
+      ],
+      "signed_files": 9,
+      "signed_and_present": 9,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.1-30b-fp8",
+      "revision": "aa99937ea2b8acf605601a0789ad2daea26b4c7e",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 20,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1370587537",
+      "payload_sha256": "b812d5a586d9375095dbecfbac57cd42f440a62753c19e3acad31d6f694ad98e",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-30b-fp8"
+      ],
+      "signed_files": 18,
+      "signed_and_present": 18,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-timeseries-patchtst-fm-r2",
+      "revision": "b125275f9204d37cbb81fe47b9cf5e08a521e829",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 10,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "x509CertificateChain"
+      ],
+      "tlog_entries": 0,
+      "log_index": null,
+      "payload_sha256": "80fe6e16611f47ab8793a9c0c8f086a3fd17bf8a3888dd5d6ae5aefaa88b9bcc",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-timeseries-patchtst-fm-r2"
+      ],
+      "signed_files": 9,
+      "signed_and_present": 8,
+      "signed_but_absent": [
+        "digicert-root.pem"
+      ],
+      "present_but_unsigned": [],
+      "verifies": null,
+      "verification_error": "InvalidBundle: expected certificate in bundle",
+      "signer": [],
+      "issuer": null,
+      "signer_domain": null,
+      "identity": "undeterminable",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "huihui-ai/Huihui-granite-4.1-3b-abliterated",
+      "revision": "338ec9f827d47e19fa854c2e3467bfbfd4fa486d",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 17,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1398631579",
+      "payload_sha256": "49ec408a63037d3a38c334b0643a75611ca2b33f28d3a98768ad32eb431f6ab6",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-3b"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [
+        "ggml-model-bf16.gguf",
+        "model_params1.txt",
+        "sharded_ablate.log"
+      ],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "does-not-match",
+      "bundle_shared_with": [
+        "unsloth/granite-4.1-3b"
+      ]
+    },
+    {
+      "model": "ibm-granite/granite-4.1-3b-fp8",
+      "revision": "cb2c6e010b2ab22a6f02b36a2751ca1ee6fc05f5",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 13,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1353140718",
+      "payload_sha256": "5807830397ee7f7d87c7d61f24ef7b92edf056cbde4c783830eefc2088b661ab",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-3b-fp8"
+      ],
+      "signed_files": 11,
+      "signed_and_present": 11,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-30b-nvfp4",
+      "revision": "bddf34bc6db17e5c4f586e49c1668c8e97610446",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 18,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690828956",
+      "payload_sha256": "bd1afdaa9902c5519d7ba547a4e2030117bd3ea7a3ae4015bace97be57d71a60",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-30b-nvfp4"
+      ],
+      "signed_files": 16,
+      "signed_and_present": 16,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-switch-4.1-3b-preview",
+      "revision": "7a3ac02e07868411424ac89440397b475da66fa7",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 29,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1437732968",
+      "payload_sha256": "dd29796ef25dcc77e09ce3226b9a419ca55eece661186d3fcc86a23c29112c33",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-switch-4.1-3b-preview"
+      ],
+      "signed_files": 26,
+      "signed_and_present": 26,
+      "signed_but_absent": [],
+      "present_but_unsigned": [
+        "README.md"
+      ],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-speech-5.0-470m-turboctc-nc",
+      "revision": "0eb7b4fe726a294815dc45d342860465b5af68ef",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2583536875",
+      "payload_sha256": "cd1bdc467c45cd0b21d4dad500f4788703d9074bff55e4410799ff2cb1cac18f",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-speech-5.0-470m-turboctc-nc"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.1-30b-base",
+      "revision": "9bb22a92d17f4a51788c4750d32764ed068d94f2",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 21,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1398627786",
+      "payload_sha256": "2e6688ce37016234a19efaab71e6003edc30ff7f7c6a18b1e3cc575ac824f361",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-30b-base"
+      ],
+      "signed_files": 19,
+      "signed_and_present": 19,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "cyankiwi/granite-4.1-8b-AWQ-INT4",
+      "revision": "fa064183bb41de889823fe192a80c83eaced4f90",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1398629833",
+      "payload_sha256": "14b50cb69d6d81e43df2e2d14f4b58617417833f8c8848ecef04105f299c7171",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-8b"
+      ],
+      "signed_files": 14,
+      "signed_and_present": 10,
+      "signed_but_absent": [
+        "model-00001-of-00004.safetensors",
+        "model-00002-of-00004.safetensors",
+        "model-00003-of-00004.safetensors",
+        "model-00004-of-00004.safetensors"
+      ],
+      "present_but_unsigned": [
+        "model-00001-of-00002.safetensors",
+        "model-00002-of-00002.safetensors"
+      ],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "does-not-match",
+      "bundle_shared_with": [
+        "unsloth/granite-4.1-8b"
+      ]
+    },
+    {
+      "model": "unsloth/granite-4.0-h-tiny",
+      "revision": "3af1d9261fb89e676b137cb8bb37f594775f3d56",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 15,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "574894963",
+      "payload_sha256": "702f9ab5b16aeffca67ff8ea01aaa9322a5acceee7e765b312f0ec60d9908114",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-h-tiny"
+      ],
+      "signed_files": 13,
+      "signed_and_present": 13,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "does-not-match",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-8b-fp8",
+      "revision": "6eb3735036ce2010f4ec8319820172a1c06508d7",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 16,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690849163",
+      "payload_sha256": "47f2158d0ac03c9f0ee279c403ce87491f396305d58a903cb4da20b8b5bd1978",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-8b-fp8"
+      ],
+      "signed_files": 14,
+      "signed_and_present": 14,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-30b-fp8",
+      "revision": "bee6d7463fd7064455f59ac480a3fcdcae5cb801",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 21,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690793668",
+      "payload_sha256": "97138a55a6769fa293ef88183af4edabed13d2903eb191f2b29206582899f647",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-30b-fp8"
+      ],
+      "signed_files": 19,
+      "signed_and_present": 19,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-h-micro-base",
+      "revision": "372ede0bc484284e08ce574e773c96cd2b89b367",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 13,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "663835598",
+      "payload_sha256": "be4aa2345d5c603ee1d1903755715c75059044596407e7bd73be58f64fe560c2",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-h-micro-base"
+      ],
+      "signed_files": 11,
+      "signed_and_present": 11,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-8b-nvfp4",
+      "revision": "fd3b6082de9225a8e866d7f80d96cdc22f1ae89e",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 16,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690853658",
+      "payload_sha256": "70c46c59006801e55b43bb22f111855a998ed636c963b8b0f7d6c49743bfba5f",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-8b-nvfp4"
+      ],
+      "signed_files": 14,
+      "signed_and_present": 14,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "unsloth/granite-4.1-3b",
+      "revision": "e42729497b5d4dc8a8dbd069bae5fd695f8cee49",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1398631579",
+      "payload_sha256": "49ec408a63037d3a38c334b0643a75611ca2b33f28d3a98768ad32eb431f6ab6",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-3b"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "does-not-match",
+      "bundle_shared_with": [
+        "huihui-ai/Huihui-granite-4.1-3b-abliterated"
+      ]
+    },
+    {
+      "model": "ibm-granite/granite-switch-4.1-8b-preview",
+      "revision": "c739556e0b2c66f21e5108dc4036f52e1893e256",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 31,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1437733131",
+      "payload_sha256": "493044f1f64df5be901230b3460a2a1d36f39fe2f6a4016c9b1b7a7e103b8a08",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-switch-4.1-8b-preview"
+      ],
+      "signed_files": 28,
+      "signed_and_present": 28,
+      "signed_but_absent": [],
+      "present_but_unsigned": [
+        "README.md"
+      ],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "unsloth/granite-4.1-8b",
+      "revision": "acb681dfd7b46ea403274f041c70d28da947b1ab",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 16,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1398629833",
+      "payload_sha256": "14b50cb69d6d81e43df2e2d14f4b58617417833f8c8848ecef04105f299c7171",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-8b"
+      ],
+      "signed_files": 14,
+      "signed_and_present": 14,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "does-not-match",
+      "bundle_shared_with": [
+        "cyankiwi/granite-4.1-8b-AWQ-INT4"
+      ]
+    },
+    {
+      "model": "ibm-granite/granite-switch-4.1-30b-preview",
+      "revision": "b2d1c82bbd5913f8a07e35c911b402783d1423e1",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 40,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1437733345",
+      "payload_sha256": "82117c98f66807afa6a52c8ce224141b8c75f9fec9446a4ae2a37213a54c5879",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-switch-4.1-30b-preview"
+      ],
+      "signed_files": 37,
+      "signed_and_present": 37,
+      "signed_but_absent": [],
+      "present_but_unsigned": [
+        "README.md"
+      ],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-8b-mxfp4",
+      "revision": "1e429c026f7a94ac22da2f604b7440b4e806d50c",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 16,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690853009",
+      "payload_sha256": "bddacc3ca7595a4295382955920a1122c02bdf04104e6402354581d9e785fc85",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-8b-mxfp4"
+      ],
+      "signed_files": 14,
+      "signed_and_present": 14,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-3b-nvfp4",
+      "revision": "c30d480be0e8440e84835497f00218628fc2ab1c",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690845462",
+      "payload_sha256": "46a7d65c2d4d2d4b4cfd7349170ba4d255e6afe5c8a07882d6e12dc8425716fc",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-3b-nvfp4"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-3b-mxfp4",
+      "revision": "40caf0f3c49b05128358355ff01faf2df10f62f9",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690844429",
+      "payload_sha256": "4745e79e2fe4d075d19f803abd48d522312c41b37edabe7a5a4d885f91c3832e",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-3b-mxfp4"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-30b-mxfp4",
+      "revision": "8d0c2fb8cf713cae830f1f315925104b0f375b72",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 18,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690825494",
+      "payload_sha256": "929076d9ccf98e47381164fbeb6e211aad40624861ae4085021da14f33492553",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-30b-mxfp4"
+      ],
+      "signed_files": 16,
+      "signed_and_present": 16,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-micro-base",
+      "revision": "98e1d641451818f6c8e6b17c1c359b5b4ac495d0",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 13,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "663824525",
+      "payload_sha256": "21e27fcc0c07cd1a12730dffb5edd79766638451f30e6f49b91bc97f28ffc4a8",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-micro-base"
+      ],
+      "signed_files": 11,
+      "signed_and_present": 11,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-verify@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.2-3b-fp8",
+      "revision": "579eab44700093cf415d70534060b653dc4d6b45",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 14,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "2690839205",
+      "payload_sha256": "e8812a8f50f920520049cef210d62b9db41abceb1fa52b001a661e1799549854",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.2-3b-fp8"
+      ],
+      "signed_files": 12,
+      "signed_and_present": 12,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "cyankiwi/granite-4.1-30b-AWQ-INT4",
+      "revision": "b83a2effb72953db295717abb335aa7948c1bf46",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 16,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1403453422",
+      "payload_sha256": "d2f10875b46c40eb35a871be99ce03e8085188881c61674843fd68a51ec2ca28",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.1-30b"
+      ],
+      "signed_files": 22,
+      "signed_and_present": 10,
+      "signed_but_absent": [
+        "model-00001-of-00012.safetensors",
+        "model-00002-of-00012.safetensors",
+        "model-00003-of-00012.safetensors",
+        "model-00004-of-00012.safetensors",
+        "model-00005-of-00012.safetensors",
+        "model-00006-of-00012.safetensors",
+        "model-00007-of-00012.safetensors",
+        "model-00008-of-00012.safetensors",
+        "model-00009-of-00012.safetensors",
+        "model-00010-of-00012.safetensors",
+        "model-00011-of-00012.safetensors",
+        "model-00012-of-00012.safetensors"
+      ],
+      "present_but_unsigned": [
+        "model-00001-of-00004.safetensors",
+        "model-00002-of-00004.safetensors",
+        "model-00003-of-00004.safetensors",
+        "model-00004-of-00004.safetensors"
+      ],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "does-not-match",
+      "bundle_shared_with": []
+    },
+    {
+      "model": "ibm-granite/granite-4.0-h-1b-base",
+      "revision": "8d34631309affca6f6f8350684ddcb8994b0dc31",
+      "listing_status": 200,
+      "signature_state": "unverifiable",
+      "detection_note": "a Sigstore bundle is present (application/vnd.dev.sigstore.bundle.v0.3+json) and has not been verified",
+      "files": 11,
+      "media_type": "application/vnd.dev.sigstore.bundle.v0.3+json",
+      "verification_material": [
+        "certificate"
+      ],
+      "tlog_entries": 1,
+      "log_index": "1805483459",
+      "payload_sha256": "da3b79778742bb0eab776e7523f6141e2a19d8a5d482b265c0b4ca8367e83949",
+      "predicate_type": "https://model_signing/signature/v1.0",
+      "subject_names": [
+        "granite-4.0-h-1b-base"
+      ],
+      "signed_files": 9,
+      "signed_and_present": 9,
+      "signed_but_absent": [],
+      "present_but_unsigned": [],
+      "verifies": true,
+      "verification_error": null,
+      "signer": [
+        "Granite-sign@ibm.com"
+      ],
+      "issuer": "https://sigstore.verify.ibm.com/oauth2",
+      "signer_domain": "ibm.com",
+      "identity": "matches",
+      "bundle_shared_with": []
+    }
+  ]
+}
