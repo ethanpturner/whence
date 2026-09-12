@@ -2,6 +2,17 @@
 
 Guidance for Claude Code when working in this repository.
 
+## Retired
+
+**This project is retired as of 2026-09-11 (DEC-032).** There are no new features, no new
+scenarios, and no issue triage. The code still runs and the eleven recorded scenarios still replay
+offline, so every figure on the `docs/eval/` pages stays reproducible; keeping that true is the only
+maintenance this repository takes. `README.md` is the postmortem and states what was measured, why
+`unverifiable` was the correct answer, and what to do instead.
+
+If a change is genuinely needed here, it is a change that keeps the gate green. Anything that adds
+capability is out of scope and reopening that is a new decision.
+
 ## What this is
 
 `whence` resolves the dependency graph of a published machine-learning model and records, per edge,

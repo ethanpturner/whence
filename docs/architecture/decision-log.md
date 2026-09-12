@@ -1088,3 +1088,82 @@ edge property would be cleaner and is a data-model change with no second use yet
 
 **What was measured.** `benchmarks/self-declared-base` records `nmthien/vietnamese-gpt2`, chosen
 from the 64. The sweep's list is `docs/eval/census/dataset/self_referential_top45k.json`.
+
+---
+
+## DEC-032 — Development stops; the measurements and the postmortem are what ships
+
+**Date:** 2026-09-11
+**Status:** Accepted
+
+**Decision.** `whence` stops being developed. The code, the eleven recorded scenarios, and the four
+measurement pages stay in the repository and stay green, so every figure remains reproducible
+offline. No new features, no new scenarios, no issue triage. `README.md` becomes the postmortem.
+
+**Why.** The tool is correct and the market is absent, and those are separate findings that have to
+be stated separately or the retirement reads as a defect report.
+
+The tool is correct. It resolves what it can resolve, reports `unverifiable` where metadata cannot
+establish a derivation, and refuses to infer. DEC-020's structural check has now returned no false
+contradiction over 40 comparable real derivations, and `docs/eval/lineagebench.md` measured its
+detection rate against labelled negatives for the first time: 28 contradictions over the 30
+negative pairs it could reach. `docs/eval/fingerprints.md` ran the DEC-029 evidence path end to end
+and it behaved as designed — five declared edges moved to `verified`, one undeclared edge was
+created from a verdict about two artifacts the resolution had reached, one verdict attached to
+nothing and was reported as unattached rather than used to extend the graph. Nothing in the design
+failed.
+
+The market is absent, and the evidence is in the consuming half of the ecosystem rather than in
+this repository. No tool was found that reads an AI-BOM to make a decision. The CycloneDX reference
+generator for this artifact class has been unmaintained since 2024 and the schema is being rewritten
+for 2.0. `sigstore/model-transparency`, the reference implementation of the signing format this tool
+detects, has three usages across GitHub code search and no release since 2025-10. SLSA has no track
+for models. An artifact nobody consumes is an artifact whose producer has no user, and that is this
+tool's position regardless of how well it is built.
+
+What changed in 2026 is that the central question became answerable by other means. `whence` was
+designed around the observation that a card names a base and stops, so no edge is verifiable from
+metadata. That remains true. But modelDNA and Cisco's Model Provenance Kit both shipped in 2026
+with published measurements and answer the operator's question — did this artifact come from that
+one — by reading weights. `docs/eval/fingerprints.md` measures them: modelDNA returned a positive
+class on 7 of 7 comparable documented derivations and an abstaining class on 30 of 30 negatives.
+DEC-029 was written to admit exactly that evidence, and admitting it is the right design; it also
+means the layer that answers the question is the layer this tool does not occupy.
+
+**Alternatives considered.**
+
+*Continue as specified.* Rejected. The remaining roadmap — an identity policy for DEC-021, the gold
+graph, the actionability replay — each adds capability to a tool whose output has no consumer. The
+identity policy is the strongest of them and `docs/eval/signatures.md` gives it real inputs, but a
+policy deciding which issuer and subject to accept per namespace is a judgement call that belongs to
+whoever operates a registry, not to a resolver nobody runs.
+
+*Narrow to the registry-integrity layer and ship that.* Rejected, and this is the closest call. The
+namespace classifier is genuinely unduplicated: `docs/eval/census.md` ran it over 516 namespaces
+behind names a 2024 census found dead and produced 57 `free`, 25 `held-empty`, 434 `held`, with no
+`unknown`. 134 declared base names carrying 258 declarations from models that still exist point into
+namespaces anyone may register — about 1 in 9, against 1 in 220 across all base references in the
+download-ranked head. That is a real hazard measured at a real rate. It is also a hazard whose fix
+is one line in a loader — pin by revision digest — and a check for it is a feature of a dependency
+scanner, not a product. The measurement is the contribution; a tool around it would be a wrapper on
+a rate.
+
+*Fold it into a sibling project.* Rejected for now. The verdict vocabulary is shared by agreement
+and not by import (`attestrun`'s DEC-001), and folding this tool's resolver into another would make
+the dependency point from the verified to the verifier. If a later project needs namespace
+classification it should read this repository's measurement and implement its own check.
+
+**Tradeoffs.** A retired repository that still passes CI costs maintenance the moment a dependency
+moves, and the honest expectation is that it will eventually stop building. The recordings and the
+`results.json` files under `docs/eval/` are the durable artifacts; the code is the thing that
+produced them, kept runnable for as long as it stays runnable without work.
+
+Retiring while every gate is green also forfeits the argument that the tool failed. That is
+deliberate. A project abandoned mid-defect teaches nothing; one retired with its measurements intact
+and its reasoning written down is the more useful record, and the measurements are what a reader
+needs.
+
+**Open.** Whether the identity-policy question in DEC-021 is worth answering somewhere else: the
+seven bundles that verify and bind a non-publisher identity are a real finding with no tool behind
+it. Whether the 2024 census should be re-run periodically: the free-namespace rate is the one figure
+here that changes on its own, and nothing now watches it.
